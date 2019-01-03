@@ -1,0 +1,77 @@
+.gridBody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr 1.9fr .1fr;
+    height: 101%;
+    text-align: center;
+    overflow: hidden;
+}
+
+body {
+    overflow: hidden;
+}
+
+.login img {
+    height: 75px;
+    margin-bottom: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.signUpLogin {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.login input {
+    height: 45px;
+    width: 40%;
+    border: unset;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.login button {
+    width: 40%;
+    height: 45px;
+    color: white;
+    background: #0076a3;
+    border: unset;
+    font-size: 20px;
+}
+
+.login p {
+    color: #0076a3;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bottomText {
+    grid-column: 1;
+    grid-row: 3;
+    bottom: 0px;
+}
+
+.login {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.graphicLogin {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.graphicText {
+    color: white;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.graphicLogin img {
+    width: 100%;
+    height: auto;
+}
