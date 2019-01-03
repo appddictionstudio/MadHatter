@@ -81,7 +81,7 @@ h1,h2,h3,h4 {
 
 #menu a:hover {
   background: #023d55;
-  
+
 }
 
 #menu input {
@@ -112,6 +112,7 @@ margin: 20px
 }
 
 .workbooks{
+  border-radius: 25px;
   grid-column: 1;
   grid-row: 3;
   margin: auto 0px auto 0px;
@@ -138,6 +139,7 @@ margin: 20px
 }
 
 .resorces{
+  border-radius: 25px;
   grid-column: 2;
   grid-row: 3;
   margin: auto;
@@ -164,10 +166,12 @@ margin: 20px
 }
 
 .external{
+  border-radius: 25px;
   grid-column: 3;
   grid-row: 3;
-  margin: auto 0px auto 20%;
+  margin: auto;
   padding: 20px;
+  padding-right: 10px;
   background: #0076a3;
   width: 80%;
   height: 40%;
