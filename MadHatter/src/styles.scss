@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'styles/colorsheet.scss';
 @import 'app/login/login.component.scss';
+@import 'app/home/home.component.scss';
 
 html, body {
     height: 100%;
     width: 100%;
+    margin:unset;
 }
