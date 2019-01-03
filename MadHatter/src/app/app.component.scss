@@ -1,0 +1,84 @@
+
+
+
+
+
+h1,h2,h3,h4 {
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+#username {
+  text-align: right;
+  font-size: 1.15em;
+  color: #023d55;
+  margin: 25px;
+}
+
+#header {
+	height: 30px;
+	position: relative;
+	padding: 45px;
+  color:#FFFFFF;
+  background: url('../assets/artboard_1.png') top left no-repeat;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	overflow: hidden;
+}
+
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+  text-shadow: 0 1px 1px #3E3E3E;
+  text-align: right;
+}
+
+#logo h1 {
+	font-size: 3.25em;
+}
+
+
+#menu {
+	padding: 0 45px 0 45px;
+	position: relative;
+	margin: 0 0 0 0;
+	height: 60px;
+	line-height: 60px;
+  border-top: solid 1px  #005b7f;
+  background: #005b7f;
+}
+
+#menu a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 1.25em;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+#menu input {
+float: right;
+margin: 20px
+
+}
+
+#menu ul {
+  list-style: none;
+  margin: unset;
+}
+
+#menu ul li {
+	padding: 0 20px 0 20px;
+	display: inline;
+}
+
+#menu ul li.first {
+	padding-left: 0;
+}
+
+
+#wrapper {
+	position: relative;
+	margin: 75px auto 0 auto;
+	background: #FFFFFF;
+}
