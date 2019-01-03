@@ -12,7 +12,7 @@
 
 #headersaying {
   padding-top: 30px;
-  font-size: 2.5em;
+  font-size: 3em;
   color: #005b7f;
   grid-column: 1 / 4;
   grid-row:1;
@@ -68,7 +68,6 @@ h1,h2,h3,h4 {
 
 #menu a:hover {
   background: #023d55;
-
 }
 
 #menu input {
@@ -77,14 +76,15 @@ margin: 20px
 
 }
 
-#menu span {
+#menu a {
   list-style: none;
   margin: unset;
 	padding: 0 20px 0 20px;
-	display: inline;
+  display: inline-block;
+  font-size: 24px;
 }
 
-#menu span.first {
+#menu a.first {
   padding: unset;
   padding-right: 20px;
 }
