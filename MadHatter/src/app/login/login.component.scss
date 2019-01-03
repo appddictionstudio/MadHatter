@@ -32,6 +32,8 @@ body {
     border: 1px solid #cccccc;
     margin-bottom: 10px;
     font-size: 20px;
+    border-radius: 10px;
+    padding-left: 10px;
 }
 
 .login button {
@@ -41,6 +43,7 @@ body {
     background: #0076a3;
     border: unset;
     font-size: 20px;
+    border-radius: 10px;
 }
 
 .login p {
@@ -82,14 +85,23 @@ body {
     width: 99%;
     height: 105%;
 }
-.UIUX {
+#UIUX {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#bootcamp {
     grid-column: 1;
     grid-row: 1;
 }
-
-.bootcamp {
-    grid-column: 1;
+#UIUXSpan {
+    grid-column: 2;
     grid-row: 2;
+}
+
+#bootcampSpan {
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .graphicText img {
