@@ -1,5 +1,8 @@
 # MadHatter
 
+# SASS
+When developing with SASS make sure to compile the SASS with the NPM package node-sass. The command is added to the package.json file as a script that can be run with npm run compile:sass. This will watch for any CSS changes within the SASS files and build a CSS file for angular to compile with the build. The CSS file is defined in the angular.json file. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
 ## Development server
