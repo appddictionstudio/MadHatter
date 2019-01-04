@@ -8,6 +8,11 @@
     padding-left: 1em;
 }
 
+.tabImageText img{
+    width: 100%;
+    height: auto;
+}
+
 .tabImageText h1, .tabImageText p {
     text-align: center;
     font-weight: bold;
@@ -27,7 +32,12 @@
 .tabImageTextGrid {
     grid-column: 1;
     grid-row: 1;
-    margin:auto;
+    overflow: hidden;
+    // margin:auto;
+}
+
+.mat-tab-body-content, .mat-tab-body {
+    overflow: unset !important;
 }
 
 .tabText {
@@ -73,6 +83,8 @@
 
 .UIProgress .mat-tab-body-content {
     overflow: hidden;
+    display: inline-flex;
+    width: 100%;
 }
 
 .progress {
@@ -127,4 +139,10 @@
 
 .progressComplete span {
     color: white;
+}
+
+.cardGrid:nth-child(4n+4) {
+    // content: "\A";
+    // white-space: pre;
+    // background: red;
 }
