@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: MadHatter
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: crobinson
+Implementation-Vendor-Id: com.Madhatter
+Build-Jdk: 1.8.0_181
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/MadHatter
+Created-By: Maven Integration for Eclipse
+
