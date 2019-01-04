@@ -32,7 +32,7 @@
 
 .tabText {
     position: absolute;
-    top: 10%;
+    top: 1em;
     grid-column: 1;
     grid-row: 1;
     color: white;
@@ -63,7 +63,11 @@
     background-color: rgba(0, 0, 0, .3);
 }
 
-.UIProgress .mat-tab-label:focus {
+.mat-tab-label:hover {
+    background-color: rgba(0, 0, 0, .15);
+}
+
+.UIProgress .mat-tab-label:focus, .UIProgress .mat-tab-label:hover {
     background-color: unset;
 }
 
@@ -71,15 +75,16 @@
     overflow: hidden;
 }
 
-.progress{
+.progress {
     border: 1px solid black;
     border-radius: 10px;
     height: 1em;
 }
 
-.progress-bar{
+.progress-bar {
     background: #004a80;
     color: white;
+    // mix-blend-mode: difference;
     font-weight: 200;
     border-radius: 10px;
     height: 1em;
@@ -110,4 +115,16 @@
 .cardGrid .progress {
     grid-column: 1;
     grid-row: 3;
+}
+
+.progressComplete {
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 1em;
+    background: green;
+    text-align: center;
+}
+
+.progressComplete span {
+    color: white;
 }
