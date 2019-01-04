@@ -1,4 +1,113 @@
-.groupHeader {
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-tab-header {
     background: #959595;
     color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 1em;
+}
+
+.tabImageText h1, .tabImageText p {
+    text-align: center;
+    font-weight: bold;
+}
+
+.UIProgress {
+    all: unset;
+}
+
+.tabImageText {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    overflow-x: hidden;
+}
+
+.tabImageTextGrid {
+    grid-column: 1;
+    grid-row: 1;
+    margin:auto;
+}
+
+.tabText {
+    position: absolute;
+    top: 10%;
+    grid-column: 1;
+    grid-row: 1;
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+    width: 100%;
+}
+
+.UIProgress .mat-tab-header {
+    background: unset;
+    color: black;
+    text-align: center;
+    border-bottom: 2px solid black;
+    width: 30%;
+    margin: auto;
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+.mat-card {
+    border: 1px solid black;
+    width: 15%;
+    margin: 2% auto 0% auto;
+    height: 15em;
+}
+
+.mat-tab-label:focus {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.UIProgress .mat-tab-label:focus {
+    background-color: unset;
+}
+
+.UIProgress .mat-tab-body-content {
+    overflow: hidden;
+}
+
+.progress{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 1em;
+}
+
+.progress-bar{
+    background: #004a80;
+    color: white;
+    font-weight: 200;
+    border-radius: 10px;
+    height: 1em;
+}
+
+.progress-bar span {
+    padding-left: 1em;
+    line-height: 1em;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 2.8fr .1fr;
+}
+
+.cardGrid h3{
+    grid-column: 1;
+    grid-row: 1;
+    margin: unset;
+}
+
+.cardGrid p{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.cardGrid .progress {
+    grid-column: 1;
+    grid-row: 3;
 }
