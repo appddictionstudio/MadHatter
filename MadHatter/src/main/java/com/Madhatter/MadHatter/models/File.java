@@ -16,6 +16,9 @@ public class File {
 
     @Column
     private String fileType;
+    
+    @Column
+    private String fileDesc;
 
     @Column
     @Lob
@@ -28,15 +31,17 @@ public class File {
 
     public File() {}
 
-    public File(String fileName, String fileType, byte[] data) {
+    public File(String fileName, String fileType, String fileDesc, byte[] data) {
         this.fileName = fileName;
         this.fileType = fileType;
+        this.fileDesc = fileDesc;
         this.data = data;
     }
 
-    public File(String fileName, String fileType, byte[] data, Form form) {
+    public File(String fileName, String fileType, String fileDesc, byte[] data, Form form) {
         this.fileName = fileName;
         this.fileType = fileType;
+        this.fileDesc = fileDesc;
         this.data = data;
         this.form = form;
     }
@@ -81,6 +86,20 @@ public class File {
      */
     public void setFileType(String fileType) {
         this.fileType = fileType;
+    }
+    
+    /**
+     * @return the fileType
+     */
+    public String getFileDesc() {
+        return fileDesc;
+    }
+
+    /**
+     * @param fileType the fileType to set
+     */
+    public void setFileDesc(String fileDesc) {
+    	this.fileDesc = fileDesc;
     }
 
     /**
