@@ -1,0 +1,56 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private redirectLocation: string;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router) { }
+
+  token(username: string, password: string) {
+
+    const body = 'grant_type=password&username=' + username + '&password=' + password;
+
+    return this.http.post(environment.apiUrl + 'oauth/token', body);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  redirectToLogin() {
+    this.router.navigateByUrl('/login');
+  }
+
+  isAuthenticated() {
+    return this.getToken() ? true : false;
+  }
+
+  setRedirectLocation() {
+    this.redirectLocation = this.router.url;
+  }
+
+  redirectToRequestedView() {
+    this.router.navigateByUrl(this.redirectLocation);
+  }
+
+  getRedirectLocation() {
+    return this.redirectLocation;
+  }
+}

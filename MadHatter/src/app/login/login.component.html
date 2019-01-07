@@ -1,9 +1,9 @@
 <div class="gridBody">
   <div class="login">
     <img src="../../assets/Asset 1.png"><br>
-    <input placeholder="Email / Username"><br>
-    <input placeholder="Password"><br>
-    <button routerLink = 'home'>
+    <input placeholder="Email / Username"  type="text" name="username" [(ngModel)]="username"><br>
+    <input placeholder="Password" type="password" name="password" [(ngModel)]="password"><br>
+    <button type="submit" routerLink = 'home'>
       Log in
     </button><br>
     <p><a>Forgot your Password?</a></p>
