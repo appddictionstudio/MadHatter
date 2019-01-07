@@ -10,7 +10,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { BaseInterceptor } from './interceptors/BaseInterceptor';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatCardModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
