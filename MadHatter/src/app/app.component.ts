@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MadHatter';
-  isLoggedIn: true;
+  isLoggedIn: boolean;
 
   displayNavBar(val) {
     console.log(this.isLoggedIn);
