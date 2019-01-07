@@ -1,0 +1,37 @@
+.mainVideoContent {
+    width: 100%;
+    background: #2ba2d2;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.mainVideoContent img:first-child{
+    z-index: 0;
+    height: auto;
+    width: 99.15%;
+    position: absolute;
+    transform: translateY(-20%);
+}
+
+.videoContent {
+    width: 75%;
+    margin: 0px auto 0px auto;
+    padding-top: 3%;
+    background: white;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+p {
+    margin: unset;
+    font-size: 26px;
+    padding-bottom: 15px;
+}
+
+.thumbnail {
+    width: 50%;
+    height: auto;
+    text-align: left;
+}

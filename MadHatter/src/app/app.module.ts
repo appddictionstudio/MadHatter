@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BaseInterceptor } from './interceptors/BaseInterceptor';
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { VideosComponent } from './videos/videos.component';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { BaseInterceptor } from './interceptors/BaseInterceptor';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LearningComponent
+    LearningComponent,
+    NavbarComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,
