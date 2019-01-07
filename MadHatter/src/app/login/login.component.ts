@@ -10,7 +10,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   userLogIn: boolean;
-
   username: string;
   password: string;
 

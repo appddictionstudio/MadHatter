@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
+import { VideosComponent } from './videos/videos.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     LearningComponent,
-    NavbarComponent
+    NavbarComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,

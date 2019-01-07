@@ -52,7 +52,7 @@ h1,h2,h3,h4 {
 
 #menu input {
     float: right;
-    margin: 20px
+    margin-top: 1.2em;
 
 }
 
@@ -148,4 +148,8 @@ h1,h2,h3,h4 {
     top: 0;
     position: absolute;
     left: 0;
+}
+
+#header, #username, #menu {
+    z-index: 100;
 }
