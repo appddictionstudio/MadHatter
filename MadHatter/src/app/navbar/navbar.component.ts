@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,19 @@ export class NavbarComponent implements OnInit {
 
   userLogIn: boolean;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
-    this.userLogIn = true;
+  }
+
+  hideNavBar() {
+    this.userLogIn = false;
     console.log(this.userLogIn);
+  }
+
+  displayNavBar() {
+    this.userLogIn = true;
   }
 
 }

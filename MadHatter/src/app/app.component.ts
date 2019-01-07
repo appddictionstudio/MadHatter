@@ -6,11 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // userLogIn: true;
   title = 'MadHatter';
+  isLoggedIn: true;
 
-  // userLogInAction(userLogInBoolean) {
-  //   this.userLogIn = userLogInBoolean;
-  //   console.log(userLogInBoolean);
-  // }
+  displayNavBar(val) {
+    console.log(this.isLoggedIn);
+    this.isLoggedIn = val;
+    console.log(this.isLoggedIn);
+  }
 }
