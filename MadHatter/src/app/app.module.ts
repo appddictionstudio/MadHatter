@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LearningComponent
+    LearningComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
