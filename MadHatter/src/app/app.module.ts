@@ -14,6 +14,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BaseInterceptor } from './interceptors/BaseInterceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { VideosComponent } from './videos/videos.component';
+import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { VideosComponent } from './videos/videos.component';
     LoginComponent,
     LearningComponent,
     NavbarComponent,
-    VideosComponent
+    VideosComponent,
+    MemberDirectoryComponent
   ],
   imports: [
     BrowserModule,

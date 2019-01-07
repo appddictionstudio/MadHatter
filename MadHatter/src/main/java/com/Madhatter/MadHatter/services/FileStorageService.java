@@ -22,7 +22,7 @@ public class FileStorageService {
                 throw new Exception("Sorry! Filename contains invalid characters");
             }
 
-            File newFile = new File(name, file.getContentType(), file.getBytes());
+            File newFile = new File(name, file.getContentType(), name, file.getBytes());
 
             newFile.setForm(form);
             return fileRepository.save(newFile);
