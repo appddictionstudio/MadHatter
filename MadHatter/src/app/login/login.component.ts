@@ -10,7 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class LoginComponent implements OnInit {
   userLogIn: boolean;
-  username: string;
+  usernameOrEmail: string;
   password: string;
 
   isAuthenticated = false;
@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
   // }
 
   authenticate() {
-    this.auth.token(this.username, this.password).subscribe(result => {
+    this.auth.token(this.usernameOrEmail, this.password).subscribe(result => {
       this.auth.setToken(result['access_token']);
+      this.auth.isAuthenticated();
       this.auth.redirectToRequestedView();
     });
   }

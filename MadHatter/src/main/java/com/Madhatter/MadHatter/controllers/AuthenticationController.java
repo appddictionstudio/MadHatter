@@ -32,7 +32,7 @@ import com.Madhatter.MadHatter.security.JwtTokenProvider;
 
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/auth")
 public class AuthenticationController {
 
         @Autowired

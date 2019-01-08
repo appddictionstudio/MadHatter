@@ -17,23 +17,24 @@ export class AuthService {
     private http: HttpClient,
     private router: Router) { }
 
-   login(username: string, password: string) {
-      return this.http.post<any>(environment.apiUrl + 'api/auth', { username, password })
-          .pipe(map(user => {
-              // login successful if there's a jwt token in the response
-              if (user && user.token) {
-                  // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify(user));
-              }
+  //  login(username: string, password: string) {
+  //     return this.http.post<any>(environment.apiUrl + 'api/auth/signin', { username, password })
+  //         .pipe(map(user => {
+  //             // login successful if there's a jwt token in the response
+  //             if (user && user.token) {
+  //                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //                 localStorage.setItem('currentUser', JSON.stringify(user));
+  //             }
 
-              return user;
-          }));
-  }
-  token(username: string, password: string) {
+  //             return user;
+  //         }));
+  // }
+  token(usernameOrEmail: string, password: string) {
 
-    const body = 'grant_type=password&username=' + username + '&password=' + password;
+    const body = {'usernameOrEmail': usernameOrEmail,
+    'password': password};
 
-    return this.http.post(environment.apiUrl + 'api/auth/signin', body);
+    return this.http.post(environment.apiUrl + '/api/auth/signin', body);
   }
 
   logout() {
