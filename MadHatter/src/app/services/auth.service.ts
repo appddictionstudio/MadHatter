@@ -30,10 +30,13 @@ export class AuthService {
           }));
   }
   token(username: string, password: string) {
-
-    const body = 'grant_type=password&username=' + username + '&password=' + password;
-
-    return this.http.post(environment.apiUrl + 'api/auth/signin', body);
+    console.log('started the api');
+    const body = {
+      'usernameOrEmail': username,
+      'password': password
+    };
+    console.log(body);
+    return this.http.post(environment.apiUrl + '/api/auth/signin', body);
   }
 
   logout() {
