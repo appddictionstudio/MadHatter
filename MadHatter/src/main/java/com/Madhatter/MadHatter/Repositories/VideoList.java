@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 */
 @Repository
 public interface VideoList extends JpaRepository<Video, Long> {
-	@Query("select v from video v")
+	@Query("select v from Video v")
 	public List<Video> getAllVideos();
 }
