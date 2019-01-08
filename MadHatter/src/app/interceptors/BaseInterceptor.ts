@@ -35,7 +35,7 @@ export class BaseInterceptor implements HttpInterceptor {
         .set('Pragma', 'no-cache')
         // .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', 'Bearer ' + this.auth.getToken())})
-    }
+;    }
 
     // Pass on the cloned request instead of the original request.
     return next.handle(authReq).pipe(
@@ -45,7 +45,7 @@ export class BaseInterceptor implements HttpInterceptor {
           if (error instanceof HttpErrorResponse) {
             this.auth.setRedirectLocation();
             this.auth.redirectToLogin();
-            console.log('http error intercepted. redirect location: ' + this.auth.getRedirectLocation())
+            console.log('http error intercepted. redirect location: ' + this.auth.getRedirectLocation());
           }
         })
     );

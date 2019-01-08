@@ -15,6 +15,7 @@ import { BaseInterceptor } from './interceptors/BaseInterceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MemberDirectoryComponent } from './member-directory/member-directory.co
     LearningComponent,
     NavbarComponent,
     VideosComponent,
-    MemberDirectoryComponent
+    MemberDirectoryComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
