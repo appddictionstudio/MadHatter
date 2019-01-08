@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-import com.hcde.hcde.HcdeApplication;
-
 @SpringBootApplication
 public class MadHatterApplication extends SpringBootServletInitializer {
 
@@ -16,7 +14,7 @@ public class MadHatterApplication extends SpringBootServletInitializer {
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(HcdeApplication.class);
+		return builder.sources(MadHatterApplication.class);
 	}
 
 }
