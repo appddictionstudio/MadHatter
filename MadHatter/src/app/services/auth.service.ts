@@ -33,7 +33,7 @@ export class AuthService {
 
     const body = 'grant_type=password&username=' + username + '&password=' + password;
 
-    return this.http.post(environment.apiUrl + 'oauth/token', body);
+    return this.http.post(environment.apiUrl + 'api/auth/signin', body);
   }
 
   logout() {

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     if (this.auth.isAuthenticated()) {
       this.router.navigateByUrl('/');
     }
-    this.LoggedIn.displayNavBar(false);
+    // this.LoggedIn.displayNavBar(false);
   }
 
   // setUserLogIn() {

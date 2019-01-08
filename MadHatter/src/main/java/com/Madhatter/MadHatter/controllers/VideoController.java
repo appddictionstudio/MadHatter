@@ -12,7 +12,7 @@ import com.Madhatter.MadHatter.models.Video;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/BltBrdPost")
+@RequestMapping(value="/VideoList")
 public class VideoController {
 
     @Autowired

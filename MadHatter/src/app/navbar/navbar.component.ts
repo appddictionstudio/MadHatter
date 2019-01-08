@@ -21,8 +21,8 @@ export class NavbarComponent implements OnInit {
     console.log(this.userLogIn);
   }
 
-  displayNavBar() {
-    this.userLogIn = true;
-  }
+  // displayNavBar() {
+  //   this.userLogIn = true;
+  // }
 
 }

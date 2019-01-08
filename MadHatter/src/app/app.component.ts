@@ -9,9 +9,9 @@ export class AppComponent {
   title = 'MadHatter';
   isLoggedIn: boolean;
 
-  displayNavBar(val) {
-    console.log(this.isLoggedIn);
-    this.isLoggedIn = val;
-    console.log(this.isLoggedIn);
-  }
+  // displayNavBar(val) {
+  //   console.log(this.isLoggedIn);
+  //   this.isLoggedIn = val;
+  //   console.log(this.isLoggedIn);
+  // }
 }
