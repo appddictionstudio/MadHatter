@@ -25,7 +25,7 @@ public class JwtTokenProvider {
     private int jwtExpirationInMs;
 
     public String generateToken(Authentication authentication) {
-
+    	
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
         Date now = new Date();
@@ -34,7 +34,6 @@ public class JwtTokenProvider {
         UserProfile userProfile = new UserProfile(userPrincipal.getId(), userPrincipal.getName(),
                 userPrincipal.getUsername(), userPrincipal.getEmail(),
                 userPrincipal.getAuthorities().iterator().next().toString());
-
         return Jwts.builder().setSubject(Long.toString(userPrincipal.getId())).setIssuedAt(new Date())
                 .setExpiration(expiryDate).signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .claim("userProfile", userProfile).compact();

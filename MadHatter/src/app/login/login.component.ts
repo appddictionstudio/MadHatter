@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
   userLogIn: boolean;
   usernameOrEmail: string;
   password: string;
-
-  isAuthenticated = false;
+  obj: any;
+  // tslint:disable-next-line:max-line-length
+  testToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTQ3MDQ1ODYyLCJleHAiOjE1NDcwODkwNjIsInVzZXJQcm9maWxlIjp7ImlkIjoyLCJuYW1lIjoiRHlsYW4iLCJ1c2VyTmFtZSI6ImRjcmFpZyIsImVtYWlsIjoiZGNyYWlnQGFwcGRkaWN0aW9uc3R1ZGlvLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIn19.2TAe-tXc2tivzF7zifPNNyj5rqZH-WPWExTiN_Wv9-kFku978u2DSPtMZW2jFiJ7WWU6cdyT2o7-5ljUnpsElA';
 
   constructor(
     private auth: AuthService,
@@ -34,11 +35,18 @@ export class LoginComponent implements OnInit {
   // }
 
   authenticate() {
-    this.auth.token(this.usernameOrEmail, this.password).subscribe(result => {
-      this.auth.setToken(result['access_token']);
+    this.obj = { 'usernameOrEmail': this.usernameOrEmail,
+    'password': this.password} ;
+    this.auth.token(this.obj).subscribe(result => {
+      // this.auth.setToken(this.testToken);
+      this.auth.setToken(result['accessToken']);
       this.auth.isAuthenticated();
       this.auth.redirectToRequestedView();
     });
+  }
+
+  getToken() {
+    const token = this.auth.getToken();
   }
 
 

@@ -12,8 +12,8 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: `learning`, component: LearningComponent },
     { path: `videos`, component: VideosComponent },
-    {path: 'memberdirectory', component: MemberDirectoryComponent},
-    {path: 'signup', component: SignupComponent}
+    { path: 'memberdirectory', component: MemberDirectoryComponent},
+    { path: 'signup', component: SignupComponent}
   ]}
 ];
 

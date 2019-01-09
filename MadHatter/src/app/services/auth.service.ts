@@ -29,12 +29,12 @@ export class AuthService {
   //             return user;
   //         }));
   // }
-  token(usernameOrEmail: string, password: string) {
+  token(obj) {
 
-    const body = {'usernameOrEmail': usernameOrEmail,
-    'password': password};
+    // const body = {'usernameOrEmail': usernameOrEmail,
+    // 'password': password};
 
-    return this.http.post(environment.apiUrl + '/api/auth/signin', body);
+    return this.http.post(environment.apiUrl + 'api/auth/signin', obj);
   }
 
   logout() {
@@ -43,10 +43,13 @@ export class AuthService {
   }
 
   setToken(token: string) {
+    console.log(`Setting the token`);
     localStorage.setItem('token', token);
   }
 
   getToken() {
+    console.log(`The getToken has come back with`);
+    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
 

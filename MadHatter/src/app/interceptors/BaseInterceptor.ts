@@ -26,7 +26,7 @@ export class BaseInterceptor implements HttpInterceptor {
       authReq = req.clone({headers: req.headers
         .set('Cache-control', 'no-cache')
         .set('Pragma', 'no-cache')
-        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Content-Type', 'application/json')
         // .set('Authorization', environment.client)
       });
     } else {
