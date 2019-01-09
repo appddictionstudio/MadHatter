@@ -14,4 +14,12 @@ export class UserService {
   getAllUsers(): Observable<any> {
     return this.http.get(environment.apiUrl + 'api/users');
   }
+
+  searchByName(search: any) {
+    return this.http.get(environment.apiUrl + 'SearchUser/' + search);
+  }
+  getCurrentUser(): Observable<any> {
+    return this.http.get(environment.apiUrl + '/api/users/user-profile');
+
+  }
 }

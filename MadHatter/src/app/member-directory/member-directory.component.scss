@@ -5,7 +5,15 @@
 .memberSearch {
     width: 80%;
     margin: auto;
-    
+
+}
+.memberSearch h1 {
+    color: #005b7f;
+    font-weight: bold;
+}
+.memberscontainer table {
+  padding-left: 197px;
+  font-size: 25px;
 }
 
 .searchForm {
@@ -21,6 +29,7 @@
     margin: 0% auto;
     font-size: 18px;
     padding-bottom: 15px;
+    color: #959595;
 }
 
 .searchForm input {
