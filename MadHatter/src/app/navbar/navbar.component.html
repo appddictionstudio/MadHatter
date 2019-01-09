@@ -1,10 +1,10 @@
 <div>
     <div id="header">
         <img src="../../assets/artboard_1.png">
-    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>User Name <i class="fa fa-caret-down" style= "color: #024a66"></i></div>
+    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>User Name <i (click)="destroyToken()" class="fa fa-caret-down" style= "color: #024a66"></i></div>
     </div>
     <div id="menu">
-      <a href="/home">Home</a>
+      <a (click)="isAuthenticated()" href="/home">Home</a>
       <a href="/learning">Learning</a>
       <a href="#">Communities</a>
       <a href="#">Enablement</a>

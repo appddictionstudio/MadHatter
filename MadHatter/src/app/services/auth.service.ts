@@ -47,6 +47,12 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  destroyToken() {
+    console.log(`Destroying the token`);
+    localStorage.removeItem('token');
+    console.log(this.getToken());
+  }
+
   getToken() {
     console.log(`The getToken has come back with`);
     console.log(localStorage.getItem('token'));
