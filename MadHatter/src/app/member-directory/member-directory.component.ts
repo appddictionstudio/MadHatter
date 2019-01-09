@@ -15,7 +15,7 @@ export class MemberDirectoryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
+this.loadUsers();
   }
   loadUsers() {
     this.api.getAllUsers().subscribe(data => {
