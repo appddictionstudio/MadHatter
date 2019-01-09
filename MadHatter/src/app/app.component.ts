@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnChanges {
   title = 'MadHatter';
-  isLoggedIn: boolean;
+  isAuth: boolean;
 
-  // displayNavBar(val) {
-  //   console.log(this.isLoggedIn);
-  //   this.isLoggedIn = val;
-  //   console.log(this.isLoggedIn);
-  // }
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+  ) { }
+
+  ngOnInit() {
+    this.isAuth = this.auth.isAuthenticated();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
+  destroyToken() {
+    this.auth.destroyToken();
+    this.router.navigateByUrl('/');
+    this.isAuth = this.auth.isAuthenticated();
+  }
+  userLoggedIn(auth) {
+    this.isAuth = auth;
+  }
 }
