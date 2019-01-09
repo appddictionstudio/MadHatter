@@ -1,11 +1,14 @@
 <div class="memberDirectory">
+  <div id=members>
   <div class="memberSearch">
-    <form class="searchForm" style="margin:auto;height:20px">
+    <br>
+    <h1>Madhatter Member Directory</h1>
+    <form class="searchForm" id="search" style="margin:auto;height:20px">
       <p>Member Full Name:</p>
-      <input type="text" placeholder="eg. John Doe..." name="fullName" style="background-color:white;border: white">
+      <input [(ngModel)]="searchString" name="searchString" placeholder="eg.John Doe..." style="background-color:white;border: white">
       <p>State:</p>
       <input type="text" placeholder="eg. Alabama..." name="state" style="background-color:white;border: white">
-      <button>Search</button>
+      <!-- <button  (search)="searchByName(search.value)">Search</button> -->
     </form>
   </div>
   <div class="memberResults">
@@ -13,11 +16,13 @@
   </div>
 </div>
 <div class = "memberscontainer">
-  <table style="margin: 15px;">
+  <table>
     <tbody>
-      <tr *ngFor="let member of members">
-        <td>{{member.name}}</td>
+      <tr *ngFor="let member of members | filter: 'name': searchString; let i = index">
+        <td><i class="fa fa-user" style="color: #005b7f"></i></td>
+        <td style ="padding-left: 19px">{{member.name}}</td>
       </tr>
     </tbody>
   </table>
+  </div>
 </div>

@@ -17,6 +17,7 @@ import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
     NavbarComponent,
     VideosComponent,
     MemberDirectoryComponent,
-    SignupComponent
+    SignupComponent,
+    SearchByNamePipe
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
+  exports: [SearchByNamePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
