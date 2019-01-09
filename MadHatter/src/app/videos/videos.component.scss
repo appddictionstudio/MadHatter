@@ -24,14 +24,13 @@
     position: relative;
 }
 
+.youtubePlayer iframe {
+    width: 75% !important;
+    height: auto !important;
+}
+
 p {
     margin: unset;
     font-size: 26px;
     padding-bottom: 15px;
-}
-
-.thumbnail {
-    width: 50%;
-    height: auto;
-    text-align: left;
 }

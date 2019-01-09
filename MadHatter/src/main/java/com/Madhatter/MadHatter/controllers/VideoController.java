@@ -12,7 +12,7 @@ import com.Madhatter.MadHatter.models.Video;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/VideoList")
+@RequestMapping(value="VideoList")
 public class VideoController {
 
     @Autowired
@@ -21,9 +21,9 @@ public class VideoController {
 
     //--------------- Load -----------------------------------------------------------
      @RequestMapping(method = RequestMethod.GET)
-     ResponseEntity<List<Video>> getAllBulletinPost() {    
-        List<Video> postList = repo.getAllVideos();    
-        return ResponseEntity.ok(postList);
+     ResponseEntity<List<Video>> getAllVideos() {    
+        List<Video> videoList = repo.getAllVideos();    
+        return ResponseEntity.ok(videoList);
         }
     
 }

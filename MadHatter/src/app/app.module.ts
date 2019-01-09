@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 import { SignupComponent } from './signup/signup.component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SignupComponent } from './signup/signup.component';
     BrowserAnimationsModule,
     FormsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    YoutubePlayerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],

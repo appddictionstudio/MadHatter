@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from 'src/app/services/video.service';
 import { Videos } from 'src/app/models/Videos';
+// import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos',
@@ -9,23 +10,27 @@ import { Videos } from 'src/app/models/Videos';
 })
 export class VideosComponent implements OnInit {
 
-  video: Videos[];
+  video: Videos[] = [];
+  results: any;
 
   constructor(
-    private vidService: VideoService,
+    private api: VideoService,
+    // private sanatize: DomSanitizer,
   ) { }
 
   ngOnInit() {
-    console.log('about to do something');
-    this.vidService.getVideos().subscribe(result => {
-      console.log('did something');
-      const res = result as any;
-      console.log(res);
-      if (res) {
-        this.video = res;
-      }
-    });
-    console.log('done something');
+    this.getVideoLinks();
   }
 
+  getVideoLinks() {
+    this.api.getVideos().subscribe(result => {
+      this.video = result as any[];
+      console.log(this.video);
+    });
+  }
+
+  // sanatizeLinks(link) {
+  //   this.sanatize.bypassSecurityTrustResourceUrl(link);
+  //   return link;
+  // }
 }
