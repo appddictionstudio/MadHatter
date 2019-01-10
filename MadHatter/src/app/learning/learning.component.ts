@@ -16,6 +16,13 @@ export class LearningComponent implements OnInit {
   module: Module[] = [];
   api: ModuleService;
 
+  id: any;
+  description: any;
+  end_date: any;
+  start_date: any;
+  title: any;
+  topic: any;
+
   constructor(
     private fb: FormBuilder,
   ) { }
