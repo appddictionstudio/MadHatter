@@ -13,7 +13,7 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
 
   members: Users[] = [];
   displayedColumns: string[] = ['name'];
-
+  showpeople: boolean;
   constructor(    private api: UserService,
     ) { }
 
@@ -34,5 +34,6 @@ this.loadUsers();
 
     this.api.searchByName(searchName).subscribe(data =>
       this.members = data as any[] );
+      this.showpeople = true;
   }
 }
