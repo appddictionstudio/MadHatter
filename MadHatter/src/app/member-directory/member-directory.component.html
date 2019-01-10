@@ -3,32 +3,68 @@
   <div class="memberSearch">
     <br>
     <h1>Member Directory</h1>
-    <form class="searchForm" style="margin:auto;height:20px">
+    <form class="searchForm" style="margin:auto">
       <p>Member Full Name:</p>
-      <input #search type="search" placeholder="eg. John Doe..." style="background-color:white;border: white">
-      <!-- <input [(ngModel)]="searchString" name="searchString" placeholder="eg.John Doe..." style="background-color:white;border: white"> -->
+      <input #search type="search" placeholder=" eg. John Doe">
       <p>State:</p>
-      <input type="text" placeholder="eg. Alabama..." name="state" style="background-color:white;border: white">
+      <input type="text" placeholder=" eg. Alabama">
       <button  (click)="searchByName(search.value)" ><i style="padding-right: 5px"class="fa fa-search"></i>Search</button>
     </form>
   </div>
   <br>
   <br>
   <br>
-  <div class="memberResults">
-
-  </div>
+  <!-- <div class="memberResults">
+      <div>
+          <form class="selectCerts">
+              <table>
+                  <tbody>
+                    <tr>
+                      <td>Level 1 Certification</td>
+                    </tr>
+                    <tr>
+                        <td>Level 2 Certification</td>
+                      </tr>
+                      <tr>
+                          <td>Level 3 Certification</td>
+                        </tr>
+                        <tr>
+                            <td>Level 4 Certification</td>
+                          </tr>
+                          <tr>
+                              <td>Level 4 Certification</td>
+                            </tr>
+                            <tr>
+                                <td>Level 4 Certification</td>
+                              </tr>
+                              <tr>
+                                  <td>Level 4 Certification</td>
+                                </tr>
+                                <tr>
+                                    <td>Level 4 Certification</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Level 4 Certification</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Level 4 Certification</td>
+                                      </tr>
+                  </tbody>
+                </table>
+          </form>
+        </div>
+  </div> -->
 </div>
 <div class = "memberscontainer">
   <table>
     <tbody>
-      <!-- <tr *ngFor="let member of members | filter: 'name': searchString; let i = index"> -->
       <tr *ngFor="let member of members">
         <td><i class="fa fa-user" style="color: #005b7f; padding-bottom: 10px"></i></td>
-        <td style ="padding-left: 19px; padding-bottom: 10px">{{member.name}}</td>
-        <td><hr></td>
+        <td style="padding-left: 10px">{{member.name}}</td>
       </tr>
     </tbody>
   </table>
   </div>
+
 </div>
+

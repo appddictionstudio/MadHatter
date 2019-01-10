@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { LearningComponent } from './learning/learning.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BaseInterceptor } from './interceptors/BaseInterceptor';
@@ -23,6 +23,7 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
+  MatFormFieldModule
 } from '@angular/material';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -46,6 +47,7 @@ import {
     MatTabsModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule ,
     MatCardModule,
     HttpClientModule,
     YoutubePlayerModule,
@@ -53,6 +55,7 @@ import {
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
+    MatFormFieldModule
     // NgbModule,
   ],
   providers: [
@@ -61,7 +64,9 @@ import {
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule],
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
