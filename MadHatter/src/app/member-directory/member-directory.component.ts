@@ -12,13 +12,15 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   public searchString: string;
 
   members: Users[] = [];
+  displayedColumns: string[] = ['name'];
+
   constructor(    private api: UserService,
     ) { }
 
   ngOnInit() {
 this.loadUsers();
   }
-  ngOnChanges(){
+  ngOnChanges() {
     this.loadUsers();
   }
   loadUsers() {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Users } from '../models/Users';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+  private user: Users = new Users();
+
+  private userSubject = new Subject<Users>();
 
 
   getAllUsers(): Observable<any> {
@@ -16,10 +20,15 @@ export class UserService {
   }
 
   searchByName(search: any) {
-    return this.http.get(environment.apiUrl + 'SearchUser/' + search);
+    return this.http.get(environment.apiUrl + 'api/users/SearchUser/' + search);
   }
-  getCurrentUser(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/api/users/user-profile');
+  getCurrentUser(): Observable<Users> {
+    this.userSubject.next(this.user);
+    return this.userSubject.asObservable();
 
   }
+  // getUser(): Observable<Users> {
+  //   this.userSubject.next(this.user);
+  //   return this.userSubject.asObservable();
+  // }
 }

@@ -1,5 +1,6 @@
 .memberDirectory {
     width: 100%;
+
 }
 
 .memberSearch {
@@ -10,10 +11,11 @@
 .memberSearch h1 {
     color: #005b7f;
     font-weight: bold;
+    text-align: center;
 }
 .memberscontainer table {
-  padding-left: 197px;
   font-size: 25px;
+  padding-left: 68px;
 }
 
 .searchForm {
@@ -29,7 +31,7 @@
     margin: 0% auto;
     font-size: 18px;
     padding-bottom: 15px;
-    color: #959595;
+    color: #666565;
 }
 
 .searchForm input {
@@ -51,6 +53,10 @@
     background: #0076a3;
     border-radius: 15px;
     height: 2em;
+}
+.searchForm ::placeholder {
+  color: rgb(194, 194, 194);
+  opacity: 1; /* Firefox */
 }
 
 .searchForm p:nth-child(1) {

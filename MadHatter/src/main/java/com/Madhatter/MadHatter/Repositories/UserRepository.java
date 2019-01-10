@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Madhatter.MadHatter.models.User;
 
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	
@@ -25,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
     @Query("select u from User u")
     public List<User> getAllUsers();
+    
+	public List<User> findByNameContainingIgnoreCase(String searchString);
+
 }
