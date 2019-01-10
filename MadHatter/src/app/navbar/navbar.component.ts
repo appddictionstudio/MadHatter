@@ -24,12 +24,17 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.isAuth = this.auth.isAuthenticated();
-    if (this.isAuth === true) {
-    this.userService.getCurrentUser().subscribe(data => {
+
+    // this.userService.getUser().subscribe(data => {
+    //   this.currentUser = data;
+    //   console.log(this.currentUser);
+
+    // });
+
+    this.userService.getUser().subscribe(data => {
       this.currentUser = data;
       console.log(this.currentUser);
-    });
-  }
+  });
   }
 
   ngOnChanges(changes: SimpleChanges) {

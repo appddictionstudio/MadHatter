@@ -32,7 +32,7 @@ public class UserController {
     
   //--------------- Load -----------------------------------------------------------
   	 @RequestMapping(method = RequestMethod.GET)
-  	 ResponseEntity<List<User>> getAllBulletinPost() {	
+  	 ResponseEntity<List<User>> getAllMhUsers() {	
   	    List<User> postList = repo.getAllUsers();	 
   	    return ResponseEntity.ok(postList);
   	    }

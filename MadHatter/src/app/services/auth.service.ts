@@ -55,4 +55,9 @@ export class AuthService {
   getRedirectLocation() {
     return this.redirectLocation;
   }
+
+  getCurrentUser() {
+    return this.http.get(environment.apiUrl + 'api/users/user-profile');
+  }
+
 }

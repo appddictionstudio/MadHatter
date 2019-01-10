@@ -3,15 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { Users } from '../models/Users';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
-  private user: Users = new Users();
+  constructor(private http: HttpClient,
+    private api: AuthService) { }
 
+  // private user: Users = new Users();
+  private user: any;
+  private id: number;
   private userSubject = new Subject<Users>();
 
 
@@ -22,13 +26,24 @@ export class UserService {
   searchByName(search: any) {
     return this.http.get(environment.apiUrl + 'api/users/SearchUser/' + search);
   }
-  getCurrentUser(): Observable<Users> {
-    this.userSubject.next(this.user);
-    return this.userSubject.asObservable();
 
-  }
   // getUser(): Observable<Users> {
   //   this.userSubject.next(this.user);
   //   return this.userSubject.asObservable();
+  // }
+
+  getUser(): Observable<any> {
+      const obs$ = this.api.getCurrentUser();
+      obs$.subscribe(data => {
+        this.user.id = data;
+      });
+      return obs$;
+    // } else {
+    //   return new Observable((observer) => {
+    //     observer.next(this.user);
+    //     observer.complete();
+    //   });
+
+    }
   // }
 }
