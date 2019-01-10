@@ -87,7 +87,7 @@
     width: 100%;
 }
 
-.progress {
+.progressInProgress {
     border: 1px solid black;
     border-radius: 10px;
     height: 1em;
@@ -124,7 +124,7 @@
     grid-row: 2;
 }
 
-.cardGrid .progress {
+.cardGrid .progressInProgress {
     grid-column: 1;
     grid-row: 3;
 }

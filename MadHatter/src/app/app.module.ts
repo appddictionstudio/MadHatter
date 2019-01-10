@@ -24,6 +24,7 @@ import {
   MatToolbarModule,
   MatIconModule,
 } from '@angular/material';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    // NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],

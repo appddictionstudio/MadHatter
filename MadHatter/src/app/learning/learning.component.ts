@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-learning',
