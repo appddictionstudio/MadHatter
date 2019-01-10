@@ -18,6 +18,7 @@ import { MemberDirectoryComponent } from './member-directory/member-directory.co
 import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
     FormsModule,
     MatCardModule,
     HttpClientModule,
-    YoutubePlayerModule
+    YoutubePlayerModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],

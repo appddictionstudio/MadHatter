@@ -2,9 +2,6 @@
   <img class="videoBackground" src="../../assets/bandwidth-crop.jpg">
   <div class="videoContent" *ngFor="let vid of video">
     <p>{{vid.name}}</p>
-    <!-- <p>https://www.youtube.com/watch?v={{vid.urllink}}</p> -->
     <youtube-player class="youtubePlayer" [videoId]="vid.urllink" [height]="400" [width]="700"></youtube-player>
-    <!-- <iframe width="50%" height="50%" src="https://www.youtube.com/watch?v={{vid.urllink}}"
-    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
   </div>
 </div>
