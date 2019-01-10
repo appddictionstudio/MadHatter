@@ -1,7 +1,6 @@
 package com.Madhatter.MadHatter.Repositories;
 
 import com.Madhatter.MadHatter.models.Bootcamp;
-import com.Madhatter.MadHatter.models.Video;
 
 import java.util.List;
 
