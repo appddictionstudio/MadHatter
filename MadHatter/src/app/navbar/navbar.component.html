@@ -1,7 +1,11 @@
 <div>
     <div id="header">
         <img src="../../assets/artboard_1.png">
-    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>{{currentUser.name}}<i (click)="destroyToken()" class="fa fa-caret-down" style= "color: #024a66; padding-left: 9px;"></i></div>
+    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>{{currentUser.name}}<button mat-icon-button [matMenuTriggerFor]="menu"><i class="fa fa-caret-down"></i></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+      </div>
     </div>
     <div id="menu">
       <a (click)="isAuthenticated()" href="/home">Home</a>

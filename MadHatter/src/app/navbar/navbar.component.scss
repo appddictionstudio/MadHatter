@@ -18,7 +18,15 @@ h1,h2,h3,h4 {
 	border-top-right-radius: 5px;
 	overflow: hidden;
 }
-
+#header button {
+  background: none;
+}
+#header .fa {
+  font-size: 20px;
+  color: #024a66;
+  padding-bottom: 8px;
+  padding-right:15px;
+}
 
 #logo a {
 	text-decoration: none;

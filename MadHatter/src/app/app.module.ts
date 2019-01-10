@@ -18,6 +18,12 @@ import { MemberDirectoryComponent } from './member-directory/member-directory.co
 import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+} from '@angular/material';
 
 
 @NgModule({
@@ -41,11 +47,19 @@ import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
     FormsModule,
     MatCardModule,
     HttpClientModule,
-    YoutubePlayerModule
+    YoutubePlayerModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
-  exports: [SearchByNamePipe],
+  exports: [SearchByNamePipe,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
