@@ -23,7 +23,7 @@ public class BootcampController {
 		
     @PostMapping("/bootcampSet")
     public ResponseEntity<Object> getBootcampModules(@RequestBody Bootcamp bootcamp) {
-    	
+    	System.out.println("Something here");
     	if (repo.findById(bootcamp.getId()).isPresent()) {
 			throw new ValidationException("Record Already Exists");
 		}

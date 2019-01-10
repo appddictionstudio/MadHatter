@@ -14,4 +14,7 @@ export class ModuleService {
   getModuleInformation() {
     return this.http.get(environment.apiUrl + 'BootcampList');
   }
+  setModuleInformation(obj) {
+    return this.http.post(environment.apiUrl + '/api/bootcamp/bootcampSet', obj);
+  }
 }

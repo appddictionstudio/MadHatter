@@ -23,7 +23,14 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
+  MatFormFieldModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -37,7 +44,7 @@ import {
     VideosComponent,
     MemberDirectoryComponent,
     SignupComponent,
-    SearchByNamePipe
+    SearchByNamePipe,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,13 @@ import {
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     // NgbModule,
   ],
   providers: [
@@ -61,7 +75,8 @@ import {
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule],
+    MatIconModule,
+    FormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
