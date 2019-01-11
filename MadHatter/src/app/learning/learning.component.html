@@ -1,4 +1,4 @@
-<mat-tab-group class="mainGroupHeader" [disableRipple]=true>
+<mat-tab-group class="mainGroupHeader" [color]="959595">
   <mat-tab class="groupHeader" label="Advanced Software Developer">
     <div class="tabImageText">
         <div class="tabImageTextGrid">
@@ -9,44 +9,6 @@
         </div>
         </div>
       </div>
-      <!-- <div mat-dialog-content [formGroup]="form" class="example-container" style="text-align: center;">
-        <mat-form-field>
-            <input matInput placeholder="startDate">
-            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-            <mat-datepicker #startDate></mat-datepicker>
-        </mat-form-field><br>
-        <mat-form-field>
-            <input matInput placeholder="endDate">
-            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-            <mat-datepicker #endDate></mat-datepicker>
-        </mat-form-field><br>
-        <mat-form-field>
-            <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Description">
-        </mat-form-field><br>
-        <mat-form-field>
-            <input matInput type="text" [(ngModel)]="title" placeholder="Title">
-        </mat-form-field><br>
-        <mat-form-field>
-            <input matInput type="text" [(ngModel)]="topic" placeholder="Topic">
-        </mat-form-field><br>
-        <button mat-button type="submit" style="background:blue;" (click)="postModule(this.description)">post the module</button>
-    </div> -->
-    <!-- <div class="example-container" style="text-align: center;"> -->
-    <!-- <mat-form-field>
-        <input matInput placeholder="startDate" name="startDate" [(ngModel)]="startDate">
-        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-        <mat-datepicker #startDate></mat-datepicker>
-    </mat-form-field><br>
-    <mat-form-field>
-        <input matInput placeholder="endDate" name="endDate" [(ngModel)]="endDate">
-        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-        <mat-datepicker #endDate></mat-datepicker>
-    </mat-form-field><br> -->
-        <!-- <mat-form-field><input matInput placeholder="description"  type="text" name="description" [(ngModel)]="description"></mat-form-field><br>
-        <mat-form-field><input matInput placeholder="title"  type="text" name="title" [(ngModel)]="title"></mat-form-field><br>
-        <mat-form-field><input matInput placeholder="topic"  type="text" name="topic" [(ngModel)]="topic"></mat-form-field><br>
-        <button style="background:blue;" (click)="postModule(this.description, this.title, this.topic)">post the module</button> -->
-    <!-- </div> -->
   </mat-tab>
   <mat-tab class="groupHeader" label="UI/UX">
     <div class="tabImageText">
@@ -64,63 +26,28 @@
     </div>
     <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
         <mat-tab class="notStarted" label="Not Started">
-          <mat-card>empty card</mat-card>
+            <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+            <mat-card *ngIf="classesPresent()">empty card</mat-card>
         </mat-tab>
       <mat-tab class="inProgress" label="In Progress">
-          <mat-card class="cardGrid">
-                <h3>Module 1</h3>
-                <p>description of this module 1</p>
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                        <span>45%</span>
-                    </div>
-            </mat-card>
-            <mat-card class="cardGrid">
-                <h3>Module 1</h3>
-                <p>description of this module 1</p>
-                <div class="progressInProgress" style="width: 100%">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                        <span>45%</span>
-                    </div>
-                  </div>
-              </mat-card>
-              <mat-card class="cardGrid">
-                  <h3>Module 1</h3>
-                  <p>description of this module 1</p>
-                  <div class="progressInProgress" style="width: 100%">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                          <span>45%</span>
-                      </div>
-                    </div>
-                </mat-card>
-                <mat-card class="cardGrid">
-                    <h3>Module 1</h3>
-                    <p>description of this module 1</p>
-                    <div class="progressInProgress" style="width: 100%">
-                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                            <span>45%</span>
-                        </div>
-                      </div>
-                  </mat-card>
-            <mat-card class="cardGrid">
-                <h3>Module 1</h3>
-                <p>description of this module 1</p>
-                <div class="progressInProgress" style="width: 100%">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                        <span style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">0%</span>
-                    </div>
-                  </div>
-              </mat-card>
+        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+        <mat-card  *ngIf="classesPresent()" class="cardGrid">
+            <h3>Module 1</h3>
+            <p>description of this module 1</p>
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+                <span>45%</span>
+            </div>
+        </mat-card>
       </mat-tab>
       <mat-tab class="completed" label="Completed">
-          <mat-card class="cardGrid">
-              <h3>Module 3</h3>
-              <p>description of this module 3</p>
-              <div class="progressComplete" style="width: 100%">
-                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                      <span>Complete</span>
-                  </div>
-                </div>
-            </mat-card>
+        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+        <mat-card [routerLink]="['/learningdetail']" *ngIf="classesPresent()" class="cardGrid">
+            <h3>Module 1</h3>
+            <p>description of this module 1</p>
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+                <span>45%</span>
+            </div>
+        </mat-card>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>

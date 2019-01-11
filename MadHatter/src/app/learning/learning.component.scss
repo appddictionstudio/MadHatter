@@ -141,8 +141,11 @@
     color: white;
 }
 
-// .cardGrid:nth-child(4n+4) {
-//     content: "\A";
-//     white-space: pre;
-//     background: red;
-// }
+.mat-tab-label {
+    color: black !important;
+    font-weight: bold;
+}
+
+.mat-ink-bar {
+    visibility: hidden !important;
+}
