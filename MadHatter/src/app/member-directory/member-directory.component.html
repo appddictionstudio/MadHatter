@@ -1,59 +1,59 @@
 <div class="memberDirectory">
-  <div id=members>
+  <div class="members">
   <div class="memberSearch">
     <br>
     <h1>Member Directory</h1>
     <form class="searchForm" style="margin:auto">
-      <p>Member Full Name:</p>
-      <input #search type="search" placeholder=" eg. John Doe">
-      <p>State:</p>
-      <input type="text" placeholder=" eg. Alabama">
-      <button  (click)="searchByName(search.value)" ><i style="padding-right: 5px"class="fa fa-search"></i>Search</button>
+      <p class="fullNameTitle">Member Full Name:</p>
+      <mat-form-field appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
+      <p class="stateTitle">State:</p>
+      <mat-form-field appearance="outline" class="state"><input matInput type="text" placeholder=" eg. Alabama"></mat-form-field>
+      <button  mat-button (click)="searchByName(search.value)" ><i style="padding-right: 5px"class="fa fa-search"></i>Search</button>
     </form>
   </div>
   <br>
   <br>
   <br>
-  <!-- <div class="memberResults">
+    <!-- <div class="memberResults">
       <div>
-          <form class="selectCerts">
-              <table>
-                  <tbody>
-                    <tr>
-                      <td>Level 1 Certification</td>
-                    </tr>
-                    <tr>
-                        <td>Level 2 Certification</td>
-                      </tr>
-                      <tr>
-                          <td>Level 3 Certification</td>
-                        </tr>
-                        <tr>
-                            <td>Level 4 Certification</td>
-                          </tr>
-                          <tr>
-                              <td>Level 4 Certification</td>
-                            </tr>
-                            <tr>
-                                <td>Level 4 Certification</td>
-                              </tr>
-                              <tr>
-                                  <td>Level 4 Certification</td>
-                                </tr>
-                                <tr>
-                                    <td>Level 4 Certification</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Level 4 Certification</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Level 4 Certification</td>
-                                      </tr>
-                  </tbody>
-                </table>
-          </form>
-        </div>
-  </div> -->
+        <form class="selectCerts">
+          <table>
+            <tbody>
+              <tr>
+                <td>Level 1 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 2 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 3 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+              <tr>
+                <td>Level 4 Certification</td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div> -->
 </div>
 <div class = "memberscontainer">
   <table>
