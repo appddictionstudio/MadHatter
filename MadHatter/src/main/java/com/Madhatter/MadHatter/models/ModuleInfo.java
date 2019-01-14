@@ -3,8 +3,10 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,18 +17,15 @@ public class ModuleInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-   
-    @Column
-    private String topictitle;
+    
     
     @Column
     private String description;
+    
 
+	public ModuleInfo() {}
 
-    public ModuleInfo() {}
-
-    public ModuleInfo(String topictitle, String description) {
-    	this.topictitle = topictitle;
+    public ModuleInfo(String description) {
     	this.description = description;
     }
 
@@ -38,14 +37,6 @@ public class ModuleInfo {
         this.id = id;
     }
     
-    public String getTopicTitle() {
-        return topictitle;
-    }
-
-    public void setTopicTitle(String topictitle) {
-        this.topictitle = topictitle;
-    }
-    
     public String getDescription() {
         return description;
     }
@@ -53,6 +44,5 @@ public class ModuleInfo {
     public void setDescription(String description) {
         this.description = description;
     }
-    
 
 }
