@@ -26,49 +26,59 @@
     </div>
     <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
         <mat-tab class="notStarted" label="Not Started">
-          <mat-card *ngFor="let m of module">
-            <h3 style="font-weight: bold">{{m.title}}</h3>
+          <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+          <div id="cardRow" class="row">
+          <div id="cardCol" class="col-4">
+          <mat-card class="cardGrid" *ngFor="let m of module">
+            <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
-          </mat-card>
-        </mat-tab>
-      <mat-tab class="inProgress" label="In Progress">
-        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
-        <div id="cardRow" class="row">
-        <div class="col-4">
-        <mat-card  *ngIf="classesPresent()" class="cardGrid">
-          <h3>Module 1</h3>
-          <p>description of this module 1</p>
-          <div class="progress" style="width: 100%">
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-              <span>45%</span>
-            </div>
-        </div>
-
+            <div class="progress" style="width: 100%">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+                  <span>45%</span>
+                </div>
+                
         <!-- <div class="progress" style="width: 100%">
             <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': package.percentComplete*100}">
               <span>{{package.percentComplete | percent:'1.0-0'}} ~ <span>{{package.totalNumCoursesComplete}}/{{package.totalNumCourses}}</span></span>
             </div>
         </div> -->
 
-      </mat-card>
-      </div>
-      </div>
+            </div>
+          </mat-card>
+          </div>
+          </div>
+        </mat-tab>
+      <mat-tab class="inProgress" label="In Progress">
+          <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+          <div id="cardRow" class="row">
+          <div id="cardCol" class="col-4">
+          <mat-card class="cardGrid" *ngFor="let m of module">
+            <h3>{{m.title}}</h3>
+            <p>{{m.description}}</p>
+            <div class="progress" style="width: 100%">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+                  <span>45%</span>
+                </div>
+            </div>
+          </mat-card>
+          </div>
+          </div>
       </mat-tab>
       <mat-tab class="completed" label="Completed">
-        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
-        <div id="cardRow" class="row">
-        <div class="col-4">
-        <mat-card [routerLink]="['/learningdetail']" *ngIf="classesPresent()" class="cardGrid">
-            <h3>Module 1</h3>
-            <p>description of this module 1</p>
-            <div class="progress" style="width: 100%">
-              <div class="progressComplete" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 100}">
-                <span>100%</span>
-              </div>
+          <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+          <div id="cardRow" class="row">
+          <div id="cardCol" class="col-4">
+          <mat-card class="cardGrid" *ngFor="let m of module">
+            <h3>{{m.title}}</h3>
+            <p>{{m.description}}</p>
+            <div class="progressComplete" style="width: 100%">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+                  <span>45%</span>
+                </div>
+            </div>
+          </mat-card>
           </div>
-        </mat-card>
-        </div>
-        </div>
+          </div>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>
