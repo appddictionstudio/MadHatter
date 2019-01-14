@@ -23,9 +23,6 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
     ) { }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      this.router.navigateByUrl('/memberdirectory');
-    }
   this.loadUsers();
     }
     ngOnChanges() {
