@@ -1,6 +1,9 @@
 
 package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,22 +15,30 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @ManyToOne
+	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
+	@JsonIgnore
+	private Modules mod;
+    
+    
+    @Column
+    private String topicTitle;
 
-    @Column
-    private String topic;
+	@Column
+    private String files;
     
     @Column
-    private String parent_topic;
+    private String Quizzes;
     
-    @Column
-    private String sort_order;
 
     public Topic() {}
 
-    public Topic(String topic, String parent_topic, String sort_order) {
-    	this.topic = topic;
-    	this.parent_topic = parent_topic;
-    	this.sort_order = sort_order;
+    public Topic(String files, String Quizzes, String topicTitle) {
+    	this.topicTitle = topicTitle;
+    	this.files = files;
+    	this.Quizzes = Quizzes;
+    	
     }
 
     public Long getId() {
@@ -37,28 +48,30 @@ public class Topic {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    public String getCertName() {
-        return topic;
-    }
 
-    public void setCertName(String topic) {
-        this.topic = topic;
-    }
-    
-    public String getParentTopic() {
-        return parent_topic;
-    }
+	public String getFiles() {
+		return files;
+	}
 
-    public void setParentTopic(String parent_topic) {
-        this.parent_topic = parent_topic;
-    }
-    
-    public String getSortOrder() {
-        return sort_order;
-    }
+	public void setFiles(String files) {
+		this.files = files;
+	}
 
-    public void setSortOrder(String sort_order) {
-        this.sort_order = sort_order;
-    }
+	public String getQuizzes() {
+		return Quizzes;
+	}
+
+	public void setQuizzes(String quizzes) {
+		Quizzes = quizzes;
+	}
+
+	public String getTopicTitle() {
+		return topicTitle;
+	}
+
+	public void setTopic(String topicTitle) {
+		this.topicTitle = topicTitle;
+	}
+	
+    
 }

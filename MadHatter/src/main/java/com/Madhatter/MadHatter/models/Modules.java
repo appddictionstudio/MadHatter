@@ -2,9 +2,12 @@
 package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Clob;
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,22 +18,20 @@ public class Modules {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column
     private String title;
     
     @Column
     private String description;
 
-    @Column
+	@Column
     private String iconLink;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "modules_minfo",
-            joinColumns = @JoinColumn(name = "module_id"),
-            inverseJoinColumns = @JoinColumn(name = "moduleinfo_id"))
-    private Set<ModuleInfo> minfo = new HashSet<>();
-    
+    @OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "mod_id")
+	private List<Topic> topic;
+	
     public Modules() {}
 
     public Modules(String title, String description, String iconLink) {
@@ -55,13 +56,6 @@ public class Modules {
         this.title = title;
     }
     
-    public Set<ModuleInfo> getMinfo() {
-		return minfo;
-	}
-
-	public void setMinfo(Set<ModuleInfo> minfo) {
-		this.minfo = minfo;
-	}
 
 	public String getDescription() {
         return description;
@@ -78,5 +72,14 @@ public class Modules {
 	public void setIconLink(String iconLink) {
 		this.iconLink = iconLink;
 	}
+
+	public List<Topic> getTopicId() {
+		return topic;
+	}
+
+	public void setTopicId(List<Topic> topic) {
+		this.topic = topic;
+	}
+	
 
 }
