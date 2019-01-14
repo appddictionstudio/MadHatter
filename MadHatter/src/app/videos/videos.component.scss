@@ -15,7 +15,7 @@
 #videoContent {
     padding-top: 3%;
     background: white;
-    height: 150%;
+    height: calc(100% + 50%);
     text-align: center;
     z-index: 1;
     position: relative;
