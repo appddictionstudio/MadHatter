@@ -1,8 +1,7 @@
 .mainVideoContent {
     width: 100%;
-    background: #2ba2d2;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .mainVideoContent img:first-child{
@@ -13,24 +12,29 @@
     transform: translateY(-20%);
 }
 
-.videoContent {
-    width: 75%;
-    margin: 0px auto 0px auto;
+#videoContent {
     padding-top: 3%;
     background: white;
-    height: 100%;
+    height: 150%;
     text-align: center;
     z-index: 1;
     position: relative;
 }
 
 .youtubePlayer iframe {
-    width: 40% !important;
-    height: 33% !important;
 }
 
-.videoContent p {
+#videoContent p {
     margin: unset;
     font-size: 26px;
     padding-bottom: 15px;
+}
+
+#videoCol {
+    display: inline-block;
+    margin: 0% 5%;
+}
+
+#video {
+    margin-bottom: 4em;
 }

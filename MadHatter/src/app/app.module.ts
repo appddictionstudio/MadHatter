@@ -30,6 +30,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
 } from '@angular/material';
+import { LearningDetailsComponent } from './learning-details/learning-details.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -44,6 +45,7 @@ import {
     MemberDirectoryComponent,
     SignupComponent,
     SearchByNamePipe,
+    LearningDetailsComponent,
   ],
   imports: [
     BrowserModule,

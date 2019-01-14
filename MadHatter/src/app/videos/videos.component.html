@@ -1,7 +1,18 @@
 <div class="mainVideoContent">
-  <img class="videoBackground" src="../../assets/bandwidth-crop.jpg">
-  <div class="videoContent" *ngFor="let vid of video">
+  <div id="videoContent" class="row">
+  <div *ngFor="let vid of video" id="videoCol" class="col-2">
+  <div id="video" >
     <p>{{vid.name}}</p>
-    <youtube-player class="youtubePlayer" [videoId]="vid.urllink" [height]="400" [width]="700"></youtube-player>
+    <youtube-player class="youtubePlayer" [videoId]="vid.urllink" [width]="500" [height]="300"></youtube-player>
+  </div>
+  <!-- <div id="video2">
+    <p>{{vid.name}}</p>
+    <youtube-player class="youtubePlayer" [videoId]="vid.urllink" [height]="400" [width]="700"></youtube-player> -->
+  <!-- </div> -->
   </div>
 </div>
+</div>
+
+
+<!-- <ul id="hot-topics" class="row" style="width: 100%; margin-left: 15px; margin-right: 0px;">
+    <li *ngFor="let pos of hotTopicPosts, let i=index" class="col-4"> -->
