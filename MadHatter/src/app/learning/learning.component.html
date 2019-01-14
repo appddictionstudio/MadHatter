@@ -25,29 +25,53 @@
       </div>
     </div>
     <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
-        <mat-tab class="notStarted" label="Not Started">
-            <div  *ngIf="!classesPresent()">There is nothing to display here</div>
-            <mat-card *ngIf="classesPresent()">empty card</mat-card>
-        </mat-tab>
-      <mat-tab class="inProgress" label="In Progress">
-        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+      <mat-tab class="notStarted" label="Not Started">
+      <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+      <div id="cardRow" class="row">
+      <div class="col-4">
         <mat-card  *ngIf="classesPresent()" class="cardGrid">
             <h3>Module 1</h3>
             <p>description of this module 1</p>
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                <span>45%</span>
-            </div>
+            <div class="progress" style="width: 100%">
+              <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
+                <span>0%</span>
+              </div>
+          </div>
         </mat-card>
+      </div>
+      </div>
+      </mat-tab>
+      <mat-tab class="inProgress" label="In Progress">
+        <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+        <div id="cardRow" class="row">
+        <div class="col-4">
+        <mat-card  *ngIf="classesPresent()" class="cardGrid">
+          <h3>Module 1</h3>
+          <p>description of this module 1</p>
+          <div class="progress" style="width: 100%">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
+              <span>45%</span>
+            </div>
+        </div>
+      </mat-card>
+      </div>
+      </div>
       </mat-tab>
       <mat-tab class="completed" label="Completed">
         <div  *ngIf="!classesPresent()">There is nothing to display here</div>
+        <div id="cardRow" class="row">
+        <div class="col-4">
         <mat-card [routerLink]="['/learningdetail']" *ngIf="classesPresent()" class="cardGrid">
             <h3>Module 1</h3>
             <p>description of this module 1</p>
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-                <span>45%</span>
-            </div>
+            <div class="progress" style="width: 100%">
+              <div class="progressComplete" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 100}">
+                <span>100%</span>
+              </div>
+          </div>
         </mat-card>
+        </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>

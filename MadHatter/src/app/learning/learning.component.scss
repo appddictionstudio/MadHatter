@@ -87,6 +87,11 @@
     width: 100%;
 }
 
+.progress {
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
 .progressInProgress {
     border: 1px solid black;
     border-radius: 10px;
@@ -100,6 +105,7 @@
     font-weight: 200;
     border-radius: 10px;
     height: 1em;
+    min-width: 20%;
 }
 
 .progress-bar span {
@@ -148,4 +154,12 @@
 
 .mat-ink-bar {
     visibility: hidden !important;
+}
+
+.mat-card {
+    width: 100%;
+}
+
+#cardRow {
+    margin: 2em auto;
 }

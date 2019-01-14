@@ -1,0 +1,27 @@
+.headerLearningContent {
+    display: grid;
+    grid-template-columns: .1fr 1.9fr;
+    grid-template-rows: 1fr;
+    width: 50%;
+    margin: 45px auto 0 auto;
+}
+.headerLearningContent p {
+    grid-column: 1;
+    text-align: left;
+    font-size: 24px;
+}
+
+.headerLearningContent .progress-bar {
+    grid-column: 2;
+}
+
+hr {
+    width: 80%;
+}
+
+.progress {
+    height: 1em;
+    margin: auto 25px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
