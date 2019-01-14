@@ -3,6 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { FormGroup, FormBuilder, FormsModule, FormControl, Validators, FormArray } from '@angular/forms';
 import { ModuleService } from '../services/module.service';
 import { Module } from '../models/Module';
+import { BootcampModule } from '../models/Bootcamp';
 import { Router } from '@angular/router';
 
 
@@ -15,38 +16,23 @@ export class LearningComponent implements OnInit {
 
   form: FormGroup;
   module: Module[] = [];
-  api: ModuleService;
   route: Router;
 
-  id: any;
-  description: any;
-  end_date: any;
-  start_date: any;
-  title: any;
-  topic: any;
 
   constructor(
     private fb: FormBuilder,
+    private api: ModuleService
   ) { }
 
   ngOnInit() {
+    this.getModuleforLearning();
   }
-  postModule(desc: string, title: string, topic: number) {
+getModuleforLearning() {
+this.api.getModule().subscribe(data => {
+  this.module = data as any[];
+});
+}
 
-    const obj: Module = {
-      id: null,
-      description: desc,
-      end_date: null,
-      start_date: null,
-      title: title,
-      topic: topic,
-    };
-    console.log(obj);
-
-      this.api.setModuleInformation(obj).subscribe(result => {
-        console.log('done');
-      });
-  }
   classesPresent() {
     return true;
   }
