@@ -20,6 +20,8 @@ export class AppComponent implements OnInit, OnChanges {
     this.isAuth = this.auth.isAuthenticated();
     if (!this.isAuth) {
       this.router.navigateByUrl('/');
+    } else {
+      console.log(this.auth.getToken());
     }
   }
 
