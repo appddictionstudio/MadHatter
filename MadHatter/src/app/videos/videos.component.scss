@@ -13,10 +13,9 @@
 }
 
 #videoContent {
-    padding-top: 3%;
+    margin-top: 3%;
     background: white;
-    height: calc(100% + 50%);
-    text-align: center;
+    height: 100%;
     z-index: 1;
     position: relative;
 }
@@ -33,6 +32,11 @@
 #videoCol {
     display: inline-block;
     margin: 0% 5%;
+    width: 40%;
+}
+
+#videoCol:last-child {
+    margin-bottom: 10em;
 }
 
 #video {
