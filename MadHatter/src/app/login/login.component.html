@@ -1,15 +1,15 @@
 <div class="gridBody">
   <div class="login">
     <img src="../../assets/Asset 1.png"><br>
-    <input placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail"><br>
-    <input placeholder="Password" type="password" name="password" [(ngModel)]="password"><br>
-    <button (click)="authenticate()" type="submit">
+    <mat-form-field appearance="outline"><input matInput id="removeYellow" placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail"></mat-form-field><br>
+    <mat-form-field appearance="outline"><input matInput id="removeYellow" placeholder="Password" type="password" name="password" [(ngModel)]="password"></mat-form-field><br>
+    <button mat-button (click)="authenticate()" type="submit">
       Log in
     </button><br>
     <p><a>Forgot your Password?</a></p>
     <p>New Member? <a (click)="getToken()" class ="signUpLogin">Sign Up</a></p>
   </div>
-  <p class="bottomText">Brought to you by: Kessel Run, the 309th SMXG, and the Joint Strike Fighter Program</p>
+  <p class="bottomText">Brought to you by: Kessel Run, the 309th SMXG, and the Joint Strike Fighter Progra</p>
   <p></p>
   <div class="graphicLogin">
     <img src="../../assets/bandwidth-crop.jpg">

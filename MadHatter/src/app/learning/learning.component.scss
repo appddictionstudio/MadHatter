@@ -123,6 +123,7 @@
     grid-column: 1;
     grid-row: 1;
     margin: unset;
+    font-weight: bold;
 }
 
 .cardGrid p{
@@ -158,8 +159,13 @@
 
 .mat-card {
     width: 15em;
+    margin-right: 1em;
 }
 
 #cardRow {
     margin: 2em auto;
+}
+
+#cardCol {
+    display: flex;
 }
