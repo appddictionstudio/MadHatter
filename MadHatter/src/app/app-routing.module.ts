@@ -10,14 +10,15 @@ import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: '', children: [
+    // { path: '', children: [
     { path: 'home', component: HomeComponent },
     { path: `learning`, component: LearningComponent },
     { path: `learningdetail`, component: LearningDetailsComponent },
     { path: `videos`, component: VideosComponent },
     { path: 'memberdirectory', component: MemberDirectoryComponent},
-    { path: 'signup', component: SignupComponent}
-  ]}
+    { path: 'signup', component: SignupComponent},
+    { path: 'login', component: LoginComponent}
+    // ]}
 ];
 
 @NgModule({

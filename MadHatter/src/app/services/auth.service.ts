@@ -15,13 +15,13 @@ export class AuthService {
     private router: Router) { }
 
   token(obj) {
-    console.log(obj);
+    // console.log(obj);
     return this.http.post(environment.apiUrl + 'api/auth/signin', obj);
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
   }
 
   setToken(token: string) {
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   redirectToLogin() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
   }
 
   isAuthenticated() {

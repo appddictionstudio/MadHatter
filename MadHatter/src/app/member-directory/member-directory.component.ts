@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Users } from '../models/Users';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,20 +16,26 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   members: Users[] = [];
   displayedColumns: string[] = ['name'];
   showpeople: boolean;
-  constructor(    private api: UserService,
+  constructor(
+    private api: UserService,
+    private router: Router,
+    private auth: AuthService,
     ) { }
 
   ngOnInit() {
-this.loadUsers();
-  }
-  ngOnChanges() {
-    this.loadUsers();
-  }
-  loadUsers() {
-    this.api.getAllUsers().subscribe(data => {
-      this.members = data as any[];
-    });
-  }
+    if (this.auth.isAuthenticated()) {
+      this.router.navigateByUrl('/memberdirectory');
+    }
+  this.loadUsers();
+    }
+    ngOnChanges() {
+      this.loadUsers();
+    }
+    loadUsers() {
+      this.api.getAllUsers().subscribe(data => {
+        this.members = data as any[];
+      });
+    }
 
 
   searchByName(searchName) {
