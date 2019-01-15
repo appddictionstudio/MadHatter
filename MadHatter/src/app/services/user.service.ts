@@ -46,4 +46,17 @@ export class UserService {
 
     }
   // }
+
+  userHasRole(roleName: string) {
+    if (this.user.roles && this.user.roles.length > 0) {
+      let retVal = false;
+      this.user.roles.some(role => {
+        if (role.nm.toUpperCase() === roleName.toUpperCase()) {
+          retVal = true;
+          return false;
+        }
+      });
+
+}
+  }
 }
