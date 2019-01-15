@@ -1,6 +1,6 @@
 .headerLearningContent {
     display: grid;
-    grid-template-columns: .5fr 1fr;
+    grid-template-columns: .5fr .5fr .5fr;
     grid-template-rows: 1fr;
     width: 75%;
     margin: 45px auto 0 auto;
@@ -13,6 +13,13 @@
 
 .headerLearningContent .progress-bar {
     grid-column: 2;
+    width: 3em;
+
+}
+.time{
+  grid-column: 3;
+  grid-row: 1;
+  text-align: left;
 }
 
 hr {
@@ -29,5 +36,23 @@ hr {
 h1 {
     text-decoration: uppercase;
     text-align: left;
-    font-size: 20px;
+    // font-size: 20px;
+}
+
+.subheader {
+  display: grid;
+  grid-template-columns: .5fr .5fr .5fr;
+  grid-template-rows: 1fr;
+  width: 75%;
+  margin: 10px auto 0 auto;
+}
+
+.subheader .progress-bar {
+  width: 3em;
+
+}
+
+.subheader h2{
+  text-align: left;
+    // font-size: 20px;
 }
