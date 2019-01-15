@@ -1,13 +1,25 @@
-<div *ngFor="let t of topics" class="learningContent">
-  <div *ngIf="!hide" class= "headerLearningContent">
-    <h1>{{t.topicTitle}}</h1>
-    <div class="progress" style="width: 100%">
-      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .45*100}">
-        <span>45%</span>
+<div class="learningContent">
+  <div class= "headerLearningContent">
+    <h1>Module Resources</h1>
+    <div class="progress" style="width: 30%">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width%': .0001*30}">
+        <span>0%</span>
       </div>
   </div>
+  <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
   <div>
       <button (click)=hideContent()>Disable Content for Students</button>
     </div>
   </div><hr *ngIf="!hide">
 </div>
+
+  <div class="subheader" *ngFor="let t of topics" >
+  <div class ="subheaderlc">
+  <h3>{{t.topicTitle}}</h3>
+  </div>
+  <div class="progress" style="width: 30%">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width%': .0001*30}">
+        <span>0%</span>
+      </div>
+  </div>
+  </div>
