@@ -137,6 +137,7 @@
 #menu input {
   height: 2em;
   padding-left: 10px;
+  margin: unset;
 }
 
 #menu button{
@@ -156,4 +157,10 @@
 
 #header, #username, #menu {
     z-index: 100;
+}
+
+.searchBar input, .searchBar button {
+  padding-top: unset !important;
+  padding-bottom: unset !important;
+  height: 2em !important;
 }

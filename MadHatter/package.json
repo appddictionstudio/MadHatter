@@ -29,6 +29,8 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
+    "mat-video": "^2.5.0",
+    "mediaelement": "^4.2.9",
     "ng-onload": "^0.8.0",
     "ngx-gauge": "^1.0.0-beta.7",
     "ngx-youtube-player": "^6.0.0",

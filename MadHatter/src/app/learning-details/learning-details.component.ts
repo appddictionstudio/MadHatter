@@ -32,6 +32,6 @@ export class LearningDetailsComponent implements OnInit {
     }
 
     hideContent() {
-this.hide = true;
+      this.hide = true;
     }
 }
