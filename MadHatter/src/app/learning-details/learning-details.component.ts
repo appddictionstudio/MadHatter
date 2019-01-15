@@ -14,6 +14,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private apiU: UserService) { }
 
   topics: Topic[] = [];
+  topicHide: any;
   hide = false;
   currentUser: any;
 
@@ -31,8 +32,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 
   userRole() {
     if (this.currentUser.role === 'ROLE_STUDENT') {
-      console.log(true);
-      console.log(this.currentUser.hidden);
+      console.log(this.currentUser);
+      console.log(this.topics);
       return true;
     } else {
       console.log(false);
@@ -51,6 +52,14 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
         this.hide = false;
     } else {
       this.hide = true;
+    }
+  }
+
+  toHide(hidden) {
+    if (hidden === 'false') {
+      return false;
+    } else {
+      return true;
     }
   }
 }
