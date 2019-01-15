@@ -13,15 +13,17 @@
   </div>
   <div *ngIf="!hide">
   <hr>
-  <div class="subheader" *ngFor="let t of topics" >
-  <div class ="subheaderlc">
-  <h3>{{t.topicTitle}}</h3>
-  </div>
-  <div class="progress">
+  <div class="showTopics" *ngFor="let t of topics" >
+  <div class="subheader" *ngIf="!toHide(t.hidden)">
+    <div class="subheaderlc">
+      <h3>{{t.topicTitle}}</h3>
+    </div>
+    <div class="progress">
       <div class="progress-barDetails" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
         <span>0%</span>
       </div>
-  </div>
+    </div>
+    </div>
   </div>
 </div>
 </div>

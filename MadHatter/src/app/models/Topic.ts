@@ -3,5 +3,5 @@ id: number;
 topicTitle: string;
 files: string;
 Quizzes: string;
-
+hidden: string;
 }
