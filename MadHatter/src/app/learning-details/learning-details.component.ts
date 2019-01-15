@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleService } from '../services/module.service';
 import { Topic } from '../models/Topic';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-learning-details',
@@ -9,12 +10,19 @@ import { Topic } from '../models/Topic';
 })
 export class LearningDetailsComponent implements OnInit {
 
-  constructor(private api: ModuleService) { }
+  constructor(private api: ModuleService,
+    private apiU: UserService) { }
 
   topics: Topic[] = [];
-
+  hide = false;
+  currentUser: any;
   ngOnInit() {
     this.getTopicsForModules();
+
+    this.apiU.getUser().subscribe(data => {
+      this.currentUser = data;
+      console.log(this.currentUser);
+  });
   }
 
   getTopicsForModules() {
@@ -23,5 +31,7 @@ export class LearningDetailsComponent implements OnInit {
     });
     }
 
-
+    hideContent() {
+this.hide = true;
+    }
 }
