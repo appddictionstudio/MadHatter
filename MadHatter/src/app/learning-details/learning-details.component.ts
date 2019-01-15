@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModuleService } from '../services/module.service';
 import { Topic } from '../models/Topic';
 import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-learning-details',
@@ -11,17 +12,27 @@ import { UserService } from '../services/user.service';
 export class LearningDetailsComponent implements OnInit {
 
   constructor(private api: ModuleService,
-    private apiU: UserService) { }
+    private apiU: UserService,
+    private route: ActivatedRoute,
+    ) { }
 
   topics: Topic[] = [];
   hide = false;
   currentUser: any;
+  modId: any;
+
   ngOnInit() {
     this.getTopicsForModules();
+    // this.getTopicsByModules();
+    console.log(this.topics);
 
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
       console.log(this.currentUser);
+
+      this.modId = this.route.snapshot.paramMap.get('id');
+      console.log(this.modId);
+
   });
   }
 
@@ -30,6 +41,14 @@ export class LearningDetailsComponent implements OnInit {
       this.topics = data as any[];
     });
     }
+
+// getTopicsByModules() {
+//   this.modId = this.route.snapshot.paramMap.get('id');
+//     this.api.getTopicsById(this.modId).subscribe((data: any[]) => {
+//       this.topics = data as any[];
+
+//     });
+//     }
 
     hideContent() {
 this.hide = true;

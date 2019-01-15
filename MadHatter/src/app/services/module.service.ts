@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BootcampModule } from '../models/Bootcamp';
 import { Observable } from 'rxjs';
@@ -17,12 +17,16 @@ export class ModuleService {
     return this.http.get(environment.apiUrl + 'api/modules');
   }
 
-  getTopics(): Observable<any> {
-    return  this.http.get(environment.apiUrl + 'topics/getByModId');
+  getTopicsById(id: number): Observable<any> {
+    return  this.http.get(environment.apiUrl + 'topics/getByModId/' + id );
   }
 
   getAllTopics(): Observable<any> {
     return  this.http.get(environment.apiUrl + 'topics');
+  }
+
+  getModById(id: number) {
+    return this.http.get(environment.apiUrl + 'api/modules/' + id);
   }
 
 }

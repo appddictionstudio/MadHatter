@@ -5,6 +5,7 @@ import { ModuleService } from '../services/module.service';
 import { Module } from '../models/Module';
 import { BootcampModule } from '../models/Bootcamp';
 import { Router } from '@angular/router';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class LearningComponent implements OnInit {
   form: FormGroup;
   module: Module[] = [];
   route: Router;
+  mod: any;
 
 
   constructor(
@@ -37,4 +39,11 @@ this.api.getModule().subscribe(data => {
     return true;
   }
 
+  select(m: Module) {
+    this.api.getModById(m.id).subscribe(
+      data => {
+        this.mod = data;
+        console.log(m.id);
+  });
+  }
 }

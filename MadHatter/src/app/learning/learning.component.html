@@ -29,13 +29,16 @@
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
           <div id="cardCol" class="col-4">
-          <mat-card class="cardGrid" *ngFor="let m of module">
+          <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngFor="let m of module">
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
             <div class="progress" style="width: 100%">
                 <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                   <span>0%</span>
                 </div>
+                <!-- <button mat-raised-button [routerLink]="['learningdetail/', m.id]"
+                (click)="select(m)">view details</button> -->
+
 
         <!-- <div class="progress" style="width: 100%">
             <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': package.percentComplete*100}">

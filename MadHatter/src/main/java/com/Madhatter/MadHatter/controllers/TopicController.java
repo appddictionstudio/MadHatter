@@ -33,8 +33,8 @@ public class TopicController {
 	
 	  //-----------------LoadByModId------------------------------------------------------
 	  	 
-	  	@RequestMapping(value = "/topics/getByModId/{id}", method = RequestMethod.GET)
-		ResponseEntity<Optional<Modules>> getModuleByTopicId(@PathVariable long id) {
+	  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
+		ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
 	  		
 			Optional<Modules> topics = repo.findByModId(id);
 			
