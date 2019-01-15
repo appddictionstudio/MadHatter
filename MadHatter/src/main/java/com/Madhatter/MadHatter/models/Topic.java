@@ -28,16 +28,20 @@ public class Topic {
 	@Column
     private String files;
     
-    @Column
+	@Column
     private String Quizzes;
+	
+	@Column
+    private String hidden;
     
 
     public Topic() {}
 
-    public Topic(String files, String Quizzes, String topicTitle) {
+    public Topic(String files, String Quizzes, String hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
     	this.files = files;
     	this.Quizzes = Quizzes;
+    	this.hidden = hidden;
     	
     }
 
@@ -63,6 +67,14 @@ public class Topic {
 
 	public void setQuizzes(String quizzes) {
 		Quizzes = quizzes;
+	}
+	
+	public String getHidden() {
+		return hidden;
+	}
+
+	public void setHidden(String hidden) {
+		this.hidden = hidden;
 	}
 
 	public String getTopicTitle() {
