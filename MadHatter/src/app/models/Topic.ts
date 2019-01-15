@@ -4,4 +4,5 @@ topicTitle: string;
 files: string;
 Quizzes: string;
 hidden: string;
+mod_id: number;
 }

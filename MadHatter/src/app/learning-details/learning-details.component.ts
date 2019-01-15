@@ -25,14 +25,12 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getTopicsForModules();
     // this.getTopicsByModules();
-    console.log(this.topics);
+    // console.log(this.topics);
 
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
-      console.log(this.currentUser);
 
       this.modId = this.route.snapshot.paramMap.get('id');
-      console.log(this.modId);
 
   });
   }
@@ -44,7 +42,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   userRole() {
     if (this.currentUser.role === 'ROLE_STUDENT') {
       console.log(this.currentUser);
-      console.log(this.topics);
+      // console.log(this.topics);
       return true;
     } else {
       console.log(false);

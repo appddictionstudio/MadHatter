@@ -31,7 +31,7 @@ public class TopicController {
 	  	    return ResponseEntity.ok(postList);
 	  	    }
 	
-	  //-----------------LoadByModId------------------------------------------------------
+	  //-----------------LoadTopicByModId------------------------------------------------------
 	  	 
 	  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
 		ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {

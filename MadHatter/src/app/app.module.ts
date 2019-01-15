@@ -31,7 +31,7 @@ import {
   MatNativeDateModule,
 } from '@angular/material';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
-import { MatVideoModule } from 'mat-video';
+// import { MatVideoModule } from 'mat-video';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -71,7 +71,7 @@ import { MatVideoModule } from 'mat-video';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatVideoModule,
+    // MatVideoModule,
     // NgbModule,
   ],
   providers: [

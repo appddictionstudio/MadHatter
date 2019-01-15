@@ -17,8 +17,8 @@ export class ModuleService {
     return this.http.get(environment.apiUrl + 'api/modules');
   }
 
-  getTopicsById(id: number): Observable<any> {
-    return  this.http.get(environment.apiUrl + 'topics/getByModId/' + id );
+  getTopicsById(modId): Observable<any> {
+    return  this.http.get(environment.apiUrl + 'topics/getByModId/' + modId );
   }
 
   getAllTopics(): Observable<any> {
