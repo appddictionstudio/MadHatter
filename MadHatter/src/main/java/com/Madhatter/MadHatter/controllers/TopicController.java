@@ -1,5 +1,6 @@
 package com.Madhatter.MadHatter.controllers;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Madhatter.MadHatter.Repositories.TopicRepository;
 import com.Madhatter.MadHatter.models.Modules;
@@ -46,12 +48,20 @@ public class TopicController {
 		};
 		
 		//--------------- set hidden or shown -----------------------------------------------------------
-		@RequestMapping(value = "/hide", method = RequestMethod.POST)
-	  	ResponseEntity<Topic> postAllMhTopics(@RequestBody Topic topic) {	
-			System.out.println("sometexthere");
-	  		topic.setHidden(topic.getHidden());
-	  		repo.save(topic);
-	  		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(topic);
+		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
+		@PostMapping()
+		@Transactional
+	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic, @PathVariable long modId) {	
+			
+			Modules mod = new Modules();
+			mod.setId(modId);
+			
+			topic.setHidden("true");
+	  		Topic savedHiddenTopic = repo.save(topic);
+//	  		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//	  		        .buildAndExpand(savedHiddenTopic.getId()).toUri();
+	  		return ResponseEntity.ok(savedHiddenTopic);
+	  		
 	  	    }
 
 }

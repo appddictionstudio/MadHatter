@@ -3,6 +3,7 @@ import { ModuleService } from '../services/module.service';
 import { Topic } from '../models/Topic';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'app-learning-details',
@@ -14,11 +15,13 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   constructor(private api: ModuleService,
     private apiU: UserService,
     private route: ActivatedRoute,
+    private apiT: TopicsService
     ) { }
 
   topics: Topic[] = [];
-  topicHide: any;
-  hide = false;
+  topicHide: Topic = new Topic();
+  allTopic: Topic[] = [];
+  hide: string;
   currentUser: any;
   modId: any;
 
@@ -45,7 +48,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       // console.log(this.topics);
       return true;
     } else {
-      console.log(false);
       return false;
     }
   }
@@ -53,6 +55,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getTopicsForModules() {
     this.api.getAllTopics().subscribe(data => {
       this.topics = data as any[];
+      console.log(this.topics);
     });
     }
 
@@ -65,14 +68,27 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 //     }
 
     hideContent() {
-this.hide = true;
+// this.hide = true;
     }
-    toggleContent() {
-      if (this.hide) {
-        this.hide = false;
-    } else {
-      this.hide = true;
-    }
+
+
+    toggleContent(t) {
+      this.modId = this.route.snapshot.paramMap.get('id');
+
+    //   if (this.hide) {
+    //     this.hide = false;
+    // } else {
+    //   this.hide = true;
+    // }
+this.topicHide = t;
+this.topicHide.id = t.id;
+this.topicHide.topicTitle = t.topicTitle;
+this.topicHide.files = null;
+this.topicHide.Quizzes = null;
+this.topicHide.hidden = this.hide;
+ this.apiT.createHidden(this.topicHide, this.modId).subscribe(res => {
+this.allTopic.push(this.topicHide);
+ });
   }
 
   toHide(hidden) {
