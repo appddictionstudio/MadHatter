@@ -14,7 +14,7 @@
   <div *ngIf="!hide">
   <hr>
   <div class="showTopics" *ngFor="let t of topics" >
-  <div class="subheader" *ngIf="!toHide(t.hidden)">
+  <div class="subheader" *ngIf="t.hidden">
     <div class="subheaderlc">
       <h3>{{t.topicTitle}}</h3>
     </div>

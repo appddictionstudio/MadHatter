@@ -53,7 +53,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   }
 
   getModuleforLearning() {
-    this.api.getModuleById(this.modId).subscribe(res => {
+    this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
@@ -61,7 +61,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     }
 
     hideContent() {
-      this.hide = true;
+      this.hide = false;
     }
 
     toggleContent() {
