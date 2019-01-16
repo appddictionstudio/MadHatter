@@ -10,17 +10,14 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-    // { path: '', children: [
-    { path: 'home', component: HomeComponent },
-    { path: `learning`, component: LearningComponent },
-    { path: `learning/learningdetail/:id`, component: LearningDetailsComponent },
-    { path: `videos`, component: VideosComponent },
-    { path: 'memberdirectory', component: MemberDirectoryComponent},
-    { path: 'signup', component: SignupComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'grades', component: AdminComponent},
-    // ]}
+  { path: 'home', component: HomeComponent },
+  { path: `learning`, component: LearningComponent },
+  { path: `learning/learningdetail/:id`, component: LearningDetailsComponent },
+  { path: `videos`, component: VideosComponent },
+  { path: 'memberdirectory', component: MemberDirectoryComponent},
+  { path: 'signup', component: SignupComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'grades', component: AdminComponent},
 ];
 
 @NgModule({

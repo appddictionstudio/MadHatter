@@ -34,22 +34,17 @@ public class TopicController {
 	  	    return ResponseEntity.ok(postList);
 	  	    }
 	
-	  //-----------------LoadTopicByModId------------------------------------------------------
+	  	//-----------------LoadTopicByModId------------------------------------------------------
 	  	 
-	  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
-	  	ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
-	  		System.out.println(id);
-			Optional<Modules> topics = repo.findByModId(id);
-			System.out.println(topics);
-			
-			return ResponseEntity.ok(topics);
-		};
+		  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
+		  	ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
+				Optional<Modules> topics = repo.findByModId(id);
+				return ResponseEntity.ok(topics);
+			};
 		
 		//--------------- set hidden or shown -----------------------------------------------------------
 		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
-		@PostMapping()
-		@Transactional
-	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic, @PathVariable long modId) {	
+	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic	, @PathVariable long modId) {	
 			
 			Modules mod = new Modules();
 			mod.setId(modId);

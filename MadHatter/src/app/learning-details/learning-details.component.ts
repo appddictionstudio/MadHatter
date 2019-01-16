@@ -61,7 +61,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     }
 
     hideContent() {
-      this.hide = false;
+      this.hide = true;
     }
 
     toggleContent() {

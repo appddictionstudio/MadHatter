@@ -48,9 +48,7 @@ public class ModulesController {
  		// -----------------------------------------------------------
  	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
  		ResponseEntity<Optional<Modules>> getModById(@PathVariable long id) {
- 			Optional<Modules> post = repo.findById(id);
- 		
- 			
- 			return ResponseEntity.ok(post);
+		Optional<Modules> post = repo.findById(id);
+		return ResponseEntity.ok(post);
  	}
 }
