@@ -1,23 +1,15 @@
 package com.Madhatter.MadHatter.controllers;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.ValidationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.Madhatter.MadHatter.Repositories.ModulesRepository;
 import com.Madhatter.MadHatter.models.Modules;
 
@@ -55,7 +47,7 @@ public class ModulesController {
  // --------------- Load Post By Id
  		// -----------------------------------------------------------
  	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
- 		ResponseEntity<Optional<Modules>> getModById(@PathVariable("id") long id) {
+ 		ResponseEntity<Optional<Modules>> getModById(@PathVariable long id) {
  			Optional<Modules> post = repo.findById(id);
  		
  			
