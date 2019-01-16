@@ -9,7 +9,7 @@
 	height: 30px;
 	position: relative;
 	padding: 45px;
-    color:#FFFFFF;
+  color:#FFFFFF;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	overflow: hidden;
@@ -50,8 +50,8 @@
 	text-decoration: none;
 	color: #FFFFFF;
 	font-size: 1.25em;
-    letter-spacing: -1px;
-    text-align: center;
+  letter-spacing: -1px;
+  text-align: center;
 }
 
 #menu input {
@@ -91,12 +91,12 @@
 }
 
 #header {
-    position: relative;
-    color:#FFFFFF;
-    background-color: #2ba2d2;
+  position: relative;
+  color:#FFFFFF;
+  background-color: #2ba2d2;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #menu {
@@ -105,9 +105,9 @@
 	margin: 0 0 0 0;
 	height: 60px;
 	line-height: 60px;
-    border-top: solid 1px  #005b7f;
-    background: #005b7f;
-    font-family: sans-serif;
+  border-top: solid 1px  #005b7f;
+  background: #005b7f;
+  font-family: sans-serif;
 
 }
 
@@ -115,13 +115,19 @@
 	text-decoration: none;
 	color: #FFFFFF;
 	font-size: 1.25em;
-    letter-spacing: -1px;
-    text-align: center;
-    list-style: none;
-    margin: unset;
+  letter-spacing: -1px;
+  text-align: center;
+  list-style: none;
+  margin: unset;
 	padding: 0 20px 0 20px;
-    display: inline-block;
-    font-size: 24px;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.navLinks {
+  display: inline-flex;
+  width: 87%;
+  text-transform: capitalize;
 }
 
 #menu a:hover {
@@ -132,6 +138,8 @@
     float: right;
     margin: 20px;
     border-radius: 10px;
+    width: 11%;
+    right: 0;
 }
 
 #menu input {
@@ -142,6 +150,7 @@
 
 #menu button{
   height: 2.2em;
+  position: absolute;
 }
 
 #menu a.first {

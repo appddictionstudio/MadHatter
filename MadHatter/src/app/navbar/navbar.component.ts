@@ -24,11 +24,6 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.isAuth = this.auth.isAuthenticated();
-    // this.userService.getUser().subscribe(data => {
-    //   this.currentUser = data;
-    //   console.log(this.currentUser);
-
-    // });
 
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
@@ -37,9 +32,24 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // this.isAuth = this.auth.isAuthenticated();
-    console.log('changes');
-    console.log(changes);
+  }
+
+  getUserRoleStudent() {
+    if (this.currentUser.role === 'ROLE_STUDENT') {
+      return true;
+    }
+  }
+
+  getUserRoleInstructor() {
+    if (this.currentUser.role === 'ROLE_TEACHER') {
+      return true;
+    }
+  }
+
+  getUserRoleAdmin() {
+    if (this.currentUser.role === 'ROLE_ADMIN') {
+      return true;
+    }
   }
 
   isAuthenticated() {

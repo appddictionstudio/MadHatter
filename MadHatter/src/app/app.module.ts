@@ -32,6 +32,7 @@ import {
 } from '@angular/material';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { HttpModule  } from '@angular/http';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { HttpModule  } from '@angular/http';
     SignupComponent,
     SearchByNamePipe,
     LearningDetailsComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LearningDetailsComponent implements OnInit, OnChanges {
 
-  constructor(private api: ModuleService,
+  constructor(
+    private api: ModuleService,
     private apiU: UserService,
     private route: ActivatedRoute,
     ) { }
@@ -51,8 +52,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.module = res as any[];
       this.modules = [this.module];
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
-      console.log(this.modules);
-      console.log(this.topics);
     });
     }
 
