@@ -4,8 +4,10 @@ import { FormGroup, FormBuilder, FormsModule, FormControl, Validators, FormArray
 import { ModuleService } from '../services/module.service';
 import { Module } from '../models/Module';
 import { BootcampModule } from '../models/Bootcamp';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MockNgModuleResolver } from '@angular/compiler/testing';
+import { detachEmbeddedView } from '@angular/core/src/view';
+
 
 
 @Component({
@@ -17,23 +19,25 @@ export class LearningComponent implements OnInit {
 
   form: FormGroup;
   module: Module[] = [];
-  route: Router;
+  route: ActivatedRoute;
   mod: any;
 
 
   constructor(
     private fb: FormBuilder,
-    private api: ModuleService
+    private api: ModuleService,
   ) { }
 
   ngOnInit() {
     this.getModuleforLearning();
   }
-getModuleforLearning() {
-this.api.getModule().subscribe(data => {
-  this.module = data as any[];
-});
-}
+
+  getModuleforLearning() {
+  this.api.getModule().subscribe(data => {
+    this.module = data as any[];
+    console.log(this.module);
+  });
+  }
 
   classesPresent() {
     return true;

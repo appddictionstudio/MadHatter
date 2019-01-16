@@ -3,4 +3,5 @@ export class Module {
     description: string;
     title: string;
     iconLink: string;
+    topicId: any;
 }

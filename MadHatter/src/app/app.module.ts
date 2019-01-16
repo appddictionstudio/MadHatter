@@ -31,8 +31,7 @@ import {
   MatNativeDateModule,
 } from '@angular/material';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
-// import { MatVideoModule } from 'mat-video';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule  } from '@angular/http';
 
 
 @NgModule({
@@ -71,8 +70,8 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    // MatVideoModule,
-    // NgbModule,
+    HttpModule,
+    HttpClientModule ,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
