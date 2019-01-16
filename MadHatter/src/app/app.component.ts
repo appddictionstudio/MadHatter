@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit, OnChanges {
   title = 'MadHatter';
-  isAuth: boolean;
+  isAuth = false;
 
   constructor(
     private router: Router,
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    this.auth.destroyToken();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -33,10 +34,10 @@ export class AppComponent implements OnInit, OnChanges {
 
   isAuthenticated() {
     this.isAuth = this.auth.isAuthenticated();
-    if (this.isAuth === false) {
+    if (!this.isAuth) {
       this.auth.destroyToken();
       console.log('destroying token');
     }
-    return this.auth.isAuthenticated();
+    return true;
   }
 }
