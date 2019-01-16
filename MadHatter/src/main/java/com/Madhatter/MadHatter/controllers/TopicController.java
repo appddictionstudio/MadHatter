@@ -47,8 +47,6 @@ public class TopicController {
 		
 		//--------------- set hidden or shown -----------------------------------------------------------
 		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
-		@PostMapping()
-		@Transactional
 	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic, @PathVariable long modId) {	
 			
 			Modules mod = new Modules();

@@ -25,6 +25,11 @@ public class File {
     private byte[] data;
 
     @ManyToOne
+    @JoinColumn(name = "topic_id")
+    @JsonBackReference
+    private Topic topic;
+    
+    @ManyToOne
     @JoinColumn(name = "form_id")
     @JsonBackReference
     private Form form;
@@ -38,15 +43,24 @@ public class File {
         this.data = data;
     }
 
-    public File(String fileName, String fileType, String fileDesc, byte[] data, Form form) {
+    public File(String fileName, String fileType, String fileDesc, byte[] data, Topic topic, Form form) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDesc = fileDesc;
         this.data = data;
+        this.topic = topic;
         this.form = form;
     }
 
-    /**
+    public Form getForm() {
+		return form;
+	}
+
+	public void setForm(Form form) {
+		this.form = form;
+	}
+
+	/**
      * @return the id
      */
     public Long getId() {
@@ -119,14 +133,14 @@ public class File {
     /**
      * @return the form
      */
-    public Form getForm() {
-        return form;
+    public Topic getTopic() {
+        return topic;
     }
 
     /**
      * @param form the form to set
      */
-    public void setForm(Form form) {
-        this.form = form;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }

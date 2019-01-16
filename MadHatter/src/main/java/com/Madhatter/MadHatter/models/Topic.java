@@ -3,8 +3,10 @@ package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,24 +23,13 @@ public class Topic {
 	@JsonIgnore
 	private Modules mod;
     
-    
-    public Modules getMod() {
-		return mod;
-	}
-
-	public void setMod(Modules mod) {
-		this.mod = mod;
-	}
-
-	public void setTopicTitle(String topicTitle) {
-		this.topicTitle = topicTitle;
-	}
-
 	@Column
     private String topicTitle;
+	
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
+    @JsonManagedReference
+    private List<File> files;
 
-	@Column
-    private String files;
     
 	@Column
     private String Quizzes;
@@ -49,13 +40,21 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic(String files, String Quizzes, String hidden, String topicTitle) {
+    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
     	this.files = files;
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
-    	
     }
+    
+    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle, Modules mod) {
+    	this.topicTitle = topicTitle;
+    	this.files = files;
+    	this.Quizzes = Quizzes;
+    	this.hidden = hidden;
+    	this.mod = mod;
+    }
+    
 
     public Long getId() {
         return id;
@@ -65,11 +64,11 @@ public class Topic {
         this.id = id;
     }
 
-	public String getFiles() {
+	public List<File> getFiles() {
 		return files;
 	}
 
-	public void setFiles(String files) {
+	public void setFiles(List<File> files) {
 		this.files = files;
 	}
 
@@ -97,5 +96,17 @@ public class Topic {
 		this.topicTitle = topicTitle;
 	}
 	
+	public Modules getMod() {
+			return mod;
+		}
+
+	public void setMod(Modules mod) {
+			this.mod = mod;
+		}
+
+	public void setTopicTitle(String topicTitle) {
+			this.topicTitle = topicTitle;
+		}
+
     
 }

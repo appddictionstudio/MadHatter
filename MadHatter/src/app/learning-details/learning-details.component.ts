@@ -5,6 +5,8 @@ import { Module } from '../models/Module';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
+import { MatDialog } from '@angular/material';
+import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 
 @Component({
   selector: 'app-learning-details',
@@ -14,6 +16,7 @@ import { TopicsService } from '../services/topics.service';
 export class LearningDetailsComponent implements OnInit, OnChanges {
 
   constructor(
+    public dialog: MatDialog,
     private api: ModuleService,
     private apiU: UserService,
     private route: ActivatedRoute,
@@ -63,7 +66,18 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     hideContent() {
       this.hide = false;
     }
-
+    launch(t,index) {
+       const dialogRef = this.dialog.open(LaunchDownloadsModalComponent , {
+        height: '420px',
+        width: '600px',
+        data: {
+          selectedTopic: t,
+        }
+      });
+       dialogRef.afterClosed().subscribe(result => {
+        //  console.log('Dialog result: ${result}');
+       });
+    }
     toggleContent() {
       if (this.hide) {
         this.hide = false;

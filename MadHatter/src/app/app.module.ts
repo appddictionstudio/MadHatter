@@ -18,6 +18,8 @@ import { MemberDirectoryComponent } from './member-directory/member-directory.co
 import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
+import { MatDialogModule } from '@angular/material';
+
 import {
   MatButtonModule,
   MatMenuModule,
@@ -32,6 +34,8 @@ import {
 } from '@angular/material';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { AdminComponent } from './admin/admin.component';
+import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -47,6 +51,7 @@ import { AdminComponent } from './admin/admin.component';
     SearchByNamePipe,
     LearningDetailsComponent,
     AdminComponent,
+    LaunchDownloadsModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +76,8 @@ import { AdminComponent } from './admin/admin.component';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatListModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],

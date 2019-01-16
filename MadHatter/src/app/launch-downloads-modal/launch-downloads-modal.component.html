@@ -1,0 +1,36 @@
+<!-- <input type="file" #file style="display: none" multiple /> -->
+<div class="container" fxLayout="column" >
+    <!-- <h1 mat-dialog-title>Upload Files</h1> -->
+    <!-- <div>
+        <button mat-raised-button color="primary " class="add-files-btn ">Add Files</button>
+    </div> -->
+<div class="body">
+<div class="filename">
+     <h3> Exercise 1: Iconic Communication </h3>
+</div>
+<div class= "download">
+<i class="fa fa-download" aria-hidden="true"></i>
+</div>
+</div>
+<div class="close">
+    <mat-dialog-actions class="actions ">
+        <button mat-button mat-dialog-close>Close</button>
+        <button mat-raised-button color="primary " [disabled]="!canBeClosed "></button>
+    </mat-dialog-actions>
+    </div>
+    </div>
+<!-- </div> -->
+
+<!-- <input type="file" #file style="display: none" (change)="onFilesAdded()" multiple /> -->
+
+
+<!-- <button mat-raised-button color="primary " class="add-files-btn " (click)="addFiles()">Add Files</button> -->
+
+
+<!-- <button *ngIf="showCancelButton " mat-button mat-dialog-close>Cancel</button> -->
+
+
+<!-- <button mat-raised-button color="primary " [disabled]="!canBeClosed " (click)="closeDialog() ">{{primaryButtonText}}</button> -->
+
+
+<!-- <mat-list-item *ngFor="let file of files "> -->

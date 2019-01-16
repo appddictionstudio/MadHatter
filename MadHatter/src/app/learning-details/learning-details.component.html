@@ -13,7 +13,7 @@
   </div>
   <div *ngIf="!hide">
   <hr>
-  <div class="showTopics" *ngFor="let t of topics" >
+  <div class="showTopics" *ngFor="let t of topics; let i = index" >
   <div class="subheader" *ngIf="t.hidden">
     <div class="subheaderlc">
       <h3>{{t.topicTitle}}</h3>
@@ -23,6 +23,9 @@
         <span>0%</span>
       </div>
     </div>
+    <div class= "launchbutton">
+      <button style = "size: 30%" (click)="launch(t,i)" > Launch </button>
+      </div>
     </div>
   </div>
 </div>

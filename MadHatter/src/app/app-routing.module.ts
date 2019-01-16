@@ -8,6 +8,7 @@ import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
+import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'login', component: LoginComponent},
     { path: 'grades', component: AdminComponent},
+    {path: 'launch', component: LaunchDownloadsModalComponent}
     // ]}
 ];
 
