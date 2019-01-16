@@ -22,7 +22,19 @@ public class Topic {
 	private Modules mod;
     
     
-    @Column
+    public Modules getMod() {
+		return mod;
+	}
+
+	public void setMod(Modules mod) {
+		this.mod = mod;
+	}
+
+	public void setTopicTitle(String topicTitle) {
+		this.topicTitle = topicTitle;
+	}
+
+	@Column
     private String topicTitle;
 
 	@Column

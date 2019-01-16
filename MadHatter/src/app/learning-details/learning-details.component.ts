@@ -4,6 +4,7 @@ import { Topic } from '../models/Topic';
 import { Module } from '../models/Module';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'app-learning-details',
@@ -16,9 +17,13 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private api: ModuleService,
     private apiU: UserService,
     private route: ActivatedRoute,
+    private apiT: TopicsService
     ) { }
 
   topics: Topic[] = [];
+  topicHide: Topic = new Topic();
+  allTopic: Topic[] = [];
+  // hide: string;
   modules: Module[] = [];
   hide = false;
   currentUser: any;
@@ -67,11 +72,24 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     }
   }
 
-  toHide(hidden) {
-    if (hidden === 'false') {
-      return false;
-    } else {
-      return true;
-    }
-  }
+//     toggleContent(t) {
+//       this.modId = this.route.snapshot.paramMap.get('id');
+
+//     //   if (this.hide) {
+//     //     this.hide = false;
+//     // } else {
+//     //   this.hide = true;
+//     // }
+// this.topicHide = t;
+// this.topicHide.id = t.id;
+// this.topicHide.topicTitle = t.topicTitle;
+// this.topicHide.files = null;
+// this.topicHide.Quizzes = null;
+// this.topicHide.hidden = this.hide;
+//  this.apiT.createHidden(this.topicHide, this.modId).subscribe(res => {
+// this.allTopic.push(this.topicHide);
+//  });
+//   }
+
+
 }
