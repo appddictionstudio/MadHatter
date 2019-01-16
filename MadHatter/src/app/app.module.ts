@@ -31,7 +31,6 @@ import {
   MatNativeDateModule,
 } from '@angular/material';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
-import { HttpModule  } from '@angular/http';
 
 
 @NgModule({
@@ -70,7 +69,6 @@ import { HttpModule  } from '@angular/http';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    HttpModule,
     HttpClientModule ,
   ],
   providers: [

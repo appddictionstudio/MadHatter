@@ -51,9 +51,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     }
   }
 
-  getTopicsForModules() {
-    this.api.getAllTopics().subscribe(data => {
-      this.topics = data as any[];
   getModuleforLearning() {
     this.api.getModuleById(this.modId).subscribe(res => {
       this.module = res as any[];
@@ -64,13 +61,17 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     });
     }
 
+    hideContent() {
+      this.hide = true;
+    }
+
     toggleContent() {
       if (this.hide) {
         this.hide = false;
     } else {
       this.hide = true;
     }
-
+  }
 
 //     toggleContent(t) {
 //       this.modId = this.route.snapshot.paramMap.get('id');
@@ -91,11 +92,5 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 //  });
 //   }
 
-  toHide(hidden) {
-    if (hidden === 'false') {
-      return false;
-    } else {
-      return true;
-    }
-  }
+
 }
