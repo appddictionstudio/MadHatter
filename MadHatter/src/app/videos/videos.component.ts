@@ -1,7 +1,6 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { VideoService } from 'src/app/services/video.service';
 import { Videos } from 'src/app/models/Videos';
-import {DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos',
@@ -21,7 +20,6 @@ export class VideosComponent implements OnInit {
 
   constructor(
     private api: VideoService,
-    private sanatize: DomSanitizer,
   ) { }
 
 
@@ -34,10 +32,5 @@ export class VideosComponent implements OnInit {
       this.video = result as any[];
       console.log(this.video);
     });
-  }
-
-  sanatizeName(name) {
-    this.name = this.sanatize.bypassSecurityTrustHtml(name);
-    return name;
   }
 }

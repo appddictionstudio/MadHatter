@@ -43,11 +43,11 @@ export class LearningComponent implements OnInit {
     return true;
   }
 
-  select(m: Module) {
-    this.api.getModById(m.id).subscribe(
-      data => {
-        this.mod = data;
-        console.log(m.id);
-  });
-  }
+  // select(m: Module) {
+  //   this.api.getModById(m.id).subscribe(
+  //     data => {
+  //       this.mod = data;
+  //       console.log(m.id);
+  // });
+  // }
 }

@@ -18,13 +18,30 @@ export class AdminComponent implements OnInit, OnChanges {
 
   currentUser: any;
   userRole: any;
+  modId: any;
+  hide = false;
+  module: any;
+  mod: any;
+  topics: Topic[] = [];
+  topicHide: Topic = new Topic();
+  allTopic: Topic[] = [];
+  modules: Module[] = [];
+  mods: Module[] = [];
 
   ngOnInit() {
     this.getUserRole();
+    this.getModuleforLearning();
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
+  }
+
+  getModuleforLearning() {
+    this.api.getModule().subscribe(res => {
+      this.modules = res as any[];
+      console.log(this.modules);
+    });
   }
 
   getUserRole() {

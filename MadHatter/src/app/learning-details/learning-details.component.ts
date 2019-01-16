@@ -64,7 +64,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     }
 
     hideContent() {
-      this.hide = false;
+      this.hide = true;
     }
     launch(t,index) {
        const dialogRef = this.dialog.open(LaunchDownloadsModalComponent , {

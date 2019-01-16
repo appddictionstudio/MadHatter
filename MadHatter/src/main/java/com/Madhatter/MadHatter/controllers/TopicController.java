@@ -25,39 +25,36 @@ import com.Madhatter.MadHatter.models.Topic;
 public class TopicController {
 	@Autowired
     private TopicRepository repo;
-	
-	   
+
+
 	  //--------------- Load -----------------------------------------------------------
 	  	 @RequestMapping(method = RequestMethod.GET)
-	  	ResponseEntity<List<Topic>> getAllMhTopics() {	
-	  	    List<Topic> postList = repo.getAllTopics();	 
+	  	ResponseEntity<List<Topic>> getAllMhTopics() {
+	  	    List<Topic> postList = repo.getAllTopics();
 	  	    return ResponseEntity.ok(postList);
 	  	    }
-	
-	  //-----------------LoadTopicByModId------------------------------------------------------
-	  	 
-	  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
-	  	ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
-	  		System.out.println(id);
-			Optional<Modules> topics = repo.findByModId(id);
-			System.out.println(topics);
-			
-			return ResponseEntity.ok(topics);
-		};
-		
+
+	  	//-----------------LoadTopicByModId------------------------------------------------------
+
+		  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
+		  	ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
+				Optional<Modules> topics = repo.findByModId(id);
+				return ResponseEntity.ok(topics);
+			};
+
 		//--------------- set hidden or shown -----------------------------------------------------------
 		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
-	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic, @PathVariable long modId) {	
-			
+	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic	, @PathVariable long modId) {
+
 			Modules mod = new Modules();
 			mod.setId(modId);
-			
+
 			topic.setHidden("true");
 	  		Topic savedHiddenTopic = repo.save(topic);
 //	  		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 //	  		        .buildAndExpand(savedHiddenTopic.getId()).toUri();
 	  		return ResponseEntity.ok(savedHiddenTopic);
-	  		
+
 	  	    }
 
 }

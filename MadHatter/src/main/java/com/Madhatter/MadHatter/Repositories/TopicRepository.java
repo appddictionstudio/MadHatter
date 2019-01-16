@@ -22,6 +22,5 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 	Optional<Modules> findByModId(Long Id);
 	
 	List<Topic> findById(Integer Id);
-
 }
 

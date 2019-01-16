@@ -8,11 +8,75 @@
                             INSTRUCTOR SECTION
 ///////////////////////////////////////////////////////////////////////// -->
 <div *ngIf="getUserRoleInstructor()">
-  <p>user is instructor</p>
+    <div class="learningContent" *ngFor="let m of modules">
+        <div class= "headerLearningContent">
+          <h1>Module {{m.id}}</h1>
+          <div class="headerProgress" style="width:25em">
+            <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
+              <span>0%</span>
+            </div>
+        </div>
+        <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+        <div class="toggleDetailsButton">
+          <button mat-button (click)=toggleContent()>{{enable}} Content for Students</button>
+        </div>
+        </div>
+        <div>
+        <hr>
+        <div class="showTopics" *ngFor="let t of m.topicId" >
+        <div class="subheader">
+          <div class="subheaderlc">
+            <h3>{{t.topicTitle}}</h3>
+          </div>
+          <div class="progress">
+            <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
+              <span>0%</span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
 </div>
 <!-- ///////////////////////////////////////////////////////////////////////// 
                             STUDENT SECTION
 ///////////////////////////////////////////////////////////////////////// -->
 <div *ngIf="getUserRoleStudent()">
-  <p>user is student</p>
+  <div class="learningContent" *ngFor="let m of modules">
+      <div class= "headerLearningContent">
+        <h1>Module {{m.id}}</h1>
+        <div class="headerProgress" style="width:25em">
+          <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
+            <span>0%</span>
+          </div>
+      </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <div class="timeAdmin"><h3> 2 hr(s) and 30 mins</h3></div>
+        <div class="studentGradeOverall">
+          <p>%</p>
+        </div>
+=======
+      <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>>
+>>>>>>> parent of a4479ab... Fixed new bug where user was logged out on refresh
+=======
+      <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+>>>>>>> parent of 12485c0... admin styling and more demo fixes
+      </div>
+      <div>
+      <hr>
+      <div class="showTopics" *ngFor="let t of m.topicId" >
+      <div class="subheader">
+        <div class="subheaderlc">
+          <h3>{{t.topicTitle}}</h3>
+        </div>
+        <div class="progress">
+          <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
+            <span>0%</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
 </div>
