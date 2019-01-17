@@ -19,6 +19,7 @@ import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
 
 import {
   MatButtonModule,
@@ -77,7 +78,8 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
