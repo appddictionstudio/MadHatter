@@ -51,6 +51,11 @@
     width: 100%;
 }
 
+.tabText p {
+    width: 50%;
+    margin: auto;
+}
+
 .UIProgress .mat-tab-header {
     background: unset;
     color: black;
@@ -75,10 +80,6 @@
 
 .mat-tab-label:hover {
     background-color: rgba(0, 0, 0, .15);
-}
-
-.UIProgress .mat-tab-label:focus, .UIProgress .mat-tab-label:hover {
-    background-color: unset;
 }
 
 .UIProgress .mat-tab-body-content {
@@ -156,6 +157,10 @@
 
 .mat-ink-bar {
     visibility: hidden !important;
+}
+
+.mat-tab-label-active {
+    background: rgba(0,0,0,.2);
 }
 
 .mat-card {

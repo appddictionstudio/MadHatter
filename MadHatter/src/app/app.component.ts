@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    
+    this.isAuth = this.auth.isAuthenticated();
     if (!this.isAuth) {
       this.auth.destroyToken();
       this.router.navigateByUrl('/');

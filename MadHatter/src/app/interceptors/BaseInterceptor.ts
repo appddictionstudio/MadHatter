@@ -45,6 +45,7 @@ export class BaseInterceptor implements HttpInterceptor {
           if (error instanceof HttpErrorResponse) {
             this.auth.setRedirectLocation();
             this.auth.redirectToLogin();
+            this.auth.destroyToken();
             console.log('http error intercepted. redirect location: ' + this.auth.getRedirectLocation());
           }
         })
