@@ -21,7 +21,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'login', component: LoginComponent},
     { path: 'grades', component: AdminComponent},
-    {path: 'launch', component: LaunchDownloadsModalComponent}
+    {path: 'launch/:id', component: LaunchDownloadsModalComponent}
     // ]}
 ];
 
