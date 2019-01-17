@@ -27,9 +27,6 @@ public class Form {
     @JsonManagedReference
     private List<Approval> approvals;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "form")
-    @JsonManagedReference
-    private List<File> files;
 
     @ElementCollection
     @MapKeyColumn(name = "form_question")
@@ -46,13 +43,11 @@ public class Form {
         this.formSubmissionTimeStamp = formSubmissionTimeStamp;
     }
 
-    public Form(String formNumber, String formName, String formSubmissionTimeStamp, HashMap<String, String> data,
-            List<File> files, List<Approval> approvals) {
+    public Form(String formNumber, String formName, String formSubmissionTimeStamp, HashMap<String, String> data, List<Approval> approvals) {
         this.formNumber = formNumber;
         this.formName = formName;
         this.formSubmissionTimeStamp = formSubmissionTimeStamp;
         this.data = data;
-        this.files = files;
         this.approvals = approvals;
     }
 
@@ -130,19 +125,6 @@ public class Form {
         this.approvals = approvals;
     }
 
-    /**
-     * @return the files
-     */
-    public List<File> getFiles() {
-        return files;
-    }
-
-    /**
-     * @param files the files to set
-     */
-    public void setFiles(List<File> files) {
-        this.files = files;
-    }
 
     /**
      * @return the data

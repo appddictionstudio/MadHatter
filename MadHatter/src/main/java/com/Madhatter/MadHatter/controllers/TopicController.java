@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties.Tomcat.Resource;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Madhatter.MadHatter.Repositories.TopicRepository;
+import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.Modules;
 import com.Madhatter.MadHatter.models.Topic;
 
@@ -56,5 +61,7 @@ public class TopicController {
 	  		return ResponseEntity.ok(savedHiddenTopic);
 
 	  	    }
+		
+		
 
 }

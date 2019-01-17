@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.Madhatter.MadHatter.models.Topic;
+import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.Modules;
 
 
@@ -22,5 +23,6 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 	Optional<Modules> findByModId(Long Id);
 	
 	List<Topic> findById(Integer Id);
+	
 }
 

@@ -1,32 +1,32 @@
 <div class="learningContent">
-  <div class= "headerLearningContent" *ngFor="let m of modules">
-    <h1>Module {{m.id}}</h1>
-    <div class="headerProgress" style="width:25em">
-      <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
-        <span>0%</span>
-      </div>
-  </div>
-  <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
-  <div class="toggleDetailsButton">
-    <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
-  </div>
-  </div>
-  <div *ngIf="!hide">
-  <hr>
-  <div class="showTopics" *ngFor="let t of topics; let i = index" >
-  <div class="subheader" *ngIf="t.hidden">
-    <div class="subheaderlc">
-      <h3>{{t.topicTitle}}</h3>
+    <div class= "headerLearningContent" *ngFor="let m of modules">
+      <h1>{{m.title}}</h1>
+      <div class="headerProgress" style="width:25em">
+        <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
+          <span>0%</span>
+        </div>
     </div>
-    <div id="detailProgress" class="progress">
-      <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
-        <span>0%</span>
-      </div>
+    <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+    <div class="toggleDetailsButton">
+      <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
     </div>
-    <div class= "launchbutton">
-      <button mat-button  (click)="launch(t.id,i)" [routerLink]="['launch/', t.id]"> Launch </button>
+    </div>
+    <div *ngIf="!hide">
+    <hr>
+    <div class="showTopics" *ngFor="let t of topics; let i = index" >
+    <div class="subheader" *ngIf="t.hidden">
+      <div class="subheaderlc">
+        <h3>{{t.topicTitle}}</h3>
+      </div>
+      <div id="detailProgress" class="progress">
+        <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
+          <span>0%</span>
+        </div>
+      </div>
+      <div class= "launchbutton">
+        <button mat-button  (click)="launch(t.id,i)" [routerLink]="['launch/', t.id]"> Launch Excercises </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+  </div>

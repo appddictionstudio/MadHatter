@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,6 +37,10 @@ public class Topic {
 	
 	@Column
     private String hidden;
+	
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "topic_id")
+	private List<TopicAtt> attachments;
     
 
     public Topic() {}
@@ -47,16 +52,27 @@ public class Topic {
     	this.hidden = hidden;
     }
     
-    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle, Modules mod) {
+    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     	this.files = files;
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     	this.mod = mod;
+    	this.attachments = attachments;
     }
     
 
-    public Long getId() {
+  
+
+	public List<TopicAtt> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<TopicAtt> attachments) {
+		this.attachments = attachments;
+	}
+
+	public Long getId() {
         return id;
     }
 

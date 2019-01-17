@@ -20,45 +20,28 @@ public class File {
     @Column
     private String fileDesc;
 
-    @Column
-    @Lob
-    private byte[] data;
-
     @ManyToOne
     @JoinColumn(name = "topic_id")
     @JsonBackReference
     private Topic topic;
     
-    @ManyToOne
-    @JoinColumn(name = "form_id")
-    @JsonBackReference
-    private Form form;
+    
 
     public File() {}
 
-    public File(String fileName, String fileType, String fileDesc, byte[] data) {
+    public File(String fileName, String fileType, String fileDesc) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDesc = fileDesc;
-        this.data = data;
     }
 
-    public File(String fileName, String fileType, String fileDesc, byte[] data, Topic topic, Form form) {
+    public File(String fileName, String fileType, String fileDesc,  Topic topic) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.fileDesc = fileDesc;
-        this.data = data;
         this.topic = topic;
-        this.form = form;
     }
 
-    public Form getForm() {
-		return form;
-	}
-
-	public void setForm(Form form) {
-		this.form = form;
-	}
 
 	/**
      * @return the id
@@ -116,19 +99,6 @@ public class File {
     	this.fileDesc = fileDesc;
     }
 
-    /**
-     * @return the data
-     */
-    public byte[] getData() {
-        return data;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(byte[] data) {
-        this.data = data;
-    }
 
     /**
      * @return the form
