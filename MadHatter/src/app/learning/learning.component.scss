@@ -177,6 +177,10 @@
     display: flex;
 }
 
-.mat-tab-label-content {
+.mainGroupHeader .mat-tab-label-content {
     font-size: 20px;
+}
+
+.UIProgress .mat-tab-label-content {
+    font-size: 14px;
 }

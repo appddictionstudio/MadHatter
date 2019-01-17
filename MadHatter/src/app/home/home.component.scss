@@ -1,6 +1,6 @@
 .bootcampGrid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: .6fr .05fr 2.3fr;
   height: 50%;
   width: 95%;
@@ -41,11 +41,11 @@ h1,h2,h3,h4 {
   border-radius: 25px;
   grid-column: 1;
   grid-row: 3;
-  margin: auto 0px auto 0px;
+  margin: auto;
   padding: 20px;
   background: #0076a3;
-  width: 80%;
-  height: 40%;
+  width: 40%;
+  height: 20%;
   display: grid;
   grid-template-columns: .5fr 1.5fr;
   grid-template-rows: 1fr;
@@ -72,8 +72,8 @@ h1,h2,h3,h4 {
   margin: auto;
   padding: 20px;
   background: #0076a3;
-  width: 80%;
-  height: 40%;
+  width: 40%;
+  height: 20%;
   display: grid;
   grid-template-columns: .5fr 1.5fr;
   grid-template-rows: 1fr;
@@ -84,7 +84,7 @@ h1,h2,h3,h4 {
 .resorces img {
   grid-column: 1;
   grid-row: 1;
-  height: 90%;
+  height: 100%;
   width: auto;
 }
 
@@ -102,8 +102,8 @@ h1,h2,h3,h4 {
   padding: 20px;
   padding-right: 10px;
   background: #0076a3;
-  width: 80%;
-  height: 40%;
+  width: 40%;
+  height: 20%;
   display: grid;
   grid-template-columns: .5fr 1.5fr;
   grid-template-rows: 1fr;
