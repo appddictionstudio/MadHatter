@@ -14,8 +14,7 @@
             <div  *ngIf="!classesPresent()">There is nothing to display here</div>
             <div id="cardRow" class="row">
             <div  *ngFor="let m of module" id="cardCol" class="col-4">
-            <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid">
-              <div *ngIf="m.bootcamp">
+            <mat-card *ngIf="m.bootcamp" [routerLink]="['learningdetail/', m.id]" class="cardGrid">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
@@ -23,7 +22,6 @@
                     <span>0%</span>
                   </div>
                   </div>
-              </div>
           </mat-card>
           </div>
           </div>
@@ -47,8 +45,8 @@
       <mat-tab class="completed" label="Completed">
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
-          <div id="cardCol" class="col-4">
-          <mat-card class="cardGrid" *ngFor="let m of module">
+          <div  *ngFor="let m of module" id="cardCol" class="col-4">
+          <mat-card class="cardGrid">
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
             <div class="progressComplete" style="width: 100%">
@@ -80,8 +78,9 @@
         <mat-tab class="notStarted" label="Not Started">
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
-          <div id="cardCol" class="col-4">
-          <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngFor="let m of module">
+            <div>
+          <div *ngFor="let m of module" id="cardCol" class="col-4">
+          <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
             <div class="progress" style="width: 100%">
@@ -97,6 +96,7 @@
 
             </div>
           </mat-card>
+          </div>
           </div>
           </div>
         </mat-tab>
