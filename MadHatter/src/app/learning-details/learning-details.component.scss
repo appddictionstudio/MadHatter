@@ -70,8 +70,8 @@ h1 {
 }
 
 .launchbutton{
-grid-column: 3;
-margin: auto;
+    grid-column: 3;
+    margin: auto;
 }
 .launchbutton button {
   width: 100%;
@@ -116,4 +116,9 @@ margin: auto;
 
 .progress-barDetails span {
     margin-left: 1em;
+}
+
+#detailProgress {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
 }
