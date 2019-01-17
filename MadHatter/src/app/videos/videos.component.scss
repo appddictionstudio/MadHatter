@@ -15,12 +15,13 @@
 #videoContent {
     margin-top: 3%;
     background: white;
-    height: 100%;
+    height: fit-content;
     z-index: 1;
     position: relative;
 }
 
 .youtubePlayer iframe {
+    margin-left: 18%;
 }
 
 #videoContent p {
@@ -41,4 +42,7 @@
 
 #video {
     margin-bottom: 4em;
+}
+#video p {
+    text-align: center;
 }

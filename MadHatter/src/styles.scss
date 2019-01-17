@@ -7,12 +7,14 @@
 @import 'app/navbar/navbar.component.scss';
 @import 'app/videos/videos.component.scss';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'app/launch-downloads-modal/launch-downloads-modal.component.scss';
 
 html, body {
     height: 100%;
     width: 100%;
     margin:unset;
     font-family: sans-serif;
+    overflow: auto;
 }
 
 .mat-button{

@@ -1,3 +1,7 @@
+.learningContent {
+    padding-bottom: 3%;
+}
+
 .headerLearningContent {
     display: grid;
     grid-template-columns: .5fr .5fr .2fr .3fr;
@@ -75,7 +79,6 @@ h1 {
 }
 .launchbutton button {
   width: 100%;
-
 }
 
 .subheader h2{
@@ -121,4 +124,16 @@ h1 {
 #detailProgress {
     grid-column: 2 !important;
     grid-row: 1 !important;
+}
+
+.resourceLinks {
+    margin-top: 25px;
+}
+
+.resourceLinks a {
+    margin-left: 12%;
+}
+
+.resourceHeader h1{
+    margin: 3% 0% 0% 12%;
 }

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "topic")
@@ -18,30 +17,30 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne
 	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
 	@JsonIgnore
 	private Modules mod;
-    
+
 	@Column
     private String topicTitle;
-	
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
     @JsonManagedReference
     private List<File> files;
 
-    
+
 	@Column
     private String Quizzes;
-	
+
 	@Column
     private String hidden;
-	
+
 	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "topic_id")
 	private List<TopicAtt> attachments;
-    
+
 
     public Topic() {}
 
@@ -51,7 +50,7 @@ public class Topic {
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     }
-    
+
     public Topic(List<File> files, String Quizzes, String hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     	this.files = files;
@@ -60,9 +59,9 @@ public class Topic {
     	this.mod = mod;
     	this.attachments = attachments;
     }
-    
 
-  
+
+
 
 	public List<TopicAtt> getAttachments() {
 		return attachments;
@@ -95,7 +94,7 @@ public class Topic {
 	public void setQuizzes(String quizzes) {
 		Quizzes = quizzes;
 	}
-	
+
 	public String getHidden() {
 		return hidden;
 	}
@@ -111,7 +110,7 @@ public class Topic {
 	public void setTopic(String topicTitle) {
 		this.topicTitle = topicTitle;
 	}
-	
+
 	public Modules getMod() {
 			return mod;
 		}
@@ -124,5 +123,5 @@ public class Topic {
 			this.topicTitle = topicTitle;
 		}
 
-    
+
 }
