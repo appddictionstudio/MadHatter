@@ -28,17 +28,37 @@ public class Modules {
 	@Column
     private String iconLink;
     
+	@Column
+	private String bootcamp;
+	
     @OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "mod_id")
 	private List<Topic> topic;
 	
     public Modules() {}
 
-    public Modules(String title, String description, String iconLink) {
+    public Modules(String title, String description, String iconLink, String bootcamp) {
     	this.title = title;
     	this.description = description;
     	this.iconLink = iconLink;
+    	this.bootcamp = bootcamp;
     }
+
+	public String getBootcamp() {
+		return bootcamp;
+	}
+
+	public void setBootcamp(String bootcamp) {
+		this.bootcamp = bootcamp;
+	}
+
+	public List<Topic> getTopic() {
+		return topic;
+	}
+
+	public void setTopic(List<Topic> topic) {
+		this.topic = topic;
+	}
 
 	public Long getId() {
         return id;

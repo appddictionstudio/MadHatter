@@ -7,7 +7,7 @@ import { BootcampModule } from '../models/Bootcamp';
 import { ActivatedRoute } from '@angular/router';
 import { MockNgModuleResolver } from '@angular/compiler/testing';
 import { detachEmbeddedView } from '@angular/core/src/view';
-
+import {CommonModule} from '@angular/common';
 
 
 @Component({
@@ -21,7 +21,6 @@ export class LearningComponent implements OnInit {
   module: Module[] = [];
   route: ActivatedRoute;
   mod: any;
-
 
   constructor(
     private fb: FormBuilder,

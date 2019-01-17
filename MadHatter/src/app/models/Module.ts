@@ -4,4 +4,5 @@ export class Module {
     title: string;
     iconLink: string;
     topicId: any;
+    bootcamp: string;
 }

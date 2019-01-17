@@ -19,6 +19,8 @@ import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
+
 import { ErrorHandler } from './services/error_handler';
 import { RequestInterceptor } from './services/http_interceptor';
 import {
@@ -79,6 +81,7 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatListModule,
     MatDialogModule,
+    CommonModule
   ],
   providers: [
     RequestInterceptor,
