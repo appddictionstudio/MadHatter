@@ -91,6 +91,7 @@
 .progress {
     border-radius: 10px;
     border: 1px solid black;
+    grid-row: 3;
 }
 
 .progressInProgress {
@@ -174,4 +175,12 @@
 
 #cardCol {
     display: flex;
+}
+
+.mainGroupHeader .mat-tab-label-content {
+    font-size: 20px;
+}
+
+.UIProgress .mat-tab-label-content {
+    font-size: 14px;
 }
