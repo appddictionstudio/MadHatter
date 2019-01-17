@@ -21,6 +21,7 @@ export class LearningComponent implements OnInit {
   module: Module[] = [];
   route: ActivatedRoute;
   mod: any;
+  isLoading = true;
 
   constructor(
     private fb: FormBuilder,
@@ -32,10 +33,12 @@ export class LearningComponent implements OnInit {
   }
 
   getModuleforLearning() {
-  this.api.getModule().subscribe(data => {
-    this.module = data as any[];
-    console.log(this.module);
-  });
+    this.isLoading = true;
+    this.api.getModule().subscribe(data => {
+      this.module = data as any[];
+      console.log(this.module);
+      this.isLoading = false;
+    });
   }
 
   classesPresent() {

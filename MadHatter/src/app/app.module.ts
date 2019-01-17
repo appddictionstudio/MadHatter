@@ -39,6 +39,7 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatListModule,
     MatDialogModule,
-    CommonModule
+    CommonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     RequestInterceptor,

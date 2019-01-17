@@ -12,9 +12,13 @@
       </div>
       <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
           <mat-tab class="notStarted" label="Not Started">
+              <div *ngIf="isLoading" class="contentToDisplay">
+                <mat-progress-spinner color="primary" mode="indeterminate">
+                </mat-progress-spinner>
+              </div>
             <div  *ngIf="!classesPresent()">There is nothing to display here</div>
             <div id="cardRow" class="row">
-                <div id="cardCol" class="col-4">
+            <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
               <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
                 <h3>{{m.title}}</h3>
