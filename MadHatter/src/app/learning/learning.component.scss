@@ -128,6 +128,8 @@
 .cardGrid p{
     grid-column: 1;
     grid-row: 2;
+    margin-bottom: unset;
+    margin-top: 3%;
 }
 
 .cardGrid .progressInProgress {
@@ -162,7 +164,7 @@
 }
 
 #cardRow {
-    margin: 2em auto;
+    margin: 0% auto;
 }
 
 #cardCol {
