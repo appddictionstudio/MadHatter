@@ -28,5 +28,12 @@
       </div>
     </div>
   </div>
+  <div class="resourceHeader" *ngIf="resources">
+    <h1>Resources</h1>
+  </div>
+  <hr>
+  <div class="resourceLinks" *ngFor="let r of resources">
+    <a href="{{r.links}}">{{r.links}}</a>
+  </div>
 </div>
 </div>

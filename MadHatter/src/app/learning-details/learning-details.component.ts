@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ModuleService } from '../services/module.service';
 import { Topic } from '../models/Topic';
 import { Module } from '../models/Module';
+import { Resources } from '../models/Resources';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
@@ -23,11 +24,12 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private apiT: TopicsService
     ) { }
 
-   topics: Topic[] = [];
+  topics: Topic[] = [];
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
   // hide: string;
   modules: Module[] = [];
+  resources: Resources[] = [];
   hide = false;
   currentUser: any;
   modId: any;
@@ -61,6 +63,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.module = res as any[];
       this.modules = [this.module];
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
+      this.resources = JSON.parse(JSON.stringify(this.module.resources));
     });
     }
 

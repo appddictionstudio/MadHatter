@@ -20,11 +20,14 @@
   padding-top: 90%;
 }
 
-.close{
-  padding-top: 50%;
-
-}
+// .close{
+//   padding-top: 50%;
+// }
 .close button {
-  padding-left: 90%;
+  width: 10%;
+  text-align: left;
 }
 
+.mat-dialog-container {
+  height: fit-content !important;
+}

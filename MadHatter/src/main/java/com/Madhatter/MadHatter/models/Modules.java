@@ -2,13 +2,7 @@
 package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.sql.Clob;
-import java.sql.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "modules")
@@ -31,9 +25,13 @@ public class Modules {
 	@Column
 	private String bootcamp;
 	
-    @OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "mod_id")
 	private List<Topic> topic;
+	
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "mod_to_resource_id")
+	private List<Resources> resources;
 	
     public Modules() {}
 
@@ -43,7 +41,7 @@ public class Modules {
     	this.iconLink = iconLink;
     	this.bootcamp = bootcamp;
     }
-
+	
 	public String getBootcamp() {
 		return bootcamp;
 	}
@@ -52,6 +50,14 @@ public class Modules {
 		this.bootcamp = bootcamp;
 	}
 
+	public List<Resources> getResources() {
+		return resources;
+	}
+
+	public void setResources(List<Resources> resources) {
+		this.resources = resources;
+	}
+	
 	public List<Topic> getTopic() {
 		return topic;
 	}
