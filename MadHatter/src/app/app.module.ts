@@ -9,8 +9,8 @@ import { LearningComponent } from './learning/learning.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseInterceptor } from './interceptors/BaseInterceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { VideosComponent } from './videos/videos.component';
@@ -21,6 +21,8 @@ import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 
+import { ErrorHandler } from './services/error_handler';
+import { RequestInterceptor } from './services/http_interceptor';
 import {
   MatButtonModule,
   MatMenuModule,
@@ -36,7 +38,7 @@ import {
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -82,6 +84,8 @@ import {MatListModule} from '@angular/material/list';
     CommonModule
   ],
   providers: [
+    RequestInterceptor,
+    ErrorHandler,
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
   exports: [SearchByNamePipe,
     MatButtonModule,

@@ -1,6 +1,15 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpResponse,
+  HttpErrorResponse,
+} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -17,18 +26,19 @@ export class AppComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.isAuth = this.auth.isAuthenticated();
+    
     if (!this.isAuth) {
       this.auth.destroyToken();
-      this.router.navigateByUrl('#/');
+      this.router.navigateByUrl('/');
     } else {
-      console.log(this.auth.getToken());
+      console.log();
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
   }
+
   destroyToken() {
     this.auth.destroyToken();
     this.router.navigateByUrl('/');
