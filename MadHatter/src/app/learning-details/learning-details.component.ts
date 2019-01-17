@@ -23,7 +23,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private apiT: TopicsService
     ) { }
 
-  topics: Topic[] = [];
+   topics: Topic[] = [];
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
   // hide: string;
@@ -37,6 +37,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       this.modId = params.get('id');
     });
+    console.log(this.modId);
     this.getModuleforLearning();
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
@@ -66,16 +67,16 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     hideContent() {
       this.hide = true;
     }
-    launch(t,index) {
+    launch(t, index) {
+
        const dialogRef = this.dialog.open(LaunchDownloadsModalComponent , {
         height: '420px',
         width: '600px',
         data: {
-          selectedTopic: t,
+          selectedTopicid: t.id,
         }
       });
        dialogRef.afterClosed().subscribe(result => {
-        //  console.log('Dialog result: ${result}');
        });
     }
     toggleContent() {

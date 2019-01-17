@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { LearningDetailsComponent } from '../learning-details/learning-details.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-launch-downloads-modal',
@@ -8,17 +10,23 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class LaunchDownloadsModalComponent implements OnInit {
 
-  selectedtopic: any;
-  topic: any[];
+  topic: any;
   title: string;
+   tId: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private route: ActivatedRoute,
+
   ) {
-    this.topic = data.selectedTopic;
+
    }
 
   ngOnInit() {
-    console.log(this.topic);
+    console.log(this.data);
+    this.route.paramMap.subscribe(params => {
+      this.tId = params.get('id');
+    });
+    console.log(this.tId);
   }
 
   populateTopicTitle(topic) {
