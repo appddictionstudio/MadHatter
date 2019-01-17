@@ -43,7 +43,7 @@ h1 {
 
 .subheader {
   display: grid;
-  grid-template-columns: .5fr .5fr .5fr;
+  grid-template-columns: .5fr .5fr .2fr .3fr;
   grid-template-rows: 1fr;
   width: 75%;
   margin: 10px auto 0 auto;
@@ -70,7 +70,7 @@ h1 {
 }
 
 .launchbutton{
-    grid-column: 3;
+    grid-column: 4;
     margin: auto;
 }
 .launchbutton button {
