@@ -23,11 +23,9 @@
           <span>0%</span>
         </div>
       </div>
-
-<ng-template #content let-modal>
-  <div id="modal-basic-title" role="dialog">
+<ng-template #content let-modal let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" >Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title" >Profile update</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -42,18 +40,12 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
-  </div>
 </ng-template>
       <div class= "launchbutton">
-        <!-- <button class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button> -->
+        <button class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
         <!-- <input type="file" #file  (change)="onFileChange($event)">
         <button mat-button (click)="updateTopic(t)" >Save</button> -->
       </div>
-      <div *ngFor="let att of t.attachments">
-          <p>
-            {{att.fileNm}}
-          </p>
-        </div>
       </div>
     </div>
   </div>

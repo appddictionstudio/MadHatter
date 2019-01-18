@@ -5,11 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Topic } from '../models/Topic';
 import { TopicsService } from '../services/topics.service';
 import { Attachments } from '../models/Attachments';
+import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-launch-downloads-modal',
   templateUrl: './launch-downloads-modal.component.html',
-  styleUrls: ['./launch-downloads-modal.component.scss']
+  styleUrls: ['./launch-downloads-modal.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
+
 })
 export class LaunchDownloadsModalComponent implements OnInit {
   private selectedTopicId: number;
@@ -23,17 +26,21 @@ export class LaunchDownloadsModalComponent implements OnInit {
    topicslist: Topic[] = [];
    attachments: Attachments[] = [];
    att: any[] = [];
+   closeResult: string;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data,
+    // @Inject(MAT_DIALOG_DATA) public data,
   private route: ActivatedRoute,
   private router: Router,
-  private api: TopicsService
+  private api: TopicsService,
+  private modalService: NgbModal,
+    config: NgbModalConfig
   ) {
-    this.attachments = this.data;
+    // this.attachments = this.data;
    }
 
   ngOnInit() {
-    console.log(this.data);
+    // console.log(this.data);
     console.log(this.attachments);
     // this.route.paramMap.subscribe(params => {
     //   this.tId = params.get('id');
@@ -77,5 +84,23 @@ this.api.getTopicAtt().subscribe(data =>{
 // viewTopicD() {
 //   this.router.navigate(['launch /', this.topic.id], {
 //   });
+
+
+open(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+  }
+}
 }
 

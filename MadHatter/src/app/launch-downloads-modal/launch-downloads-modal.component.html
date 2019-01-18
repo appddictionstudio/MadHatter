@@ -1,9 +1,6 @@
-<!-- <input type="file" #file style="display: none" multiple /> -->
+<!--
 <div class="container" fxLayout="column" >
-    <!-- <h1 mat-dialog-title>Upload Files</h1> -->
-    <!-- <div>
-        <button mat-raised-button color="primary " class="add-files-btn ">Add Files</button>
-    </div> -->
+
 <div class="body">
 <input type="file" #file  (change)="onFileChange($event)">
 <div *ngFor="let att of attachments" class="filename">
@@ -14,7 +11,7 @@
         <p>
         </p>
       </div>
-<!-- <i class="fa fa-download" aria-hidden="true"></i> -->
+
 </div>
 </div>
 <div class="close">
@@ -24,18 +21,28 @@
     </mat-dialog-actions>
     </div>
     </div>
-<!-- </div> -->
+ -->
 
-<!-- <input type="file" #file style="display: none" (change)="onFilesAdded()" multiple /> -->
-
-
-<!-- <button mat-raised-button color="primary " class="add-files-btn " (click)="addFiles()">Add Files</button> -->
-
-
-<!-- <button *ngIf="showCancelButton " mat-button mat-dialog-close>Cancel</button> -->
-
-
-<!-- <button mat-raised-button color="primary " [disabled]="!canBeClosed " (click)="closeDialog() ">{{primaryButtonText}}</button> -->
-
-
-<!-- <mat-list-item *ngFor="let file of files "> -->
+ <ng-template #content let-modal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" >Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngFor="let att of t.attachments">
+        <p>
+          {{att.fileNm}}
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+  <div class= "launchbutton">
+      <button class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
+      <!-- <input type="file" #file  (change)="onFileChange($event)">
+      <button mat-button (click)="updateTopic(t)" >Save</button> -->
+    </div>

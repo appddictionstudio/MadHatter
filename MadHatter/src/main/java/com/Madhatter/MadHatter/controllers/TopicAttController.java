@@ -8,6 +8,7 @@ import javax.validation.ValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
 import com.Madhatter.MadHatter.services.AttachmentService;
+
 
 
 
@@ -109,4 +111,23 @@ public class TopicAttController {
 //			}
 //			
 	
+		//----------------Downloading----------
+		
+		@RequestMapping(value = { "/TopicAtt/downloadDoc/{id}"},
+				method = RequestMethod.GET)
+		public HttpEntity<byte[]> downloadExcelReport(@PathVariable Long id) throws Exception {
+			
+			Attachment att = attService.getFile(id);
+			TopicAtt topicAtt = new TopicAtt();
+		    /** assume that below line gives you file content in byte array **/
+		    byte[] binary = att.getAttachment();
+		    // prepare response
+		    HttpHeaders header = new HttpHeaders();
+//		    header.setContentType(new MediaType("application", "vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+		    header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+ topicAtt.getFileNm());
+		    header.setContentLength(topicAtt.getFileSz());
+		 
+		    return new HttpEntity<byte[]>(binary, header);
+		}
+		
 }

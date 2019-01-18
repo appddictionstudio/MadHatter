@@ -31,3 +31,10 @@
 .mat-dialog-container {
   height: fit-content !important;
 }
+
+.modal.in .modal-dialog {
+  position:fixed;
+  bottom:90px;
+  right:0px;
+  margin:0px;
+}

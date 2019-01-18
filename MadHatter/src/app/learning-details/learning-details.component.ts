@@ -8,12 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
 import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-learning-details',
   templateUrl: './learning-details.component.html',
-  styleUrls: ['./learning-details.component.scss']
+  styleUrls: ['./learning-details.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class LearningDetailsComponent implements OnInit, OnChanges {
 
@@ -24,8 +25,12 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private apiT: TopicsService,
     private router: Router,
-    private modalService: NgbModal
-    ) { }
+    private modalService: NgbModal,
+    config: NgbModalConfig
+    ) {
+      config.backdrop = 'static';
+    config.keyboard = false;
+    }
 
   topics: Topic[] = [];
   topicHide: Topic = new Topic();
