@@ -29,7 +29,7 @@
       </div>
 <ng-template #content let-modal let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
     <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -48,10 +48,10 @@
       <div class= "launchbutton">
         <button mat-button class="btn btn-lg btn-outline-primary" id="launchExcercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
       </div>
-      <div class="fileSave">
+      <!-- <div class="fileSave">
         <input type="file" #file  (change)="onFileChange($event)">
         <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateTopic(t)" >Save</button>
-      </div>
+      </div> -->
       </div>
     </div>
   </div>
