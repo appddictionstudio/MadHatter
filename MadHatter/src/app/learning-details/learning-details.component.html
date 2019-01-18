@@ -12,7 +12,7 @@
   </div>
   <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
   <div class="toggleDetailsButton">
-    <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
+    <!-- <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button> -->
   </div>
   </div>
   <div *ngIf="!hide">
@@ -58,10 +58,10 @@
     <div class= "launchbutton">
       <button mat-button class="btn btn-lg btn-outline-primary" id="launchExcercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
     </div>
-    <div class="fileSave">
+    <!-- <div class="fileSave">
       <input type="file" #file  (change)="onFileChange($event)">
       <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(t.id)" >Save</button>
-    </div>
+    </div> -->
     </div>
   </div>
 </div>
