@@ -103,27 +103,26 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
        console.log(t);
     }
 
-    // open(content) {
-    //   this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
-    //     this.closeResult = `Closed with: ${result}`;
-    //   }, (reason) => {
-    //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    //   });
-    // }
-    // private getDismissReason(reason: any): string {
-    //   if (reason === ModalDismissReasons.ESC) {
-    //     return 'by pressing ESC';
-    //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    //     return 'by clicking on a backdrop';
-    //   } else {
-    //     return  `with: ${reason}`;
-    //   }
-    // }
-
-    open(topicobj: Topic) {
-      const modalRef = this.modalService.open(LaunchDownloadsModalComponent);
-      modalRef.componentInstance.lesson = topicobj;
+    open(content) {
+      this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
     }
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
+
+    // open(content) {
+    //   const modalRef = this.modalService.open(LaunchDownloadsModalComponent);
+    // }
 
     toggleContent() {
       if (this.hide) {
