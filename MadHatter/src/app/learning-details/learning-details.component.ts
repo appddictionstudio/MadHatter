@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-// import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver';
 import { Attachments } from '../models/Attachments';
 
 @Component({
