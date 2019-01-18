@@ -18,6 +18,7 @@ export class LaunchDownloadsModalComponent implements OnInit {
   private selectedTopicId: number;
 
 @Input() topicobj: Topic;
+// @Input() lesson: Lesson;
 
   topic: any[];
   title: string;
@@ -47,8 +48,8 @@ export class LaunchDownloadsModalComponent implements OnInit {
     // });
   // this.tId = +this.route.snapshot.paramMap.get('id');
       // console.log(this.tId);
-this.getAllAttachments();
-this.getAllTopics();
+    this.getAllAttachments();
+    this.getAllTopics();
   }
 
   onFileChange(event) {
@@ -77,7 +78,7 @@ this.getAllTopics();
   }
 
   getAllAttachments() {
-this.api.getTopicAtt().subscribe(data =>{
+this.api.getTopicAtt().subscribe(data => {
   this.att = data as any[];
 });
   }

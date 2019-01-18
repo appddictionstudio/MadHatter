@@ -17,6 +17,7 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   displayedColumns: string[] = ['name'];
   showpeople: boolean;
   isLoading = true;
+  searchEnabled = false;
 
   constructor(
     private api: UserService,
@@ -27,22 +28,24 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   ngOnInit() {
   this.loadUsers();
     }
-    ngOnChanges() {
-      this.isLoading = true;
-      this.loadUsers();
-    }
-    loadUsers() {
-      this.api.getAllUsers().subscribe(data => {
-        this.members = data as any[];
-        this.isLoading = false;
-      });
-    }
-
+  ngOnChanges() {
+    this.isLoading = true;
+    this.loadUsers();
+  }
+  loadUsers() {
+    this.api.getAllUsers().subscribe(data => {
+      this.members = data as any[];
+      this.isLoading = false;
+    });
+  }
 
   searchByName(searchName) {
-
-    this.api.searchByName(searchName).subscribe(data =>
-      this.members = data as any[] );
-      this.showpeople = true;
+    if (searchName !== '') {
+      this.api.searchByName(searchName).subscribe(data =>
+        this.members = data as any[] );
+        this.showpeople = true;
+    } else {
+      this.loadUsers();
+    }
   }
 }

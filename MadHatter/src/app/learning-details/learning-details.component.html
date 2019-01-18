@@ -1,4 +1,8 @@
 <div class="learningContent">
+    <div *ngIf="isLoading" class="contentToDisplay">
+      <mat-progress-spinner color="primary" mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
     <div class= "headerLearningContent" *ngFor="let m of modules">
       <h1>{{m.title}}</h1>
       <div class="headerProgress" style="width:25em">
@@ -12,7 +16,7 @@
     </div>
     </div>
     <div *ngIf="!hide">
-    <hr>
+    <hr *ngIf="!isLoading">
     <div class="showTopics" *ngFor="let t of topics; let i = index" >
     <div class="subheader" *ngIf="t.hidden">
       <div class="subheaderlc">

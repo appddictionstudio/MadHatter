@@ -23,3 +23,11 @@ html, body {
     color: white;
     background: #0076a3;
 }
+
+h3 {
+    font-size: unset;
+}
+
+*, ::after, ::before {
+    box-sizing: unset;
+}

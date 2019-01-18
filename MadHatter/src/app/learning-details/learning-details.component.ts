@@ -9,6 +9,7 @@ import { TopicsService } from '../services/topics.service';
 import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-learning-details',
@@ -42,6 +43,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   currentUser: any;
   modId: any;
   module: any;
+  isLoading = true;
   documents: any[] = [];
   topicCenter: Topic = new Topic();
   topicslist: Topic[] = [];
@@ -78,6 +80,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       console.log(this.resources);
+      this.isLoading = false;
     });
     console.log(this.topics);
     }
@@ -85,6 +88,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     hideContent() {
       this.hide = true;
     }
+
     launch(t, index) {
 
        const dialogRef = this.dialog.open(LaunchDownloadsModalComponent , {
@@ -99,21 +103,26 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
        console.log(t);
     }
 
-    open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
+    // open(content) {
+    //   this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+    //     this.closeResult = `Closed with: ${result}`;
+    //   }, (reason) => {
+    //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //   });
+    // }
+    // private getDismissReason(reason: any): string {
+    //   if (reason === ModalDismissReasons.ESC) {
+    //     return 'by pressing ESC';
+    //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    //     return 'by clicking on a backdrop';
+    //   } else {
+    //     return  `with: ${reason}`;
+    //   }
+    // }
+
+    open(topicobj: Topic) {
+      const modalRef = this.modalService.open(LaunchDownloadsModalComponent);
+      modalRef.componentInstance.lesson = topicobj;
     }
 
     toggleContent() {
