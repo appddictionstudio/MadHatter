@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
 import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-learning-details',
@@ -82,6 +82,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     hideContent() {
       this.hide = true;
     }
+
     launch(t, index) {
 
        const dialogRef = this.dialog.open(LaunchDownloadsModalComponent , {
@@ -96,21 +97,26 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
        console.log(t);
     }
 
-    open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
+    // open(content) {
+    //   this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+    //     this.closeResult = `Closed with: ${result}`;
+    //   }, (reason) => {
+    //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //   });
+    // }
+    // private getDismissReason(reason: any): string {
+    //   if (reason === ModalDismissReasons.ESC) {
+    //     return 'by pressing ESC';
+    //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    //     return 'by clicking on a backdrop';
+    //   } else {
+    //     return  `with: ${reason}`;
+    //   }
+    // }
+
+    open(topicobj: Topic) {
+      const modalRef = this.modalService.open(LaunchDownloadsModalComponent);
+      modalRef.componentInstance.lesson = topicobj;
     }
 
     toggleContent() {

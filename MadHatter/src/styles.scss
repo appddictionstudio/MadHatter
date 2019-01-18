@@ -8,6 +8,10 @@
 @import 'app/videos/videos.component.scss';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'app/launch-downloads-modal/launch-downloads-modal.component.scss';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css';
+// @import 'styles/bootstrap.min.scss';
 
 html, body {
     height: 100%;
@@ -20,4 +24,12 @@ html, body {
 .mat-button{
     color: white;
     background: #0076a3;
+}
+
+h3 {
+    font-size: unset;
+}
+
+*, ::after, ::before {
+    box-sizing: unset;
 }

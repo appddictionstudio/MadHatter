@@ -86,7 +86,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatListModule,
     MatDialogModule,
     CommonModule,
-    NgbModule,
+    NgbModule.forRoot(),
     MatProgressSpinnerModule
   ],
   providers: [

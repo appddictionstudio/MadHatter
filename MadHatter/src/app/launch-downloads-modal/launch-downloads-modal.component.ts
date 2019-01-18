@@ -15,6 +15,7 @@ export class LaunchDownloadsModalComponent implements OnInit {
   private selectedTopicId: number;
 
 @Input() topicobj: Topic;
+// @Input() lesson: Lesson;
 
   topic: any[];
   title: string;
@@ -24,24 +25,24 @@ export class LaunchDownloadsModalComponent implements OnInit {
    attachments: Attachments[] = [];
    att: any[] = [];
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data,
+    // @Inject(MAT_DIALOG_DATA) public data,
   private route: ActivatedRoute,
   private router: Router,
   private api: TopicsService
   ) {
-    this.attachments = this.data;
+    // this.attachments = this.data;
    }
 
   ngOnInit() {
-    console.log(this.data);
+    // console.log(this.data);
     console.log(this.attachments);
     // this.route.paramMap.subscribe(params => {
     //   this.tId = params.get('id');
     // });
   // this.tId = +this.route.snapshot.paramMap.get('id');
       // console.log(this.tId);
-this.getAllAttachments();
-this.getAllTopics();
+    this.getAllAttachments();
+    this.getAllTopics();
   }
 
   onFileChange(event) {
@@ -70,7 +71,7 @@ this.getAllTopics();
   }
 
   getAllAttachments() {
-this.api.getTopicAtt().subscribe(data =>{
+this.api.getTopicAtt().subscribe(data => {
   this.att = data as any[];
 });
   }

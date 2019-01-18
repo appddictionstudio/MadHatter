@@ -5,7 +5,7 @@
         <button mat-raised-button color="primary " class="add-files-btn ">Add Files</button>
     </div> -->
 <div class="body">
-<input type="file" #file  (change)="onFileChange($event)">
+<input type="file" #file  (change)="onFileChange()">
 <div *ngFor="let att of attachments" class="filename">
      <h3> {{att.fileNm}}</h3>
 </div>
@@ -20,7 +20,7 @@
 <div class="close">
     <mat-dialog-actions class="actions ">
         <button mat-button mat-dialog-close>Close</button>
-        <button mat-raised-button color="primary "></button>
+        <button mat-raised-button color="primary"></button>
     </mat-dialog-actions>
     </div>
     </div>
