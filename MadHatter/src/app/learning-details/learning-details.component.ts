@@ -11,6 +11,7 @@ import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
+import { Attachments } from '../models/Attachments';
 
 @Component({
   selector: 'app-learning-details',
@@ -49,6 +50,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   topicCenter: Topic = new Topic();
   topicslist: Topic[] = [];
   closeResult: string;
+  attList: Attachments[] = [];
+
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -60,6 +63,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.currentUser = data;
     });
     this.getAllTopics();
+    this.getAtt();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -146,6 +150,11 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     });
   }
 
+  getAtt() {
+    this.apiT.getAttachments().subscribe(data => {
+      this.attList = data as any[];
+    });
+  }
 //     toggleContent(t) {
 //       this.modId = this.route.snapshot.paramMap.get('id');
 

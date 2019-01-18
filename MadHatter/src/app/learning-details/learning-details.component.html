@@ -36,14 +36,16 @@
   </div>
   <div class="modal-body">
     <div *ngFor="let att of t.attachments">
-      <p>
+      <div *ngFor="let a of attList">
+      <p *ngIf="att.attachmentId === a.id">
         {{att.fileNm}}
-        <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(att.id)">Download</button>
+        <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
       </p>
+    </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
       <div class= "launchbutton">

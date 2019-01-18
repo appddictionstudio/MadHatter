@@ -52,4 +52,8 @@ export class TopicsService {
     { headers: headers, responseType: 'blob', observe: 'response' });
   }
 
+  getAttachments(): Observable<any> {
+    return this.http.get(environment.apiUrl + 'att');
+  }
+
 }
