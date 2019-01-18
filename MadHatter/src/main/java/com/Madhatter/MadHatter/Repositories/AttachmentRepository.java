@@ -11,5 +11,5 @@ import com.Madhatter.MadHatter.models.Attachment;
 public interface AttachmentRepository extends JpaRepository<Attachment, Long>{
 	
 //	List<Attachment> findByPostId(Long PostId);
-	Optional<Attachment> findById(Long postId);
+	Optional<Attachment> getAttachment(Long postId);
 }

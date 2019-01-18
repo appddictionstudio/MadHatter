@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-learning-details',
@@ -165,23 +166,16 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 //   }
 
 onFileChange(event) {
-  console.log(event);
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
-    console.log(true);
     const file = event.target.files[0];
-    console.log(file);
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log('onload');
       const formData = new FormData();
       formData.append('file', file);
-      console.log(file);
       this.apiT.uploadTopicAttachment(formData).subscribe(
         result => {
           this.documents.push(result);
-          console.log(result);
-
         }
       );
     };
@@ -189,16 +183,33 @@ onFileChange(event) {
 
 }
 
-SaveTopic() {
-this.apiT.saveTopic(this.topicCenter).subscribe(data => {
-  this.ngOnInit();
-});
-}
-
-updateTopic(topic) {
-  this.topicCenter.attachments = this.documents;
-  this.apiT.updateTopic(topic).subscribe(data => {
+  SaveTopic() {
+  this.apiT.saveTopic(this.topicCenter).subscribe(data => {
+    this.ngOnInit();
   });
-}
+  }
 
+  updateTopic(topic) {
+    this.topicCenter.attachments = this.documents;
+    this.apiT.updateTopic(topic).subscribe(data => {
+    });
+  }
+
+  downloadAttatchemnts(attachmentId) {
+    this.apiT.DownloadAtt(attachmentId).subscribe(response => {
+        console.log(response);
+       this.saveToFileSystem(response);
+     });
+ }
+
+ private saveToFileSystem(response) {
+  console.log('saving file');
+   const contentDispositionHeader: string = response.headers.get(
+     'Content-Disposition'
+   );
+   const parts: string[] = contentDispositionHeader.split(';');
+   const filename = parts[1].split('=')[1];
+   const blob = new Blob([response.body], { type: 'text/plain' });
+   saveAs(blob, filename);
+ }
 }

@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.ValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -113,21 +116,27 @@ public class TopicAttController {
 	
 		//----------------Downloading----------
 		
-		@RequestMapping(value = { "/TopicAtt/downloadDoc/{id}"},
-				method = RequestMethod.GET)
-		public HttpEntity<byte[]> downloadExcelReport(@PathVariable Long id) throws Exception {
-			
+		@RequestMapping(value = "/TopicAtt/downloadDoc/{id}", method = RequestMethod.GET)
+		@ResponseBody
+		public void getExcelTemplate(HttpServletRequest request, HttpServletResponse response,@PathVariable Long id) throws Exception {
 			Attachment att = attService.getFile(id);
-			TopicAtt topicAtt = new TopicAtt();
+			TopicAtt attachment = new TopicAtt();
+			response.setContentType("application/octet-stream");
+			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
+		    response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getFileNm());
+
+		    
 		    /** assume that below line gives you file content in byte array **/
 		    byte[] binary = att.getAttachment();
-		    // prepare response
-		    HttpHeaders header = new HttpHeaders();
-//		    header.setContentType(new MediaType("application", "vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-		    header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+ topicAtt.getFileNm());
-		    header.setContentLength(topicAtt.getFileSz());
-		 
-		    return new HttpEntity<byte[]>(binary, header);
+		    
+//		    int x = fis.available();
+//		    byte byteArray[] = new byte[x];
+//		    logger.info(" File size :"+byteArray.length);
+//		    fis.read(byteArray);
+
+		    response.getOutputStream().write(binary);
+		    response.flushBuffer();
+//		    fis.close();
 		}
 		
 }

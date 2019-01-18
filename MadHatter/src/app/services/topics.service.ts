@@ -21,13 +21,9 @@ export class TopicsService {
   }
 
   uploadTopicAttachment(form) {
-    console.log(form);
     const headers = new HttpHeaders();
-    console.log('headers appending');
     headers.append('Content-Type', 'multipart/form-data');
-    console.log('setting heders');
     headers.set('Accept', 'application/json');
-    console.log('going to api');
     return this.http.post(environment.apiUrl + 'uploadDoc', form, { headers: headers });
 
   }
@@ -48,7 +44,12 @@ export class TopicsService {
 
   }
 
-  DownloadAtt(){
+  DownloadAtt(attachmentId: number) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/octet-stream');
+    headers.set('Accept', 'text/plain');
+    return this.http.get(environment.apiUrl + 'TopicAtt/downloadDoc/' + attachmentId,
+    { headers: headers, responseType: 'blob', observe: 'response' });
   }
 
 }
