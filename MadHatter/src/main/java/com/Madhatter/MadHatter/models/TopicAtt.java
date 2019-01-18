@@ -22,15 +22,13 @@ public class TopicAtt implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TOPIC_ATT_SEQUENCE")
 	private long id;
 	
-	@ManyToOne
-	@JoinColumn(name="ATTACHMENT_ID", referencedColumnName="ID", nullable=false)
-	@JsonIgnore
-	private Attachment attachment;
+	@Column(name="ATTACHMENT_ID")
+	private long attachmentId;
 	
 	@ManyToOne
 	@JoinColumn(name="TOPIC_ID", referencedColumnName="ID", nullable=false)
 	@JsonIgnore
-	private Modules topic;
+	private Topic topic;
 	 
 	@Column(name="FILE_NM")
 	private String fileNm;
@@ -48,20 +46,21 @@ public class TopicAtt implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public Attachment getAttachment() {
-		return attachment;
+	
+	public long getAttachmentId() {
+		return attachmentId;
 	}
 
-	public void setAttachment(Attachment attachment) {
-		this.attachment = attachment;
+	public void setAttachmentId(long attachmentId) {
+		this.attachmentId = attachmentId;
 	}
 
-	public Modules getTopic() {
+
+	public Topic getTopic() {
 		return topic;
 	}
 
-	public void setTopic(Modules topic) {
+	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
 

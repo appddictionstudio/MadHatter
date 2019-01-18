@@ -12,5 +12,4 @@ public interface AttachmentRepository extends JpaRepository<Attachment, Long>{
 	
 //	List<Attachment> findByPostId(Long PostId);
 	Optional<Attachment> findById(Long postId);
-
 }

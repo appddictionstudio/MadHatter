@@ -5,11 +5,16 @@
         <button mat-raised-button color="primary " class="add-files-btn ">Add Files</button>
     </div> -->
 <div class="body">
-<div class="filename">
-     <h3> Exercise 1: Iconic Communication </h3>
+<input type="file" #file  (change)="onFileChange($event)">
+<div *ngFor="let att of attachments" class="filename">
+     <h3> {{att.fileNm}}</h3>
 </div>
 <div class= "download">
-<i class="fa fa-download" aria-hidden="true"></i>
+    <div >
+        <p>
+        </p>
+      </div>
+<!-- <i class="fa fa-download" aria-hidden="true"></i> -->
 </div>
 </div>
 <div class="close">

@@ -14,10 +14,10 @@ import com.Madhatter.MadHatter.models.TopicAtt;
 
 @Repository
 public interface TopicAttRepository extends JpaRepository<TopicAtt, Long> {
-	
-	@Query("Select t.attachment from TopicAtt t where t.id =?1")
-	Optional<Attachment>getAttachmentByTopicAttId(Long id);
-	
+//	
+//	@Query("Select t.attachment from TopicAtt t where t.id =?1")
+//	Optional<Attachment>getAttachmentByTopicAttId(Long id);
+//	
 	@Query("select t from TopicAtt t")
 	public List<TopicAtt> getAllTopicAtt();
 }

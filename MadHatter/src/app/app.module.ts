@@ -39,6 +39,8 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { MatListModule } from '@angular/material/list';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { NgbdModalBasic } from './modal-basic';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { MatListModule } from '@angular/material/list';
     LearningDetailsComponent,
     AdminComponent,
     LaunchDownloadsModalComponent,
+    // NgbdModalBasic
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatListModule,
     MatDialogModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   providers: [
     RequestInterceptor,
