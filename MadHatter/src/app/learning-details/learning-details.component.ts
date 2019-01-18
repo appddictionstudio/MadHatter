@@ -72,6 +72,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.modules = [this.module];
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
+      console.log(this.resources);
     });
     console.log(this.topics);
     }
@@ -115,6 +116,13 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
         this.hide = false;
     } else {
       this.hide = true;
+    }
+  }
+  ifResources() {
+    if (this.resources.length > 0 ) {
+      return true;
+    } else {
+      return false;
     }
   }
 

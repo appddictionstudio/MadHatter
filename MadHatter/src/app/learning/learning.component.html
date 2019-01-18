@@ -5,16 +5,26 @@
         <img src="../../assets/Rectangle 9.png">
         <div class="tabText">
           <h1>Advanced Software Developer</h1>
-          <p>This is a 12 week bootcamp that takes experienced developers and teaches them the tools to work in a agile full stack team. Some technologies covered will be: Pivotal Cloud Foundry, Java, Angular, J Unit, and Fortify. The course will revolve around launching a mock enterprise level application. E.g. a store management or base management system. Students will model the agile work flow by first setting up their application on the cloud so that it is publicly accessible, and then using CI/CD principles to continuously release new features of the application over the course of the bootcamp. Throughout this, they will be writing their code in accordance with Test Driven Development and standard security principles.
-            </p>
+          <p>This is a 15 week bootcamp that takes experienced developers and teaches them the tools to work
+             in a agile full stack team. Some technologies covered will be: Pivotal Cloud Foundry, Java, Angular, 
+             J Unit, and Fortify. The course will revolve around launching a mock enterprise level application. 
+             E.g. a store management or base management system. Students will model the agile work flow by first 
+             setting up their application on the cloud so that it is publicly accessible, and then using CI/CD 
+             principles to continuously release new features of the application over the course of the bootcamp. 
+             Throughout this, they will be writing their code in accordance with Test Driven Development and 
+             standard security principles.</p>
         </div>
         </div>
       </div>
       <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
           <mat-tab class="notStarted" label="Not Started">
+              <div *ngIf="isLoading" class="contentToDisplay">
+                <mat-progress-spinner color="primary" mode="indeterminate">
+                </mat-progress-spinner>
+              </div>
             <div  *ngIf="!classesPresent()">There is nothing to display here</div>
             <div id="cardRow" class="row">
-                <div id="cardCol" class="col-4">
+            <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
               <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
                 <h3>{{m.title}}</h3>
@@ -31,6 +41,10 @@
               </div>
         </mat-tab>
       <mat-tab class="inProgress" label="In Progress">
+          <div *ngIf="isLoading" class="contentToDisplay">
+              <mat-progress-spinner color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
@@ -50,6 +64,10 @@
             </div>
       </mat-tab>
       <mat-tab class="completed" label="Completed">
+          <div *ngIf="isLoading" class="contentToDisplay">
+              <mat-progress-spinner color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
@@ -76,16 +94,20 @@
       <img src="../../assets/Rectangle 9.png">
       <div class="tabText">
         <h1>UI / UX Bootcamp</h1>
-        <p>In this 12 week Bootcamp, learners will gain a solid understanding of the fundamentals of
-          UI/UX design. Learners will discover user centric design, prototyping, engagin stakeholders,
-          and how to solve real world degisn problems. They will learn how to properly research a user
-          experience with the three principles of Inspiration, Ideation, and Implementation. Learners
-          will discover how to implement Lean UX for Agile working environments</p>
+        <p>In this 12 week Bootcamp, learners will gain a solid understanding of the fundamentals of 
+          UI/UX design. Learners will discover user-centric design, prototyping, engaging stakeholders, 
+          and how to solve real world design problems. They will learn how to properly research a user 
+          experience with the three principles of Inspiration, Ideation, and Implementation. Learners will 
+          discover how to implement Lean UX for Agile working environments </p>
       </div>
       </div>
     </div>
     <mat-tab-group class="UIProgress" mat-align-tabs="center"[disableRipple]=true>
         <mat-tab class="notStarted" label="Not Started">
+            <div *ngIf="isLoading" class="contentToDisplay">
+                <mat-progress-spinner color="primary" mode="indeterminate">
+                </mat-progress-spinner>
+              </div>
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
             <div id="cardCol" class="col-4">
@@ -104,6 +126,10 @@
           </div>
         </mat-tab>
       <mat-tab class="inProgress" label="In Progress">
+          <div *ngIf="isLoading" class="contentToDisplay">
+              <mat-progress-spinner color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
@@ -122,6 +148,10 @@
             </div>
       </mat-tab>
       <mat-tab class="completed" label="Completed">
+          <div *ngIf="isLoading" class="contentToDisplay">
+              <mat-progress-spinner color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
           <div  *ngIf="!classesPresent()">There is nothing to display here</div>
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">

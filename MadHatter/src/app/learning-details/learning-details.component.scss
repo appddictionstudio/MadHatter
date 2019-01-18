@@ -2,6 +2,10 @@
     padding-bottom: 3%;
 }
 
+.cdk-global-scrollblock {
+    overflow-y: hidden;
+}
+
 .headerLearningContent {
     display: grid;
     grid-template-columns: .5fr .5fr .2fr .3fr;

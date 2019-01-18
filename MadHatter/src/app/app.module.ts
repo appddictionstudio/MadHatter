@@ -41,6 +41,7 @@ import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-d
 import { MatListModule } from '@angular/material/list';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { NgbdModalBasic } from './modal-basic';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     MatDialogModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     RequestInterceptor,

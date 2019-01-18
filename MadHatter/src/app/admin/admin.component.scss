@@ -7,3 +7,20 @@
     grid-column: 3;
     grid-row: 1;
 }
+
+.progress {
+    grid-column: 2;
+    grid-row: 1;
+}
+#adminInstructor .learningContent, #adminStudent .learningContent {
+    padding-bottom: unset;
+}
+
+#headerTitle{
+    text-align: center;
+    font-weight: bold;
+}
+
+.classSeperation {
+    padding-bottom: 10%;
+}

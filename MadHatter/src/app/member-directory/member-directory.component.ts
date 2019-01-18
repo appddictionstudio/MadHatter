@@ -16,6 +16,8 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   members: Users[] = [];
   displayedColumns: string[] = ['name'];
   showpeople: boolean;
+  isLoading = true;
+
   constructor(
     private api: UserService,
     private router: Router,
@@ -26,11 +28,13 @@ export class MemberDirectoryComponent implements OnInit, OnChanges {
   this.loadUsers();
     }
     ngOnChanges() {
+      this.isLoading = true;
       this.loadUsers();
     }
     loadUsers() {
       this.api.getAllUsers().subscribe(data => {
         this.members = data as any[];
+        this.isLoading = false;
       });
     }
 

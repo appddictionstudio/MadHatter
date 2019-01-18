@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1.9fr .1fr;
-    height: 101%;
+    height: 100%;
     text-align: center;
     overflow: hidden;
 }
@@ -94,7 +94,7 @@ select:-webkit-autofill:focus {
 
 .graphicLogin img {
     width: 100%;
-    height: 105%;
+    height: 106%;
 }
 #UIUX {
     grid-column: 1;
