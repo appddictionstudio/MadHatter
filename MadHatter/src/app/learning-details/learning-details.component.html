@@ -1,69 +1,73 @@
 <div class="learningContent">
-    <div *ngIf="isLoading" class="contentToDisplay">
-      <mat-progress-spinner color="primary" mode="indeterminate">
-      </mat-progress-spinner>
-    </div>
-    <div class= "headerLearningContent" *ngFor="let m of modules">
-      <h1>{{m.title}}</h1>
-      <div class="headerProgress" style="width:25em">
-        <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
-          <span>0%</span>
-        </div>
-    </div>
-    <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
-    <div class="toggleDetailsButton">
-      <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
-    </div>
-    </div>
-    <div *ngIf="!hide">
-    <hr *ngIf="!isLoading">
-    <div class="showTopics" *ngFor="let t of topics; let i = index" >
-    <div class="subheader" *ngIf="t.hidden">
-      <div class="subheaderlc">
-        <h3>{{t.topicTitle}}</h3>
+  <div *ngIf="isLoading" class="contentToDisplay">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class= "headerLearningContent" *ngFor="let m of modules">
+    <h1>{{m.title}}</h1>
+    <div class="headerProgress" style="width:25em">
+      <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
+        <span>0%</span>
       </div>
-      <div id="detailProgress" class="progress">
-        <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
-          <span>0%</span>
-        </div>
+  </div>
+  <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+  <div class="toggleDetailsButton">
+    <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
+  </div>
+  </div>
+  <div *ngIf="!hide">
+  <hr *ngIf="!isLoading">
+  <div class="showTopics" *ngFor="let t of topics; let i = index" >
+  <div class="subheader" *ngIf="t.hidden">
+    <div class="subheaderlc">
+      <h3>{{t.topicTitle}}</h3>
+    </div>
+    <div id="detailProgress" class="progress">
+      <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
+        <span>0%</span>
       </div>
+    </div>
 <ng-template #content let-modal let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
-    <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
+  <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngFor="let att of t.attachments">
+      <p >
+          {{att.fileNm}}
+          <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(att.id)">Download</button>
+        </p>
+    <!-- <div *ngFor="let a of attList">
+    <p *ngIf="att.attachmentId === a.id">
+      {{att.fileNm}}
+      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
+    </p>
+  </div> -->
   </div>
-  <div class="modal-body">
-    <div *ngFor="let att of t.attachments">
-      <div *ngFor="let a of attList">
-      <p *ngIf="att.attachmentId === a.id">
-        {{att.fileNm}}
-        <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
-      </p>
-    </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
-  </div>
+</div>
+<!-- <div class="modal-footer">
+  <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+</div> -->
 </ng-template>
-      <div class= "launchbutton">
-        <button mat-button class="btn btn-lg btn-outline-primary" id="launchExcercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
-      </div>
-      <div class="fileSave">
-        <input type="file" #file  (change)="onFileChange($event)">
-        <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(t.id)" >Save</button>
-      </div>
-      </div>
+    <div class= "launchbutton">
+      <button mat-button class="btn btn-lg btn-outline-primary" id="launchExcercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Excercises </button>
+    </div>
+    <div class="fileSave">
+      <input type="file" #file  (change)="onFileChange($event)">
+      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(t.id)" >Save</button>
+    </div>
     </div>
   </div>
-  <div class="resourceHeader" *ngIf="ifResources()">
-    <h1>Resources</h1>
+</div>
+<div class="resourceHeader" *ngIf="ifResources()">
+  <h1>Resources</h1>
 
-  <hr>
-  <div class="resourceLinks" *ngFor="let r of resources">
-    <a href="{{r.links}}">{{r.links}}</a>
-  </div>
+<hr>
+<div class="resourceLinks" *ngFor="let r of resources">
+  <a href="{{r.links}}">{{r.links}}</a>
+</div>
 </div>
 </div>

@@ -150,3 +150,36 @@ h1 {
     grid-column: 3;
     grid-row: 1;
 }
+
+.learningDetailGrid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1.8fr .2fr;
+  // border-bottom: 1px solid black;
+}
+
+.learningDetailGridSeperator:nth-child(even) {
+  background: rgba(0,0,0,.05);
+}
+
+.learningDetailName:nth-last-child() {
+  grid-column: 1;
+  grid-row: 1;
+  height: 18px;
+  margin: auto 0%;
+}
+
+#learningDetailDownload {
+  grid-column: 2;
+  grid-row: 1;
+  height: 50px;
+  margin: auto;
+}
+
+button.close {
+  background: #004a80;
+}
+
+#modal-basic-title {
+  font-size: 26px;
+}
