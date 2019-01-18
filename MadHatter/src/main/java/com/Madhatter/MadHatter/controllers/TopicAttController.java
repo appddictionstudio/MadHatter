@@ -119,8 +119,9 @@ public class TopicAttController {
 		@RequestMapping(value = "/TopicAtt/downloadDoc/{id}", method = RequestMethod.GET)
 		@ResponseBody
 		public void getExcelTemplate(HttpServletRequest request, HttpServletResponse response,@PathVariable Long id) throws Exception {
-			Attachment att = attService.getFile(id);
-			TopicAtt attachment = new TopicAtt();
+			
+			TopicAtt attachment = repo.getOne(id);
+			Attachment att = attService.getFile(attachment.getAttachmentId());
 			response.setContentType("application/octet-stream");
 			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 		    response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getFileNm());
