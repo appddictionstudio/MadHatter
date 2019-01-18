@@ -168,14 +168,19 @@ onFileChange(event) {
   console.log(event);
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
+    console.log(true);
     const file = event.target.files[0];
+    console.log(file);
     reader.readAsDataURL(file);
     reader.onload = () => {
+      console.log('onload');
       const formData = new FormData();
       formData.append('file', file);
+      console.log(file);
       this.apiT.uploadTopicAttachment(formData).subscribe(
         result => {
           this.documents.push(result);
+          console.log(result);
 
         }
       );

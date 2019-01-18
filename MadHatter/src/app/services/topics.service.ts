@@ -21,9 +21,13 @@ export class TopicsService {
   }
 
   uploadTopicAttachment(form) {
+    console.log(form);
     const headers = new HttpHeaders();
+    console.log('headers appending');
     headers.append('Content-Type', 'multipart/form-data');
+    console.log('setting heders');
     headers.set('Accept', 'application/json');
+    console.log('going to api');
     return this.http.post(environment.apiUrl + 'uploadDoc', form, { headers: headers });
 
   }
