@@ -1,9 +1,9 @@
-<!-- <input type="file" #file style="display: none" multiple /> -->
+<!-- <input type="file" #file style="display: none" multiple />
 <div class="container" fxLayout="column" >
-    <!-- <h1 mat-dialog-title>Upload Files</h1> -->
-    <!-- <div>
+    <h1 mat-dialog-title>Upload Files</h1>
+    <div>
         <button mat-raised-button color="primary " class="add-files-btn ">Add Files</button>
-    </div> -->
+    </div>
 <div class="body">
 <input type="file" #file  (change)="onFileChange()">
 <div *ngFor="let att of attachments" class="filename">
@@ -14,7 +14,7 @@
         <p>
         </p>
       </div>
-<!-- <i class="fa fa-download" aria-hidden="true"></i> -->
+<i class="fa fa-download" aria-hidden="true"></i>
 </div>
 </div>
 <div class="close">
@@ -24,18 +24,18 @@
     </mat-dialog-actions>
     </div>
     </div>
-<!-- </div> -->
+</div>
 
-<!-- <input type="file" #file style="display: none" (change)="onFilesAdded()" multiple /> -->
-
-
-<!-- <button mat-raised-button color="primary " class="add-files-btn " (click)="addFiles()">Add Files</button> -->
+<input type="file" #file style="display: none" (change)="onFilesAdded()" multiple />
 
 
-<!-- <button *ngIf="showCancelButton " mat-button mat-dialog-close>Cancel</button> -->
+<button mat-raised-button color="primary " class="add-files-btn " (click)="addFiles()">Add Files</button>
 
 
-<!-- <button mat-raised-button color="primary " [disabled]="!canBeClosed " (click)="closeDialog() ">{{primaryButtonText}}</button> -->
+<button *ngIf="showCancelButton " mat-button mat-dialog-close>Cancel</button>
 
 
-<!-- <mat-list-item *ngFor="let file of files "> -->
+<button mat-raised-button color="primary " [disabled]="!canBeClosed " (click)="closeDialog() ">{{primaryButtonText}}</button>
+
+
+<mat-list-item *ngFor="let file of files "> -->
