@@ -34,6 +34,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   currentUser: any;
   modId: any;
   module: any;
+  isLoading = true;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -65,6 +66,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       console.log(this.resources);
+      this.isLoading = false;
     });
     }
 
