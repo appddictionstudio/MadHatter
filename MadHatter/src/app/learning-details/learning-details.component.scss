@@ -162,7 +162,7 @@ h1 {
   background: rgba(0,0,0,.05);
 }
 
-.learningDetailName:nth-last-child() {
+.learningDetailName {
   grid-column: 1;
   grid-row: 1;
   height: 18px;
