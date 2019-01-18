@@ -4,10 +4,11 @@ import { Topic } from '../models/Topic';
 import { Module } from '../models/Module';
 import { Resources } from '../models/Resources';
 import { UserService } from '../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
 import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-learning-details',
@@ -21,7 +22,9 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private api: ModuleService,
     private apiU: UserService,
     private route: ActivatedRoute,
-    private apiT: TopicsService
+    private apiT: TopicsService,
+    private router: Router,
+    private modalService: NgbModal
     ) { }
 
   topics: Topic[] = [];
@@ -35,6 +38,10 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   modId: any;
   module: any;
   isLoading = true;
+  documents: any[] = [];
+  topicCenter: Topic = new Topic();
+  topicslist: Topic[] = [];
+  closeResult: string;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -45,6 +52,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
     });
+    this.getAllTopics();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -68,6 +76,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       console.log(this.resources);
       this.isLoading = false;
     });
+    console.log(this.topics);
     }
 
     hideContent() {
@@ -79,12 +88,31 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
         height: '420px',
         width: '600px',
         data: {
-          selectedTopicid: t.id,
+          selectedTopicid: t,
         }
       });
        dialogRef.afterClosed().subscribe(result => {
        });
+       console.log(t);
     }
+
+    open(content) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
+
     toggleContent() {
       if (this.hide) {
         this.hide = false;
@@ -98,6 +126,12 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     } else {
       return false;
     }
+  }
+
+  getAllTopics() {
+    this.apiT.getTopics().subscribe(data => {
+      this.topicslist = data as any[];
+    });
   }
 
 //     toggleContent(t) {
@@ -119,5 +153,36 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 //  });
 //   }
 
+onFileChange(event) {
+  console.log(event);
+  const reader = new FileReader();
+  if (event.target.files && event.target.files.length > 0) {
+    const file = event.target.files[0];
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const formData = new FormData();
+      formData.append('file', file);
+      this.apiT.uploadTopicAttachment(formData).subscribe(
+        result => {
+          this.documents.push(result);
+
+        }
+      );
+    };
+  }
+
+}
+
+SaveTopic() {
+this.apiT.saveTopic(this.topicCenter).subscribe(data => {
+  this.ngOnInit();
+});
+}
+
+updateTopic(topic) {
+  this.topicCenter.attachments = this.documents;
+  this.apiT.updateTopic(topic).subscribe(data => {
+  });
+}
 
 }

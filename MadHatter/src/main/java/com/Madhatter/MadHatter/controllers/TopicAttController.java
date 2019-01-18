@@ -24,6 +24,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Madhatter.MadHatter.Repositories.TopicAttRepository;
 import com.Madhatter.MadHatter.models.Attachment;
+import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
 import com.Madhatter.MadHatter.services.AttachmentService;
 
@@ -67,11 +68,15 @@ public class TopicAttController {
        	 
        	 TopicAtt topicAtt = new TopicAtt();
 
-       	 topicAtt.setAttachment(att);
+       	topicAtt.setAttachmentId(att.getId());
        	topicAtt.setFileNm(file.getOriginalFilename());
        	topicAtt.setFileSz(new Long(att.getAttachment().length));
-           
-            
+       	
+       	Topic topic = new Topic();
+       	topic.setId((long) 1);
+       	topicAtt.setTopic(topic);
+       	
+       	
             repo.save(topicAtt);
 
             return ResponseEntity.ok(topicAtt);
@@ -90,18 +95,18 @@ public class TopicAttController {
 	
 	//------------Upload Attachment By Topic Id-----
 	
-			@RequestMapping(value = "/topicatt/{id}", method = RequestMethod.GET)
-			ResponseEntity<ByteArrayResource> getAttByTopicAttId(@PathVariable long id) {
-				Optional<Attachment> attachment = repo.getAttachmentByTopicAttId(id);
-				
-				String ext = attachment.get().getMimeType().getExtension();
-				String mimeType = attachment.get().getMimeType().getMimeType();
-				
-				return ResponseEntity.ok()
-						.contentType(MediaType.parseMediaType(mimeType))
-						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"attachment.\"" + ext + "\"")
-						.body(new ByteArrayResource(attachment.get().getAttachment()));
-			}
-			
+//			@RequestMapping(value = "/topicatt/{id}", method = RequestMethod.GET)
+//			ResponseEntity<ByteArrayResource> getAttByTopicAttId(@PathVariable long id) {
+//				Optional<Attachment> attachment = repo.getAttachmentByTopicAttId(id);
+//				
+//				String ext = attachment.get().getMimeType().getExtension();
+//				String mimeType = attachment.get().getMimeType().getMimeType();
+//				
+//				return ResponseEntity.ok()
+//						.contentType(MediaType.parseMediaType(mimeType))
+//						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"attachment.\"" + ext + "\"")
+//						.body(new ByteArrayResource(attachment.get().getAttachment()));
+//			}
+//			
 	
 }

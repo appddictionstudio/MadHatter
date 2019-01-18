@@ -39,6 +39,8 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { MatListModule } from '@angular/material/list';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { NgbdModalBasic } from './modal-basic';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
@@ -56,6 +58,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LearningDetailsComponent,
     AdminComponent,
     LaunchDownloadsModalComponent,
+    // NgbdModalBasic
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatListModule,
     MatDialogModule,
     CommonModule,
-    MatProgressSpinnerModule,
+    NgbModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     RequestInterceptor,
