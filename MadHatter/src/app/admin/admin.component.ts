@@ -27,6 +27,7 @@ export class AdminComponent implements OnInit, OnChanges {
   allTopic: Topic[] = [];
   modules: Module[] = [];
   mods: Module[] = [];
+  isLoading = true;
 
   ngOnInit() {
     this.getUserRole();
@@ -41,6 +42,7 @@ export class AdminComponent implements OnInit, OnChanges {
     this.api.getModule().subscribe(res => {
       this.modules = res as any[];
       console.log(this.modules);
+      this.isLoading = false;
     });
   }
 
@@ -58,6 +60,8 @@ export class AdminComponent implements OnInit, OnChanges {
 
   getUserRoleInstructor() {
     if (this.currentUser.role === 'ROLE_TEACHER') {
+      return true;
+    } if(this.currentUser.role === 'ROLE_ADMIN') {
       return true;
     }
   }

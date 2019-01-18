@@ -56,6 +56,10 @@
     </div> -->
 </div>
 <div class = "memberscontainer">
+    <div *ngIf="isLoading" class="contentToDisplay">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
   <table>
     <tbody>
       <tr *ngFor="let member of members">
