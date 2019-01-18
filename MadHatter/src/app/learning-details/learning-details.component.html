@@ -10,22 +10,18 @@
         <span>0%</span>
       </div>
   </div>
-  <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
-  <div class="toggleDetailsButton">
-    <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button>
-  </div>
-  </div>
-  <div *ngIf="!hide">
-  <hr *ngIf="!isLoading">
-  <div class="showTopics" *ngFor="let t of topics; let i = index" >
-  <div class="subheader" *ngIf="t.hidden">
-    <div class="subheaderlc">
-      <h3>{{t.topicTitle}}</h3>
-    </div>
-    <div id="detailProgress" class="progress">
-      <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
-        <span>0%</span>
-      </div>
+  <div class="modal-body">
+    <div *ngFor="let att of t.attachments">
+        <p >
+            {{att.fileNm}}
+            <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(att.id)">Download</button>
+          </p>
+      <!-- <div *ngFor="let a of attList">
+      <p *ngIf="att.attachmentId === a.id">
+        {{att.fileNm}}
+        <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
+      </p>
+    </div> -->
     </div>
 <ng-template #content let-modal let-c="close" let-d="dismiss">
 <div class="modal-header">
