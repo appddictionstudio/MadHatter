@@ -112,11 +112,11 @@ public class TopicController {
 			}
 			topic.setId(id);
 			
-			Modules mod = topic.getMod();
-			mod.getId();
-			
-			topic.setMod(mod);;
-			
+//			Modules mod = topic.getMod();
+//			mod.getId();
+//			
+//			topic.setMod(mod);;
+//			
 			repo.save(topic);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}
