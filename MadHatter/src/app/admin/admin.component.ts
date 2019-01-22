@@ -62,6 +62,29 @@ export class AdminComponent implements OnInit, OnChanges {
     }
   }
 
+  teachingRole(role) {
+    if (role === 'ASD') {
+      if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+        return false;
+      } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+        this.teacherRole = 2;
+        return true;
+      } if (this.currentUser.role === 'ROLE_ADMIN') {
+        return true;
+      }
+    }
+    if (role === 'UI') {
+      if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+        this.teacherRole = 2;
+        return false;
+      } if (this.currentUser.role === 'ROLE_ADMIN') {
+        return true;
+      }
+    }
+  }
+
   getUserRoleInstructor() {
     if (this.currentUser.role === 'ROLE_TEACHER_UI') {
       this.teacherRole = 1;

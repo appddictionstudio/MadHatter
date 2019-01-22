@@ -6,7 +6,7 @@
     </mat-progress-spinner>
 </div>
 <div id="adminInstructor" *ngIf="getUserRoleInstructor()">
-  <div *ngIf="teacherRole === 2" class="classSeperation">
+  <div *ngIf="teachingRole('ASD')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="m.bootcamp">
@@ -27,7 +27,8 @@
             <h3>{{t.topicTitle}}</h3>
           </div>
           <div class="toggleDetailsButton">
-            <button mat-button (click)=toggleContent()>Toggle Content for Students</button>
+            <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
+            <mat-checkbox [checked]="!ishidden(t.hidden)" (click)=toggleContent(t,m.id)></mat-checkbox>
           </div>
           </div>
         </div>
@@ -35,7 +36,7 @@
       </div>
   </div>
 </div>
-<div *ngIf="teacherRole === 1" class="classSeperation">
+<div *ngIf="teachingRole('UI')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="!m.bootcamp">
