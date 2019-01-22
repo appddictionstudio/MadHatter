@@ -20,12 +20,13 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
-
+import { SnotifyService } from 'ng-snotify';
 import { ErrorHandler } from './services/error_handler';
 import { RequestInterceptor } from './services/http_interceptor';
 import {
   MatButtonModule,
   MatMenuModule,
+  MatCheckboxModule,
   MatToolbarModule,
   MatIconModule,
   MatFormFieldModule,
@@ -71,6 +72,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     HttpClientModule,
     YoutubePlayerModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
@@ -87,7 +89,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogModule,
     CommonModule,
     NgbModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [
     RequestInterceptor,

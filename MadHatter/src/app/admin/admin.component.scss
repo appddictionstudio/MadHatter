@@ -24,3 +24,17 @@
 .classSeperation {
     padding-bottom: 10%;
 }
+
+h3 {
+    letter-spacing: 0px;
+}
+
+.toggleDetailsCheckbox {
+    grid-column: 4;
+    grid-row: 1;
+    margin: auto;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #004a80 !important;
+}

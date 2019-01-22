@@ -36,7 +36,8 @@ export class TopicsService {
   }
 
   updateTopic(topic: any) {
-    return this.http.put<any>(environment.apiUrl + 'topics/' + topic.id, topic, httpOptions);
+    console.log(topic);
+    return this.http.post(environment.apiUrl + 'topics/' + topic.id, topic, httpOptions);
   }
 
   getTopicAtt(): Observable<any> {

@@ -44,4 +44,9 @@ export class ModuleService {
   getResources(id: number) {
     return this.http.get(environment.apiUrl + 'resources/getResourceByModId/' + id);
   }
+
+  // toggleHidden(topic): Observable<any> {
+  //   console.log('this api is going ot start');
+  //   return this.http.get(environment.apiUrl + 'hide/' + topic.id, topic);
+  // }
 }

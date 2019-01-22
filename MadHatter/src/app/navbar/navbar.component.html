@@ -4,7 +4,7 @@
     <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>{{currentUser.name}}<button mat-icon-button [matMenuTriggerFor]="menu">
       <i class="fa fa-caret-down"></i></button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click) ="destroyToken()">Logout</button>
+        <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="destroyToken()">Logout</button>
       </mat-menu>
       </div>
     </div>

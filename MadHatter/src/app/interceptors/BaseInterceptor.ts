@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class BaseInterceptor implements HttpInterceptor {
 
-  constructor(public auth: AuthService) {}
+  constructor(
+    public auth: AuthService,
+    ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 

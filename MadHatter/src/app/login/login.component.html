@@ -1,8 +1,11 @@
 <div class="gridBody">
   <div class="login">
     <img src="../../assets/Asset 1.png"><br>
-    <mat-form-field appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail"></mat-form-field><br>
-    <mat-form-field appearance="outline"><input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password"></mat-form-field><br>
+    <mat-form-field appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail">
+    <!-- <mat-form-field [ngStyle]="{'background':getColor()}" appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail"> -->
+    </mat-form-field><br>
+    <mat-form-field appearance="outline"><input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password">
+    </mat-form-field><br>
     <button mat-button (click)="authenticate()" type="submit">
       Log in
     </button><br>
