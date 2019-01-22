@@ -22,6 +22,9 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 	@Query("Select t.mod from Topic t where t.id = ?1")
 	Optional<Modules> findByModId(Long Id);
 	
+	@Query("Select t.mod from Topic t where t.id = ?1")
+	long returnByModId(Long Id);
+	
 	List<Topic> findById(Integer Id);
 	
 }

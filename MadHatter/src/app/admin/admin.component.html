@@ -57,7 +57,7 @@
           </div>
           <div class="toggleDetailsCheckbox">
             <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
-            <mat-checkbox [checked]="t.hidden" (click)=toggleContent(t)></mat-checkbox>
+            <mat-checkbox [checked]="!ishidden(t.hidden)" (click)=toggleContent(t,m.id)></mat-checkbox>
           </div>
           </div>
         </div>

@@ -80,13 +80,27 @@ export class AdminComponent implements OnInit, OnChanges {
     }
   }
 
-  toggleContent(topic) {
-    if (topic.hidden) {
+  toggleContent(topic, modId) {
+    if (topic.hidden === 'false') {
       topic.hidden = 'true';
-      this.apiT.updateTopic(topic);
+      topic.mod_id = modId;
+      this.apiT.updateTopic(topic).subscribe(data => {
+
+      });
     } else {
       topic.hidden = 'false';
-      this.apiT.updateTopic(topic);
+      topic.mod_id = modId;
+      this.apiT.updateTopic(topic).subscribe(data => {
+
+      });
+    }
+  }
+
+  ishidden(hidden) {
+    if (hidden === 'true') {
+      return true;
+    } else {
+      return false;
     }
   }
 

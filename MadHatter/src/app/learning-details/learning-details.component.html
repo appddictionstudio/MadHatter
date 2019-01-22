@@ -14,7 +14,7 @@
   <div class="toggleDetailsButton">
     <!-- <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button> -->
   </div>
-  </div>
+  <div class="learningDetailSeperator">
   <div *ngIf="!hide">
   <hr *ngIf="!isLoading">
   <div class="showTopics" *ngFor="let t of topics; let i = index" >
@@ -71,6 +71,8 @@
 <hr>
 <div class="resourceLinks" *ngFor="let r of resources">
   <a href="{{r.links}}">{{r.links}}</a>
+</div>
+</div>
 </div>
 </div>
 </div>

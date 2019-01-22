@@ -54,19 +54,19 @@ public class TopicController {
 			};
 
 		//--------------- set hidden or shown -----------------------------------------------------------
-		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
-	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic	, @PathVariable long modId) {
-
-			Modules mod = new Modules();
-			mod.setId(modId);
-
-			topic.setHidden("true");
-	  		Topic savedHiddenTopic = repo.save(topic);
-//	  		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-//	  		        .buildAndExpand(savedHiddenTopic.getId()).toUri();
-	  		return ResponseEntity.ok(savedHiddenTopic);
-
-	  	    }
+//		@RequestMapping(value = "/hide/{modId}", method = RequestMethod.POST)
+//	  	public ResponseEntity<Topic> setHidden(@RequestBody Topic topic	, @PathVariable long modId) {
+//
+//			Modules mod = new Modules();
+//			mod.setId(modId);
+//
+//			topic.setHidden("true");
+//	  		Topic savedHiddenTopic = repo.save(topic);
+////	  		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+////	  		        .buildAndExpand(savedHiddenTopic.getId()).toUri();
+//	  		return ResponseEntity.ok(savedHiddenTopic);
+//
+//	  	    }
 		
 		
 		//---------------Create Topic -------------------------------
@@ -103,7 +103,7 @@ public class TopicController {
 		//---------------Update Topic---------------------------------
 		//------------------------------------------------------------
 		
-		@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+		@RequestMapping(value = "/{id}", method = RequestMethod.POST)
 		public ResponseEntity<Object> updateTopic(@RequestBody Topic topic, @PathVariable long id){
 			if(topic.getAttachments() != null) {
 				for(TopicAtt attachment: topic.getAttachments()) {
