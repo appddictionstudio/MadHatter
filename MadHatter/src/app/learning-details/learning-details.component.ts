@@ -201,12 +201,14 @@ onFileChange(event, topic) {
   });
   }
 
-  updateTopic(topicId) {
+  updateTopic(topicId, modId) {
     // this.topicCenter.attachments = this.documents;
     // tslint:disable-next-line:radix
+    topicId.mod = {id: modId};
     this.apiT.updateTopic(topicId).subscribe(data => {
 
     });
+    console.log(topicId);
   }
 
   downloadAttatchemnts(attachmentId) {

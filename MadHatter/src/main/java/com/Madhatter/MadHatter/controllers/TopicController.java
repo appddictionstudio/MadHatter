@@ -111,13 +111,15 @@ public class TopicController {
 				}
 			}
 			topic.setId(id);
-//       	TopicAtt topicAttachment = new TopicAtt();
-//       	topicAttachment.setTopic(topic);
+			
+//			Modules mod = topic.getMod();
+//			mod.getId();
+//			
+//			topic.setMod(mod);;
+//			
 			repo.save(topic);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}
-		
-		
 
 }
 		
