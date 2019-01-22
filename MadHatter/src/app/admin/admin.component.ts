@@ -3,6 +3,8 @@ import { ModuleService } from '../services/module.service';
 import { Topic } from '../models/Topic';
 import { Module } from '../models/Module';
 import { UserService } from '../services/user.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +16,7 @@ export class AdminComponent implements OnInit, OnChanges {
   constructor(
     private api: ModuleService,
     private apiU: UserService,
+    private apiT: TopicsService,
   ) { }
 
   currentUser: any;
@@ -74,6 +77,16 @@ export class AdminComponent implements OnInit, OnChanges {
   getUserRoleAdmin() {
     if (this.currentUser.role === 'ROLE_ADMIN') {
       return true;
+    }
+  }
+
+  toggleContent(topic) {
+    if (topic.hidden) {
+      topic.hidden = 'true';
+      this.apiT.updateTopic(topic);
+    } else {
+      topic.hidden = 'false';
+      this.apiT.updateTopic(topic);
     }
   }
 

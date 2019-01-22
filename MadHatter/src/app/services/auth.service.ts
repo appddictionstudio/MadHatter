@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   redirectToLogin() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('#');
   }
 
   isAuthenticated() {
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   setRedirectLocation() {
-    this.redirectLocation = this.router.url;
+    this.redirectLocation = '#';
   }
 
   redirectToRequestedView() {

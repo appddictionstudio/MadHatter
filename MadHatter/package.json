@@ -35,6 +35,7 @@
     "mat-video": "^2.5.0",
     "mediaelement": "^4.2.9",
     "ng-onload": "^0.8.0",
+    "ng-snotify": "^4.3.1",
     "ngx-gauge": "^1.0.0-beta.7",
     "ngx-youtube-player": "^6.0.0",
     "rxjs": "^6.3.3",

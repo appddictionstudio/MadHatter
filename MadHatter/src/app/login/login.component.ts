@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnChanges {
   userLogIn: boolean;
   usernameOrEmail: string;
   password: string;
   obj: any;
+  isLoggedIn: boolean;
+  failedLogin: any;
 
   constructor(
     private auth: AuthService,
@@ -22,11 +24,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // if (this.auth.isAuthenticated()) {
-    //   this.router.navigateByUrl('/home');
-    // } else {
       this.auth.destroyToken();
-    // }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
   }
 
   authenticate() {
@@ -38,12 +39,25 @@ export class LoginComponent implements OnInit {
       this.auth.redirectToRequestedView();
       this.router.navigateByUrl('/home');
       this.appcomp.userLoggedIn(auth);
-    });
+      this.isLoggedIn = true;
+    },
+    error => {
+      console.log('failed login');
+      this.failedLogin = true;
+    },
+    () => {
+      this.failedLogin = true;
+    }
+    );
   }
+
+  // getColor() {
+  //   if (this.failedLogin) {
+  //     return 'rgba(200,0,0,.05)';
+  //   }
+  // }
 
   getToken() {
     const token = this.auth.getToken();
   }
-
-
 }
