@@ -20,7 +20,6 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
-import { SnotifyService } from 'ng-snotify';
 import { ErrorHandler } from './services/error_handler';
 import { RequestInterceptor } from './services/http_interceptor';
 import {
