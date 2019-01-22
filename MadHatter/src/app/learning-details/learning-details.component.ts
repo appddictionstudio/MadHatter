@@ -84,6 +84,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.module = res as any[];
       this.modules = [this.module];
       this.topics = JSON.parse(JSON.stringify(this.module.topicId));
+      console.log(this.topics);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       console.log(this.resources);
       this.isLoading = false;
@@ -213,6 +214,14 @@ onFileChange(event, topic) {
         console.log(response);
        this.saveToFileSystem(response);
      });
+ }
+
+ ishidden(hidden) {
+  if (hidden === 'true') {
+    return true;
+  } else {
+    return false;
+  }
  }
 
  private saveToFileSystem(response) {

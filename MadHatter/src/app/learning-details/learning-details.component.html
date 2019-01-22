@@ -18,7 +18,7 @@
   <div *ngIf="!hide">
   <hr *ngIf="!isLoading">
   <div class="showTopics" *ngFor="let t of topics; let i = index" >
-  <div class="subheader" *ngIf="t.hidden">
+  <div class="subheader" *ngIf="!ishidden(t.hidden)">
     <div class="subheaderlc">
       <h3>{{t.topicTitle}}</h3>
     </div>
