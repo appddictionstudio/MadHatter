@@ -77,10 +77,10 @@ public class TopicAttController {
        	topicAtt.setFileNm(file.getOriginalFilename());
        	topicAtt.setFileSz(new Long(att.getAttachment().length));
        	
-       	Topic topic = new Topic();
-       	topic.setId((long) 1);
-       	topicAtt.setTopic(topic);
-       	
+//       	Topic topic = new Topic();
+//       	topic.setId(id);
+//       	topicAtt.setTopic(topic);
+//       	
        	
             repo.save(topicAtt);
 

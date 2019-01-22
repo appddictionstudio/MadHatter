@@ -105,7 +105,14 @@ public class TopicController {
 		
 		@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 		public ResponseEntity<Object> updateTopic(@RequestBody Topic topic, @PathVariable long id){
+			if(topic.getAttachments() != null) {
+				for(TopicAtt attachment: topic.getAttachments()) {
+					attachment.setTopic(topic);
+				}
+			}
 			topic.setId(id);
+//       	TopicAtt topicAttachment = new TopicAtt();
+//       	topicAttachment.setTopic(topic);
 			repo.save(topic);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}
@@ -113,3 +120,4 @@ public class TopicController {
 		
 
 }
+		
