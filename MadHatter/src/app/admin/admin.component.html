@@ -6,7 +6,7 @@
     </mat-progress-spinner>
 </div>
 <div id="adminInstructor" *ngIf="getUserRoleInstructor()">
-  <div class="classSeperation">
+  <div *ngIf="teacherRole === 2" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="m.bootcamp">
@@ -40,7 +40,7 @@
       </div>
   </div>
 </div>
-<div class="classSeperation">
+<div *ngIf="teacherRole === 1" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="!m.bootcamp">
