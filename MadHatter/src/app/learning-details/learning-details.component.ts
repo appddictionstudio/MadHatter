@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import { Attachments } from '../models/Attachments';
 
 @Component({
@@ -34,7 +34,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       config.backdrop = 'static';
     config.keyboard = false;
     }
-
+  topic: any[] = [];
   topics: Topic[] = [];
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
@@ -47,6 +47,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   module: any;
   isLoading = true;
   documents: any[] = [];
+  t: any[] = [];
   topicCenter: Topic = new Topic();
   topicslist: Topic[] = [];
   closeResult: string;
@@ -174,7 +175,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 //  });
 //   }
 
-onFileChange(event) {
+onFileChange(event, topic) {
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
@@ -185,6 +186,7 @@ onFileChange(event) {
       this.apiT.uploadTopicAttachment(formData).subscribe(
         result => {
           this.documents.push(result);
+          topic.attachments.push(result);
         }
       );
     };
@@ -198,9 +200,11 @@ onFileChange(event) {
   });
   }
 
-  updateTopic(topic) {
-    this.topicCenter.attachments = this.documents;
-    this.apiT.updateTopic(topic).subscribe(data => {
+  updateTopic(topicId) {
+    // this.topicCenter.attachments = this.documents;
+    // tslint:disable-next-line:radix
+    this.apiT.updateTopic(topicId).subscribe(data => {
+
     });
   }
 
@@ -219,6 +223,6 @@ onFileChange(event) {
    const parts: string[] = contentDispositionHeader.split(';');
    const filename = parts[1].split('=')[1];
    const blob = new Blob([response.body], { type: 'text/plain' });
-   saveAs(blob, filename);
+  //  saveAs(blob, filename);
  }
 }
