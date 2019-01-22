@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    this.auth.getCurrentUser();
     this.isAuth = this.auth.isAuthenticated();
     if (!this.isAuth) {
       this.auth.destroyToken();
@@ -46,5 +47,9 @@ export class AppComponent implements OnInit, OnChanges {
   }
   userLoggedIn(auth) {
     this.isAuth = auth;
+  }
+
+  hideNavBar() {
+    this.isAuth = false;
   }
 }

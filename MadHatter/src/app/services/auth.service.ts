@@ -21,7 +21,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigateByUrl('#/');
+    this.router.navigateByUrl('/');
   }
 
   setToken(token: string) {
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   redirectToLogin() {
-    this.router.navigateByUrl('#/');
+    this.router.navigateByUrl('/');
   }
 
   isAuthenticated() {
