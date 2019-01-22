@@ -206,6 +206,7 @@ onFileChange(event, topic) {
     this.apiT.updateTopic(topicId).subscribe(data => {
 
     });
+    console.log(topicId);
   }
 
   downloadAttatchemnts(attachmentId) {
