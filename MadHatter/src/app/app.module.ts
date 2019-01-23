@@ -119,6 +119,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       provide: 'SnotifyToastConfig',
       useValue: ToastDefaults
     },
+    AppComponent,
     SnotifyService,
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
   exports: [SearchByNamePipe,

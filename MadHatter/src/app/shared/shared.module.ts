@@ -10,7 +10,7 @@ import { CdkStepperModule, MAT_STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepp
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // tslint:disable-next-line:max-line-length
 import {

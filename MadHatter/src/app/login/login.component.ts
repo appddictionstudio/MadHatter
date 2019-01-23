@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit, OnChanges {
     },
     error => {
       console.log('failed login');
+      console.log(error);
       this.failedLogin = true;
     },
     () => {

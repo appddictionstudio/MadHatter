@@ -57,15 +57,12 @@ export class AdminComponent implements OnInit, OnChanges {
     });
   }
 
-  getUserRoleStudent(role) {
-    if (role === 'student') {
+  getUserRoleStudent() {
     if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
       return true;
     } if (this.currentUser.role === 'ROLE_STUDENT_UI') {
-      this.studentRole = 2;
       return true;
     }
-  }
   }
 
   teachingRole(role) {
@@ -87,6 +84,23 @@ export class AdminComponent implements OnInit, OnChanges {
         return false;
       } if (this.currentUser.role === 'ROLE_ADMIN') {
         return true;
+      }
+    }
+  }
+
+  studentsRole(role) {
+    if (role === 'ASD') {
+      if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+        return false;
+      } if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+        return true;
+      }
+    }
+    if (role === 'UI') {
+      if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+        return false;
       }
     }
   }
