@@ -5,12 +5,14 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { AppComponent } from 'src/app/app.component';
 
 @Injectable()
 export class BaseInterceptor implements HttpInterceptor {
 
   constructor(
     public auth: AuthService,
+    public app: AppComponent,
     ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -45,10 +47,11 @@ export class BaseInterceptor implements HttpInterceptor {
         event => event instanceof HttpResponse ? 'succeeded' : '',
         error => {
           if (error instanceof HttpErrorResponse) {
-            this.auth.setRedirectLocation();
-            this.auth.redirectToLogin();
-            this.auth.destroyToken();
+            this.app.destroyToken();
+            // this.auth.setRedirectLocation();
+            // this.auth.redirectToLogin();
             console.log('http error intercepted. redirect location: ' + this.auth.getRedirectLocation());
+            location.reload();
           }
         })
     );
