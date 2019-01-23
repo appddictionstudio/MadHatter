@@ -2,28 +2,31 @@
 <br>
 
 <div>
-  <table mat-table [dataSource]='activities' style="padding: 0,2rem,0,2rem !important">
+  <!-- <table mat-table [dataSource]='activities' style="padding: 0,2rem,0,2rem !important"> -->
+  <table mat-table style="padding: 0,2rem,0,2rem !important">
 
     <!-- icon -->
     <ng-container matColumnDef="icon">
       <!-- <th mat-header-cell *matHeaderCellDef></th> -->
-      <td mat-cell class="pl-1" *matCellDef="let activities">
-        <i class="{{activities.actType.customCategory}}"></i>
+      <!-- <td mat-cell class="pl-1" *matCellDef="let activities"> -->
+      <td mat-cell class="pl-1">
+        <i class="activities.actType.customCategory"></i>
       </td>
     </ng-container>
 
     <!-- name and rank-->
     <ng-container matColumnDef="activity">
       <!-- <th mat-header-cell *matHeaderCellDef></th> -->
-      <td mat-cell class="pl-1" *matCellDef='let activities'><a >{{activities.eodTech.person.rank}}
-          {{activities.eodTech.person.firstNm}}
-          {{activities.eodTech.person.lastNm}}</a> {{activities.actType.nm}} <a id="linkBtn" (click)="openModalCentered(content, activities)">post</a>
+      <td mat-cell class="pl-1" *matCellDef='let activities'><a >activities.eodTech.person.rank
+          activities.eodTech.person.firstNm
+          activities.eodTech.person.lastNm</a> activities.actType.nm <a id="linkBtn" (click)="openModalCentered(content, activities)">post</a>
         <div style="margin-left: 6px; display: inline;" *ngIf="activities.actType.id !== 3362">from
-          {{activities.post.author.person.firstNm}} {{activities.post.author.person.lastNm}}</div>
+          activities.post.author.person.firstNm activities.post.author.person.lastNm</div>
       </td>
     </ng-container>
     <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+    <tr></tr>
   </table>
 
 </div>
@@ -43,14 +46,14 @@
     <mat-card>
         <mat-card-header>
           <div mat-card-avatar><i style="font-size: 45px;" class="fas fa-user-circle"></i></div>
-          <mat-card-title>{{activity.post.author.person.lastNm}}, {{activity.post.author.person.firstNm}}</mat-card-title>
-          <mat-card-subtitle><span>{{activity.post.author.person.rank}}</span>
-            <span style="right: 15px; position: absolute;">{{activity.post.postDate | date: 'MM-dd-yyyy'}}</span></mat-card-subtitle>
-          <mat-card-subtitle>Phone: {{activity.post.author.person.workPhone}}</mat-card-subtitle>
+          <mat-card-title>activity.post.author.person.lastNm, activity.post.author.person.firstNm</mat-card-title>
+          <mat-card-subtitle><span>activity.post.author.person.rank</span>
+            <span style="right: 15px; position: absolute;">activity.post.postDate | date: 'MM-dd-yyyy'</span></mat-card-subtitle>
+          <mat-card-subtitle>Phone: activity.post.author.person.workPhone</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p>
-            {{activity.post.text}}
+            activity.post.text
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -68,7 +71,7 @@
                     <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
                     <mat-card-subtitle>USMC SSgt John</mat-card-subtitle>
                     <mat-card-title>
-                      <p style="font-size: 14px; font-weight: 100;">{{activity.post.comment.commentText}}</p>
+                      <p style="font-size: 14px; font-weight: 100;">activity.post.comment.commentText</p>
                     </mat-card-title>
                   </mat-card-header>
                 </mat-card>

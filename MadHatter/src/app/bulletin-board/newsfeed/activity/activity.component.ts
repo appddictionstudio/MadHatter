@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface Activities {
   id: number;
-  eodTech: number;
+  User: number;
   actType: number;
   timeStamp: number;
   post: number;
@@ -14,7 +14,7 @@ export interface Activities {
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.css']
+  styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit, OnChanges {
 closeResult: string;

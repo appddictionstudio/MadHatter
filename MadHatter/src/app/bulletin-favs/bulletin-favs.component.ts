@@ -4,7 +4,7 @@ import { BulletinBoardService } from '../services/bulletin-board.service';
 @Component({
   selector: 'app-bulletin-favs',
   templateUrl: './bulletin-favs.component.html',
-  styleUrls: ['./bulletin-favs.component.css']
+  styleUrls: ['./bulletin-favs.component.scss']
 })
 export class BulletinFavsComponent implements OnInit {
 

@@ -14,7 +14,7 @@ import { MatChipInputEvent, PageEvent } from '@angular/material';
 @Component({
   selector: 'app-bulletin-message-center',
   templateUrl: './bulletin-message-center.component.html',
-  styleUrls: ['./bulletin-message-center.component.css']
+  styleUrls: ['./bulletin-message-center.component.scss']
 })
 export class BulletinMessageCenterComponent implements OnInit {
   @Input() posts: BulletinMessageCenter[];
