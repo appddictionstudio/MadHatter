@@ -20,7 +20,7 @@ public class Topic {
 
     @ManyToOne
 	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
-	@JsonIgnore
+//	@JsonIgnore
 	private Modules mod;
 
 	@Column
@@ -35,7 +35,7 @@ public class Topic {
     private String Quizzes;
 
 	@Column
-    private String hidden;
+    private boolean hidden;
 
 	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "topic_id")
@@ -44,14 +44,14 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle) {
+    public Topic(List<File> files, String Quizzes, boolean hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
     	this.files = files;
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     }
 
-    public Topic(List<File> files, String Quizzes, String hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
+    public Topic(List<File> files, String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     	this.files = files;
     	this.Quizzes = Quizzes;
@@ -95,11 +95,11 @@ public class Topic {
 		Quizzes = quizzes;
 	}
 
-	public String getHidden() {
+	public boolean getHidden() {
 		return hidden;
 	}
 
-	public void setHidden(String hidden) {
+	public void setHidden(boolean hidden) {
 		this.hidden = hidden;
 	}
 
