@@ -114,17 +114,7 @@ export class AdminComponent implements OnInit, OnChanges {
       topic.hidden = true;
       topic.mod = {id: modId};
       this.apiT.updateTopic(topic).subscribe(data => {
-
       });
     }
   }
-
-  ishidden(hidden) {
-    if (hidden === 'true') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
 }
