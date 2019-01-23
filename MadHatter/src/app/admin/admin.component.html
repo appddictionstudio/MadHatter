@@ -73,9 +73,11 @@
 <div id="adminStudent" *ngIf="getUserRoleStudent()">
   <div class="learningContent" *ngFor="let m of modules">
       <div class= "headerLearningContent">
-        <h1>Module {{m.id}}</h1>
-
-      <div class="timeAdmin"><h3> 2 hr(s) and 30 mins</h3></div>
+        <h2>Module {{m.title}}</h2>
+        <div >
+          <h2 style="text-align: center"></h2>
+        </div>
+      <div class="timeAdmin"><h2> Score </h2></div>
         <div class="studentGradeOverall">
         </div>
       <!-- <div class="time"><h3> 2 hr(s) and 30 mins</h3></div> -->
