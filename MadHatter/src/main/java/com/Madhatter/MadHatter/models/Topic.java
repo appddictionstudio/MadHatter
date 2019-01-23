@@ -18,7 +18,7 @@ public class Topic {
 
     @ManyToOne
 	@JoinColumn(name="MOD_ID", referencedColumnName="ID")
-//	@JsonIgnore
+	@JsonIgnore
 	private Modules mod;
 
 	@Column
