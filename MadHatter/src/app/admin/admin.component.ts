@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getUserRoleStudent() {
-    if (this.currentUser.role === 'ROLE_STUDENT') {
+    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
       return true;
     }
   }

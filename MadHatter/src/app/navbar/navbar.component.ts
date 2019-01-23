@@ -34,7 +34,10 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   getUserRoleStudent() {
-    if (this.currentUser.role === 'ROLE_STUDENT') {
+    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+      return true;
+    }
+    if (this.currentUser.role === 'ROLE_STUDENT_UI') {
       return true;
     }
   }
