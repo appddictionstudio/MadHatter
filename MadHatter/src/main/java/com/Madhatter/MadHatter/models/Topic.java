@@ -2,9 +2,11 @@
 package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -17,7 +19,7 @@ public class Topic {
     private Long id;
 
     @ManyToOne
-	@JoinColumn(name="MOD_ID", referencedColumnName="ID")
+	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
 	@JsonIgnore
 	private Modules mod;
 
