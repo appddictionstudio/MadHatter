@@ -22,6 +22,7 @@ import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 import { SignupComponent } from './signup/signup.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -36,11 +37,15 @@ import {
   MatFormFieldModule,
   MatSlideToggleModule,
   MatOptionModule,
+  MatButtonToggleModule,
   MatSelectModule,
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
 } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
@@ -73,6 +78,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     BrowserModule,
+    SnotifyModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     MatTabsModule,
@@ -87,14 +93,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     MatMenuModule,
     MatToolbarModule,
+    MatPaginatorModule,
     MatIconModule,
+    MatButtonToggleModule,
     MatFormFieldModule,
+    MatExpansionModule,
     MatOptionModule,
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatChipsModule,
     MatFormFieldModule,
     MatListModule,
     MatDialogModule,
@@ -105,6 +115,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   providers: [
     RequestInterceptor,
     ErrorHandler,
+    {
+      provide: 'SnotifyToastConfig',
+      useValue: ToastDefaults
+    },
+    SnotifyService,
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true }],
   exports: [SearchByNamePipe,
     MatButtonModule,

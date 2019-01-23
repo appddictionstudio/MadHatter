@@ -24,8 +24,8 @@ export class BulletinBoardService {
     return this.http.post(environment.apiUrl + 'BltBrdPost', bulletinMessageCenter);
   }
 
-  createPostComment(bulletinBoardPostComment: BulletinBoardPostComment, postId): Observable<any>{
-    return this.http.post(environment.apiUrl + 'BltBrdPostComment/' + postId, bulletinBoardPostComment)
+  createPostComment(bulletinBoardPostComment: BulletinBoardPostComment, postId): Observable<any> {
+    return this.http.post(environment.apiUrl + 'BltBrdPostComment/' + postId, bulletinBoardPostComment);
   }
   createBulletinPostLike(id: number): Observable<any> {
     return this.http.post<any>(environment.apiUrl + 'BltBrdPost/like/' + id, httpOptions);
@@ -34,7 +34,7 @@ export class BulletinBoardService {
   getPostlikesByEodTechId(id: number): Observable<any> {
     return this.http.get<any>(environment.apiUrl + 'BltBrdAct/getLikesByEodTechId/' + id, httpOptions);
   }
- 
+
   getAllBulletinPost() {
     return this.http.get(environment.apiUrl + 'BltBrdPost');
   }

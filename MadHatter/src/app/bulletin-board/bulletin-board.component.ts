@@ -16,13 +16,13 @@ import { MatChipInputEvent, PageEvent } from '@angular/material';
 import { Tag } from '../models/Tag';
 // import { url } from 'inspector';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { User } from '../models/User';
+// import { User } from '../models/User';
 
 
 @Component({
   selector: 'app-bulletin-board',
   templateUrl: './bulletin-board.component.html',
-  styleUrls: ['./bulletin-board.component.css'],
+  styleUrls: ['./bulletin-board.component.scss'],
   providers: [NgbCarouselConfig, ActivityComponent]
 })
 
@@ -35,7 +35,7 @@ export class BulletinBoardComponent implements OnInit, OnChanges {
   arr: any[];
   activities: any[];
   test: any;
-  currentUser: User;
+  // currentUser: User;
   loggedInUser: number;
 
   url = '';
@@ -221,7 +221,7 @@ topic: any;
     this.bulletinBoardPost.attachments.length = 0;
 
     this.userService.getUser().subscribe(data => {
-      this.currentUser = data;
+      // this.currentUser = data;
     });
   }
 

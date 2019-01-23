@@ -9,6 +9,7 @@ import { MemberDirectoryComponent } from './member-directory/member-directory.co
 import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
+import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,11 +18,12 @@ const routes: Routes = [
     { path: `learning`, component: LearningComponent },
     { path: `learning/learningdetail/:id`, component: LearningDetailsComponent },
     { path: `videos`, component: VideosComponent },
-    { path: 'memberdirectory', component: MemberDirectoryComponent},
-    { path: 'signup', component: SignupComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'grades', component: AdminComponent},
-    {path: 'learning/learningdetail/:id/#/launch/:id', component: LaunchDownloadsModalComponent}
+    { path: 'memberdirectory', component: MemberDirectoryComponent },
+    { path: 'signup', component: SignupComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'grades', component: AdminComponent },
+    { path: 'learning/learningdetail/:id/#/launch/:id', component: LaunchDownloadsModalComponent },
+    { path: 'communities', component: BulletinBoardComponent },
     // ]}
 ];
 
