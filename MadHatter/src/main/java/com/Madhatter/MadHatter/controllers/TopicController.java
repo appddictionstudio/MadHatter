@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.Madhatter.MadHatter.Repositories.ModulesRepository;
 import com.Madhatter.MadHatter.Repositories.TopicRepository;
 import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.Modules;
@@ -36,7 +37,6 @@ import com.Madhatter.MadHatter.models.TopicAtt;
 public class TopicController {
 	@Autowired
     private TopicRepository repo;
-
 
 	  //--------------- Load -----------------------------------------------------------
 	  	 @RequestMapping(value="/all",method = RequestMethod.GET)
@@ -103,7 +103,7 @@ public class TopicController {
 		//---------------Update Topic---------------------------------
 		//------------------------------------------------------------
 		
-		@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+		@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 		public ResponseEntity<Object> updateTopic(@RequestBody Topic topic, @PathVariable long id){
 			if(topic.getAttachments() != null) {
 				for(TopicAtt attachment: topic.getAttachments()) {
@@ -112,11 +112,7 @@ public class TopicController {
 			}
 			topic.setId(id);
 			
-//			Modules mod = topic.getMod();
-//			mod.getId();
-//			
-//			topic.setMod(mod);;
-//			
+			
 			repo.save(topic);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}

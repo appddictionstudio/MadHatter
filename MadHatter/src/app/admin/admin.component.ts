@@ -32,6 +32,7 @@ export class AdminComponent implements OnInit, OnChanges {
   mods: Module[] = [];
   isLoading = true;
   teacherRole: number;
+  studentRole: number;
 
   ngOnInit() {
     this.getUserRole();
@@ -56,10 +57,15 @@ export class AdminComponent implements OnInit, OnChanges {
     });
   }
 
-  getUserRoleStudent() {
-    if (this.currentUser.role === 'ROLE_STUDENT') {
+  getUserRoleStudent(role) {
+    if (role === 'student') {
+    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+      return true;
+    } if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+      this.studentRole = 2;
       return true;
     }
+  }
   }
 
   teachingRole(role) {
