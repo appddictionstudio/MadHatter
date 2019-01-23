@@ -34,21 +34,30 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   getUserRoleStudent() {
-    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
-      return true;
+    if (this.currentUser) {
+      if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+        return true;
+      }
+      if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+        return true;
+      }
+    } else {
+      return false;
     }
-    if (this.currentUser.role === 'ROLE_STUDENT_UI') {
-      return true;
-    }
+
   }
 
   getUserRoleInstructor() {
-    if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-      return true;
-    } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-      return true;
-    } if (this.currentUser.role === 'ROLE_ADMIN') {
-      return true;
+    if (this.currentUser) {
+      if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_ADMIN') {
+        return true;
+      }
+    } else {
+      return false;
     }
   }
 

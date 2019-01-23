@@ -21,7 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VideosComponent } from './videos/videos.component';
 import { MemberDirectoryComponent } from './member-directory/member-directory.component';
 import { SignupComponent } from './signup/signup.component';
-import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { YoutubePlayerModule } from 'ngx-youtube-player/ngx-youtube-player';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { SearchByNamePipe } from './member-directory/search-by-name.pipe';
 import { MatDialogModule } from '@angular/material';

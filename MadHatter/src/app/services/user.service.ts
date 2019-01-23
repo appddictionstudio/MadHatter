@@ -35,7 +35,7 @@ export class UserService {
   getUser(): Observable<any> {
       const obs$ = this.api.getCurrentUser();
       obs$.subscribe(data => {
-        this.user.id = data;
+        this.user = data;
       });
       return obs$;
     // } else {

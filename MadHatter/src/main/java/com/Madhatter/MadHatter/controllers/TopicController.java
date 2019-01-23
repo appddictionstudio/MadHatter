@@ -48,8 +48,8 @@ public class TopicController {
 	  	//-----------------LoadTopicByModId------------------------------------------------------
 
 		  	@RequestMapping(value = "/getByModId/{id}", method = RequestMethod.GET)
-		  	ResponseEntity<Optional<Modules>> getTopicByModId(@PathVariable long id) {
-				Optional<Modules> topics = repo.findByModId(id);
+		  	ResponseEntity<List<Topic>> getTopicByModId(@PathVariable long id) {
+		  		List<Topic> topics = repo.findByModId(id);
 				return ResponseEntity.ok(topics);
 			};
 

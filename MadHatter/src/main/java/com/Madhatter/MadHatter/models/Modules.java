@@ -2,6 +2,8 @@
 package com.Madhatter.MadHatter.models;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -25,8 +27,8 @@ public class Modules {
 	@Column
 	private String bootcamp;
 	
-	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
-	@JoinColumn(name = "mod_id")
+	@OneToMany(mappedBy="mod", cascade=CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<Topic> topic;
 	
 	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
@@ -41,13 +43,53 @@ public class Modules {
     	this.iconLink = iconLink;
     	this.bootcamp = bootcamp;
     }
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIconLink() {
+		return iconLink;
+	}
+
+	public void setIconLink(String iconLink) {
+		this.iconLink = iconLink;
+	}
+
 	public String getBootcamp() {
 		return bootcamp;
 	}
 
 	public void setBootcamp(String bootcamp) {
 		this.bootcamp = bootcamp;
+	}
+
+	public List<Topic> getTopic() {
+		return topic;
+	}
+
+	public void setTopic(List<Topic> topic) {
+		this.topic = topic;
 	}
 
 	public List<Resources> getResources() {
@@ -57,55 +99,7 @@ public class Modules {
 	public void setResources(List<Resources> resources) {
 		this.resources = resources;
 	}
-	
-	public List<Topic> getTopic() {
-		return topic;
-	}
 
-	public void setTopic(List<Topic> topic) {
-		this.topic = topic;
-	}
-
-	public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    
-
-	public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    public String getIconLink() {
-		return iconLink;
-	}
-
-	public void setIconLink(String iconLink) {
-		this.iconLink = iconLink;
-	}
-
-	public List<Topic> getTopicId() {
-		return topic;
-	}
-
-	public void setTopicId(List<Topic> topic) {
-		this.topic = topic;
-	}
 	
 
 }

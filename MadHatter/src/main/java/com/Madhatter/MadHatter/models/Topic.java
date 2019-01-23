@@ -20,7 +20,6 @@ public class Topic {
 
     @ManyToOne
 	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
-	@JsonIgnore
 	private Modules mod;
 
 	@Column
@@ -60,24 +59,29 @@ public class Topic {
     	this.attachments = attachments;
     }
 
-
-
-
-	public List<TopicAtt> getAttachments() {
-		return attachments;
-	}
-
-	public void setAttachments(List<TopicAtt> attachments) {
-		this.attachments = attachments;
-	}
-
 	public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Modules getMod() {
+		return mod;
+	}
+
+	public void setMod(Modules mod) {
+		this.mod = mod;
+	}
+
+	public String getTopicTitle() {
+		return topicTitle;
+	}
+
+	public void setTopicTitle(String topicTitle) {
+		this.topicTitle = topicTitle;
+	}
 
 	public List<File> getFiles() {
 		return files;
@@ -95,7 +99,7 @@ public class Topic {
 		Quizzes = quizzes;
 	}
 
-	public boolean getHidden() {
+	public boolean isHidden() {
 		return hidden;
 	}
 
@@ -103,25 +107,17 @@ public class Topic {
 		this.hidden = hidden;
 	}
 
-	public String getTopicTitle() {
-		return topicTitle;
+	public List<TopicAtt> getAttachments() {
+		return attachments;
 	}
 
-	public void setTopic(String topicTitle) {
-		this.topicTitle = topicTitle;
+	public void setAttachments(List<TopicAtt> attachments) {
+		this.attachments = attachments;
 	}
 
-	public Modules getMod() {
-			return mod;
-		}
 
-	public void setMod(Modules mod) {
-			this.mod = mod;
-		}
 
-	public void setTopicTitle(String topicTitle) {
-			this.topicTitle = topicTitle;
-		}
+
 
 
 }

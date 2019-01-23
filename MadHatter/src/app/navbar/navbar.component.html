@@ -1,7 +1,7 @@
 <div>
     <div id="header">
         <img src="../../assets/artboard_1.png">
-    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>{{currentUser.name}}<button mat-icon-button [matMenuTriggerFor]="menu">
+    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #024a66"></i>{{currentUser ? currentUser.name : ''}}<button mat-icon-button [matMenuTriggerFor]="menu">
       <i class="fa fa-caret-down"></i></button>
       <mat-menu #menu="matMenu">
         <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="destroyToken()">Logout</button>
@@ -12,7 +12,7 @@
       <!-- <form class="example" style="margin:1em;height:1em">
         <div class="searchBar">
         <input type="text" placeholder="Search" name="search2" style="background-color:white;border: white">
-        <button type="submit" style="display: block; background-color:white;border: white"><i class="fa fa-search" 
+        <button type="submit" style="display: block; background-color:white;border: white"><i class="fa fa-search"
           style="background-color:white; border-radius: 3px;border: white;right: 20px"></i></button>
         </div>
       </form> -->
@@ -28,6 +28,6 @@
             <a *ngIf="getUserRoleStudent()" href="#/grades">grades</a>
         </div>
       </div>
-     
+
     </div>
 </div>

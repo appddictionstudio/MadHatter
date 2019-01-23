@@ -83,11 +83,16 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
-      this.topics = JSON.parse(JSON.stringify(this.module.topicId));
+
       console.log(this.topics);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       console.log(this.resources);
+
+      this.getTopicsByModId(this.module.id);
+      // this.topics = JSON.parse(JSON.stringify(this.module.topic));
+
       this.isLoading = false;
+
     });
     console.log(this.topics);
     }
@@ -149,6 +154,12 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getAllTopics() {
     this.apiT.getTopics().subscribe(data => {
       this.topicslist = data as any[];
+    });
+  }
+
+  getTopicsByModId(modId) {
+    this.apiT.getTopicsByModId(modId).subscribe(data => {
+      this.topics =  data as any[];
     });
   }
 

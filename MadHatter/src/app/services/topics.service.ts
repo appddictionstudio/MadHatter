@@ -35,6 +35,10 @@ export class TopicsService {
     return this.http.get(environment.apiUrl + 'topics/all');
   }
 
+  getTopicsByModId(modId): Observable<any> {
+    return this.http.get(environment.apiUrl + 'topics/getByModId/' + modId);
+  }
+
   updateTopic(topic: any) {
     console.log(topic);
     return this.http.put(environment.apiUrl + 'topics/' + topic.id, topic);
