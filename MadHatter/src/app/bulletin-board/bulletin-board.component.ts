@@ -12,9 +12,9 @@ import { RefCodeService } from '../services/ref-code.service';
 import { RefCode } from '../models/RefCode';
 import { MatChipInputEvent, PageEvent } from '@angular/material';
 
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import { Tag } from '../models/Tag';
-import { url } from 'inspector';
+// import { url } from 'inspector';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../models/User';
 
@@ -189,8 +189,6 @@ topic: any;
     this.userService.getUser().subscribe(user => {
       this.currentDept = user.department;
     });
-
-    this.currentDept = this.userService.getDepartment();
 
 
     config.interval = 500000000;

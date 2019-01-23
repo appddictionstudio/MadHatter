@@ -1,4 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ActivityComponent } from './bulletin-board/newsfeed/activity/activity.component';
+import { SearchComponent } from './bulletin-board/search/search/search.component';
+import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
+import { BulletinFavsComponent } from './bulletin-favs/bulletin-favs.component';
+import { BulletinMessageCenterComponent } from './bulletin-message-center/bulletin-message-center.component';
 import { NgModule } from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppRoutingModule } from './app-routing.module';
@@ -59,6 +64,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LearningDetailsComponent,
     AdminComponent,
     LaunchDownloadsModalComponent,
+    BulletinMessageCenterComponent,
+    BulletinFavsComponent,
+    BulletinBoardComponent,
+    SearchComponent,
+    ActivityComponent,
     // NgbdModalBasic
   ],
   imports: [
