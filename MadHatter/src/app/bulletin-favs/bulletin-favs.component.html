@@ -1,0 +1,44 @@
+<div *ngFor="let fav of allFavorites">
+
+
+  <mat-card style="max-height: 120px; overflow: hidden" class="favorites-card">
+    <mat-card-header style="margin: 0px 16px -9px 6px; height: 55px;">
+      <div mat-card-avatar>
+        <i style="font-size: 40px; color: #505464;" class="favorites-content fas fa-user-circle">
+        </i>
+      </div>
+      <mat-card-subtitle class="favorites-content">
+        <div class="favorites-content">
+
+          USAF Noah
+        </div>
+
+        <i style="position: absolute; right: 16px; top: 17px; color: #FFDF00;" class="hover fas fa-bookmark" (click)="deleteFav(fav.id)"></i>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <p style="color: #505464;">
+
+          {{ fav.eodTech ? fav.eodTech.person.firstNm : ''}}
+          {{ fav.eodTech ? fav.eodTech.person.lastNm : ''}}
+          <br>
+          {{'Topic:'}}{{ fav.post ? fav.post.topic : ''}}
+
+          <br>
+          {{ fav.post ? fav.post.text : ''}}
+
+        </p>
+      </div>
+
+
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+
+  <hr>
+</div>

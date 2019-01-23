@@ -1,0 +1,110 @@
+<!-- <h5 class="text-center">ACTIVITY <i class="fas fa-chart-line"></i></h5> -->
+<br>
+
+<div>
+  <table mat-table [dataSource]='activities' style="padding: 0,2rem,0,2rem !important">
+
+    <!-- icon -->
+    <ng-container matColumnDef="icon">
+      <!-- <th mat-header-cell *matHeaderCellDef></th> -->
+      <td mat-cell class="pl-1" *matCellDef="let activities">
+        <i class="{{activities.actType.customCategory}}"></i>
+      </td>
+    </ng-container>
+
+    <!-- name and rank-->
+    <ng-container matColumnDef="activity">
+      <!-- <th mat-header-cell *matHeaderCellDef></th> -->
+      <td mat-cell class="pl-1" *matCellDef='let activities'><a >{{activities.eodTech.person.rank}}
+          {{activities.eodTech.person.firstNm}}
+          {{activities.eodTech.person.lastNm}}</a> {{activities.actType.nm}} <a id="linkBtn" (click)="openModalCentered(content, activities)">post</a>
+        <div style="margin-left: 6px; display: inline;" *ngIf="activities.actType.id !== 3362">from
+          {{activities.post.author.person.firstNm}} {{activities.post.author.person.lastNm}}</div>
+      </td>
+    </ng-container>
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
+
+
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title">Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div [(ngModel)]="activity" ngDefaultControl class="modal-body">
+
+    <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar><i style="font-size: 45px;" class="fas fa-user-circle"></i></div>
+          <mat-card-title>{{activity.post.author.person.lastNm}}, {{activity.post.author.person.firstNm}}</mat-card-title>
+          <mat-card-subtitle><span>{{activity.post.author.person.rank}}</span>
+            <span style="right: 15px; position: absolute;">{{activity.post.postDate | date: 'MM-dd-yyyy'}}</span></mat-card-subtitle>
+          <mat-card-subtitle>Phone: {{activity.post.author.person.workPhone}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{activity.post.text}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <i (click)="likeClickEvent()" [ngClass]="likeClick ? 'red' : 'grey'" id="heart" style="margin-left:10px; transition: 200ms"
+            class="hover fas fa-heart"></i>
+          <i (click)="commentSection()" [ngClass]="commentClick ? 'blue' : 'grey'" id="comment" style="margin-left:30px; transition: 200ms"
+            class="hover fas fa-comment"></i>
+          <i id="share" style="margin-left:30px; transition: 200ms" class="hover fas fa-share"></i>
+          <div class="row" *ngFor="let comment of activity.post.author.comments" class="hover comment-section">
+            <hr>
+            <ul style="margin-left: 5px;">
+              <li>
+                <mat-card>
+                  <mat-card-header>
+                    <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
+                    <mat-card-subtitle>USMC SSgt John</mat-card-subtitle>
+                    <mat-card-title>
+                      <p style="font-size: 14px; font-weight: 100;">{{activity.post.comment.commentText}}</p>
+                    </mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </li>
+            </ul>
+          </div>
+          <div class="row" *ngIf="showComments" class="comment-section">
+            <hr>
+            <ul style="padding-left: 0;">
+              <li style="padding-left: 0;">
+                <mat-card>
+                  <mat-card-header>
+                    <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
+                    <mat-card-subtitle>USMC SSgt John</mat-card-subtitle>
+                  </mat-card-header>
+                </mat-card>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="col-11">
+                <input style="background: #F3F3F3;" class="post-input" placeholder="Write a comment.."
+                  [(ngModel)]="newComment">
+              </div>
+
+              <div style="vertical-align: middle; padding-top: 0; font-size:23px; margin-left: -30px; cursor: pointer;"
+                class="col-1" (click)="addComment(pos)">
+                <i style="margin-left: 8px; color: #2093EE;" class="fas fa-paper-plane"></i>
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+
+ <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+
+</ng-template>

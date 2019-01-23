@@ -1,0 +1,55 @@
+table {
+  width: 100%;
+  background-color: white;
+}
+.fas {
+  color: #4D4D4D;
+}
+.center-section {
+  margin: 20px;
+
+
+}
+.fa-chart-line {
+  margin-left: 5px;
+  color: #4CAF50;
+}
+
+#linkBtn{
+cursor: pointer;
+color: #1F8DE5;
+
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,0), 0 1px 1px 0 rgba(0,0,0,0), 0 1px 3px 0 rgba(0,0,0,0);
+}
+
+
+.red {
+  color: #F44336;
+  transition: 200ms;
+}
+
+.blue {
+  color: #2093EE;
+  transition: 200ms;
+}
+
+.grey {
+  color: #505464;
+  transition: 200ms;
+}
+
+.post-input {
+  border-radius: 6px;
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding-left: 10px;
+  outline-width: 0;
+}
+
+ul li {
+  list-style: none;
+}
