@@ -27,9 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.Madhatter.MadHatter.Repositories.SubmittedAttRepository;
 import com.Madhatter.MadHatter.Repositories.TopicAttRepository;
 import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.SubmittedAtt;
+import com.Madhatter.MadHatter.models.SubmittedAttachment;
 import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
 import com.Madhatter.MadHatter.services.AttachmentService;
@@ -41,52 +43,48 @@ import com.Madhatter.MadHatter.services.AttachmentService;
 
 
 @RestController
-public class TopicAttController {
+public class SubmittedAttController {
 	@Autowired
-    private TopicAttRepository repo;
+    private SubmittedAttRepository repo;
 	
 	@Autowired
 	private AttachmentService attService;
 	
 	
 	//----Create
-	@PostMapping(value = "/TopicAtt")
+	@PostMapping(value = "/SubmittedAtt")
 	@Transactional
-	public ResponseEntity<Object> createBulletinAtt(@RequestBody TopicAtt topicAtt) {
+	public ResponseEntity<Object> createSubmittedAtt(@RequestBody SubmittedAtt submittedAtt) {
 
-		if (repo.findById(topicAtt.getId()).isPresent()) {
+		if (repo.findById(submittedAtt.getId()).isPresent()) {
 			throw new ValidationException("Record Already Exists");
 		}
 
-		TopicAtt savedBltBrdAtt = repo.save(topicAtt);
+		SubmittedAtt savedSubmitteddAtt = repo.save(submittedAtt);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedBltBrdAtt.getId()).toUri();
+				.buildAndExpand(savedSubmitteddAtt.getId()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 	
 	
 	//----Upload--------
 	
-	@PostMapping(value="/uploadDoc")
-    public ResponseEntity<TopicAtt> uploadFile(@RequestParam("file") MultipartFile file) {
+	@PostMapping(value="/uploadSDoc")
+    public ResponseEntity<SubmittedAtt> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
        	 
-       	 Attachment att = attService.storeFile(file);
+       	 SubmittedAttachment att = attService.storeSFile(file);
        	 
-       	 TopicAtt topicAtt = new TopicAtt();
+       	SubmittedAtt submittedAtt = new SubmittedAtt();
 
-       	topicAtt.setAttachmentId(att.getId());
-       	topicAtt.setFileNm(file.getOriginalFilename());
-       	topicAtt.setFileSz(new Long(att.getAttachment().length));
+       	submittedAtt.setSubAttachmentId(att.getId());
+       	submittedAtt.setFileNm(file.getOriginalFilename());
+       	submittedAtt.setFileSz(new Long(att.getAttachment().length));
        	
-//       	Topic topic = new Topic();
-//       	topic.setId(id);
-//       	topicAtt.setTopic(topic);
-//       	
-       	
-            repo.save(topicAtt);
 
-            return ResponseEntity.ok(topicAtt);
+            repo.save(submittedAtt);
+
+            return ResponseEntity.ok(submittedAtt);
         } catch (Exception e) {
             throw e;
         }
@@ -94,9 +92,9 @@ public class TopicAttController {
 	
 	// --------------- Load---------------------------------------
 		// -----------------------------------------------------------
-		@RequestMapping(value = "/TopicAtt", method = RequestMethod.GET)
-		ResponseEntity<List<TopicAtt>> getAllBulletinAtt() {
-			List<TopicAtt> attList = repo.getAllTopicAtt();
+		@RequestMapping(value = "/AllSubmittedAtt", method = RequestMethod.GET)
+		ResponseEntity<List<SubmittedAtt>> getAllBulletinAtt() {
+			List<SubmittedAtt> attList = repo.getAllSubmittedAtt();
 			return ResponseEntity.ok(attList);
 		};
 	
@@ -118,12 +116,12 @@ public class TopicAttController {
 	
 		//----------------Downloading----------
 		
-		@RequestMapping(value = "/TopicAtt/downloadDoc/{id}", method = RequestMethod.GET)
+		@RequestMapping(value = "/SubmittedAtt/downloadDoc/{id}", method = RequestMethod.GET)
 		@ResponseBody
 		public void getExcelTemplate(HttpServletRequest request, HttpServletResponse response,@PathVariable Long id) throws Exception {
 			
-			TopicAtt attachment = repo.getOne(id);
-			Attachment att = attService.getFile(attachment.getAttachmentId());
+			SubmittedAtt attachment = repo.getOne(id);
+			SubmittedAttachment att = attService.getSFile(attachment.getSubAttachmentId());
 			response.setContentType("application/octet-stream");
 			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 		    response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getFileNm());
@@ -142,19 +140,6 @@ public class TopicAttController {
 //		    fis.close();
 		}
 		
-//-----Update 
-		
-		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
-			if(topicAtt.getSubAttachments() != null) {
-				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
-					attachment.setTopicatt(topicAtt);
-				}
-			}
-			topicAtt.setId(id);
 
-			repo.save(topicAtt);
-			return ResponseEntity.status(HttpStatus.OK).build();
-		}
 		
 }

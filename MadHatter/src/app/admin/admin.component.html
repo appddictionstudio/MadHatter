@@ -113,7 +113,7 @@
             <div>
 
           </div>
-          <div class="time" style="text-align: right"><h3> Score</h3></div>
+          <div class="time" style="text-align: right"><h3 style="font-weight: bold"> Score</h3></div>
           </div>
           <div>
           <hr>
@@ -122,6 +122,10 @@
           <div class="adminSubheader" *ngIf="t.mod.id === m.id">
             <div class="subheaderlc">
                 <h3>{{a.fileNm}}</h3>
+              </div>
+              <div class="input">
+              <input type="file" #file  (change)="onFileChange($event,t)">
+                <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
               </div>
             <div class="toggleDetailsCheckbox">
               <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
