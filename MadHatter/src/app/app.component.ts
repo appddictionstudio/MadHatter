@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnChanges {
       this.router.navigateByUrl('/');
     } else {
       console.log(this.auth.getToken());
+      this.router.navigateByUrl('/home');
     }
   }
 

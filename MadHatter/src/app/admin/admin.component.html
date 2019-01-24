@@ -19,9 +19,10 @@
         <hr>
         <div class="showTopics" *ngFor="let t of topics" >
         <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-          <div class="subheaderlc">
-            <h3>{{t.topicTitle}}</h3>
-          </div>
+            <div (click)="downloadAttatchemnts(a.id)" class="subheaderlc">
+              <h3>{{a.fileNm}}</h3>
+              <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i>
+            </div>
           <div class="toggleDetailsCheckbox" *ngIf="ishidden(t.hidden)">
             <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
             <mat-slide-toggle [color]="primary" [checked]="hide" (change)=toggleContent(t,m.id)></mat-slide-toggle>
@@ -44,9 +45,10 @@
         <hr>
         <div class="showTopics" *ngFor="let t of topics" >
         <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-          <div class="subheaderlc">
-            <h3>{{t.topicTitle}}</h3>
-          </div>
+            <div (click)="downloadAttatchemnts(a.id)" class="subheaderlc">
+              <h3>{{a.fileNm}}</h3>
+              <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i>
+            </div>
           <div class="toggleDetailsCheckbox">
             <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
             <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle>

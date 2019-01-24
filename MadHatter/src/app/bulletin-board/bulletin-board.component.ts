@@ -311,7 +311,7 @@ topic: any;
       showProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
-      position: SnotifyPosition.centerCenter,
+      position: SnotifyPosition.centerBottom,
       buttons: [
         { text: 'Yes', action: () => this.createBulletinPost(), bold: false },
         { text: 'No', action: () => console.log('Clicked: No') },

@@ -49,8 +49,8 @@ export class BaseInterceptor implements HttpInterceptor {
         event => event instanceof HttpResponse ? 'succeeded' : '',
         error => {
           if (error instanceof HttpErrorResponse) {
-            this.snotifyService.error('Error', {
-              timeout: 2000,
+            this.snotifyService.error(error.status + ' - ' + error.statusText, 'Error', {
+              timeout: 4000,
               showProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
