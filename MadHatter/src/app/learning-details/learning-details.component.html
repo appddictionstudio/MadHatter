@@ -58,7 +58,7 @@
     <div class= "launchbutton">
       <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Launch Exercises </button>
     </div>
-    <div class="fileSave">
+    <div *ngIf="getUserRoleInstructor()" class="fileSave">
       <input type="file" #file  (change)="onFileChange($event,t)">
       <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateTopic(t, m.id)" >Add Exercise</button>
     </div>

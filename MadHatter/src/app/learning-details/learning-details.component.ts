@@ -247,4 +247,16 @@ onFileChange(event, topic) {
    const blob = new Blob([response.body], { type: 'text/plain' });
   //  saveAs(blob, filename);
  }
+
+ getUserRoleInstructor() {
+  if (this.currentUser) {
+    if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+      return true;
+    } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+      return true;
+  } else {
+    return false;
+  }
+}
+ }
 }
