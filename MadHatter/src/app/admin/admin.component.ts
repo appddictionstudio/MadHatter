@@ -5,6 +5,8 @@ import { Module } from '../models/Module';
 import { UserService } from '../services/user.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { TopicsService } from '../services/topics.service';
+import { StudentService } from '../services/student.service';
+import { Attachments } from '../models/Attachments';
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +19,7 @@ export class AdminComponent implements OnInit, OnChanges {
     private api: ModuleService,
     private apiU: UserService,
     private apiT: TopicsService,
+    private apiS: StudentService
   ) { }
 
   currentUser: any;
@@ -33,11 +36,15 @@ export class AdminComponent implements OnInit, OnChanges {
   isLoading = true;
   teacherRole: number;
   studentRole: number;
+  documents: any[] = [];
+  attList: Attachments[] = [];
+
 
   ngOnInit() {
     this.getUserRole();
     this.getModuleforLearning();
     this.getAllTopics();
+    this.getAttachments();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -139,19 +146,42 @@ export class AdminComponent implements OnInit, OnChanges {
     }
   }
 
-  // getTopicsList(modId) {
-  //   this.api.getTopicsById(modId).subscribe(res => {
-  //     this.topics = res as any[];
-  //     console.log(this.topics);
-  //   });
-  //   return this.topics;
-  // }
-
+getAttachments() {
+  this.apiT.getTopicAtt().subscribe(data => {
+    this.attList = data as any[];
+});
+}
   getAllTopics() {
     this.api.getTopicsByAll().subscribe(res => {
       this.topics = res as any[];
       console.log(this.topics);
       this.isLoading = false;
     });
+  }
+
+  onFileChange(event, topic) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const formData = new FormData();
+        formData.append('file', file);
+        this.apiS.uploadStudentAttachment(formData).subscribe(
+          result => {
+            this.documents.push(result);
+            // topic.attachments.push(result);
+          }
+        );
+      };
+    }
+  }
+  updateSubmittedAtt(topicAtt) {
+    // this.topicCenter.attachments = this.documents;
+    // tslint:disable-next-line:radix
+    this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
+
+    });
+    console.log(topicAtt + 'this is whats sending');
   }
 }
