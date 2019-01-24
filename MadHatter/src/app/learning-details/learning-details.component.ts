@@ -87,8 +87,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       console.log(this.resources);
       this.getTopicsByModId(this.module.id);
       // this.topics = JSON.parse(JSON.stringify(this.module.topic));
-      this.isLoading = false;
-
     });
     }
 
@@ -156,6 +154,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
       console.log(this.topics);
+      this.isLoading = false;
     });
   }
 

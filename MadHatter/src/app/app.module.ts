@@ -51,9 +51,13 @@ import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { MatListModule } from '@angular/material/list';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-// import { NgbdModalBasic } from './modal-basic';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+library.add(fas, far, fab);
 
 @NgModule({
   declarations: [
@@ -132,4 +136,5 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule, ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
