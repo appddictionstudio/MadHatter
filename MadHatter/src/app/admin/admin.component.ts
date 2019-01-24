@@ -137,4 +137,12 @@ export class AdminComponent implements OnInit, OnChanges {
       });
     }
   }
+
+  // getTopicsList(modId) {
+  //   this.api.getTopicsById(modId).subscribe(res => {
+  //     this.topics = res as any[];
+  //     console.log(this.topics);
+  //   });
+  //   return this.topics;
+  // }
 }

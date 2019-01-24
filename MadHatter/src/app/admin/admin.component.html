@@ -86,7 +86,8 @@
           </div>
           <div>
           <hr>
-          <div class="showTopics" *ngFor="let t of m.topicId" >
+          <div>
+          <div class="showTopics" *ngFor="let t of topics" >
           <div class="adminSubheader">
             <div class="subheaderlc">
               <h3>{{t.topicTitle}}</h3>
@@ -96,6 +97,7 @@
               <!-- <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle> -->
             </div>
             </div>
+          </div>
           </div>
         </div>
         </div>

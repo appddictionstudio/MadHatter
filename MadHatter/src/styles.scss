@@ -6,11 +6,16 @@
 @import 'app/learning-details/learning-details.component.scss';
 @import 'app/navbar/navbar.component.scss';
 @import 'app/videos/videos.component.scss';
+// @import 'app/bulletin-board/bulletin-board.component.scss';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'app/launch-downloads-modal/launch-downloads-modal.component.scss';
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css';
+@import '~ng-pick-datetime/assets/style/picker.min.css';
+@import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
+// @import './styles/awesome.scss';
+
 html, body {
     height: 100%;
     width: 100%;

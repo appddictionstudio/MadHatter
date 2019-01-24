@@ -186,9 +186,9 @@ topic: any;
     private fb: FormBuilder,
     config: NgbCarouselConfig
   ) {
-    this.userService.getUser().subscribe(user => {
-      this.currentDept = user.department;
-    });
+    // this.userService.getUser().subscribe(user => {
+    //   this.currentDept = user.department;
+    // });
 
 
     config.interval = 500000000;
@@ -204,10 +204,10 @@ topic: any;
     this.selectedValue = '';
     // this.groupAndPeoplePosts = [this.selectedValue];
 
-    this.api.getAllFavorites().subscribe(response => {
-      this.allFavorites = response;
-      this.favoritePostsIds = this.allFavorites.map(fav => fav.post ? fav.post.id : 0);
-    });
+    // this.api.getAllFavorites().subscribe(response => {
+    //   this.allFavorites = response;
+    //   this.favoritePostsIds = this.allFavorites.map(fav => fav.post ? fav.post.id : 0);
+    // });
 
     this.postForm = this.fb.group({
       postControl: ['Post']
@@ -220,9 +220,9 @@ topic: any;
     this.bulletinBoardPost.text = '';
     this.bulletinBoardPost.attachments.length = 0;
 
-    this.userService.getUser().subscribe(data => {
-      // this.currentUser = data;
-    });
+    // this.userService.getUser().subscribe(data => {
+    //   // this.currentUser = data;
+    // });
   }
 
   ngOnChanges() {
@@ -343,15 +343,19 @@ topic: any;
     }
 
     const postId = post.id;
-       this.api.createBulletinPostLike(postId).subscribe(data => {
-         if (data) {
-           this.ngOnChanges();
-           post.liked = true;
-         } else {
-           this.ngOnChanges();
-           post.liked = false;
-         }
-    });
+    //    this.api.createBulletinPostLike(postId).subscribe(data => {
+    //      if (data) {
+    //        this.ngOnChanges();
+    //        post.liked = true;
+    //      } else {
+    //        this.ngOnChanges();
+    //        post.liked = false;
+    //      }
+    // });
+
+
+
+
     // if (this.likeClick !== id) {
     //   this.likeClick = id;
     // } else {
@@ -381,9 +385,9 @@ topic: any;
 
   createPostComment(postId, index) {
     this.bulletinComment.department = this.currentDept;
-    this.api.createPostComment(this.bulletinComment, postId).subscribe(data => {
-      this.posts[index] = data;
-    });
+    // this.api.createPostComment(this.bulletinComment, postId).subscribe(data => {
+    //   this.posts[index] = data;
+    // });
     this.bulletinComment.text = '';
   }
 
@@ -392,9 +396,9 @@ topic: any;
     this.bulletinBoardPost.attachments = this.documents;
     this.bulletinBoardPost.hotTopicYn = this.hotTopicPost ? 'Y' : 'N';
     this.bulletinBoardPost.lockYn = this.lockPost ? 'Y' : 'N';
-    this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
-      this.ngOnInit();
-    });
+    // this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
+    //   this.ngOnInit();
+    // });
 
   }
 
@@ -402,57 +406,57 @@ topic: any;
 
   loadBulletinPosts() {
    const id = this.loggedInUser = 44206;
-    this.api.getAllBulletinPost().subscribe(data => {
-      this.posts = data as any[];
-      this.api.getPostlikesByEodTechId(id).subscribe(likes => {
-        for ( const like of likes) {
-          for (const post of this.posts) {
-            if (post.id === like.post.id && like.eodTech.id === id) {
-              console.log(post.id + 'is liked');
-              post.liked = true;
-              post.likeCount = post.likeCount;
-            }
-          }
-        }
-      });
-      // for (const post of this.posts) {
-      //   this.api.getPostlikesByEodTechId(id).subscribe(likes => {
-      //     for (const like of likes) {
-      //       console.log(like);
-      //       console.log(like.eodTech.id);
-      //       if (like.id !== null && like.eodTech.id === id) {
-      //         console.log(like.eodTech.id);
-      //         post.liked = true;
-      //       } else {
-      //         post.liked = false;
-      //       }
-      //     }
-      //   });
-      // }
-    });
+    // this.api.getAllBulletinPost().subscribe(data => {
+    //   this.posts = data as any[];
+    //   this.api.getPostlikesByEodTechId(id).subscribe(likes => {
+    //     for ( const like of likes) {
+    //       for (const post of this.posts) {
+    //         if (post.id === like.post.id && like.eodTech.id === id) {
+    //           console.log(post.id + 'is liked');
+    //           post.liked = true;
+    //           post.likeCount = post.likeCount;
+    //         }
+    //       }
+    //     }
+    //   });
+    //   // for (const post of this.posts) {
+    //   //   this.api.getPostlikesByEodTechId(id).subscribe(likes => {
+    //   //     for (const like of likes) {
+    //   //       console.log(like);
+    //   //       console.log(like.eodTech.id);
+    //   //       if (like.id !== null && like.eodTech.id === id) {
+    //   //         console.log(like.eodTech.id);
+    //   //         post.liked = true;
+    //   //       } else {
+    //   //         post.liked = false;
+    //   //       }
+    //   //     }
+    //   //   });
+    //   // }
+    // });
   }
 
 
   loadHotTopicPosts(currentPage: number) {
 
-    this.api.getHotTopicPosts(currentPage).subscribe(data => {
-      const res = data as any;
+    // this.api.getHotTopicPosts(currentPage).subscribe(data => {
+    //   const res = data as any;
 
 
 
-      if (res) {
+    //   if (res) {
 
 
-        this.hotTopicResults.number = res.number;
-        this.hotTopicResults.length = res.totalElements;
-        this.hotTopicResults.pageSize = res.size;
-        this.hotTopicResults.totalPages = res.totalPages;
-        this.hotTopicPosts = res.content as any[];
-      }
-      this.hotTopicPosts.forEach(post => {
-        post.image = this.getRandomImage();
-      });
-    });
+    //     this.hotTopicResults.number = res.number;
+    //     this.hotTopicResults.length = res.totalElements;
+    //     this.hotTopicResults.pageSize = res.size;
+    //     this.hotTopicResults.totalPages = res.totalPages;
+    //     this.hotTopicPosts = res.content as any[];
+    //   }
+    //   this.hotTopicPosts.forEach(post => {
+    //     post.image = this.getRandomImage();
+    //   });
+    // });
   }
 
   pageEventHandler(event: PageEvent) {
@@ -463,9 +467,9 @@ topic: any;
   }
 
   searchBulletinPosts(searchText) {
-    this.searchApi.searchBulletinPost(searchText).subscribe(data => {
-      this.posts = data as any[];
-    });
+    // this.searchApi.searchBulletinPost(searchText).subscribe(data => {
+    //   this.posts = data as any[];
+    // });
   }
 
   // searchBulletinTopics(searchTopic) {
@@ -483,9 +487,9 @@ topic: any;
 
   getAllActivity() {
     // this.bulletinBoardPost.department = this.currentDept;
-    this.api.getAllActivity().subscribe(data => {
-      this.activities = data;
-    });
+    // this.api.getAllActivity().subscribe(data => {
+    //   this.activities = data;
+    // });
   }
 
   // hardcoded images for Hot topic images
@@ -545,13 +549,13 @@ topic: any;
       reader.onload = () => {
         const formData = new FormData();
         formData.append('file', file);
-        this.api.uploadBulletinBoardAttachment(formData).subscribe(
-          result => {
-            this.documents.push(result);
-            this.fileUploading = false;
+        // this.api.uploadBulletinBoardAttachment(formData).subscribe(
+        //   result => {
+        //     this.documents.push(result);
+        //     this.fileUploading = false;
 
-          }
-        );
+        //   }
+        // );
       };
     }
 
@@ -564,11 +568,11 @@ topic: any;
     this.favorite.post = post;
     this.favorite.created = new Date;
     this.favorite.eodTech = post.author;
-    this.api.postFavorite(this.favorite).subscribe(res => {
-      // this.allFavorites = res;
-      this.allFavorites.push(this.favorite);
-      this.ngOnInit();
-    });
+    // this.api.postFavorite(this.favorite).subscribe(res => {
+    //   // this.allFavorites = res;
+    //   this.allFavorites.push(this.favorite);
+    //   this.ngOnInit();
+    // });
   }
 
   toggleRightPanel(selection) {

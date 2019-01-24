@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <div class="row bulletin-board-container">
 
     <div id="message-center" class="col-2 message-center" style="overflow-y: scroll; overflow-x: hidden;">
@@ -6,10 +7,10 @@
         <mat-button-toggle-group class="message-center-toggle row" value="posts" name="messageCenter" aria-label="Messsage Center">
 
             <mat-button-toggle (click)="postSection()" class="col" value="posts">
-                <i matTooltip="Post" class="fas fa-newspaper"></i>
+                <i matTooltip="Post" class="fa fa-newspaper"></i>
             </mat-button-toggle>
             <mat-button-toggle (click)="messagesSection()" class="col" value="messages">
-                <i matTooltip="Message" class="fas fa-comments"></i>
+                <i matTooltip="Message" id="fa-comment" class="fa fa-comments"></i>
             </mat-button-toggle>
         </mat-button-toggle-group>
         <hr>
@@ -30,11 +31,11 @@
             <br>
             <div class="row" style="margin-top: -20px;">
                 <div class="col-12" style="text-align: center;">
-                    <i (click)="setHotTopic()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="hotTopicPost ? 'red' : ''" class="hover hot-topic fas fa-fire"></i>
-                    <i style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover fas fa-paperclip" (click)="file.click()"></i>
+                    <i (click)="setHotTopic()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="hotTopicPost ? 'red' : ''" class="hover hot-topic fa fa-fire"></i>
+                    <i style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover fa fa-paperclip" (click)="file.click()"></i>
                     <input type="file" #file style="display:none" (change)="onFileChange($event)">
-                    <i (click)="setLock()" [ngClass]="lockPost ? 'fas fa-lock' : 'fas fa-unlock'" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover"></i>
-                    <i (click)="openTags()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="tagsOpen ? 'blue' : ''" class="hover fas fa-tags"></i>
+                    <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover"></i>
+                    <i (click)="openTags()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="tagsOpen ? 'blue' : ''" class="hover fa fa-tags"></i>
                 </div>
 
                 <div *ngIf="tagsOpen" class="mt-3 col-12">
@@ -42,7 +43,7 @@
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)" style="font-size: 12px; font-family: Helvetica, sans-serif">
                                 {{tag.name}}
-                                <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fas fa-times-circle"></i></mat-icon>
+                                <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fa fa-times-circle"></i></mat-icon>
                                 <!-- <i class="far fa-times-circle"></i> -->
                             </mat-chip>
                             <input style="caret-color: #505464; color: #505464;" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
@@ -64,7 +65,7 @@
                     <button (click)="confirmAddPost()" mat-button style="background:#2093EE; width: 100%; color: #FFF;">
                         <span style="color:#FFF;">
                             POST
-                            <i style="margin-left: 3px; color: #FFF;" class="hover fas fa-paper-plane"></i>
+                            <i style="margin-left: 3px; color: #FFF;" class="hover fa fa-paper-plane"></i>
                         </span>
                     </button>
                 </div>
@@ -81,8 +82,8 @@
             </div>
             <div class="mt-2 row">
                 <div class="col-12" style="text-align: center;">
-                    <i style=" margin-right: 3px; font-size: 18px; transition: 200ms;" class="hover fas fa-images"></i>
-                    <i style=" margin-left: 18px; font-size: 18px; transition: 200ms;" class="hover fas fa-paperclip"></i>
+                    <i style=" margin-right: 3px; font-size: 18px; transition: 200ms;" class="hover fa fa-images"></i>
+                    <i style=" margin-left: 18px; font-size: 18px; transition: 200ms;" class="hover fa fa-paperclip"></i>
                 </div>
             </div>
 
@@ -99,7 +100,7 @@
                             <mat-chip-list>
                                 <mat-chip *ngFor="let g of selectedPeopleAndGroupArray" [selectable]="selectable" [removable]="removable" (removed)="removeGroup(g)" style="font-size: 12px; font-family: Helvetica, sans-serif">
                                     {{ g}}
-                                    <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fas fa-times-circle"></i></mat-icon>
+                                    <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fa fa-times-circle"></i></mat-icon>
                                     <!-- <i class="far fa-times-circle"></i> -->
                                 </mat-chip>
                                 <!-- <input style="caret-color: #f3f3f3; color: #FFF;" [matChipInputFor]="chipList"
@@ -112,7 +113,7 @@
                 <div *ngIf="!showGroups" class="col-12">
                     <button style=" text-align: left; padding: 15px 16px 0px;" class="col-12" mat-button (click)="displayGroup()">
                         <span style="font-size: 20px;">
-                            <i class="fas fa-users"></i>
+                            <i class="fa fa-users"></i>
                             Groups
                         </span>
                     </button>
@@ -120,7 +121,7 @@
                 <div *ngIf="showGroups" class="col-12">
                     <button style=" text-align: left; padding: 15px 16px 18px;" class="col-12" mat-button (click)="displayGroup()">
                         <span style="font-size: 20px;">
-                            <i class="fas fa-users"></i>
+                            <i class="fa fa-users"></i>
                             Groups
                         </span>
                     </button>
@@ -130,7 +131,7 @@
                             <li *ngFor="let group of groupsArray">
                                 <div mat-button class="row">
                                     <div class="col-2">
-                                        <i style="font-size: 35px; color:#505464;" class="fas fa-user-circle"></i>
+                                        <i style="font-size: 35px; color:#505464;" class="fa fa-user-circle"></i>
                                     </div>
                                     <div style="margin-left:2px; padding-top: 5px;" class="col">
                                         <p (click)="isClicked(group)" style="color: #505464;">{{group}}</p>
@@ -145,7 +146,7 @@
                 <div *ngIf="!showPeople" class="col-12">
                     <button style=" text-align: left; padding: 15px 16px 0px;" class="col-12" mat-button (click)="displayPeople()">
                         <span style="font-size: 20px;">
-                            <i class="fas fa-user"></i>
+                            <i class="fa fa-user"></i>
                             People
                         </span>
                     </button>
@@ -153,7 +154,7 @@
                 <div *ngIf="showPeople" class="row" style="margin: 0 15px;">
                     <button style=" text-align: left; padding: 15px 16px 18px;" class="col-12" mat-button (click)="displayPeople()">
                         <span style="font-size: 20px;">
-                            <i class="fas fa-user"></i>
+                            <i class="fa fa-user"></i>
                             People
                         </span>
                     </button>
@@ -165,7 +166,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-2">
-                                        <i style="font-size: 35px; color:#505464;" class="fas fa-user-circle"></i>
+                                        <i style="font-size: 35px; color:#505464;" class="fa fa-user-circle"></i>
                                     </div>
                                     <div style="margin-left:15px; padding-top: 5px;" class="col">
                                         <p (click)="isClicked(person)" style="color: #505464;">{{person}}</p>
@@ -255,7 +256,7 @@
                 <button (click)="sendPost(this.selectedPeopleAndGroupArray)" mat-button style="background:#2093EE; width: 100%; color: #FFF;">
                     <span style="color:#FFF;">
                         SEND
-                        <i style="margin-left: 3px; color:#FFF;" class="hover fas fa-paper-plane"></i>
+                        <i style="margin-left: 3px; color:#FFF;" class="hover fa fa-paper-plane"></i>
                     </span>
                 </button>
             </div>
@@ -285,7 +286,7 @@
         </div>
         <div id="hot-topics" class="row center-section ">
             <div class="col-12">
-                <h5>HOT TOPICS <i class="red fas fa-fire"></i></h5>
+                <h5>HOT TOPICS <i class="red fa fa-fire"></i></h5>
             </div>
             <ul id="hot-topics" class="row" style="width: 100%; margin-left: 15px; margin-right: 0px;">
                 <li *ngFor="let pos of hotTopicPosts, let i=index" class="col-4">
@@ -326,7 +327,7 @@
         <div class="row mt-3" style="margin-left: 0; margin-right: 0">
             <div id="posts" class="col center-section">
                 <!-- <div class="col"> -->
-                <h5 class="px-4">MESSAGES <i style="color: #9EA3B4;" class="fas fa-newspaper"></i></h5>
+                <h5 class="px-4">MESSAGES <i style="color: #9EA3B4;" class="fa fa-newspaper"></i></h5>
                 <br>
                 <ul>
                     <li *ngFor="let gP of groupAndPeoplePosts">
@@ -336,8 +337,8 @@
                     <!-- <li *ngFor="let gP of groupAndPeoplePosts">
                 <mat-card *ngIf="showgroupAndPeoplePosts">
                   <mat-card-header>
-                    <div mat-card-avatar><i class="fas fa-user-circle"></i></div>
-                    <mat-card-title>User, PMO<i style="position: absolute; right: 16px; top: 17px;" class="hover fas fa-bookmark"></i></mat-card-title>
+                    <div mat-card-avatar><i class="fa fa-user-circle"></i></div>
+                    <mat-card-title>User, PMO<i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark"></i></mat-card-title>
                     <mat-card-subtitle><span>ES- SSGT</span> -->
                     <!-- <span style="right: 15px; position: absolute;">{{pos.postDate | date: 'MM-dd-yyyy'}}</span></mat-card-subtitle> -->
                     <!-- <mat-card-subtitle><span style="right: 15px; position: absolute;">620-847-5531</span></mat-card-subtitle>
@@ -354,17 +355,17 @@
                     <!-- </mat-card-content>
                   <mat-card-actions>
                     <i (click)="likeClickEvent()" [ngClass]="likeClick ? 'red' : 'grey'" id="heart" style="margin-left:10px; transition: 200ms"
-                      class="hover fas fa-heart"></i>
+                      class="hover fa fa-heart"></i>
                     <i (click)="commentSection()" [ngClass]="commentClick ? 'blue' : 'grey'" id="comment" style="margin-left:30px; transition: 200ms"
-                      class="hover fas fa-comment"></i>
-                    <i id="share" style="margin-left:30px; transition: 200ms" class="hover fas fa-share"></i> -->
+                      class="hover fa fa-comment"></i>
+                    <i id="share" style="margin-left:30px; transition: 200ms" class="hover fa fa-share"></i> -->
                     <!-- <div class="row" *ngFor="let comment of pos.comments" class="hover comment-section">
                         <hr>
                         <ul style="margin-left: 5px;">
                           <li>
                             <mat-card>
                               <mat-card-header>
-                                <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
+                                <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
                                 <mat-card-subtitle>USMC SSgt John</mat-card-subtitle>
                                 <mat-card-title>
                                   <p style="font-size: 14px; font-weight: 100;">{{comment.commentText}}</p>
@@ -383,7 +384,7 @@
                               <div mat-card-avatar>
                                 <i
                                   style="font-size: 25px"
-                                  class="fas fa-user-circle"
+                                  class="fa fa-user-circle"
                                 ></i>
                               </div>
                               <mat-card-subtitle>USMC SSgt John</mat-card-subtitle>
@@ -403,7 +404,7 @@
 
                         <div style="vertical-align: middle; padding-top: 0; font-size:23px; margin-left: -30px; cursor: pointer;"
                           class="col-1" (click)="addComment(gP)">
-                          <i style="margin-left: 8px; color: #2093EE;" class="fas fa-paper-plane"></i>
+                          <i style="margin-left: 8px; color: #2093EE;" class="fa fa-paper-plane"></i>
                         </div>
                       </div>
                     </div>
@@ -415,9 +416,9 @@
                     <li *ngFor="let pos of posts; let i = index">
                         <mat-card>
                             <mat-card-header>
-                                <div mat-card-avatar><i class="fas fa-user-circle"></i></div>
-                                <mat-card-title>{{pos.author.person.lastNm}}, {{pos.author.person.firstNm}}<i style="position: absolute; right: 16px; top: 17px;" class="hover fas fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i>
-                                <!-- <i (click)="setLock()" [ngClass]="lockPost ? 'fas fa-lock' : 'fas fa-unlock'" style=" position: absolute; right: 60px; top: 16px;transition: 200ms;" class="hover"></i> -->
+                                <div mat-card-avatar><i class="fa fa-user-circle"></i></div>
+                                <mat-card-title>{{pos.author.person.lastNm}}, {{pos.author.person.firstNm}}<i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i>
+                                <!-- <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" position: absolute; right: 60px; top: 16px;transition: 200ms;" class="hover"></i> -->
                                 </mat-card-title>
                                 <mat-card-subtitle><span>{{pos.author.person.rank}}</span>
                                     <span style="right: 15px; position: absolute;">{{pos.postDate | date:
@@ -434,11 +435,11 @@
                                 </p>
                             </mat-card-content>
                             <mat-card-actions>
-                                <i (click)="likeClickEvent(pos)" [ngClass]="{'blue': pos.liked, 'grey': !pos.liked}" id="heart" style="margin-left:10px; transition: 200ms;" class="hover fas fa-thumbs-up"></i>
+                                <i (click)="likeClickEvent(pos)" [ngClass]="{'blue': pos.liked, 'grey': !pos.liked}" id="heart" style="margin-left:10px; transition: 200ms;" class="hover fa fa-thumbs-up"></i>
                                 <p class="d-inline-flex ml-1" id="like">Like</p>
                                 <p class="d-inline-flex ml-2">{{pos.likeCount}}</p>
-                                <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fas fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
-                                <i id="share" style="margin-left:30px; transition: 200ms; font-size: 18px;" class="hover fas fa-share">Share</i>
+                                <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
+                                <i id="share" style="margin-left:30px; transition: 200ms; font-size: 18px;" class="hover fa fa-share">Share</i>
                                 <div *ngFor="let comment of pos.bltPostComment" >
                                 <div class="row" class="hover comment-section" *ngIf="showComments === pos.id">
                                     <hr>
@@ -447,7 +448,7 @@
                                         <li>
                                             <mat-card>
                                                 <mat-card-header>
-                                                    <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
+                                                    <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
                                                     <mat-card-subtitle>User, PMO</mat-card-subtitle>
                                                     <mat-card-title>
                                                         <p style="font-size: 14px; font-weight: 100;">{{comment.text}}</p>
@@ -464,7 +465,7 @@
                                         <li>
                                             <mat-card>
                                                 <mat-card-header>
-                                                    <div mat-card-avatar><i style="font-size: 25px" class="fas fa-user-circle"></i></div>
+                                                    <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
                                                     <mat-card-subtitle></mat-card-subtitle>
                                                 </mat-card-header>
                                             </mat-card>
@@ -476,7 +477,7 @@
                                         </div>
 
                                         <div style="vertical-align: middle; padding-top: 0; font-size:23px; margin-left: -30px; cursor: pointer;" class="col-1" (click)="createPostComment(pos.id, i)">
-                                            <i style="margin-left: 8px; color: #2093EE;" class="fas fa-paper-plane"></i>
+                                            <i style="margin-left: 8px; color: #2093EE;" class="fa fa-paper-plane"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -493,10 +494,10 @@
         <h5 class="mt-3" style="color: white;">FAVORITES</h5>
         <mat-button-toggle-group value="favorites" style="width: 100%">
             <mat-button-toggle (click)="toggleRightPanel('fav')" class="col" value="favorites">
-                <i class="fas fa-bookmark"></i>
+                <i class="fa fa-bookmark"></i>
             </mat-button-toggle>
             <mat-button-toggle (click)="toggleRightPanel('activity')" class="col" value="archives">
-                <i class="fas fa-chart-line"></i>
+                <i class="fa fa-chart-line"></i>
             </mat-button-toggle>
         </mat-button-toggle-group>
         <hr style="background: #505464;" />
