@@ -136,13 +136,14 @@ export class AdminComponent implements OnInit, OnChanges {
       topic.hidden = false;
       topic.mod = {id: modId};
       this.apiT.updateTopic(topic).subscribe(data => {
-
       });
+      this.hide = false;
     } else {
       topic.hidden = true;
       topic.mod = {id: modId};
       this.apiT.updateTopic(topic).subscribe(data => {
       });
+      this.hide = true;
     }
   }
 
@@ -183,5 +184,15 @@ getAttachments() {
 
     });
     console.log(topicAtt + 'this is whats sending');
+  }
+
+  ishidden(hidden) {
+    if (hidden) {
+      this.hide = false;
+      return true;
+    } else {
+      this.hide = true;
+      return true;
+    }
   }
 }
