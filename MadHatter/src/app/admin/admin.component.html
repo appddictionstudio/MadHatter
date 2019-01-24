@@ -77,13 +77,11 @@
       <div class="learningContent" *ngFor="let m of modules">
         <div *ngIf="m.bootcamp">
           <div class= "headerLearningContent">
-            <h1>{{m.title}}</h1>
-            <div class="headerProgress" style="width:25em">
-              <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                <span>0%</span>
-              </div>
+            <h2>{{m.title}}</h2>
+            <div>
+
           </div>
-          <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+          <div class="time" style="text-align: right"><h3> Score</h3></div>
           </div>
           <div>
           <hr>
@@ -91,7 +89,7 @@
           <div class="showTopics" *ngFor="let t of topics">
           <div class="adminSubheader" *ngIf="t.mod.id === m.id">
             <div class="subheaderlc">
-              <h3>{{t.topicTitle}}</h3>
+              <h2>{{t.topicTitle}}</h2>
             </div>
             <div class="toggleDetailsCheckbox">
               <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
@@ -109,13 +107,11 @@
       <div class="learningContent" *ngFor="let m of modules">
         <div *ngIf="!m.bootcamp">
           <div class= "headerLearningContent">
-            <h1>{{m.title}}</h1>
-            <div class="headerProgress" style="width:25em">
-              <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                <span>0%</span>
-              </div>
+            <h2>{{m.title}}</h2>
+            <div>
+
           </div>
-          <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+          <div class="time" style="text-align: right"><h3> Score</h3></div>
           </div>
           <div>
           <hr>
