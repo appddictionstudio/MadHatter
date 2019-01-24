@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
 import { LaunchDownloadsModalComponent } from '../launch-downloads-modal/launch-downloads-modal.component';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-// import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver';
 import { Attachments } from '../models/Attachments';
 
 @Component({
@@ -222,7 +222,7 @@ onFileChange(event, topic) {
    const parts: string[] = contentDispositionHeader.split(';');
    const filename = parts[1].split('=')[1];
    const blob = new Blob([response.body], { type: 'text/plain' });
-  //  saveAs(blob, filename);
+   saveAs(blob, filename);
  }
 
  getUserRoleInstructor() {
