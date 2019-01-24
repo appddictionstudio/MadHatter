@@ -30,7 +30,7 @@ export class ModuleService {
   }
 
   getTopicsByAll(): Observable<any> {
-    return  this.http.get(environment.apiUrl + 'topics/getByModIdAll');
+    return  this.http.get(environment.apiUrl + 'topics/all');
   }
 
   getAllTopics(): Observable<any> {

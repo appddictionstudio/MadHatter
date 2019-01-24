@@ -5,9 +5,10 @@
     <mat-progress-spinner color="primary" mode="indeterminate">
     </mat-progress-spinner>
 </div>
+<div *ngIf="!isLoading">
 <div id="adminInstructor" *ngIf="getUserRoleInstructor()">
   <div *ngIf="teachingRole('ASD')" class="classSeperation">
-    <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
+    <h1 id="headerTitle">Advanced Software Developer</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="m.bootcamp">
         <div class= "headerLearningContent">
@@ -21,8 +22,8 @@
         </div>
         <div>
         <hr>
-        <div class="showTopics" *ngFor="let t of m.topicId" >
-        <div class="adminSubheader">
+        <div class="showTopics" *ngFor="let t of topics" >
+        <div class="adminSubheader" *ngIf="t.mod.id === m.id">
           <div class="subheaderlc">
             <h3>{{t.topicTitle}}</h3>
           </div>
@@ -51,8 +52,8 @@
         </div>
         <div>
         <hr>
-        <div class="showTopics" *ngFor="let t of m.topicId" >
-        <div class="adminSubheader">
+        <div class="showTopics" *ngFor="let t of topics" >
+        <div class="adminSubheader" *ngIf="t.mod.id === m.id">
           <div class="subheaderlc">
             <h3>{{t.topicTitle}}</h3>
           </div>
@@ -87,8 +88,8 @@
           <div>
           <hr>
           <div>
-          <div class="showTopics" *ngFor="let t of topics" >
-          <div class="adminSubheader">
+          <div class="showTopics" *ngFor="let t of topics">
+          <div class="adminSubheader" *ngIf="t.mod.id === m.id">
             <div class="subheaderlc">
               <h3>{{t.topicTitle}}</h3>
             </div>
@@ -118,8 +119,8 @@
           </div>
           <div>
           <hr>
-          <div class="showTopics" *ngFor="let t of m.topicId" >
-          <div class="adminSubheader">
+          <div class="showTopics" *ngFor="let t of topics">
+          <div class="adminSubheader" *ngIf="t.mod.id === m.id">
             <div class="subheaderlc">
               <h3>{{t.topicTitle}}</h3>
             </div>
@@ -133,4 +134,5 @@
         </div>
     </div>
   </div>
+</div>
 </div>

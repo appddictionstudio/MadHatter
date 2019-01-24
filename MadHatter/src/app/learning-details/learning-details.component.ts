@@ -83,18 +83,13 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
-
-      console.log(this.topics);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       console.log(this.resources);
-
       this.getTopicsByModId(this.module.id);
       // this.topics = JSON.parse(JSON.stringify(this.module.topic));
-
       this.isLoading = false;
 
     });
-    console.log(this.topics);
     }
 
     hideContent() {
@@ -160,6 +155,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getTopicsByModId(modId) {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
+      console.log(this.topics);
     });
   }
 
@@ -168,24 +164,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.attList = data as any[];
     });
   }
-//     toggleContent(t) {
-//       this.modId = this.route.snapshot.paramMap.get('id');
-
-//     //   if (this.hide) {
-//     //     this.hide = false;
-//     // } else {
-//     //   this.hide = true;
-//     // }
-// this.topicHide = t;
-// this.topicHide.id = t.id;
-// this.topicHide.topicTitle = t.topicTitle;
-// this.topicHide.files = null;
-// this.topicHide.Quizzes = null;
-// this.topicHide.hidden = this.hide;
-//  this.apiT.createHidden(this.topicHide, this.modId).subscribe(res => {
-// this.allTopic.push(this.topicHide);
-//  });
-//   }
 
 onFileChange(event, topic) {
   const reader = new FileReader();

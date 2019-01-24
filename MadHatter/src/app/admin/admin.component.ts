@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getUserRole();
     this.getModuleforLearning();
+    this.getAllTopics();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -47,7 +48,7 @@ export class AdminComponent implements OnInit, OnChanges {
     this.api.getModule().subscribe(res => {
       this.modules = res as any[];
       console.log(this.modules);
-      this.isLoading = false;
+      // this.isLoading = false;
     });
   }
 
@@ -145,4 +146,12 @@ export class AdminComponent implements OnInit, OnChanges {
   //   });
   //   return this.topics;
   // }
+
+  getAllTopics() {
+    this.api.getTopicsByAll().subscribe(res => {
+      this.topics = res as any[];
+      console.log(this.topics);
+      this.isLoading = false;
+    });
+  }
 }
