@@ -82,8 +82,9 @@
               <div *ngIf="!t.hidden">
               <div *ngFor= "let a of t.attachments">
           <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-            <div class="subheaderlc">
-                <h3>{{a.fileNm}}</h3>
+            <div (click)="downloadAttatchemnts(a.id)" class="subheaderlc">
+                <h3>{{a.fileNm}}
+                <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i></h3>
               </div>
               <div class="input">
               <input type="file" #file  (change)="onFileChange($event,t)">
@@ -122,8 +123,9 @@
             <div *ngIf="!t.hidden">
             <div *ngFor= "let a of t.attachments">
           <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-            <div class="subheaderlc">
+            <div (click)="downloadAttatchemnts(a.id)" class="subheaderlc">
                 <h3>{{a.fileNm}}</h3>
+                <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i>
               </div>
               <div class="input">
               <input type="file" #file  (change)="onFileChange($event,t)">

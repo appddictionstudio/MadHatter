@@ -36,13 +36,12 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="learningDetailGridSeperator">
-  <div class="learningDetailGrid" *ngFor="let att of t.attachments">
+  <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
+  <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
       <p class="learningDetailName">
-          {{att.fileNm}}
-        </p>
+          {{att.fileNm}}</p>
         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-        <i  id="learningDetailDownload"class="fa fa-download" (click)="downloadAttatchemnts(att.id)" aria-hidden="true"></i>
+        <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
     <!-- <div *ngFor="let a of attList">
     <p *ngIf="att.attachmentId === a.id">
       {{att.fileNm}}

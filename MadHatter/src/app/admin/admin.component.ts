@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import { TopicsService } from '../services/topics.service';
 import { StudentService } from '../services/student.service';
 import { Attachments } from '../models/Attachments';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-admin',
@@ -195,4 +196,21 @@ getAttachments() {
       return true;
     }
   }
+
+  downloadAttatchemnts(attachmentId) {
+    this.apiT.DownloadAtt(attachmentId).subscribe(response => {
+        console.log(response);
+       this.saveToFileSystem(response);
+     });
+ }
+ private saveToFileSystem(response) {
+  console.log('saving file');
+   const contentDispositionHeader: string = response.headers.get(
+     'Content-Disposition'
+   );
+   const parts: string[] = contentDispositionHeader.split(';');
+   const filename = parts[1].split('=')[1];
+   const blob = new Blob([response.body], { type: 'text/plain' });
+   saveAs(blob, filename);
+ }
 }
