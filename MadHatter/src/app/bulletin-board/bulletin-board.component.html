@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
 <div class="row bulletin-board-container">
 
     <div id="message-center" class="col-2 message-center" style="overflow-y: scroll; overflow-x: hidden;">
@@ -32,8 +32,6 @@
             <div class="row" style="margin-top: -20px;">
                 <div class="col-12" style="text-align: center;">
                     <i (click)="setHotTopic()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="hotTopicPost ? 'red' : ''" class="hover hot-topic fa fa-fire"></i>
-                    <i style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover fa fa-paperclip" (click)="file.click()"></i>
-                    <input type="file" #file style="display:none" (change)="onFileChange($event)">
                     <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover"></i>
                     <i (click)="openTags()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="tagsOpen ? 'blue' : ''" class="hover fa fa-tags"></i>
                 </div>
@@ -50,16 +48,6 @@
                         </mat-chip-list>
                     </mat-form-field>
                 </div>
-                <table style="margin: 15px;">
-                    <tbody>
-                        <tr *ngFor="let document of documents">
-                            <td>{{document.fileNm}}</td>
-                        </tr>
-                        <tr *ngIf="urls">
-                            <img class="ml-1 mt-1" *ngFor="let thisurl of urls" [src]="thisurl" height="50"> <br />
-                        </tr>
-                    </tbody>
-                </table>
 
                 <div class="col-12" style="padding: 10px 15px;">
                     <button (click)="confirmAddPost()" mat-button style="background:#2093EE; width: 100%; color: #FFF;">
@@ -286,7 +274,7 @@
         </div>
         <div id="hot-topics" class="row center-section ">
             <div class="col-12">
-                <h5>HOT TOPICS <i class="red fa fa-fire"></i></h5>
+                <h5>HOT TOPICS<i class="red fa fa-fire"></i></h5>
             </div>
             <ul id="hot-topics" class="row" style="width: 100%; margin-left: 15px; margin-right: 0px;">
                 <li *ngFor="let pos of hotTopicPosts, let i=index" class="col-4">

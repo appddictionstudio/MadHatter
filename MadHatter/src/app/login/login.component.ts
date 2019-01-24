@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/cor
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit, OnChanges {
   constructor(
     private auth: AuthService,
     private router: Router,
+    private snotifyService: SnotifyService,
     private appcomp: AppComponent,
   ) { }
 
@@ -42,8 +44,13 @@ export class LoginComponent implements OnInit, OnChanges {
       this.isLoggedIn = true;
     },
     error => {
-      console.log('failed login');
-      console.log(error);
+      this.snotifyService.error('Credentials Incorrect', {
+        timeout: 2000,
+        showProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
       this.failedLogin = true;
     },
     () => {

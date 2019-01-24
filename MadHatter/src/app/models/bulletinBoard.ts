@@ -22,5 +22,3 @@ export class BulletinMessageCenter {
     hasLikes: boolean;
 
 }
-
-

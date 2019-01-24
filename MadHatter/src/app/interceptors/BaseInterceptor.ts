@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs/operators';
+import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { environment } from 'src/environments/environment';
 import { AppComponent } from 'src/app/app.component';
 
@@ -13,6 +14,7 @@ export class BaseInterceptor implements HttpInterceptor {
   constructor(
     public auth: AuthService,
     public app: AppComponent,
+    private snotifyService: SnotifyService,
     ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -47,11 +49,13 @@ export class BaseInterceptor implements HttpInterceptor {
         event => event instanceof HttpResponse ? 'succeeded' : '',
         error => {
           if (error instanceof HttpErrorResponse) {
-            this.app.destroyToken();
-            // this.auth.setRedirectLocation();
-            // this.auth.redirectToLogin();
-            console.log('http error intercepted. redirect location: ' + this.auth.getRedirectLocation());
-            // location.reload();
+            this.snotifyService.error('Error', {
+              timeout: 2000,
+              showProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              position: SnotifyPosition.rightBottom
+            });
           }
         })
     );

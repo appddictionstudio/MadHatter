@@ -31,8 +31,8 @@ export class BulletinBoardService {
     return this.http.post<any>(environment.apiUrl + 'BltBrdPost/like/' + id, httpOptions);
   }
 
-  getPostlikesByEodTechId(id: number): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + 'BltBrdAct/getLikesByEodTechId/' + id, httpOptions);
+  getPostlikesByUserId(id: number): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + 'BltBrdAct/getLikesByUserId/' + id, httpOptions);
   }
 
   getAllBulletinPost() {
