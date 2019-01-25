@@ -204,18 +204,18 @@ topic: any;
     this.selectedValue = '';
     // this.groupAndPeoplePosts = [this.selectedValue];
 
-    this.api.getAllFavorites().subscribe(response => {
-      this.allFavorites = response;
-      this.favoritePostsIds = this.allFavorites.map(fav => fav.post ? fav.post.id : 0);
-    });
+    // this.api.getAllFavorites().subscribe(response => {
+    //   this.allFavorites = response;
+    //   this.favoritePostsIds = this.allFavorites.map(fav => fav.post ? fav.post.id : 0);
+    // });
 
     this.postForm = this.fb.group({
       postControl: ['Post']
    });
 
-    this.loadHotTopicPosts(this.currentPage);
+    // this.loadHotTopicPosts(this.currentPage);
     this.loadBulletinPosts();
-    this.getAllActivity();
+    // this.getAllActivity();
     this.bulletinBoardPost.topic = '';
     this.bulletinBoardPost.text = '';
     this.bulletinBoardPost.attachments.length = 0;
@@ -228,7 +228,7 @@ topic: any;
 
   ngOnChanges() {
     this.loadBulletinPosts();
-    this.getAllActivity();
+    // this.getAllActivity();
 
 
   }
@@ -407,17 +407,17 @@ topic: any;
       this.posts = data as any[];
       console.log(this.posts);
       console.log(this.documents);
-      this.api.getPostlikesByUserId(id).subscribe(likes => {
-        for ( const like of likes) {
-          for (const post of this.posts) {
-            if (post.id === like.post.id && like.eodTech.id === id) {
-              console.log(post.id + 'is liked');
-              post.liked = true;
-              post.likeCount = post.likeCount;
-            }
-          }
-        }
-      });
+      // this.api.getPostlikesByUserId(id).subscribe(likes => {
+      //   for ( const like of likes) {
+      //     for (const post of this.posts) {
+      //       if (post.id === like.post.id && like.eodTech.id === id) {
+      //         console.log(post.id + 'is liked');
+      //         post.liked = true;
+      //         post.likeCount = post.likeCount;
+      //       }
+      //     }
+      //   }
+      // });
       // for (const post of this.posts) {
       //   this.api.getPostlikesByEodTechId(id).subscribe(likes => {
       //     for (const like of likes) {
@@ -526,7 +526,7 @@ topic: any;
 
 
   onFileChange(event) {
-    console.log("hello");
+    console.log('hello');
     this.fileUploading = true;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
