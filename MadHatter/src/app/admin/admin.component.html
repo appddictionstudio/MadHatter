@@ -1,4 +1,4 @@
-<!-- 
+<!--
 //
 //
 //
@@ -11,7 +11,7 @@
  <!-- /////////////////////////////////////////////////////////////////////////
                             INSTRUCTOR SECTION
 ///////////////////////////////////////////////////////////////////////// -->
-<!-- 
+<!--
 //
 //
 //
@@ -35,6 +35,10 @@
           <h1>{{m.title}}</h1>
         <div class="time"><h3></h3></div>
         </div>
+        <!-- <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
+          <h3></h3>
+          <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
+        </div> -->
         <div>
         <hr>
         <div class="showTopics" *ngFor="let t of topics" >
@@ -47,6 +51,36 @@
               <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
             </div>
             </div>
+              <!-- ///////////// MODAL INSTRUCTOR GUIDE ////////////// -->
+          <ng-template #content let-modal let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modal-instructor-title">Download Content</h3>
+              <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="learningDetailGridSeperator" *ngFor="let att of m.modAttachments, let i = index">
+                <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
+                    <p class="learningDetailName">
+                        {{att.fileNm}}</p>
+                      <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
+                      <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
+                      <!-- <i  class="far fa-trash-alt" (click)="deleteTopicAtt(att.id,i)"></i> -->
+                  <!-- <div *ngFor="let a of attList">
+                  <p *ngIf="att.attachmentId === a.id">
+                    {{att.fileNm}}
+                    <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
+                  </p>
+                </div> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+            </div> -->
+          </ng-template>
+
             <!-- ///////////// MODAL ////////////// -->
           <ng-template #content let-modal let-c="close" let-d="dismiss">
               <div class="modal-header">
@@ -56,12 +90,13 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
+                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments, let i = index">
                   <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
                       <p class="learningDetailName">
                           {{att.fileNm}}</p>
                         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
                         <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
+                        <!-- <i  class="far fa-trash-alt" (click)="deleteTopicAtt(att.id,i)"></i> -->
                     <!-- <div *ngFor="let a of attList">
                     <p *ngIf="att.attachmentId === a.id">
                       {{att.fileNm}}
@@ -134,7 +169,7 @@
   </div>
 </div>
 </div>
-<!-- 
+<!--
 //
 //
 //
@@ -147,7 +182,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////
                             STUDENT SECTION
 ///////////////////////////////////////////////////////////////////////// -->
-<!-- 
+<!--
 //
 //
 //
@@ -179,10 +214,10 @@
           <div *ngIf="!t.hidden">
           <div class="adminSubheader">
             <div class="subheaderadmin">
-                <h3>{{t.topicTitle}}</h3> 
+                <h3>{{t.topicTitle}}</h3>
                 <!-- <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i> -->
             </div>
-              
+
             <div class="toggleDetailsCheckbox">
             </div>
             </div>
@@ -227,10 +262,10 @@
           <div *ngIf="!t.hidden">
           <div class="adminSubheader">
             <div class="subheaderadmin">
-                <h3>{{t.topicTitle}}</h3> 
+                <h3>{{t.topicTitle}}</h3>
                 <!-- <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i> -->
             </div>
-              
+
             <div class="toggleDetailsCheckbox">
             </div>
             </div>
