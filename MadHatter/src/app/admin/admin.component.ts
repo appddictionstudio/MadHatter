@@ -10,6 +10,7 @@ import { Attachments } from '../models/Attachments';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TopicAtt } from '../models/TopicAtt';
 
 @Component({
   selector: 'app-admin',
@@ -44,7 +45,7 @@ export class AdminComponent implements OnInit, OnChanges {
   documents: any[] = [];
   closeResult: string;
   attList: Attachments[] = [];
-
+  topicAtt: TopicAtt[] = [];
 
   ngOnInit() {
     this.getUserRole();
@@ -183,14 +184,14 @@ getAttachments() {
       };
     }
   }
-  updateSubmittedAtt(topicAtt) {
-    // this.topicCenter.attachments = this.documents;
-    // tslint:disable-next-line:radix
-    this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
+  // updateSubmittedAtt(topicAtt) {
+  //   // this.topicCenter.attachments = this.documents;
+  //   // tslint:disable-next-line:radix
+  //   this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
 
-    });
-    console.log(topicAtt + 'this is whats sending');
-  }
+  //   });
+  //   console.log(topicAtt + 'this is whats sending');
+  // }
 
   ishidden(hidden) {
     if (hidden) {
@@ -226,4 +227,12 @@ getAttachments() {
     this.closeResult = `Dismissed`;
   });
 }
+
+deleteTopicAtt(id, index) {
+this.apiT.deleteTopicAtt(id).subscribe(() => {
+this.topicAtt.splice(index);
+});
+
+}
+
 }

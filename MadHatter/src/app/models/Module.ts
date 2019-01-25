@@ -5,4 +5,5 @@ export class Module {
     iconLink: string;
     topicId: any;
     bootcamp: string;
+    modAttachments: any[];
 }

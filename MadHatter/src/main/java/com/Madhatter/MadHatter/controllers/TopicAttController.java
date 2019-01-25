@@ -40,6 +40,8 @@ import com.Madhatter.MadHatter.services.AttachmentService;
 
 
 
+
+
 @RestController
 public class TopicAttController {
 	@Autowired
@@ -156,5 +158,14 @@ public class TopicAttController {
 //			repo.save(topicAtt);
 //			return ResponseEntity.status(HttpStatus.OK).build();
 //		}
+		
+		
+//-------------Delete
+		@RequestMapping(value="/TopicAtt/{id}", method = RequestMethod.DELETE)
+		@Transactional
+		public ResponseEntity<TopicAtt> deleteTopicAtt(@PathVariable Long id){
+			repo.deleteById(id);
+			return new ResponseEntity<TopicAtt>(HttpStatus.NO_CONTENT);
+		}
 		
 }
