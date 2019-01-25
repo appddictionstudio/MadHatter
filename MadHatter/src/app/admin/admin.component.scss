@@ -45,19 +45,24 @@ h3 {
   grid-template-columns: .5fr .5fr .2fr .3fr;
   grid-template-rows: 1fr;
   width: 75%;
-  margin: 10px auto 0 auto;
+  margin: 10px auto 2% auto;
 }
 
-.subheaderlc {
+.subheaderadmin {
   grid-column: 1;
   grid-row: 1;
   cursor: pointer;
-  width: fit-content;
-  text-decoration: underline;
+  width: 100%;
+  display: inline-flex;
 }
 
-.subheaderlc h3 {
+.subheaderadmin h3 {
   font-weight: bold;
+  width: 80%;
+}
+
+#externalLinkAdmin {
+    margin-left: 5%;
 }
 
 .input {

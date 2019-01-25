@@ -50,6 +50,7 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { MatListModule } from '@angular/material/list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -131,6 +132,7 @@ library.add(fas, far, fab);
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
+    FontAwesomeModule,
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule, ],

@@ -7,12 +7,15 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import { TopicsService } from '../services/topics.service';
 import { StudentService } from '../services/student.service';
 import { Attachments } from '../models/Attachments';
+import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
 
@@ -20,7 +23,8 @@ export class AdminComponent implements OnInit, OnChanges {
     private api: ModuleService,
     private apiU: UserService,
     private apiT: TopicsService,
-    private apiS: StudentService
+    private modalService: NgbModal,
+    private apiS: StudentService,
   ) { }
 
   currentUser: any;
@@ -38,6 +42,7 @@ export class AdminComponent implements OnInit, OnChanges {
   teacherRole: number;
   studentRole: number;
   documents: any[] = [];
+  closeResult: string;
   attList: Attachments[] = [];
 
 
@@ -213,4 +218,12 @@ getAttachments() {
    const blob = new Blob([response.body], { type: 'text/plain' });
    saveAs(blob, filename);
  }
+
+ open(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed`;
+  });
+}
 }

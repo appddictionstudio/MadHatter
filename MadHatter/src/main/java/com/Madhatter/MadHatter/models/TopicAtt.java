@@ -41,22 +41,10 @@ public class TopicAtt implements Serializable {
 		
 	@Column(name="DESCRIPTION")
 	private String description;
-	
-	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
-	@JoinColumn(name = "SubmittedAtt_id")
-	private List<SubmittedAtt> subAttachments;
 
 
 	public long getId() {
 		return id;
-	}
-
-	public List<SubmittedAtt> getSubAttachments() {
-		return subAttachments;
-	}
-
-	public void setSubAttachments(List<SubmittedAtt> subAttachments) {
-		this.subAttachments = subAttachments;
 	}
 
 	public void setId(long id) {
