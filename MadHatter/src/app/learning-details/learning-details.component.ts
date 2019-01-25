@@ -12,6 +12,7 @@ import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bo
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
 import { Attachments } from '../models/Attachments';
+import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 
 @Component({
   selector: 'app-learning-details',
@@ -29,7 +30,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     private apiT: TopicsService,
     private router: Router,
     private modalService: NgbModal,
-    config: NgbModalConfig
+    config: NgbModalConfig,
+    private snotifyService: SnotifyService,
     ) {
       config.backdrop = 'static';
     config.keyboard = false;
@@ -194,10 +196,18 @@ onFileChange(event, topic) {
     // tslint:disable-next-line:radix
     topicId.mod = {id: modId};
     this.apiT.updateTopic(topicId).subscribe(data => {
-
+      this.snotifyService.success('Excercise Added', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
     });
     console.log(topicId);
+    this.ngOnInit();
   }
+
 
   downloadAttatchemnts(attachmentId) {
     this.apiT.DownloadAtt(attachmentId).subscribe(response => {

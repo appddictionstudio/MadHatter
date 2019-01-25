@@ -144,17 +144,17 @@ public class TopicAttController {
 		
 //-----Update 
 		
-		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
-			if(topicAtt.getSubAttachments() != null) {
-				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
-					attachment.setTopicatt(topicAtt);
-				}
-			}
-			topicAtt.setId(id);
-
-			repo.save(topicAtt);
-			return ResponseEntity.status(HttpStatus.OK).build();
-		}
+//		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
+//		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
+//			if(topicAtt.getSubAttachments() != null) {
+//				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
+//					attachment.setTopicatt(topicAtt);
+//				}
+//			}
+//			topicAtt.setId(id);
+//
+//			repo.save(topicAtt);
+//			return ResponseEntity.status(HttpStatus.OK).build();
+//		}
 		
 }

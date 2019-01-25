@@ -65,7 +65,7 @@ public class BltBrdPostCommentController {
 		 String currentPrincipalName = (String) auth.getPrincipal();
 		 System.out.println(currentPrincipalName);
 		 
-		 User creator = userRepo.findByUsername(currentPrincipalName);
+		 User creator = (User) userRepo.findByUsername(currentPrincipalName);
 //		 User user = optionalUser.get();
 //		 Person person = user.getPerson();
 //		 User creator = userRepo.findById(user.getId());
