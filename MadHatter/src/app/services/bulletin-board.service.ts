@@ -68,7 +68,7 @@ export class BulletinBoardService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.set('Accept', 'application/json');
-    return this.http.post(environment.apiUrl + 'uploadDoc', form, { headers: headers });
+    return this.http.post(environment.apiUrl + 'uploadBltDoc', form, { headers: headers });
 
   }
 

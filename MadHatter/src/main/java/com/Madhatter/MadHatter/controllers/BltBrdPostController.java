@@ -41,6 +41,7 @@ import com.Madhatter.MadHatter.models.BltBrdAct;
 import com.Madhatter.MadHatter.models.BltBrdPost;
 import com.Madhatter.MadHatter.models.RefCode;
 import com.Madhatter.MadHatter.models.User;
+import com.Madhatter.MadHatter.models.BltBrdAtt;
 
 @RestController
 @RepositoryRestController
@@ -68,16 +69,17 @@ public class BltBrdPostController {
 			throw new ValidationException("Record Already Exists");
 		}
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		 String currentPrincipalName = (String) auth.getPrincipal();
-		 System.out.println(currentPrincipalName);
-		 
-		 User creator = userRepo.findByUsername(currentPrincipalName);
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		 String currentPrincipalName = (String) auth.getPrincipal();
+//		 System.out.println(currentPrincipalName);
+//		 
+//		 User creator = userRepo.findByUsername(currentPrincipalName);
 //		 User user = optionalUser.get();
 //		 Person person = user.getPerson();
 //		 User creator = userRepo.findById(user.getId());
 		
-		
+		User creator = new User();
+		creator.setId((long) 1);
 		Calendar now = GregorianCalendar.getInstance();
 		Timestamp postDate = new Timestamp(now.getTimeInMillis());
 
@@ -90,11 +92,11 @@ public class BltBrdPostController {
 		bltBrdPost.setAuthor(creator);
 		bltBrdPost.setLikeCount(0);
 		
-//		if(bltBrdPost.getAttachments() != null) {
-//			for(BltBrdAtt attachment: bltBrdPost.getAttachments()) {
-//				attachment.setPost(bltBrdPost);
-//			}
-//		}
+		if(bltBrdPost.getAttachments() != null) {
+			for(BltBrdAtt attachment: bltBrdPost.getAttachments()) {
+				attachment.setPost(bltBrdPost);
+			}
+		}
 		
 		
 		BltBrdPost savedBltBrdPost = repo.save(bltBrdPost);

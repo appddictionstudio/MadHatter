@@ -42,7 +42,7 @@ public class BltBrdActController {
 	    }
 	
 	 @RequestMapping(value = "BltBrdAct/getLikesByUserId/{id}", method = RequestMethod.GET)
-	 ResponseEntity<List<BltBrdAct>> getAllBulletinPOstLikes(@PathVariable Long id) {
+	 ResponseEntity<List<BltBrdAct>> getAllBulletinPostLikes(@PathVariable Long id) {
 		 List<BltBrdAct> likeList = new ArrayList<BltBrdAct>();
 //		 Long refCodeId = (long)3364;
 		 Long refCodeId = (long)4;

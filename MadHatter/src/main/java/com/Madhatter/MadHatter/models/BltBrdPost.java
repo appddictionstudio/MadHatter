@@ -73,7 +73,12 @@ public class BltBrdPost implements Serializable {
 	@JsonIgnore
 	private List<BltBrdAct> bltBrdActs;
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name="post_id")
+	private List<BltBrdAtt> attachments;
+	
+	
+	@OneToMany(cascade=CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "post_id")
 	private List<BltBrdPostComment> bltPostComment;
@@ -169,6 +174,16 @@ public class BltBrdPost implements Serializable {
 
 	public void setBltBrdFavs(List<BltBrdFav> bltBrdFavs) {
 		this.bltBrdFavs = bltBrdFavs;
+	}
+	
+	
+
+	public List<BltBrdAtt> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<BltBrdAtt> attachments) {
+		this.attachments = attachments;
 	}
 
 	public List<BltBrdAct> getBltBrdActs() {

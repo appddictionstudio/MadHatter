@@ -391,9 +391,9 @@ topic: any;
     createBulletinPost() {
     // this.bulletinBoardPost.department = this.currentDept;
     this.bulletinBoardPost.attachments = this.documents;
-    this.bulletinBoardPost.hotTopicYn = this.hotTopicPost ? 'Y' : 'N';
     this.bulletinBoardPost.lockYn = this.lockPost ? 'Y' : 'N';
     this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
+      this.lockPost = false;
       this.ngOnInit();
     });
 
@@ -402,9 +402,11 @@ topic: any;
 
 
   loadBulletinPosts() {
-   const id = this.loggedInUser = 44206;
+   const id = this.loggedInUser = 1;
     this.api.getAllBulletinPost().subscribe(data => {
       this.posts = data as any[];
+      console.log(this.posts);
+      console.log(this.documents);
       this.api.getPostlikesByUserId(id).subscribe(likes => {
         for ( const like of likes) {
           for (const post of this.posts) {
@@ -524,20 +526,7 @@ topic: any;
 
 
   onFileChange(event) {
-    console.log(event);
-    // this.fileUploading = true;
-    // const files = event.target.files;
-    // if (files && files.lenght > 0) {
-    //   for (const file of files) {
-    //     const imgReader = new FileReader();
-    //     // tslint:disable-next-line:no-shadowed-variable
-    //     imgReader.onload = (event: any) => {
-    //       this.urls.push(event.target.result);
-    //     };
-    //     imgReader.readAsDataURL(file);
-    //     this.fileUploading = false;
-    //   }
-    // }
+    console.log("hello");
     this.fileUploading = true;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {

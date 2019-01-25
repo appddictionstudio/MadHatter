@@ -411,3 +411,42 @@ input[type=search]:focus {
 #fa-comment {
     color: #000
 }
+
+#bbTextArea {
+    width: 94%;
+    margin-left: 2%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#bbPostButton {
+    margin-left: 15px;
+    line-height: 30px !important;
+}
+
+.bbcardcomment{
+    margin: unset;
+    width: 95%;
+    border: 1px solid #CCC;
+    margin-left: 2%;
+    border-radius: 10px;
+    height: unset;
+}
+
+#bbusericon {
+    font-size: 30px;
+    margin-left: 25%;
+}
+
+.content {
+    margin-top: 2%;
+}
+
+.content {
+    height: 11em;
+}
+
+#paperclipandbutton {
+    margin-left: 50%;
+    display: flex;
+}

@@ -1,254 +1,5 @@
 <div class="row bulletin-board-container">
-    <div id="message-center" class="col-2 message-center" style="overflow-y: scroll; overflow-x: hidden;">
-        <h5 style="color: #505464; margin: 18px 0;">MESSAGE CENTER</h5>
-        <!-- <app-bulletin-message-center (updatePosts="ngOnInit()")></app-bulletin-message-center> -->
-        <mat-button-toggle-group class="message-center-toggle row" value="posts" name="messageCenter" aria-label="Messsage Center">
-
-            <mat-button-toggle (click)="postSection()" class="col" value="posts">
-                <i matTooltip="Post" class="fas fa-newspaper"></i>
-            </mat-button-toggle>
-            <mat-button-toggle (click)="messagesSection()" class="col" value="messages">
-                <i matTooltip="Message" id="fa-comment" class="fa fa-comments"></i>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-        <hr>
-        <div *ngIf="showPostSection">
-            <div class="row" style="margin-bottom: -18px;">
-                <mat-form-field style="padding: 0 15px; color: #505464" appearance="outline">
-                    <input matInput placeholder="Write a topic.." [(ngModel)]="bulletinBoardPost.topic" maxlength="50">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field style="padding: 0 15px; color: #505464" appearance="outline">
-                    <textarea rows="5" matInput placeholder="Write a post.." [(ngModel)]="bulletinBoardPost.text"></textarea>
-                </mat-form-field>
-                <!-- <div style="padding: 0 15px;" class="col-12">
-              <textarea rows="5" class="post-input" placeholder="Write a post.." [(ngModel)]="bulletinBoardPost.text"></textarea>
-            </div> -->
-            </div>
-            <br>
-            <div class="row" style="margin-top: -20px;">
-                <div class="col-12" style="text-align: center;">
-                    <i (click)="setHotTopic()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="hotTopicPost ? 'red' : ''" class="hover hot-topic fa fa-fire"></i>
-                    <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" class="hover"></i>
-                    <i (click)="openTags()" style=" margin-right: 18px; font-size: 18px; transition: 200ms;" [ngClass]="tagsOpen ? 'blue' : ''" class="hover fa fa-tags"></i>
-                </div>
-
-                <div *ngIf="tagsOpen" class="mt-3 col-12">
-                    <mat-form-field class="tag-list">
-                        <mat-chip-list #chipList>
-                            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)" style="font-size: 12px; font-family: Helvetica, sans-serif">
-                                {{tag.name}}
-                                <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fa fa-times-circle"></i></mat-icon>
-                                <!-- <i class="far fa-times-circle"></i> -->
-                            </mat-chip>
-                            <input style="caret-color: #505464; color: #505464;" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
-                        </mat-chip-list>
-                    </mat-form-field>
-                </div>
-
-                <div class="col-12" style="padding: 10px 15px;">
-                    <button (click)="confirmAddPost()" mat-button style="background:#2093EE; width: 100%; color: #FFF;">
-                        <span style="color:#FFF;">
-                            POST
-                            <i style="margin-left: 3px; color: #FFF;" class="hover fa fa-paper-plane"></i>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="showMessagesSection">
-            <div class="row">
-                <mat-form-field style="padding: 0 15px; color: #505464" appearance="outline">
-                    <textarea rows="5" matInput placeholder="Say something.."></textarea>
-                </mat-form-field>
-                <!-- <div style="padding: 0 15px;" class="col-12">
-              <textarea rows="5" class="post-input" placeholder="Say something.."></textarea>
-            </div> -->
-            </div>
-            <div class="mt-2 row">
-                <div class="col-12" style="text-align: center;">
-                    <i style=" margin-right: 3px; font-size: 18px; transition: 200ms;" class="hover fa fa-images"></i>
-                    <i style=" margin-left: 18px; font-size: 18px; transition: 200ms;" class="hover fa fa-paperclip"></i>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div style=" text-align: left; padding: 15px 16px 0px;" class="col-12">
-                    <!-- <p [(ngModel)]="selectedValue" style="color: #505464;">To: </p> -->
-                    <div class="row" style="margin: 5px;">
-                        <span>To:</span>
-                        <!-- <mat-form-field style="padding: 0 15px; color: #505464" appearance="outline">
-                  <input [(ngModel)]="selectedValue" style="color: #505464;" matInput>
-                </mat-form-field> -->
-                        <mat-form-field class="tag-list">
-                            <mat-chip-list>
-                                <mat-chip *ngFor="let g of selectedPeopleAndGroupArray" [selectable]="selectable" [removable]="removable" (removed)="removeGroup(g)" style="font-size: 12px; font-family: Helvetica, sans-serif">
-                                    {{ g}}
-                                    <mat-icon matChipRemove *ngIf="removable"><i style="color: #3f424e;" class="fa fa-times-circle"></i></mat-icon>
-                                    <!-- <i class="far fa-times-circle"></i> -->
-                                </mat-chip>
-                                <!-- <input style="caret-color: #f3f3f3; color: #FFF;" [matChipInputFor]="chipList"
-                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                      (matChipInputTokenEnd)="add($event)"> -->
-                            </mat-chip-list>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div *ngIf="!showGroups" class="col-12">
-                    <button style=" text-align: left; padding: 15px 16px 0px;" class="col-12" mat-button (click)="displayGroup()">
-                        <span style="font-size: 20px;">
-                            <i class="fa fa-users"></i>
-                            Groups
-                        </span>
-                    </button>
-                </div>
-                <div *ngIf="showGroups" class="col-12">
-                    <button style=" text-align: left; padding: 15px 16px 18px;" class="col-12" mat-button (click)="displayGroup()">
-                        <span style="font-size: 20px;">
-                            <i class="fa fa-users"></i>
-                            Groups
-                        </span>
-                    </button>
-                    <div style="text-align: left; padding: 0 16px; " class="col-12">
-                        <!-- <p style="color: #747783;">Groups</p> -->
-                        <ul>
-                            <li *ngFor="let group of groupsArray">
-                                <div mat-button class="row">
-                                    <div class="col-2">
-                                        <i style="font-size: 35px; color:#505464;" class="fa fa-user-circle"></i>
-                                    </div>
-                                    <div style="margin-left:2px; padding-top: 5px;" class="col">
-                                        <p (click)="isClicked(group)" style="color: #505464;">{{group}}</p>
-                                    </div>
-                                </div>
-                                <hr>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div *ngIf="!showPeople" class="col-12">
-                    <button style=" text-align: left; padding: 15px 16px 0px;" class="col-12" mat-button (click)="displayPeople()">
-                        <span style="font-size: 20px;">
-                            <i class="fa fa-user"></i>
-                            People
-                        </span>
-                    </button>
-                </div>
-                <div *ngIf="showPeople" class="row" style="margin: 0 15px;">
-                    <button style=" text-align: left; padding: 15px 16px 18px;" class="col-12" mat-button (click)="displayPeople()">
-                        <span style="font-size: 20px;">
-                            <i class="fa fa-user"></i>
-                            People
-                        </span>
-                    </button>
-
-                    <div style="text-align: left; padding: 0 16px; " class="col-10">
-                        <!-- <p style="color: #505464;">People</p> -->
-                        <ul *ngFor="let person of peopleArray">
-
-                            <li>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <i style="font-size: 35px; color:#505464;" class="fa fa-user-circle"></i>
-                                    </div>
-                                    <div style="margin-left:15px; padding-top: 5px;" class="col">
-                                        <p (click)="isClicked(person)" style="color: #505464;">{{person}}</p>
-                                    </div>
-                                </div>
-                                <hr>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div style=" height: 365px; list-style:none; background:rgba(46, 50, 67, 0.616); padding-top: 8px; border-radius: 30px; " class="col-1">
-                        <ul class="letter-list">
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">A</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">B</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">C</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">D</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">E</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">F</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">G</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">H</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -1px; font-size: 10px;">I</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">J</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">K</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">L</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">M</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">N</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">O</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">P</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">Q</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">R</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">S</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">W</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">X</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">Y</p>
-                            </li>
-                            <li>
-                                <p style="margin-left: -3px; font-size: 10px;">Z</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" style="padding: 10px 0px">
-                <button (click)="sendPost(this.selectedPeopleAndGroupArray)" mat-button style="background:#2093EE; width: 100%; color: #FFF;">
-                    <span style="color:#FFF;">
-                        SEND
-                        <i style="margin-left: 3px; color:#FFF;" class="hover fa fa-paper-plane"></i>
-                    </span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div id="news-feed" class="col-8 news-feed bulletin-board-container" style="overflow-y: scroll;">
+    <div id="news-feed" class="col-12 news-feed bulletin-board-container" style="overflow-y: scroll;">
         <div class="row mt-2">
             <h2 style="margin-left: 20px; margin-top: 10px;">NEWS FEED</h2>
             <div class="col">
@@ -270,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div id="hot-topics" class="row center-section ">
+        <!-- <div id="hot-topics" class="row center-section ">
             <div class="col-12">
                 <h5>HOT TOPICS<i class="red fa fa-fire"></i></h5>
             </div>
@@ -307,6 +58,30 @@
                     </mat-paginator>
                 </mat-toolbar-row>
             </mat-toolbar>
+        </div> -->
+        <div id="createPost" class="row">
+            <div class="col-12">
+                <h5>CREATE POST</h5>
+            </div>
+            <div style="width: 100%;" class="row">
+                <div class="col-12">
+                <textarea id="bbTextArea" cols="30" rows="10" placeholder="Write a post.." [(ngModel)]="bulletinBoardPost.text"></textarea>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-12">
+                    
+                        <i class="hover fas fa-paperclip" (click)="file.click()"></i>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-12" id="paperclipandbutton">
+                    <button mat-button id="bbPostButton" (click)="createBulletinPost()">
+                        <span>Post</span>
+                    </button>
+                    <input type="file" #file  (change)="onFileChange($event)">
+                </div>
+            </div>
         </div>
 
 
@@ -400,42 +175,39 @@
               </li> -->
 
                     <li *ngFor="let pos of posts; let i = index">
-                        <mat-card>
+                        <mat-card class="bbcardcomment">
                             <mat-card-header>
-                                <div mat-card-avatar><i class="fa fa-user-circle"></i></div>
-                                <mat-card-title>{{pos.author.person.lastNm}}, {{pos.author.person.firstNm}}<i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i>
+                                <div mat-card-avatar><i id="bbusericon" class="fa fa-user-circle"></i></div>
+                                <mat-card-title>{{pos.author.name}}<i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i>
                                 <!-- <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" position: absolute; right: 60px; top: 16px;transition: 200ms;" class="hover"></i> -->
                                 </mat-card-title>
-                                <mat-card-subtitle><span>{{pos.author.person.rank}}</span>
+                                <mat-card-subtitle>
                                     <span style="right: 15px; position: absolute;">{{pos.postDate | date:
                                         'MM-dd-yyyy'}}</span></mat-card-subtitle>
-                                <mat-card-subtitle><span>{{pos.author.person.workPhone}}</span><span style="right: 15px; position: absolute;">{{pos.author.niprEmail}}</span></mat-card-subtitle>
-                                <mat-card-subtitle>{{pos.author.person.orgId.organizationNm}}</mat-card-subtitle>
                             </mat-card-header>
                             <mat-card-content>
-                                <p>
-                                    {{pos.topic}}
-                                </p>
-                                <p>
+                                <p class="content">
                                     {{pos.text}}
                                 </p>
+                                <div *ngFor="let att of pos.documents">
+                                    <p>
+                                        {{att.fileNm}}
+                                    </p>
+                                </div>
                             </mat-card-content>
                             <mat-card-actions>
                                 <i (click)="likeClickEvent(pos)" [ngClass]="{'blue': pos.liked, 'grey': !pos.liked}" id="heart" style="margin-left:10px; transition: 200ms;" class="hover fa fa-thumbs-up"></i>
                                 <p class="d-inline-flex ml-1" id="like">Like</p>
                                 <p class="d-inline-flex ml-2">{{pos.likeCount}}</p>
                                 <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
-                                <i id="share" style="margin-left:30px; transition: 200ms; font-size: 18px;" class="hover fa fa-share">Share</i>
                                 <div *ngFor="let comment of pos.bltPostComment" >
                                 <div class="row" class="hover comment-section" *ngIf="showComments === pos.id">
-                                    <hr>
-
                                     <ul style="margin-left: 5px;">
                                         <li>
                                             <mat-card>
                                                 <mat-card-header>
                                                     <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
-                                                    <mat-card-subtitle>User, PMO</mat-card-subtitle>
+                                                    <mat-card-subtitle>User</mat-card-subtitle>
                                                     <mat-card-title>
                                                         <p style="font-size: 14px; font-weight: 100;">{{comment.text}}</p>
                                                     </mat-card-title>
@@ -469,27 +241,11 @@
                                 </div>
                             </mat-card-actions>
                         </mat-card>
-                        <hr>
+                        <hr style="visibility: hidden;">
                     </li>
                 </ul>
             </div>
 
         </div>
-    </div>
-    <div id="favorites" class="col-2 favorites" style="overflow-y: scroll;">
-        <h5 class="mt-3" style="color: white;">FAVORITES</h5>
-        <mat-button-toggle-group value="favorites" style="width: 100%">
-            <mat-button-toggle (click)="toggleRightPanel('fav')" class="col" value="favorites">
-                <i class="fa fa-bookmark"></i>
-            </mat-button-toggle>
-            <mat-button-toggle (click)="toggleRightPanel('activity')" class="col" value="archives">
-                <i class="fa fa-chart-line"></i>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-        <hr style="background: #505464;" />
-
-        <app-bulletin-favs *ngIf="showFav" [allFavorites]="allFavorites" (updateFav)="ngOnInit()"></app-bulletin-favs>
-
-        <app-activity *ngIf="showActivity" [(activities)]="activities"></app-activity>
     </div>
 </div>
