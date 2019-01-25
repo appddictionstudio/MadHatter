@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BootcampModule } from '../models/Bootcamp';
 import { Observable } from 'rxjs';
@@ -49,4 +49,16 @@ export class ModuleService {
   //   console.log('this api is going ot start');
   //   return this.http.get(environment.apiUrl + 'hide/' + topic.id, topic);
   // }
+  uploadModAttachment(form) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.set('Accept', 'application/json');
+    return this.http.post(environment.apiUrl + 'uploadMDoc', form, { headers: headers });
+
+  }
+
+  updateMod(mod: any) {
+    return this.http.put(environment.apiUrl + 'api/modules/update/' + mod.id, mod);
+  }
+
 }

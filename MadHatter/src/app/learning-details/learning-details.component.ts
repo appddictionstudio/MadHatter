@@ -166,6 +166,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     });
   }
 
+
 onFileChange(event, topic) {
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
@@ -183,6 +184,25 @@ onFileChange(event, topic) {
     };
   }
 
+}
+onFileChange2(event, mod) {
+  const reader = new FileReader();
+  if (event.target.files && event.target.files.length > 0) {
+    const file = event.target.files[0];
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const formData = new FormData();
+      formData.append('file', file);
+      this.api.uploadModAttachment(formData).subscribe(
+        result => {
+          this.documents.push(result);
+          mod.modAttachments.push(result);
+          mod.mod = {id: mod.id};
+        }
+      );
+      console.log(mod);
+    };
+  }
 }
 
   SaveTopic() {
@@ -207,6 +227,11 @@ onFileChange(event, topic) {
     console.log(topicId);
     this.ngOnInit();
   }
+
+  updateModule(mod) {
+    this.api.updateMod(mod).subscribe(data => {
+  });
+}
 
 
   downloadAttatchemnts(attachmentId) {

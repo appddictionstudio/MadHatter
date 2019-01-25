@@ -38,14 +38,13 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic(String Quizzes, boolean hidden, String topicTitle) {
+    public Topic( String Quizzes, boolean hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
-   
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     }
 
-    public Topic( String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
+    public Topic(String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     
     	this.Quizzes = Quizzes;
@@ -77,7 +76,6 @@ public class Topic {
 	public void setTopicTitle(String topicTitle) {
 		this.topicTitle = topicTitle;
 	}
-
 
 	public String getQuizzes() {
 		return Quizzes;
