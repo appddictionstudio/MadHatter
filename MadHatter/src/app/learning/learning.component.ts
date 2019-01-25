@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MockNgModuleResolver } from '@angular/compiler/testing';
 import { detachEmbeddedView } from '@angular/core/src/view';
 import {CommonModule} from '@angular/common';
+import { Topic } from '../models/Topic';
 
 
 @Component({
@@ -19,8 +20,11 @@ export class LearningComponent implements OnInit {
 
   form: FormGroup;
   module: Module[] = [];
+  topic: Topic[] = [];
   route: ActivatedRoute;
   mod: any;
+  hidden: any;
+  moduleHide: any;
   isLoading = true;
 
   constructor(

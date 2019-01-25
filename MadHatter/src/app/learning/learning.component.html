@@ -26,6 +26,7 @@
             <div id="cardRow" class="row">
             <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
+                <div *ngIf="!m.hidden">
               <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
                 <h3>{{m.title}}</h3>
                 <p>{{m.description}}</p>
@@ -39,6 +40,7 @@
               </div>
               </div>
               </div>
+              </div>
         </mat-tab>
       <mat-tab class="inProgress" label="In Progress">
           <div *ngIf="isLoading" class="contentToDisplay">
@@ -49,6 +51,7 @@
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
+              <div *ngIf="m.hidden">
             <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
@@ -59,6 +62,7 @@
 
               </div>
             </mat-card>
+            </div>
             </div>
             </div>
             </div>

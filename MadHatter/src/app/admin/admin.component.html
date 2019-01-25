@@ -31,7 +31,7 @@
     <h1 id="headerTitle">Advanced Software Developer</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="m.bootcamp">
-        <div class= "headerLearningContent">
+        <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
         <div class="time"><h3></h3></div>
         </div>
@@ -39,7 +39,7 @@
         <hr>
         <div class="showTopics" *ngFor="let t of topics" >
             <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-              <div class="subheaderadmin">
+              <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
                 <h3>{{t.topicTitle}}</h3>
                 <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
               </div>
@@ -84,7 +84,7 @@
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
     <div class="learningContent" *ngFor="let m of modules">
       <div *ngIf="!m.bootcamp">
-        <div class= "headerLearningContent">
+        <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
         <div class="time"><h3></h3></div>
         </div>
@@ -162,7 +162,7 @@
       <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
       <div class="learningContent" *ngFor="let m of modules">
         <div *ngIf="m.bootcamp">
-          <div class= "headerLearningContent">
+          <div class= "headerAdminContent">
             <h2>{{m.title}}</h2>
             <div>
               <div class="headerProgress" style="width:25em">
@@ -171,51 +171,35 @@
                 </div>
             </div>
           </div>
-          <div class="time" style="text-align: right"><h3 style="font-weight: bold"> Score</h3></div>
+          <div class="adminScore"><h3 style="font-weight: bold"> Score</h3></div>
           </div>
-          <hr>
+          <hr id="titleRule">
           <div class="showTopics" *ngFor="let t of topics">
-              <div *ngIf="!t.hidden">
-          <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-            <div (click)="downloadAttatchemnts(a.id)" class="subheaderadmin">
+          <div *ngIf="t.mod.id === m.id">
+          <div *ngIf="!t.hidden">
+          <div class="adminSubheader">
+            <div class="subheaderadmin">
                 <h3>{{t.topicTitle}}</h3> 
-                <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
-              </div>
-              <div class="input">
-              <input type="file" #file  (change)="onFileChange($event,t)">
-                <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
-              </div>
+                <!-- <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i> -->
+            </div>
+              
             <div class="toggleDetailsCheckbox">
             </div>
             </div>
-            <!-- ///////////// MODAL ////////////// -->
-          <ng-template #content let-modal let-c="close" let-d="dismiss">
-              <div class="modal-header">
-                <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
-                <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
-                  <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
-                      <p class="learningDetailName">
-                          {{att.fileNm}}</p>
-                        <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-                        <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
-                    <!-- <div *ngFor="let a of attList">
-                    <p *ngIf="att.attachmentId === a.id">
-                      {{att.fileNm}}
-                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
-                    </p>
-                  </div> -->
+            <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+                <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
+                  <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
+                    <p>{{a.fileNm}}</p>
+                    <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+                  </div>
+                  <div class="studentUpload">
+                    <input type="file" #file  (change)="onFileChange($event,t)">
+                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
                   </div>
                 </div>
-              </div>
-              <!-- <div class="modal-footer">
-                <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
-              </div> -->
-            </ng-template>
+                </div>
+                <hr>
+            </div>
           </div>
           </div>
         </div>
@@ -226,7 +210,7 @@
       <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
       <div class="learningContent" *ngFor="let m of modules">
         <div *ngIf="!m.bootcamp">
-          <div class= "headerLearningContent">
+          <div class= "headerAdminContent">
             <h2>{{m.title}}</h2>
             <div>
               <div class="headerProgress" style="width:25em">
@@ -235,55 +219,37 @@
                 </div>
             </div>
           </div>
-          <div class="time" style="text-align: right"><h3 style="font-weight: bold"> Score</h3></div>
+          <div class="adminScore"><h3 style="font-weight: bold"> Score</h3></div>
           </div>
-          <div>
-          <hr>
+          <hr id="titleRule">
           <div class="showTopics" *ngFor="let t of topics">
-            <div *ngIf="!t.hidden">
-          <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-            <div (click)="downloadAttatchemnts(a.id)" class="subheaderadmin">
-                <h3>{{t.topicTitle}}</h3>
-                <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
-              </div>
-              <div class="input">
-              <input type="file" #file  (change)="onFileChange($event,t)">
-                <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
-              </div>
+          <div *ngIf="t.mod.id === m.id">
+          <div *ngIf="!t.hidden">
+          <div class="adminSubheader">
+            <div class="subheaderadmin">
+                <h3>{{t.topicTitle}}</h3> 
+                <!-- <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i> -->
+            </div>
+              
             <div class="toggleDetailsCheckbox">
             </div>
             </div>
-            <!-- ///////////// MODAL ////////////// -->
-          <ng-template #content let-modal let-c="close" let-d="dismiss">
-              <div class="modal-header">
-                <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
-                <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
-                  <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
-                      <p class="learningDetailName">
-                          {{att.fileNm}}</p>
-                        <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-                        <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
-                    <!-- <div *ngFor="let a of attList">
-                    <p *ngIf="att.attachmentId === a.id">
-                      {{att.fileNm}}
-                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
-                    </p>
-                  </div> -->
+            <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+                <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
+                  <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
+                    <p>{{a.fileNm}}</p>
+                    <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+                  </div>
+                  <div class="studentUpload">
+                    <input type="file" #file  (change)="onFileChange($event,t)">
+                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
                   </div>
                 </div>
-              </div>
-              <!-- <div class="modal-footer">
-                <button mat-button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
-              </div> -->
-            </ng-template>
+                </div>
+                <hr>
+            </div>
           </div>
-        </div>
-        </div>
+          </div>
     </div>
   </div>
 </div>

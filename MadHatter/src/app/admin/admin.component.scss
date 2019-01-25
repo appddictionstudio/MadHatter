@@ -20,6 +20,7 @@
     text-align: center;
     font-weight: bold;
     margin-top: 2%;
+    margin-bottom: -3%;
 }
 
 .classSeperation {
@@ -45,13 +46,30 @@ h3 {
   grid-template-columns: .5fr .5fr .2fr .3fr;
   grid-template-rows: 1fr;
   width: 75%;
-  margin: 10px auto 2% auto;
+  margin: 10px auto 0% auto;
+}
+
+.attachemntGridAdmin {
+display: grid;
+  grid-template-columns: .5fr .5fr .2fr .3fr;
+  grid-template-rows: 1fr;
+  width: 75%;
+  margin: 10px auto 0% auto; 
+}
+
+.studentDetialUpload {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.studentUpload {
+    grid-row: 1;
+    grid-column: 3;
 }
 
 .subheaderadmin {
   grid-column: 1;
   grid-row: 1;
-  cursor: pointer;
   width: 100%;
   display: inline-flex;
 }
@@ -83,14 +101,36 @@ h3 {
     background-color: #3f51b5;
 }
 
-.mat-slide-toggle-thumb {
-    cursor: pointer !important;
-}
-
 /deep/ .mat-slide-toggle.mat-checked .mat-ripple-element {
     background-color: #3f51b5;
 }
 
 #adminDownloadButton {
     margin-left: 10px;
+}
+
+#titleRule {
+    border-bottom: 2px solid #AAAAAA
+}
+
+hr {
+    width: 85%;
+}
+
+.headerAdminContent {
+    display: grid;
+    grid-template-columns: .5fr .5fr .2fr .3fr;
+    grid-template-rows: 1fr;
+    width: 75%;
+    margin: 7% auto 0 auto;
+}
+
+.excerciseSubheader {
+    margin-bottom: 2%;
+}
+
+.adminScore {
+    text-align: right;
+    grid-row: 1;
+    grid-column: 4;
 }

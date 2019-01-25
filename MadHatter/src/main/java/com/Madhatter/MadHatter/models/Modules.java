@@ -27,6 +27,9 @@ public class Modules {
 	@Column
 	private String bootcamp;
 	
+	@Column
+    private boolean hidden;
+	
 	@OneToMany(mappedBy="mod", cascade=CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private List<Topic> topic;
@@ -37,10 +40,11 @@ public class Modules {
 	
     public Modules() {}
 
-    public Modules(String title, String description, String iconLink, String bootcamp) {
+    public Modules(String title, boolean hidden, String description, String iconLink, String bootcamp) {
     	this.title = title;
     	this.description = description;
     	this.iconLink = iconLink;
+    	this.hidden = hidden;
     	this.bootcamp = bootcamp;
     }
 
@@ -54,6 +58,14 @@ public class Modules {
 
 	public String getTitle() {
 		return title;
+	}
+	
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
 	}
 
 	public void setTitle(String title) {

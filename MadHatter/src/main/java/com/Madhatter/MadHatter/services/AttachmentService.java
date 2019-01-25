@@ -10,9 +10,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Madhatter.MadHatter.Repositories.AttachmentRepository;
+import com.Madhatter.MadHatter.Repositories.BltBrdAttRepository;
 import com.Madhatter.MadHatter.Repositories.MimeTypeRepository;
 import com.Madhatter.MadHatter.Repositories.SubmittedAttachmentRepository;
 import com.Madhatter.MadHatter.models.Attachment;
+import com.Madhatter.MadHatter.models.BltBrdAtt;
 import com.Madhatter.MadHatter.models.MimeType;
 import com.Madhatter.MadHatter.models.SubmittedAttachment;
 
@@ -27,6 +29,9 @@ public class AttachmentService {
 	
 	@Autowired
 	private MimeTypeRepository mimeRepo;
+	
+	@Autowired
+	private BltBrdAttRepository brepo;
 	
 	public Attachment storeFile(MultipartFile file) {
 		
@@ -98,8 +103,8 @@ public SubmittedAttachment storeSFile(MultipartFile file) {
 		
 	}
 	
-	public SubmittedAttachment getSFile(Long id) throws Exception {
-		return srepo.findById(id)
+	public BltBrdAtt getBFile(Long id) throws Exception {
+		return brepo.findById(id)
 				.orElseThrow(() -> new Exception("File not found"));
 		
 	}
