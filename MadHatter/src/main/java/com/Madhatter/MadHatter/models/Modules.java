@@ -27,10 +27,14 @@ public class Modules {
 	@Column
 	private String bootcamp;
 	
-	@OneToMany(mappedBy="mod", cascade=CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="mod", cascade=CascadeType.ALL)
 	@JsonIgnore
 	private List<Topic> topic;
 	
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "modAtt_id")
+	private List<ModAtt> modAttachments;
+
 	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "mod_to_resource_id")
 	private List<Resources> resources;
@@ -43,6 +47,14 @@ public class Modules {
     	this.iconLink = iconLink;
     	this.bootcamp = bootcamp;
     }
+    
+	public List<ModAtt> getModAttachments() {
+		return modAttachments;
+	}
+
+	public void setModAttachments(List<ModAtt> modAttachments) {
+		this.modAttachments = modAttachments;
+	}
 
 	public Long getId() {
 		return id;

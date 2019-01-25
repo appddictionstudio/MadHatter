@@ -63,7 +63,7 @@ private ModAttRepository repo;
 	       	modAtt.setAttachmentId(att.getId());
 	       	modAtt.setFileNm(file.getOriginalFilename());
 	       	modAtt.setFileSz(new Long(att.getAttachment().length));
-	       	
+	      
 	            repo.save(modAtt);
 
 	            return ResponseEntity.ok(modAtt);

@@ -25,10 +25,6 @@ public class Topic {
 	@Column
     private String topicTitle;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
-    @JsonManagedReference
-    private List<File> files;
-
 
 	@Column
     private String Quizzes;
@@ -43,16 +39,15 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic(List<File> files, String Quizzes, boolean hidden, String topicTitle) {
+    public Topic( String Quizzes, boolean hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
-    	this.files = files;
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     }
 
-    public Topic(List<File> files, String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
+    public Topic(String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
-    	this.files = files;
+    
     	this.Quizzes = Quizzes;
     	this.hidden = hidden;
     	this.mod = mod;
@@ -81,14 +76,6 @@ public class Topic {
 
 	public void setTopicTitle(String topicTitle) {
 		this.topicTitle = topicTitle;
-	}
-
-	public List<File> getFiles() {
-		return files;
-	}
-
-	public void setFiles(List<File> files) {
-		this.files = files;
 	}
 
 	public String getQuizzes() {

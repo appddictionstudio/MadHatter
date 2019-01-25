@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.Madhatter.MadHatter.Repositories.ModulesRepository;
+import com.Madhatter.MadHatter.models.ModAtt;
 import com.Madhatter.MadHatter.models.Modules;
 import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
@@ -71,4 +72,21 @@ public class ModulesController {
 //		repo.save(topic);
 //		return ResponseEntity.status(HttpStatus.OK).build();
 //	}
+ 	
+	//---------------Update Module---------------------------------
+	//------------------------------------------------------------
+	
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Object> updateTopic(@RequestBody Modules mod, @PathVariable long id){
+		if(mod.getModAttachments() != null) {
+			for(ModAtt attachment: mod.getModAttachments()) {
+				attachment.setMod(mod);
+			}
+		}
+		mod.setId(id);
+		
+		
+		repo.save(mod);
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
 }
