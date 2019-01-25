@@ -78,6 +78,10 @@ h3 {
     background-color: #3f51b5;
 }
 
+.mat-slide-toggle-thumb {
+    cursor: pointer !important;
+}
+
 /deep/ .mat-slide-toggle.mat-checked .mat-ripple-element {
     background-color: #3f51b5;
 }

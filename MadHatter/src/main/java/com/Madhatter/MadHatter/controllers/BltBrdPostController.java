@@ -82,10 +82,10 @@ public class BltBrdPostController {
 		Timestamp postDate = new Timestamp(now.getTimeInMillis());
 
 
-		RefCode cat = new RefCode();
-		cat.setId(1088);
-
-		bltBrdPost.setCategory(cat);
+//		RefCode cat = new RefCode();
+//		cat.setId(1088);
+//
+//		bltBrdPost.setCategory(cat);
 		bltBrdPost.setPostDate(postDate);
 		bltBrdPost.setAuthor(creator);
 		bltBrdPost.setLikeCount(0);
@@ -109,7 +109,8 @@ public class BltBrdPostController {
 
 		RefCode created = new RefCode();
 
-		created.setId(3362);
+//		created.setId(3362);
+		created.setId(2);
 		activity.setActType(created);
 		activity.setUser(creator);
 		activity.setTimeStamp(postDate);

@@ -44,7 +44,8 @@ public class BltBrdActController {
 	 @RequestMapping(value = "BltBrdAct/getLikesByUserId/{id}", method = RequestMethod.GET)
 	 ResponseEntity<List<BltBrdAct>> getAllBulletinPOstLikes(@PathVariable Long id) {
 		 List<BltBrdAct> likeList = new ArrayList<BltBrdAct>();
-		 Long refCodeId = (long)3364;
+//		 Long refCodeId = (long)3364;
+		 Long refCodeId = (long)4;
 		 Optional<List<BltBrdAct>> likes = repo.findByUserIdIsAndActTypeIdIs(id, refCodeId);
 		 likeList = likes.get();
 		 return ResponseEntity.ok(likeList);

@@ -1,6 +1,26 @@
-<!-- /////////////////////////////////////////////////////////////////////////
+<!-- 
+//
+//
+//
+//
+//
+//
+//
+//
+ -->
+ <!-- /////////////////////////////////////////////////////////////////////////
                             INSTRUCTOR SECTION
 ///////////////////////////////////////////////////////////////////////// -->
+<!-- 
+//
+//
+//
+//
+//
+//
+//
+//
+ -->
 <div *ngIf="isLoading" class="contentToDisplay">
     <mat-progress-spinner color="primary" mode="indeterminate">
     </mat-progress-spinner>
@@ -25,8 +45,7 @@
                 <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i>
               </div>
             <div class="toggleDetailsCheckbox">
-              <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
-              <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle>
+              <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
             </div>
             </div>
             </div>
@@ -53,8 +72,7 @@
               <i id="adminDownloadButton"class="fa fa-download" aria-hidden="true"></i>
             </div>
           <div class="toggleDetailsCheckbox">
-            <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
-            <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle>
+            <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
           </div>
           </div>
           </div>
@@ -64,9 +82,29 @@
   </div>
 </div>
 </div>
+<!-- 
+//
+//
+//
+//
+//
+//
+//
+//
+ -->
 <!-- /////////////////////////////////////////////////////////////////////////
                             STUDENT SECTION
 ///////////////////////////////////////////////////////////////////////// -->
+<!-- 
+//
+//
+//
+//
+//
+//
+//
+//
+ -->
 <div id="adminStudent" *ngIf="getUserRoleStudent()">
     <div *ngIf="studentsRole('ASD')" class="classSeperation">
       <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
@@ -97,8 +135,6 @@
                 <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
               </div>
             <div class="toggleDetailsCheckbox">
-              <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
-              <!-- <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle> -->
             </div>
             </div>
             </div>
@@ -138,8 +174,6 @@
                 <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a)" >Submit Assignment</button>
               </div>
             <div class="toggleDetailsCheckbox">
-              <!-- <button mat-button (click)=toggleContent(t.hidden)>{{t.hidden}} Content for Students</button> -->
-              <!-- <mat-slide-toggle [checked]="!t.hidden" (click)=toggleContent(t,m.id)></mat-slide-toggle> -->
             </div>
             </div>
             </div>

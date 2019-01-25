@@ -71,7 +71,8 @@ public class BltBrdFavController {
       
       //--------Set RefCode since BltBrdAct.actType is a RefCode Object and not an int---
         RefCode created = new RefCode();
-        created.setId(3365);
+//        created.setId(3365);
+         created.setId(5);
         
 		 activity.setActType(created);
 		 activity.setUser(creator);

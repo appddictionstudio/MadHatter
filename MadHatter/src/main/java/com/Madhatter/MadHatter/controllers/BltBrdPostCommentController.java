@@ -87,7 +87,8 @@ public class BltBrdPostCommentController {
 		BltBrdPost currentPost = new BltBrdPost();
 		currentPost = bltBrdPostComment.getPost();
 		RefCode created = new RefCode();
-		created.setId(3363);
+//		created.setId(3363);
+		created.setId(3);
         
 		activity.setActType(created);
 		activity.setUser(creator);
