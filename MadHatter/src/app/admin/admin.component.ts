@@ -184,14 +184,14 @@ getAttachments() {
       };
     }
   }
-  // updateSubmittedAtt(topicAtt) {
-  //   // this.topicCenter.attachments = this.documents;
-  //   // tslint:disable-next-line:radix
-  //   this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
+  updateSubmittedAtt(topicAtt) {
+    // this.topicCenter.attachments = this.documents;
+    // tslint:disable-next-line:radix
+    this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
 
-  //   });
-  //   console.log(topicAtt + 'this is whats sending');
-  // }
+    });
+    console.log(topicAtt + 'this is whats sending');
+  }
 
   ishidden(hidden) {
     if (hidden) {

@@ -73,20 +73,5 @@ public class ModulesController {
 //		return ResponseEntity.status(HttpStatus.OK).build();
 //	}
  	
-	//---------------Update Module---------------------------------
-	//------------------------------------------------------------
-	
-	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> updateTopic(@RequestBody Modules mod, @PathVariable long id){
-		if(mod.getModAttachments() != null) {
-			for(ModAtt attachment: mod.getModAttachments()) {
-				attachment.setMod(mod);
-			}
-		}
-		mod.setId(id);
-		
-		
-		repo.save(mod);
-		return ResponseEntity.status(HttpStatus.OK).build();
-	}
+
 }
