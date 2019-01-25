@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Topic } from '../models/Topic';
 import { Observable } from 'rxjs';
+import { TopicAtt } from '../models/TopicAtt';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -60,5 +61,10 @@ export class TopicsService {
   getAttachments(): Observable<any> {
     return this.http.get(environment.apiUrl + 'att');
   }
+
+  deleteTopicAtt(id: number): Observable<any> {
+    return this.http.delete<Observable<TopicAtt>>(environment.apiUrl + 'TopicAtt/' + id, httpOptions );
+  }
+
 
 }
