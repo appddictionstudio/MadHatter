@@ -107,6 +107,7 @@ topic: any;
   showPostSection = true;
   showMessagesSection = false;
   tagsOpen = false;
+  user: any;
 
 
   hotTopicClick = false;
@@ -219,23 +220,24 @@ topic: any;
     this.bulletinBoardPost.topic = '';
     this.bulletinBoardPost.text = '';
     // this.bulletinBoardPost.attachments.length = 0;
-
-    this.userService.getUser().subscribe(data => {
-      this.currentUser = data;
-      this.userArray = [this.currentUser];
-    });
+    this.getCurrentUser();
   }
 
   ngOnChanges() {
     this.loadBulletinPosts();
     // this.getAllActivity();
-
-
   }
 
   // testthis(p) {
   //   console.log(this.api.getAttachmentById(p));
   // }
+
+  getCurrentUser() {
+    this.userService.getUser().subscribe(data => {
+      this.currentUser = data;
+      this.userArray = [this.currentUser];
+    });
+  }
 
   setHotTopic() {
     if (this.hotTopicPost) {
@@ -392,10 +394,10 @@ topic: any;
     this.bulletinComment.text = '';
   }
 
-    createBulletinPost() {
+  createBulletinPost() {
     // this.bulletinBoardPost.department = this.currentDept;
-    this.bulletinBoardPost.attachments = this.documents;
-    this.bulletinBoardPost.lockYn = this.lockPost ? 'Y' : 'N';
+    this.bulletinBoardPost.author = this.currentUser;
+    console.log(this.bulletinBoardPost);
     this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
       this.lockPost = false;
       this.ngOnInit();

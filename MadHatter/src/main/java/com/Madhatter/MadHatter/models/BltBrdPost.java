@@ -3,6 +3,7 @@ package com.Madhatter.MadHatter.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -138,8 +139,8 @@ public class BltBrdPost implements Serializable {
 		return author;
 	}
 
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setAuthor(User creator) {
+		this.author = creator;
 	}
 
 	public String getHotTopicYn() {

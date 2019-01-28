@@ -79,8 +79,7 @@ public class BltBrdPostController {
 //		 Person person = user.getPerson();
 //		 User creator = userRepo.findById(user.getId());
 		
-		User creator = new User();
-		creator.setId((long) 1);
+		User creator = userRepo.findById((long) bltBrdPost.getAuthor().getId());
 		Calendar now = GregorianCalendar.getInstance();
 		Timestamp postDate = new Timestamp(now.getTimeInMillis());
 
@@ -146,6 +145,7 @@ public class BltBrdPostController {
 		for(BltBrdPost post: postList) {
 			System.out.println("attachment get");
 			List<BltBrdAtt> atts = post.getAttachments();
+			System.out.println("attachment get");
 //			Hibernate.initialize(post.getAttachments());
 		}
 		
