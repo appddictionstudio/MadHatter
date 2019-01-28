@@ -32,6 +32,7 @@ import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.BltBrdAtt;
 import com.Madhatter.MadHatter.models.BltBrdPost;
 import com.Madhatter.MadHatter.models.RefCode;
+import com.Madhatter.MadHatter.models.TopicAtt;
 import com.Madhatter.MadHatter.services.AttachmentService;
 
 
@@ -169,15 +170,15 @@ public class BltBrdAttController {
 	@RequestMapping(value ="/BltBrdAtt/downloadDoc/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public void getExcelTemplate(HttpServletRequest request, HttpServletResponse response, @PathVariable Long id) throws Exception{
-		BltBrdAtt att = attService.getBFile(id);
-		
+		BltBrdAtt attachment = repo.getOne((long) 43);
+		Attachment att = attService.getFile(attachment.getAttachment());
 		response.setContentType("application/octet-stream");
 		response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
-	    response.setHeader("Content-Disposition", "attachment; filename=" + att.getFileNm());
+	    response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getFileNm());
 
 	    
 	    /** assume that below line gives you file content in byte array **/
-	    byte[] binary = att.getAttachment().getAttachment();
+	    byte[] binary = attachment.getAttachment().getAttachment();
 	    
 //	    int x = fis.available();
 //	    byte byteArray[] = new byte[x];

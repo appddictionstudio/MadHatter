@@ -60,15 +60,7 @@ public class BltBrdPostCommentController {
 		Timestamp postDate = new Timestamp(now.getTimeInMillis());
 		
 		//----------------------GET CURRENTLY LOGGED IN USER -----------------------------------\\
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		 String currentPrincipalName = (String) auth.getPrincipal();
-		 System.out.println(currentPrincipalName);
-		 
-		 User creator = (User) userRepo.findByUsername(currentPrincipalName);
-//		 User user = optionalUser.get();
-//		 Person person = user.getPerson();
-//		 User creator = userRepo.findById(user.getId());
+		User creator = userRepo.findById((long) bltBrdPostComment.getId());
 		
 		bltBrdPostComment.setPostDate(postDate);
 		bltBrdPostComment.setAuthor(creator);

@@ -66,6 +66,12 @@ public class AttachmentService {
 		
 	}
 	
+	public Attachment getFile(Attachment attachment) throws Exception {
+		return repo.findById(attachment)
+				.orElseThrow(() -> new Exception("File not found"));
+		
+	}
+	
 public Attachment storeBFile(MultipartFile file) {
 		
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());

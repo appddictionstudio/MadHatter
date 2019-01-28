@@ -186,7 +186,8 @@
                         <mat-card class="bbcardcomment">
                             <mat-card-header>
                                 <div mat-card-avatar><i id="bbusericon" class="fa fa-user-circle"></i></div>
-                                <mat-card-title>{{pos.author.name}}<i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i>
+                                <mat-card-title>{{pos.author.name}}
+                                    <!-- <i style="position: absolute; right: 16px; top: 17px;" class="hover fa fa-bookmark" (click)="addToFavs(pos)" *ngIf="!favoritePostsIds.includes(pos.id)"></i> -->
                                 <!-- <i (click)="setLock()" [ngClass]="lockPost ? 'fa fa-lock' : 'fa fa-unlock'" style=" position: absolute; right: 60px; top: 16px;transition: 200ms;" class="hover"></i> -->
                                 </mat-card-title>
                                 <mat-card-subtitle>
@@ -198,9 +199,12 @@
                                     {{pos.text}}
                                 </p>
                                 <div *ngFor="let att of pos.attachments">
-                                    <p>
-                                        {{att.fileNm}}
-                                    </p>
+                                    <div class="bbAttDownload" (click)="downloadAttatchemnts(att.id)">
+                                        <span>
+                                            {{att.fileNm}}
+                                        </span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </mat-card-content>
                             <mat-card-actions>
@@ -214,8 +218,8 @@
                                         <li>
                                             <mat-card>
                                                 <mat-card-header>
-                                                    <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
-                                                    <mat-card-subtitle>User</mat-card-subtitle>
+                                                    <!-- <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div> -->
+                                                    <mat-card-subtitle>{{pos.author.name}}</mat-card-subtitle>
                                                     <mat-card-title>
                                                         <p style="font-size: 14px; font-weight: 100;">{{comment.text}}</p>
                                                     </mat-card-title>
@@ -226,7 +230,7 @@
                                 </div>
                                 </div>
                                 <div class="row" *ngIf="showComments === pos.id" class="comment-section">
-                                    <hr>
+                                    <!-- <hr>
                                     <ul style="margin-left: 5px;">
                                         <li>
                                             <mat-card>
@@ -236,7 +240,7 @@
                                                 </mat-card-header>
                                             </mat-card>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <div class="row">
                                         <div class="col-11">
                                             <input style="background: #F3F3F3;" class="post-input" placeholder="Write a comment.." [(ngModel)]="bulletinComment.text">

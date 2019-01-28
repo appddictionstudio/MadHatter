@@ -2,6 +2,7 @@ import { SearchService } from './search/search.service';
 import { ActivityComponent } from './newsfeed/activity/activity.component';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { BulletinBoardService } from '../services/bulletin-board.service';
+import { TopicsService } from '../services/topics.service';
 import { BulletinMessageCenter } from '../models/bulletinBoard';
 import { UserService } from '../services/user.service';
 import { BulletinBoardPostComment } from '../models/BulletinBoardPostComment';
@@ -9,6 +10,7 @@ import { BulletinBoardFavorite } from '../models/BulletinBoardFavorite';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RefCodeService } from '../services/ref-code.service';
+import { saveAs } from 'file-saver';
 import { RefCode } from '../models/RefCode';
 import { MatChipInputEvent, PageEvent } from '@angular/material';
 
@@ -182,6 +184,7 @@ topic: any;
     private api: BulletinBoardService,
     private searchApi: SearchService,
     private refApi: RefCodeService,
+    private apiT: TopicsService,
     private userService: UserService,
     private snotifyService: SnotifyService,
     private activity: ActivityComponent,
@@ -325,17 +328,17 @@ topic: any;
       ]
     });
   }
-  // addComment(post: BulletinMessageCenter) {
-  //   const comment = new BulletinBoardPostComment();
-  //   comment.text = this.newComment;
+  addComment(post: BulletinMessageCenter) {
+    const comment = new BulletinBoardPostComment();
+    comment.text = this.newComment;
 
-  //   if (!post.comments) {
-  //     post.comments = [];
-  //   }
-  //   post.comments.push(comment);
+    if (!post.comments) {
+      post.comments = [];
+    }
+    post.comments.push(comment);
 
-  //   this.newComment = '';
-  // }
+    this.newComment = '';
+  }
 
   hotTopicClickEvent() {
     console.log('clickededededed');
@@ -388,7 +391,9 @@ topic: any;
   }
 
   createPostComment(postId, index) {
-    // this.bulletinComment.department = this.currentDept;
+    // const x = this.currentUser.id;
+    this.bulletinComment.id = JSON.parse(this.currentUser.id);
+    console.log(this.bulletinComment);
     this.api.createPostComment(this.bulletinComment, postId).subscribe(data => {
       this.posts[index] = data;
     });
@@ -580,5 +585,21 @@ topic: any;
   }
 
 
+  downloadAttatchemnts(attachmentId) {
+    this.api.downloadBBAtt(attachmentId).subscribe(response => {
+        console.log(response);
+       this.saveToFileSystem(response);
+     });
+  }
+  private saveToFileSystem(response) {
+    console.log('saving file');
+    const contentDispositionHeader: string = response.headers.get(
+      'Content-Disposition'
+    );
+    const parts: string[] = contentDispositionHeader.split(';');
+    const filename = parts[1].split('=')[1];
+    const blob = new Blob([response.body], { type: 'text/plain' });
+    saveAs(blob, filename);
+  }
 
 }

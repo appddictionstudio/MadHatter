@@ -31,7 +31,7 @@ public class BltBrdPostComment implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "POST_ID", referencedColumnName="ID", nullable=false)
-	@JsonIgnore
+//	@JsonIgnore
 	private BltBrdPost post;
 	
 	@ManyToOne

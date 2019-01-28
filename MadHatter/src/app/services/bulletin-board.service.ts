@@ -28,7 +28,9 @@ export class BulletinBoardService {
   //   return this.http.post(environment.apiUrl + '/BltBrdAtt/getAttByPost', bulletinMessageCenter);
   // }
 
-  createPostComment(bulletinBoardPostComment: BulletinBoardPostComment, postId): Observable<any> {
+  createPostComment(bulletinBoardPostComment, postId): Observable<any> {
+    console.log(postId);
+    console.log(bulletinBoardPostComment);
     return this.http.post(environment.apiUrl + 'BltBrdPostComment/' + postId, bulletinBoardPostComment);
   }
   createBulletinPostLike(id: number): Observable<any> {
@@ -74,6 +76,14 @@ export class BulletinBoardService {
     headers.set('Accept', 'application/json');
     return this.http.post(environment.apiUrl + 'uploadBltDoc', form, { headers: headers });
 
+  }
+
+  downloadBBAtt(id) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/octet-stream');
+    headers.set('Accept', 'text/plain');
+    return this.http.get(environment.apiUrl + 'BltBrdAtt/downloadDoc/' + id,
+    { headers: headers, responseType: 'blob', observe: 'response' });
   }
 
 }

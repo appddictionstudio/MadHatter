@@ -217,7 +217,7 @@ public class BltBrdPostController {
 		
 		// set the RefCode to a like, NEED TO CHANGE THIS, CANT HARD CODE.  //
 		RefCode likeCode = new RefCode();
-		likeCode.setId(3364);
+		likeCode.setId(2);
 		//---------------------------//
 		
 		Optional<BltBrdAct> likeActivity = actRepo.findByUserIdIsAndPostIdIsAndActTypeIdIs(44206L, postId, 3364L);

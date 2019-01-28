@@ -8,6 +8,7 @@ export class BulletinMessageCenter {
     postDate: string;
     category: any;
     department: any;
+    comments: any;
     hotTopicYn: any;
     topic: string;
     bltPostComment: BulletinBoardPostComment[];
