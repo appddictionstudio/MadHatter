@@ -23,6 +23,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.Madhatter.MadHatter.models.BltBrdAtt;
+import com.Madhatter.MadHatter.models.BltBrdPostComment;
+
 
 /**
  * The persistent class for the BLT_BRD_POST database table.
@@ -80,7 +83,7 @@ public class BltBrdPost implements Serializable {
 	private List<BltBrdAtt> attachments;
 	
 	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name = "post_comment_id")
+	@JoinColumn(name = "post_id")
 	private List<BltBrdPostComment> bltPostComment;
 
 	public String getLockYn() {
@@ -139,8 +142,8 @@ public class BltBrdPost implements Serializable {
 		return author;
 	}
 
-	public void setAuthor(User creator) {
-		this.author = creator;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 	public String getHotTopicYn() {

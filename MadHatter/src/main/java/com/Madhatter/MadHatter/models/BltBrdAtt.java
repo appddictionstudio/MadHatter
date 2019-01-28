@@ -14,6 +14,10 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.Madhatter.MadHatter.models.Attachment;
+
+import com.Madhatter.MadHatter.models.BltBrdPost;
+
 
 @Entity
 @Table(name="BLT_BRD_ATT")
@@ -75,12 +79,7 @@ public class BltBrdAtt implements Serializable {
 
 	public void setPost(BltBrdPost post) {
 		this.post = post;
-	}
-
-	public Attachment getAttachment() {
-		return attachment;
-	}
-	
+	}	
 
 	public Attachment getThumbnail() {
 		return thumbnail;
@@ -88,6 +87,10 @@ public class BltBrdAtt implements Serializable {
 
 	public void setThumbnail(Attachment thumbnail) {
 		this.thumbnail = thumbnail;
+	}
+
+	public Attachment getAttachment() {
+		return attachment;
 	}
 
 	public void setAttachment(Attachment attachment) {

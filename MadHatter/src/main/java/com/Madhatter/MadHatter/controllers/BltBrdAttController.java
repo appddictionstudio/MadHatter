@@ -80,7 +80,7 @@ public class BltBrdAttController {
 
              
              RefCode docType = new RefCode();
-             docType.setId(307100);
+             docType.setId(2);
              bltBrdAtt.setDocType(docType);
              
              repo.save(bltBrdAtt);

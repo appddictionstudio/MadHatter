@@ -70,15 +70,6 @@ public class BltBrdPostController {
 			throw new ValidationException("Record Already Exists");
 		}
 		
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		 String currentPrincipalName = (String) auth.getPrincipal();
-//		 System.out.println(currentPrincipalName);
-//		 
-//		 User creator = userRepo.findByUsername(currentPrincipalName);
-//		 User user = optionalUser.get();
-//		 Person person = user.getPerson();
-//		 User creator = userRepo.findById(user.getId());
-		
 		User creator = userRepo.findById((long) bltBrdPost.getAuthor().getId());
 		Calendar now = GregorianCalendar.getInstance();
 		Timestamp postDate = new Timestamp(now.getTimeInMillis());
@@ -143,9 +134,7 @@ public class BltBrdPostController {
 		List<BltBrdPost> postList = repo.getAllBulletinPost();
 		
 		for(BltBrdPost post: postList) {
-			System.out.println("attachment get");
 			List<BltBrdAtt> atts = post.getAttachments();
-			System.out.println("attachment get");
 //			Hibernate.initialize(post.getAttachments());
 		}
 		

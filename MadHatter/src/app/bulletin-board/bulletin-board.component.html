@@ -76,10 +76,14 @@
             </div> -->
             <div class="row">
                 <div class="col-12" id="paperclipandbutton">
-                    <button mat-button id="bbPostButton" (click)="createBulletinPost()">
+                    <button mat-button id="bbPostButton" [disabled]="fileUploading" (click)="createBulletinPost()">
                         <span>Post</span>
                     </button>
                     <input type="file" #file  (change)="onFileChange($event)">
+                    <div *ngIf="fileUploading" class="bbcontentToDisplay">
+                        <mat-progress-spinner [diameter]="20" color="primary" mode="indeterminate">
+                        </mat-progress-spinner>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +94,11 @@
                 <!-- <div class="col"> -->
                 <h5 class="px-4">MESSAGES <i style="color: #9EA3B4;" class="fa fa-newspaper"></i></h5>
                 <br>
-                <ul>
+                <div *ngIf="isloading" class="contentToDisplay">
+                    <mat-progress-spinner color="primary" mode="indeterminate">
+                    </mat-progress-spinner>
+                </div>
+                <ul *ngIf="!isloading">
                     <li *ngFor="let gP of groupAndPeoplePosts">
                         {{ gP }}
                     </li>

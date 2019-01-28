@@ -145,6 +145,7 @@ topic: any;
     { name: 'Training' },
     { name: 'Safety' },
   ];
+  isloading = false;
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -395,6 +396,7 @@ topic: any;
   }
 
   createBulletinPost() {
+    this.bulletinBoardPost.attachments = this.documents;
     // this.bulletinBoardPost.department = this.currentDept;
     this.bulletinBoardPost.author = this.currentUser;
     console.log(this.bulletinBoardPost);
@@ -409,9 +411,11 @@ topic: any;
 
   loadBulletinPosts() {
   //  const id = this.loggedInUser = 1;
+  this.isloading = true;
     this.api.getAllBulletinPost().subscribe(data => {
       this.posts = data as any[];
       console.log(this.posts);
+      this.isloading = false;
       // this.api.getPostlikesByUserId(id).subscribe(likes => {
       //   for ( const like of likes) {
       //     for (const post of this.posts) {
