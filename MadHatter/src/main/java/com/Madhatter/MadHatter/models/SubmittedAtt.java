@@ -23,8 +23,8 @@ public class SubmittedAtt implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SUBMITTED_ATT_SEQUENCE")
 	private long id;
 	
-	@Column(name="SUBMITTEDATTACHMENT_ID")
-	private long subAttachmentId;
+	@Column(name="ATTACHMENT_ID")
+	private long attachmentId;
 	
 	@ManyToOne
 	@JoinColumn(name="TOPIC_ATT_ID", referencedColumnName="ID", nullable=false)
@@ -51,12 +51,14 @@ public class SubmittedAtt implements Serializable {
 		this.id = id;
 	}
 
-	public long getSubAttachmentId() {
-		return subAttachmentId;
+
+
+	public long getAttachmentId() {
+		return attachmentId;
 	}
 
-	public void setSubAttachmentId(long subAttachmentId) {
-		this.subAttachmentId = subAttachmentId;
+	public void setAttachmentId(long attachmentId) {
+		this.attachmentId = attachmentId;
 	}
 
 	public TopicAtt getTopicatt() {

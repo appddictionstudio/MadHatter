@@ -12,20 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.Madhatter.MadHatter.Repositories.AttachmentRepository;
 import com.Madhatter.MadHatter.Repositories.BltBrdAttRepository;
 import com.Madhatter.MadHatter.Repositories.MimeTypeRepository;
-import com.Madhatter.MadHatter.Repositories.SubmittedAttachmentRepository;
 import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.BltBrdAtt;
 import com.Madhatter.MadHatter.models.MimeType;
-import com.Madhatter.MadHatter.models.SubmittedAttachment;
 
 @Service
 public class AttachmentService {
 	
 	@Autowired
 	private AttachmentRepository repo;
-	
-	@Autowired
-	private SubmittedAttachmentRepository srepo;
 	
 	@Autowired
 	private MimeTypeRepository mimeRepo;
@@ -71,13 +66,13 @@ public class AttachmentService {
 		
 	}
 	
-public SubmittedAttachment storeSFile(MultipartFile file) {
+public Attachment storeBFile(MultipartFile file) {
 		
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		SubmittedAttachment att = null;
+		Attachment att = null;
 		
 		try {
-			att  = new SubmittedAttachment();
+			att  = new Attachment();
 			
 			att.setAttachment(file.getBytes());
 			
@@ -93,7 +88,7 @@ public SubmittedAttachment storeSFile(MultipartFile file) {
 			
 			att.setTitle("Attachment");
 			
-			return srepo.save(att);
+			return repo.save(att);
 		} catch (IOException ex) {
 			System.out.println("Error uploading file");
 		}
