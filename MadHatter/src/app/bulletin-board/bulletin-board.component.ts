@@ -218,7 +218,7 @@ topic: any;
     // this.getAllActivity();
     this.bulletinBoardPost.topic = '';
     this.bulletinBoardPost.text = '';
-    this.bulletinBoardPost.attachments.length = 0;
+    // this.bulletinBoardPost.attachments.length = 0;
 
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
@@ -232,6 +232,10 @@ topic: any;
 
 
   }
+
+  // testthis(p) {
+  //   console.log(this.api.getAttachmentById(p));
+  // }
 
   setHotTopic() {
     if (this.hotTopicPost) {
@@ -402,11 +406,10 @@ topic: any;
 
 
   loadBulletinPosts() {
-   const id = this.loggedInUser = 1;
+  //  const id = this.loggedInUser = 1;
     this.api.getAllBulletinPost().subscribe(data => {
       this.posts = data as any[];
       console.log(this.posts);
-      console.log(this.documents);
       // this.api.getPostlikesByUserId(id).subscribe(likes => {
       //   for ( const like of likes) {
       //     for (const post of this.posts) {
@@ -526,7 +529,6 @@ topic: any;
 
 
   onFileChange(event) {
-    console.log('hello');
     this.fileUploading = true;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {

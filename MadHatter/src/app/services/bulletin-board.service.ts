@@ -24,6 +24,10 @@ export class BulletinBoardService {
     return this.http.post(environment.apiUrl + 'BltBrdPost', bulletinMessageCenter);
   }
 
+  // getAttachmentById(bulletinMessageCenter: BulletinMessageCenter): Observable<any> {
+  //   return this.http.post(environment.apiUrl + '/BltBrdAtt/getAttByPost', bulletinMessageCenter);
+  // }
+
   createPostComment(bulletinBoardPostComment: BulletinBoardPostComment, postId): Observable<any> {
     return this.http.post(environment.apiUrl + 'BltBrdPostComment/' + postId, bulletinBoardPostComment);
   }

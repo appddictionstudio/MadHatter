@@ -15,6 +15,7 @@ import java.util.Optional;
 
 import javax.validation.ValidationException;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -142,10 +143,11 @@ public class BltBrdPostController {
 	ResponseEntity<List<BltBrdPost>> getAllBulletinPost() {
 		List<BltBrdPost> postList = repo.getAllBulletinPost();
 		
-//		for(BltBrdPost post: postList) {
-//			List<BltBrdAtt> atts = post.getAttachments();
-////			Hibernate.initialize(post.getAttachments());
-//		}
+		for(BltBrdPost post: postList) {
+			System.out.println("attachment get");
+			List<BltBrdAtt> atts = post.getAttachments();
+//			Hibernate.initialize(post.getAttachments());
+		}
 		
 		return ResponseEntity.ok(postList);
 	}

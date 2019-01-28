@@ -85,7 +85,7 @@
         </div>
 
 
-        <div class="row mt-3" style="margin-left: 0; margin-right: 0">
+        <div class="row mt-3" id="messagesContainerBB" style="margin-left: 0; margin-right: 0">
             <div id="posts" class="col center-section">
                 <!-- <div class="col"> -->
                 <h5 class="px-4">MESSAGES <i style="color: #9EA3B4;" class="fa fa-newspaper"></i></h5>
@@ -196,9 +196,9 @@
                                 </div>
                             </mat-card-content>
                             <mat-card-actions>
-                                <i (click)="likeClickEvent(pos)" [ngClass]="{'blue': pos.liked, 'grey': !pos.liked}" id="heart" style="margin-left:10px; transition: 200ms;" class="hover fa fa-thumbs-up"></i>
+                                <!-- <i (click)="likeClickEvent(pos)" [ngClass]="{'blue': pos.liked, 'grey': !pos.liked}" id="heart" style="margin-left:10px; transition: 200ms;" class="hover fa fa-thumbs-up"></i>
                                 <p class="d-inline-flex ml-1" id="like">Like</p>
-                                <p class="d-inline-flex ml-2">{{pos.likeCount}}</p>
+                                <p class="d-inline-flex ml-2">{{pos.likeCount}}</p> -->
                                 <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
                                 <div *ngFor="let comment of pos.bltPostComment" >
                                 <div class="row" class="hover comment-section" *ngIf="showComments === pos.id">

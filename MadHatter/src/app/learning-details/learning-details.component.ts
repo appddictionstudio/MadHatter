@@ -65,8 +65,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
     });
-    this.getAllTopics();
-    this.getAtt();
+    // this.getAllTopics();
+    // this.getAtt();
   }
 
   ngOnChanges(changes: SimpleChanges) {

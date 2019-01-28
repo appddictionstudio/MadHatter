@@ -3,6 +3,7 @@ package com.Madhatter.MadHatter.models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 

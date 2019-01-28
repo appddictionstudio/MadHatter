@@ -422,6 +422,7 @@ input[type=search]:focus {
 #bbPostButton {
     margin-left: 15px;
     line-height: 30px !important;
+    margin-right: 2%;
 }
 
 .bbcardcomment{
@@ -447,6 +448,10 @@ input[type=search]:focus {
 }
 
 #paperclipandbutton {
-    margin-left: 50%;
+    margin-left: 10%;
     display: flex;
+}
+
+#messagesContainerBB {
+    width: 99%;
 }

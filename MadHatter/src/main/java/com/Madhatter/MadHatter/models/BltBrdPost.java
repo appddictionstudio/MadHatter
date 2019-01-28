@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
@@ -73,16 +74,13 @@ public class BltBrdPost implements Serializable {
 	@JsonIgnore
 	private List<BltBrdAct> bltBrdActs;
 	
-	@OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
-	@JoinColumn(name="post_id")
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "post_id")
 	private List<BltBrdAtt> attachments;
 	
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JsonIgnore
-	@JoinColumn(name = "post_id")
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name = "post_comment_id")
 	private List<BltBrdPostComment> bltPostComment;
-	
 
 	public String getLockYn() {
 		return lockYn;
@@ -98,6 +96,14 @@ public class BltBrdPost implements Serializable {
 
 	public void setBltPostComment(List<BltBrdPostComment> bltPostComment) {
 		this.bltPostComment = bltPostComment;
+	}
+
+	public List<BltBrdAtt> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<BltBrdAtt> attachments) {
+		this.attachments = attachments;
 	}
 
 	public BltBrdPost() {
@@ -174,16 +180,6 @@ public class BltBrdPost implements Serializable {
 
 	public void setBltBrdFavs(List<BltBrdFav> bltBrdFavs) {
 		this.bltBrdFavs = bltBrdFavs;
-	}
-	
-	
-
-	public List<BltBrdAtt> getAttachments() {
-		return attachments;
-	}
-
-	public void setAttachments(List<BltBrdAtt> attachments) {
-		this.attachments = attachments;
 	}
 
 	public List<BltBrdAct> getBltBrdActs() {
