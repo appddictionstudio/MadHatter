@@ -170,8 +170,9 @@ public class BltBrdAttController {
 	@RequestMapping(value ="/BltBrdAtt/downloadDoc/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public void getExcelTemplate(HttpServletRequest request, HttpServletResponse response, @PathVariable Long id) throws Exception{
-		BltBrdAtt attachment = repo.getOne((long) 43);
-		Attachment att = attService.getFile(attachment.getAttachment());
+		BltBrdAtt attachment = repo.getOne(id);
+		System.out.println(attachment);
+//		Attachment att = attService.getFile(attachment.getAttachment());
 		response.setContentType("application/octet-stream");
 		response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 	    response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getFileNm());

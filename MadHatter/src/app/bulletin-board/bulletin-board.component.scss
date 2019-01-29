@@ -299,6 +299,7 @@ h4 {
     border: none;
     margin: 0;
     padding-left: 10px;
+    height: 2em;
     outline-width: 0;
 }
 
@@ -463,4 +464,36 @@ input[type=search]:focus {
 .bbAttDownload {
     text-decoration: underline;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.bbPostComment {
+    width: 98%;
+    height: auto;
+    margin-top: unset;
+    margin-left: 1em;
+}
+
+// #bbPostCommentGrid {
+//     display: grid;
+//     grid-template-rows: 1fr;
+//     grid-template-columns: .05fr .8fr;
+// }
+
+.bbPostWriteComment {
+    margin-left: 1%;
+    width: 90%;
+    height: 3em;
+}
+
+#bbPostCommentIcon {
+    display: inline-flex;
+    margin-left: 1%;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.bbPostCommentNameHeader {
+    font-weight: bolder;
+    color: black;
 }

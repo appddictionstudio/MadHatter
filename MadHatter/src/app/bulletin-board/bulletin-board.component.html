@@ -192,7 +192,7 @@
                                 </mat-card-title>
                                 <mat-card-subtitle>
                                     <span style="right: 15px; position: absolute;">{{pos.postDate | date:
-                                        'MM-dd-yyyy'}}</span></mat-card-subtitle>
+                                        'MMM d, yy h:mm a'}}</span></mat-card-subtitle>
                             </mat-card-header>
                             <mat-card-content>
                                 <p class="content">
@@ -212,44 +212,36 @@
                                 <p class="d-inline-flex ml-1" id="like">Like</p>
                                 <p class="d-inline-flex ml-2">{{pos.likeCount}}</p> -->
                                 <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
+                                <div class="row" *ngIf="showComments === pos.id" class="comment-section">
+                                    <div class="row" style="margin-top: 1%;">
+                                        <div id="bbPostCommentIcon" (click)="createPostComment(pos.id, i)">
+                                            <i style="margin-left: 8px; color: #2093EE;" class="fa fa-paper-plane"></i>
+                                        </div>
+                                        <div class="bbPostWriteComment">
+                                            <input style="background: #F3F3F3;" class="post-input" placeholder="Write a comment.." [(ngModel)]="bulletinComment.text">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div *ngFor="let comment of pos.bltPostComment" >
                                 <div class="row" class="hover comment-section" *ngIf="showComments === pos.id">
+                                    <hr style="margin-left: 2em;">
                                     <ul style="margin-left: 5px;">
                                         <li>
-                                            <mat-card>
+                                            <mat-card class="bbPostComment">
                                                 <mat-card-header>
                                                     <!-- <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div> -->
-                                                    <mat-card-subtitle>{{pos.author.name}}</mat-card-subtitle>
+                                                    <mat-card-subtitle><h3 class="bbPostCommentNameHeader">{{comment.author.name}}</h3></mat-card-subtitle>
                                                     <mat-card-title>
                                                         <p style="font-size: 14px; font-weight: 100;">{{comment.text}}</p>
                                                     </mat-card-title>
                                                 </mat-card-header>
+                                                <mat-card-subtitle>
+                                                    <span style="right: 15px; position: absolute;">{{pos.postDate | date:
+                                                        'MMM d, yy h:mm a'}}</span></mat-card-subtitle>
                                             </mat-card>
                                         </li>
                                     </ul>
                                 </div>
-                                </div>
-                                <div class="row" *ngIf="showComments === pos.id" class="comment-section">
-                                    <!-- <hr>
-                                    <ul style="margin-left: 5px;">
-                                        <li>
-                                            <mat-card>
-                                                <mat-card-header>
-                                                    <div mat-card-avatar><i style="font-size: 25px" class="fa fa-user-circle"></i></div>
-                                                    <mat-card-subtitle></mat-card-subtitle>
-                                                </mat-card-header>
-                                            </mat-card>
-                                        </li>
-                                    </ul> -->
-                                    <div class="row">
-                                        <div class="col-11">
-                                            <input style="background: #F3F3F3;" class="post-input" placeholder="Write a comment.." [(ngModel)]="bulletinComment.text">
-                                        </div>
-
-                                        <div style="vertical-align: middle; padding-top: 0; font-size:23px; margin-left: -30px; cursor: pointer;" class="col-1" (click)="createPostComment(pos.id, i)">
-                                            <i style="margin-left: 8px; color: #2093EE;" class="fa fa-paper-plane"></i>
-                                        </div>
-                                    </div>
                                 </div>
                             </mat-card-actions>
                         </mat-card>
