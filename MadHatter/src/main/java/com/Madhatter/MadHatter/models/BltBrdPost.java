@@ -59,7 +59,7 @@ public class BltBrdPost implements Serializable {
 	private String topic;
 	
 	@ManyToOne
-	@JoinColumn(name="CATEGORY_ID", referencedColumnName="ID", nullable=false)
+	@JoinColumn(name="CATEGORY_ID", referencedColumnName="ID")
 	private RefCode category;
 
 	@Column(name="LOCK_YN")
