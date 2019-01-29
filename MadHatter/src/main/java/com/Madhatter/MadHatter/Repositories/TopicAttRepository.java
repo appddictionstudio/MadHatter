@@ -20,4 +20,11 @@ public interface TopicAttRepository extends JpaRepository<TopicAtt, Long> {
 //	
 	@Query("select t from TopicAtt t")
 	public List<TopicAtt> getAllTopicAtt();
+	
+	Optional<TopicAtt> findById(Long id);
+	
+	@Query("Select t from TopicAtt t where t.topic.id = ?1")
+	List<TopicAtt> findByTopicId(Long id);
+	
 }
+

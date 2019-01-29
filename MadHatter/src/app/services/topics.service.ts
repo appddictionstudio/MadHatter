@@ -66,5 +66,7 @@ export class TopicsService {
     return this.http.delete<Observable<TopicAtt>>(environment.apiUrl + 'TopicAtt/' + id, httpOptions );
   }
 
-
+  getTopicAttById(topicId): Observable<any> {
+    return this.http.get(environment.apiUrl + 'topicatt/' + topicId);
+  }
 }

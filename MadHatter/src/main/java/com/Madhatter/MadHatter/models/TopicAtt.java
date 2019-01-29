@@ -30,7 +30,6 @@ public class TopicAtt implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="TOPIC_ID", referencedColumnName="ID", nullable=false)
-	@JsonIgnore
 	private Topic topic;
 	 
 	@Column(name="FILE_NM")
@@ -42,9 +41,20 @@ public class TopicAtt implements Serializable {
 	@Column(name="DESCRIPTION")
 	private String description;
 
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name = "TOPIC_ATT_ID")
+	private List<SubmittedAtt> subAttachments;
 
 	public long getId() {
 		return id;
+	}
+
+	public List<SubmittedAtt> getSubAttachments() {
+		return subAttachments;
+	}
+
+	public void setSubAttachments(List<SubmittedAtt> subAttachments) {
+		this.subAttachments = subAttachments;
 	}
 
 	public void setId(long id) {
@@ -59,7 +69,7 @@ public class TopicAtt implements Serializable {
 		this.attachmentId = attachmentId;
 	}
 
-
+	@JsonIgnore
 	public Topic getTopic() {
 		return topic;
 	}
