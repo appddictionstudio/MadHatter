@@ -374,7 +374,6 @@ topic: any;
   createBulletinPost() {
     this.bulletinBoardPost.attachments = this.documents;
     this.bulletinBoardPost.author = this.currentUser;
-    console.log(this.bulletinBoardPost);
     this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
       this.lockPost = false;
       this.ngOnInit();
@@ -459,7 +458,6 @@ topic: any;
           result => {
             this.documents.push(result);
             this.fileUploading = false;
-
           }
         );
       };

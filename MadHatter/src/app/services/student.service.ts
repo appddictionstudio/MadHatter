@@ -26,6 +26,11 @@ export class StudentService {
     return this.http.put(environment.apiUrl + 'subAtt/' + topicAtt, SubAtt);
   }
 
+  getStudentAttempts(id): Observable<any> {
+    console.log(id);
+    return this.http.get(environment.apiUrl + 'SubmittedAtt/' + id);
+  }
+
   // updateTopicAtt(SubAtt: SubmittedAtt , topicAtt: any): Observable<any> {
   //   console.log(topicAtt);
   //   return this.http.put(environment.apiUrl + 'topicAtt/' + topicAtt, SubAtt);

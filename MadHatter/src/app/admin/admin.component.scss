@@ -60,6 +60,7 @@ display: grid;
 .studentDetialUpload {
     grid-row: 1;
     grid-column: 2;
+    cursor: pointer;
 }
 
 .studentUpload {
@@ -133,4 +134,51 @@ hr {
     text-align: right;
     grid-row: 1;
     grid-column: 4;
+}
+
+#adminDownloadItem {
+    padding-left: 15px;
+}
+
+.TeacherView {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.TeacherDownload {
+    grid-row: 1;
+    grid-column: 2;
+    cursor: pointer;
+    margin: auto 0%;
+}
+
+.TeacherView button {
+    margin: unset;
+}
+
+.studentAttemptsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    font-size: 28px;
+}
+
+.studentAttemptName {
+    grid-row: 1;
+    grid-column: 1;
+    margin: auto 0%;
+}
+
+.studentAttemptDownload {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.studentAttemptGrade {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.modal-dialog {
+    max-width: 50% !important;
 }

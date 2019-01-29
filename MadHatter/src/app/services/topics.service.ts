@@ -47,7 +47,6 @@ export class TopicsService {
 
   getTopicAtt(): Observable<any> {
     return this.http.get(environment.apiUrl + 'TopicAtt');
-
   }
 
   DownloadAtt(attachmentId: number) {

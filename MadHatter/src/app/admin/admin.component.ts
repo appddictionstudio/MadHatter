@@ -20,6 +20,7 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
   providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
+  result: SubmittedAtt;
 
   constructor(
     private api: ModuleService,
@@ -48,12 +49,15 @@ export class AdminComponent implements OnInit, OnChanges {
   attList: Attachments[] = [];
   attList2: Attachments[] = [];
   topicAtt: TopicAtt[] = [];
-    subAtt: SubmittedAtt = new SubmittedAtt();
+  subAtt: SubmittedAtt = new SubmittedAtt();
+  studentAttempts: any[];
+
   ngOnInit() {
     this.getUserRole();
     this.getModuleforLearning();
     this.getAllTopics();
     this.getAttachments();
+    // this.getStudentAttempts();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -79,6 +83,13 @@ export class AdminComponent implements OnInit, OnChanges {
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
+    });
+  }
+
+  getStudentAttempts(id) {
+    this.apiS.getStudentAttempts(id).subscribe(data => {
+      this.studentAttempts = data as any[];
+      console.log(this.studentAttempts);
     });
   }
 
@@ -191,9 +202,10 @@ getTopicAttById(topicAttId) {
         const formData = new FormData();
         formData.append('file', file);
         this.apiS.uploadStudentAttachment(formData).subscribe(
-          result => {
-            this.documents.push(result);
-            topicAtt.subAtt.push(result);
+          results => {
+            this.result = results as SubmittedAtt;
+            this.documents.push(this.result);
+            topicAtt.subAtt.push(this.result);
           }
         );
       };
@@ -201,9 +213,11 @@ getTopicAttById(topicAttId) {
   }
   updateSubmittedAtt(topicAtt, index) {
     // topicAtt.topic = {id: topicId };
+    this.result.attachmentId = topicAtt;
+    this.result.student = this.currentUser;
     // this.topicCenter.attachments = this.documents;
     // tslint:disable-next-line:radix
-    this.apiS.updateTopicAtt(this.subAtt, topicAtt).subscribe(data => {
+    this.apiS.updateTopicAtt(this.result, this.result.id).subscribe(data => {
       this.topicAtt[index] = data;
       this.subAtt.topicAtt = topicAtt;
     });
@@ -237,7 +251,8 @@ getTopicAttById(topicAttId) {
    saveAs(blob, filename);
  }
 
- open(content) {
+ open(content, id) {
+   this.getStudentAttempts(id);
   this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
   }, (reason) => {

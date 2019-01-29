@@ -1,5 +1,4 @@
 export class SubmittedAtt {
-
   id: number;
   attachmentId: number;
   topicAtt: any;
@@ -7,5 +6,4 @@ export class SubmittedAtt {
   fileSz: any;
   description: any;
   student: any;
-
 }

@@ -103,7 +103,20 @@ public class SubmittedAttController {
 			List<SubmittedAtt> attList = repo.getAllSubmittedAtt();
 			return ResponseEntity.ok(attList);
 		};
+		
+		
+	// -------------------------Get all by Id----------------------------------------------\\
 	
+		@RequestMapping(value = "/SubmittedAtt/{id}", method = RequestMethod.GET)
+		ResponseEntity<List<SubmittedAtt>> getAttByTopicId(@PathVariable long id) {
+
+			
+			List<SubmittedAtt> attach = repo.findByAttId(id);
+			System.out.println(id);
+			
+			return ResponseEntity.ok(attach);
+		}		
+		
 	//------------Upload Attachment By Topic Id-----
 	
 //			@RequestMapping(value = "/topicatt/{id}", method = RequestMethod.GET)
@@ -149,7 +162,7 @@ public class SubmittedAttController {
 		@RequestMapping(value = "subAtt/{topicAttId}", method = RequestMethod.PUT)
 		public ResponseEntity<Object> subAtt(@RequestBody SubmittedAtt subAtt, @PathVariable Long topicAttId){
 	
-			
+			subAtt.setId(topicAttId);
 //			User creator = userRepo.findById((long) subAtt.getStudent().getId());
 			
 //			subAtt.setStudent(creator);
@@ -157,7 +170,7 @@ public class SubmittedAttController {
 			
 			
 			TopicAtt tAtt = new TopicAtt();
-			tAtt.setId(topicAttId);
+			tAtt.setId(subAtt.getAttachmentId());
 			
 			subAtt.setTopicatt(tAtt);
 			
@@ -165,7 +178,7 @@ public class SubmittedAttController {
 			repo.save(subAtt);
 //			Optional<TopicAtt> topicAtt = topicAttrepo.findById(topicAttId);
 			
-//			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/302")
 //					.buildAndExpand(saveSubAtt.getId()).toUri();
 //			return ResponseEntity.created(location).build();
 			return ResponseEntity.status(HttpStatus.OK).build();

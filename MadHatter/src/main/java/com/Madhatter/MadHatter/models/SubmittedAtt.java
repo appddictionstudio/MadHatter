@@ -27,7 +27,8 @@ public class SubmittedAtt implements Serializable {
 	private long attachmentId;
 	
 	@ManyToOne
-	@JoinColumn(name="TOPIC_ATT_ID", referencedColumnName="ID", nullable=false)
+	@JsonIgnore
+	@JoinColumn(name="TOPIC_ATT_ID", referencedColumnName="ID")
 	private TopicAtt topicatt;
 	 
 	@Column(name="FILE_NM")
@@ -38,6 +39,12 @@ public class SubmittedAtt implements Serializable {
 		
 	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="GRADEN")
+	private long grade_numerator;
+	
+	@Column(name="GRADED")
+	private long grade_denominator;
 	
 	@ManyToOne
 	@JoinColumn(name="STUDENT_ID", referencedColumnName="ID")
@@ -50,8 +57,6 @@ public class SubmittedAtt implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 
 	public long getAttachmentId() {
 		return attachmentId;
@@ -91,6 +96,22 @@ public class SubmittedAtt implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public long getGradeN() {
+		return grade_numerator;
+	}
+
+	public void setGradeN(long grade_numerator) {
+		this.grade_numerator = grade_numerator;
+	}
+	
+	public long getGradeD() {
+		return grade_denominator;
+	}
+
+	public void setGradeD(long grade_denominator) {
+		this.grade_denominator = grade_denominator;
 	}
 
 	public User getStudent() {
