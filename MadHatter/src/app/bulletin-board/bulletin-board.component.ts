@@ -223,6 +223,7 @@ topic: any;
     // this.getAllActivity();
     this.bulletinBoardPost.topic = '';
     this.bulletinBoardPost.text = '';
+    this.bulletinComment.text = '';
     // this.bulletinBoardPost.attachments.length = 0;
     this.getCurrentUser();
   }
@@ -393,10 +394,19 @@ topic: any;
   createPostComment(postId, index) {
     // const x = this.currentUser.id;
     this.bulletinComment.id = JSON.parse(this.currentUser.id);
-    console.log(this.bulletinComment);
+    if (this.bulletinComment.text === '') {
+      this.snotifyService.error('Please write a comment', {
+        timeout: 2000,
+        showProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
+    } else {
     this.api.createPostComment(this.bulletinComment, postId).subscribe(data => {
       this.posts[index] = data;
     });
+  }
     this.bulletinComment.text = '';
   }
 
