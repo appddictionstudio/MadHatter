@@ -29,10 +29,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Madhatter.MadHatter.Repositories.SubmittedAttRepository;
 import com.Madhatter.MadHatter.Repositories.TopicAttRepository;
+import com.Madhatter.MadHatter.Repositories.UserRepository;
 import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.SubmittedAtt;
 import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
+import com.Madhatter.MadHatter.models.User;
 import com.Madhatter.MadHatter.services.AttachmentService;
 
 
@@ -49,6 +51,11 @@ public class SubmittedAttController {
 	@Autowired
 	private AttachmentService attService;
 	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+    private TopicAttRepository topicAttrepo;
 	
 	//----Create
 	@PostMapping(value = "/SubmittedAtt")
@@ -76,7 +83,7 @@ public class SubmittedAttController {
        	 
        	SubmittedAtt submittedAtt = new SubmittedAtt();
 
-       	submittedAtt.setAttachmentId(submittedAtt.getId());
+       	submittedAtt.setAttachmentId(att.getId());
        	submittedAtt.setFileNm(file.getOriginalFilename());
        	submittedAtt.setFileSz(new Long(att.getAttachment().length));
        	
@@ -137,6 +144,33 @@ public class SubmittedAttController {
 		    response.getOutputStream().write(binary);
 		    response.flushBuffer();
 //		    fis.close();
+		}
+		
+		@RequestMapping(value = "subAtt/{topicAttId}", method = RequestMethod.PUT)
+		public ResponseEntity<Object> subAtt(@RequestBody SubmittedAtt subAtt, @PathVariable Long topicAttId){
+	
+			
+//			User creator = userRepo.findById((long) subAtt.getStudent().getId());
+			
+//			subAtt.setStudent(creator);
+			
+			
+			
+			TopicAtt tAtt = new TopicAtt();
+			tAtt.setId(topicAttId);
+			
+			subAtt.setTopicatt(tAtt);
+			
+		
+			repo.save(subAtt);
+//			Optional<TopicAtt> topicAtt = topicAttrepo.findById(topicAttId);
+			
+//			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//					.buildAndExpand(saveSubAtt.getId()).toUri();
+//			return ResponseEntity.created(location).build();
+			return ResponseEntity.status(HttpStatus.OK).build();
+
+
 		}
 		
 

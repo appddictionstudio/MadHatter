@@ -90,7 +90,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments, let i = index">
+                <div class="learningDetailGridSeperator" *ngFor="let att of att, let i = index">
                   <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
                       <p class="learningDetailName">
                           {{att.fileNm}}</p>
@@ -270,17 +270,17 @@
             <div class="toggleDetailsCheckbox">
             </div>
             </div>
-            <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+            <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                 <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                   <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
                     <p>{{a.fileNm}}</p>
                     <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                   </div>
                   <div class="studentUpload">
-                    <!-- <input type="file" #file  (change)="onFileChange($event,t)"> -->
-                    <input type="file" #file>
+                    <input type="file" #file  (change)="onFileChange($event,a)">
+                    <!-- <input type="file" #file> -->
 
-                      <button style="margin-left: 25%; margin-top: 10px;" mat-button >Submit Assignment</button>
+                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
                   </div>
                 </div>
                 </div>

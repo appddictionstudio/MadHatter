@@ -5,5 +5,6 @@ export class Topic {
     Quizzes: string;
     hidden: string;
     mod_id: number;
+    mod: any;
     attachments: any[];
 }

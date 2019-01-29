@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ValidationException;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
@@ -102,20 +103,16 @@ public class TopicAttController {
 			return ResponseEntity.ok(attList);
 		};
 	
-	//------------Upload Attachment By Topic Id-----
+	//------------Load TopicAttachment By Topic Id-----
 	
-//			@RequestMapping(value = "/topicatt/{id}", method = RequestMethod.GET)
-//			ResponseEntity<ByteArrayResource> getAttByTopicAttId(@PathVariable long id) {
-//				Optional<Attachment> attachment = repo.getAttachmentByTopicAttId(id);
-//				
-//				String ext = attachment.get().getMimeType().getExtension();
-//				String mimeType = attachment.get().getMimeType().getMimeType();
-//				
-//				return ResponseEntity.ok()
-//						.contentType(MediaType.parseMediaType(mimeType))
-//						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"attachment.\"" + ext + "\"")
-//						.body(new ByteArrayResource(attachment.get().getAttachment()));
-//			}
+			@RequestMapping(value = "/topicatt/{id}", method = RequestMethod.GET)
+			ResponseEntity<List<TopicAtt>>getAttByTopicId(@PathVariable long id) {
+
+				
+				List<TopicAtt> attach = repo.findByTopicId(id);
+				
+				return ResponseEntity.ok(attach);
+			}
 //			
 	
 		//----------------Downloading----------
@@ -146,18 +143,21 @@ public class TopicAttController {
 		
 //-----Update 
 		
-//		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
-//		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
+		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
 //			if(topicAtt.getSubAttachments() != null) {
 //				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
 //					attachment.setTopicatt(topicAtt);
 //				}
 //			}
-//			topicAtt.setId(id);
-//
-//			repo.save(topicAtt);
-//			return ResponseEntity.status(HttpStatus.OK).build();
-//		}
+			
+			topicAtt.setId(id);
+			SubmittedAtt subAtt = new SubmittedAtt();
+			subAtt.setTopicatt(topicAtt);
+
+			repo.save(topicAtt);
+			return ResponseEntity.status(HttpStatus.OK).build();
+		}
 		
 		
 //-------------Delete

@@ -68,7 +68,9 @@ public class BltBrdPostCommentController {
 		BltBrdPost bltBrdPost = new BltBrdPost();
 		bltBrdPost.setId(postId);
 		
+
 		bltBrdPostComment.setPost(bltBrdPost);
+
 		
 		
 		BltBrdPostComment savedPostComment = repo.save(bltBrdPostComment);

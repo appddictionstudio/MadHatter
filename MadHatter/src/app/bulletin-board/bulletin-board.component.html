@@ -62,7 +62,7 @@
             </div>
             <!-- <div class="row">
                 <div class="col-12">
-                    
+
                         <i class="hover fas fa-paperclip" (click)="file.click()"></i>
                 </div>
             </div> -->
@@ -174,7 +174,7 @@
                 <hr>
               </li> -->
 
-                    <li *ngFor="let pos of posts; let i = index">
+                    <li *ngFor="let pos of posts | slice:0:9; let i = index">
                         <mat-card class="bbcardcomment">
                             <mat-card-header>
                                 <div mat-card-avatar><i id="bbusericon" class="fa fa-user-circle"></i></div>

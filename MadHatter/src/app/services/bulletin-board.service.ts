@@ -28,7 +28,7 @@ export class BulletinBoardService {
   //   return this.http.post(environment.apiUrl + '/BltBrdAtt/getAttByPost', bulletinMessageCenter);
   // }
 
-  createPostComment(bulletinBoardPostComment, postId): Observable<any> {
+  createPostComment(bulletinBoardPostComment: BulletinBoardPostComment, postId): Observable<any> {
     console.log(postId);
     console.log(bulletinBoardPostComment);
     return this.http.post(environment.apiUrl + 'BltBrdPostComment/' + postId, bulletinBoardPostComment);

@@ -5,4 +5,5 @@ export class TopicAtt {
   fileNm: any;
   fileSz: any;
   description: any;
+  subAttachments: any[];
 }

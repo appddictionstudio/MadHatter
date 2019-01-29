@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { SubmittedAtt } from '../models/SubmittedAtt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +21,13 @@ export class StudentService {
 
   }
 
-  updateTopicAtt(topicAtt: any) {
+  updateTopicAtt(SubAtt: SubmittedAtt , topicAtt: any): Observable<any> {
     console.log(topicAtt);
-    return this.http.put(environment.apiUrl + 'topicAtt/' + topicAtt.id, topicAtt);
+    return this.http.put(environment.apiUrl + 'subAtt/' + topicAtt, SubAtt);
   }
+
+  // updateTopicAtt(SubAtt: SubmittedAtt , topicAtt: any): Observable<any> {
+  //   console.log(topicAtt);
+  //   return this.http.put(environment.apiUrl + 'topicAtt/' + topicAtt, SubAtt);
+  // }
 }

@@ -11,6 +11,7 @@ import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bo
 import { saveAs } from 'file-saver';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopicAtt } from '../models/TopicAtt';
+import { SubmittedAtt } from '../models/SubmittedAtt';
 
 @Component({
   selector: 'app-admin',
@@ -45,8 +46,9 @@ export class AdminComponent implements OnInit, OnChanges {
   documents: any[] = [];
   closeResult: string;
   attList: Attachments[] = [];
+  attList2: Attachments[] = [];
   topicAtt: TopicAtt[] = [];
-
+    subAtt: SubmittedAtt = new SubmittedAtt();
   ngOnInit() {
     this.getUserRole();
     this.getModuleforLearning();
@@ -62,9 +64,17 @@ export class AdminComponent implements OnInit, OnChanges {
     this.api.getModule().subscribe(res => {
       this.modules = res as any[];
       console.log(this.modules);
+
       // this.isLoading = false;
     });
   }
+  // getTopicsByModId(modId) {
+  //   this.apiT.getTopicsByModId(modId).subscribe(data => {
+  //     this.attList2 =  data as any[];
+  //     console.log(this.topics);
+  //     this.isLoading = false;
+  //   });
+  // }
 
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
@@ -159,6 +169,11 @@ getAttachments() {
     this.attList = data as any[];
 });
 }
+getTopicAttById(topicAttId) {
+  this.apiT.getTopicAttById(topicAttId).subscribe(data => {
+    this.attList2 = data as any[];
+});
+}
   getAllTopics() {
     this.api.getTopicsByAll().subscribe(res => {
       this.topics = res as any[];
@@ -167,7 +182,7 @@ getAttachments() {
     });
   }
 
-  onFileChange(event, topic) {
+  onFileChange(event, topicAtt) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -178,17 +193,19 @@ getAttachments() {
         this.apiS.uploadStudentAttachment(formData).subscribe(
           result => {
             this.documents.push(result);
-            // topic.attachments.push(result);
+            topicAtt.subAtt.push(result);
           }
         );
       };
     }
   }
-  updateSubmittedAtt(topicAtt) {
+  updateSubmittedAtt(topicAtt, index) {
+    // topicAtt.topic = {id: topicId };
     // this.topicCenter.attachments = this.documents;
     // tslint:disable-next-line:radix
-    this.apiS.updateTopicAtt(topicAtt).subscribe(data => {
-
+    this.apiS.updateTopicAtt(this.subAtt, topicAtt).subscribe(data => {
+      this.topicAtt[index] = data;
+      this.subAtt.topicAtt = topicAtt;
     });
     console.log(topicAtt + 'this is whats sending');
   }
