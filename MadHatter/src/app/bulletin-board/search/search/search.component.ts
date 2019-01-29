@@ -31,12 +31,12 @@ export class SearchComponent implements OnInit {
   searchText: any;
   searchTopic: any;
 
-  // filterValues = {
-  //   title: '',
-  //   post: '',
-  //   favs: '',
-  //   attachment: '',
-  // };
+  filterValues = {
+    title: '',
+    post: '',
+    favs: '',
+    attachment: '',
+  };
 
 
   constructor(private http: HttpClient,
@@ -63,15 +63,15 @@ export class SearchComponent implements OnInit {
 
   // searchBulletinTopics(searchTopic) {
   //   this.api.searchBulletinTopic(searchTopic).subscribe(data => {
-  //     // this.posts = data as any[];
-  //   });
-  // }
-
-
-
-  // searchBulletinPostAndTopics(text: any , topic: any) {
-  //   this.api.searchBulletinPostAndTopics(text, topic).subscribe(data => {
   //     this.posts = data as any[];
   //   });
   // }
+
+
+
+  searchBulletinPostAndTopics(text: any , topic: any) {
+    this.api.searchBulletinPostAndTopics(text, topic).subscribe(data => {
+      this.posts = data as any[];
+    });
+  }
 }

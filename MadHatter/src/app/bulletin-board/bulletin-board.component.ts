@@ -66,7 +66,6 @@ export class BulletinBoardComponent implements OnInit, OnChanges {
 
   postOpt = [
     'Posts',
-    'Topics',
     'Authors'
   ];
 
@@ -233,34 +232,12 @@ topic: any;
     // this.getAllActivity();
   }
 
-  // testthis(p) {
-  //   console.log(this.api.getAttachmentById(p));
-  // }
-
   getCurrentUser() {
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
       this.userArray = [this.currentUser];
     });
   }
-
-  setHotTopic() {
-    if (this.hotTopicPost) {
-      this.hotTopicPost = false;
-    } else {
-      this.hotTopicPost = true;
-    }
-  }
-
-  setLock() {
-    if (this.lockPost) {
-      this.lockPost = false;
-    } else {
-      this.lockPost = true;
-    }
-    console.log(this.lockPost);
-  }
-
 
   displayGroup() {
     this.showGroups = this.showGroups ? false : true;
@@ -282,7 +259,6 @@ topic: any;
   isClicked(val: any) {
     console.log(val);
     this.selectedValue = val;
-    // console.log(this.test);
     console.log(this.selectedPeopleAndGroupArray.push(this.selectedValue));
     return this.selectedPeopleAndGroupArray.length;
   }
@@ -316,6 +292,7 @@ topic: any;
     this.posts.push(post);
     this.newPost = '';
   }
+
   confirmAddPost() {
     this.snotifyService.confirm('Are you sure you want to add post?', {
       timeout: 5000,
@@ -344,7 +321,6 @@ topic: any;
   hotTopicClickEvent() {
     console.log('clickededededed');
     this.hotTopicClick = !this.hotTopicClick;
-
   }
 
   likeClickEvent(post) {
@@ -364,22 +340,7 @@ topic: any;
            post.liked = false;
          }
     });
-    // if (this.likeClick !== id) {
-    //   this.likeClick = id;
-    // } else {
-    //   this.likeClick = [];
-    // }
-    // add like to post database //
   }
-
-  // addToFavs(post: BulletinMessageCenter) {
-  //   post.isFavorited = true;
-
-  //   const fav = new BulletinBoardFavorite();
-  //   fav.post = post;
-
-  //   this.allFavorites.push(fav);
-  // }
 
   commentSection(id) {
     this.newComment = '';
@@ -412,17 +373,13 @@ topic: any;
 
   createBulletinPost() {
     this.bulletinBoardPost.attachments = this.documents;
-    // this.bulletinBoardPost.department = this.currentDept;
     this.bulletinBoardPost.author = this.currentUser;
     console.log(this.bulletinBoardPost);
     this.api.createBulletinPost(this.bulletinBoardPost).subscribe(data => {
       this.lockPost = false;
       this.ngOnInit();
     });
-
   }
-
-
 
   loadBulletinPosts() {
   //  const id = this.loggedInUser = 1;
@@ -431,65 +388,18 @@ topic: any;
       this.posts = data as any[];
       console.log(this.posts);
       this.isloading = false;
-      // this.api.getPostlikesByUserId(id).subscribe(likes => {
-      //   for ( const like of likes) {
-      //     for (const post of this.posts) {
-      //       if (post.id === like.post.id && like.eodTech.id === id) {
-      //         console.log(post.id + 'is liked');
-      //         post.liked = true;
-      //         post.likeCount = post.likeCount;
-      //       }
-      //     }
-      //   }
-      // });
-      // for (const post of this.posts) {
-      //   this.api.getPostlikesByEodTechId(id).subscribe(likes => {
-      //     for (const like of likes) {
-      //       console.log(like);
-      //       console.log(like.eodTech.id);
-      //       if (like.id !== null && like.eodTech.id === id) {
-      //         console.log(like.eodTech.id);
-      //         post.liked = true;
-      //       } else {
-      //         post.liked = false;
-      //       }
-      //     }
-      //   });
-      // }
-    });
-  }
-
-
-  loadHotTopicPosts(currentPage: number) {
-
-    this.api.getHotTopicPosts(currentPage).subscribe(data => {
-      const res = data as any;
-
-
-
-      if (res) {
-
-
-        this.hotTopicResults.number = res.number;
-        this.hotTopicResults.length = res.totalElements;
-        this.hotTopicResults.pageSize = res.size;
-        this.hotTopicResults.totalPages = res.totalPages;
-        this.hotTopicPosts = res.content as any[];
-      }
-      this.hotTopicPosts.forEach(post => {
-        post.image = this.getRandomImage();
-      });
     });
   }
 
   pageEventHandler(event: PageEvent) {
     this.currentPage = event.pageIndex;
-    this.loadHotTopicPosts(this.currentPage);
+    // this.loadHotTopicPosts(this.currentPage);
 
     console.log(this.currentPage);
   }
 
   searchBulletinPosts(searchText) {
+    console.log('found');
     this.searchApi.searchBulletinPost(searchText).subscribe(data => {
       this.posts = data as any[];
     });
@@ -507,7 +417,6 @@ topic: any;
   //   })
   // }
 
-
   getAllActivity() {
     // this.bulletinBoardPost.department = this.currentDept;
     this.api.getAllActivity().subscribe(data => {
@@ -515,39 +424,27 @@ topic: any;
     });
   }
 
-  // hardcoded images for Hot topic images
-  getRandomImage() {
-    this.randomImg = this.myImages[Math.floor(Math.random() * this.myImages.length)];
-    console.log(this.randomImg);
-    return this.randomImg;
+  searchBulletinPostAndTopics(text?: any, topic?: any) {
+   if (text !== null) {
+    this.text = text ;
+     this.searchApi.searchBulletinPost(this.text).subscribe(data => {
+      this.posts = data as any[];
+     });
+    }
+   if ( topic !== null) {
+     this.topic = topic;
+    this.searchApi.searchBulletinTopic(this.topic).subscribe(data => {
+      this.posts = data as any[];
+   });
   }
-  // searchBulletinPostAndTopics(text?: any, topic?: any) {
-
-
-  //  if (text !== null) {
-  //   this.text = text ;
-  //    this.searchApi.searchBulletinPost(this.text).subscribe(data => {
-  //     this.posts = data as any[];
-  //    });
-  //   }
-  //  if ( topic !== null) {
-  //    this.topic = topic;
-  //   this.searchApi.searchBulletinTopic(this.topic).subscribe(data => {
-  //     this.posts = data as any[];
-  //  });
-  // }
-  //  if (topic !== null && text !== null) {
-  //   this.topic = topic;
-  //   this.text = text ;
-  //   this.searchApi.searchBulletinPostAndTopics(this.text, this.topic).subscribe(data => {
-  //     this.posts = data as any[];
-  //   });
-  //  }
-  // }
-
-
-
-
+   if (topic !== null && text !== null) {
+    this.topic = topic;
+    this.text = text ;
+    this.searchApi.searchBulletinPostAndTopics(this.text, this.topic).subscribe(data => {
+      this.posts = data as any[];
+    });
+   }
+  }
 
   onFileChange(event) {
     this.fileUploading = true;
@@ -569,31 +466,6 @@ topic: any;
     }
 
   }
-
-
-  addToFavs(post: BulletinMessageCenter) {
-    console.log(post);
-    post.isFavorited = true;
-    this.favorite.post = post;
-    this.favorite.created = new Date;
-    this.favorite.eodTech = post.author;
-    this.api.postFavorite(this.favorite).subscribe(res => {
-      // this.allFavorites = res;
-      this.allFavorites.push(this.favorite);
-      this.ngOnInit();
-    });
-  }
-
-  toggleRightPanel(selection) {
-    if (selection === 'fav') {
-      this.showFav = true;
-      this.showActivity = false;
-    } else if (selection === 'activity') {
-      this.showFav = false;
-      this.showActivity = true;
-    }
-  }
-
 
   downloadAttatchemnts(attachmentId) {
     this.api.downloadBBAtt(attachmentId).subscribe(response => {

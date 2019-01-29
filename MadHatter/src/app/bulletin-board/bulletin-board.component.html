@@ -1,18 +1,10 @@
 <div class="row bulletin-board-container">
-    <div id="news-feed" class="col-12 news-feed bulletin-board-container" style="overflow-y: scroll;">
+    <div id="news-feed" class="col-12 news-feed bulletin-board-container">
         <div class="row mt-2">
-            <h2 style="margin-left: 20px; margin-top: 10px;">NEWS FEED</h2>
+            <h2 style="margin-left: 20px; margin-top: 10px; text-transform: uppercase;">Communities</h2>
             <div class="col">
-                <div class="row mt-2">
-                    <div class="col">
-                        <!-- <label>Filter by</label> -->
-                        <mat-form-field appearance="outline">
-                            <mat-select style="color: #505464" placeholder="Search By" matNativeControl [(ngModel)]="searchBulletinPosts">
-                                <mat-option *ngFor="let post of postOpt" [value]="post">{{post}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col">
+                <div class="row mt-2" style="width: 102%">
+                    <div class="col" style="text-align: right;">
                         <div class="label-spacer"></div>
                         <mat-form-field style="color: #505464" appearance="outline">
                             <input matInput placeholder="Search" #search (keyup.enter)="searchBulletinPosts(search.value)">
@@ -89,10 +81,10 @@
         </div>
 
 
-        <div class="row mt-3" id="messagesContainerBB" style="margin-left: 0; margin-right: 0">
+        <div class="row mt-3" id="messagesContainerBB" style="margin-left: 0; margin-right: 0;min-height: 45%;">
             <div id="posts" class="col center-section">
                 <!-- <div class="col"> -->
-                <h5 class="px-4">MESSAGES <i style="color: #9EA3B4;" class="fa fa-newspaper"></i></h5>
+                <h5 class="px-4">POSTS <i style="color: #9EA3B4;" class="fa fa-newspaper"></i></h5>
                 <br>
                 <div *ngIf="isloading" class="contentToDisplay">
                     <mat-progress-spinner color="primary" mode="indeterminate">
