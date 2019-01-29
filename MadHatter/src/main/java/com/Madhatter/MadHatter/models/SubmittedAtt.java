@@ -40,7 +40,7 @@ public class SubmittedAtt implements Serializable {
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="STUDENT_ID", referencedColumnName="ID", nullable=false)
+	@JoinColumn(name="STUDENT_ID", referencedColumnName="ID")
 	private User student;
 
 	public long getId() {
