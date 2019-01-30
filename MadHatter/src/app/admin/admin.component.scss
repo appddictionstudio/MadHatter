@@ -158,7 +158,7 @@ hr {
 
 .studentAttemptsGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr .2fr .5fr .5fr;
     grid-template-rows: 1fr;
     font-size: 28px;
 }
@@ -172,6 +172,7 @@ hr {
 .studentAttemptDownload {
     grid-row: 1;
     grid-column: 2;
+    cursor: pointer;
 }
 
 .studentAttemptGrade {
@@ -181,4 +182,17 @@ hr {
 
 .modal-dialog {
     max-width: 50% !important;
+}
+
+#adminModalContent {
+    min-height: 15em !important;
+}
+.adminDetailGridSeperator {
+    padding: 10px 15px;
+    margin: 5px 0%;
+}
+
+.studentAttemptGradeButton {
+    grid-row: 1;
+    grid-column: 4;
 }

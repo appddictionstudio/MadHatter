@@ -63,24 +63,32 @@
               </div>
             </div>
             <!-- ///////////// MODAL ////////////// -->
-            <ng-template #content let-modal let-c="close" let-d="dismiss">
+            <ng-template id="adminModalContent" #content let-modal let-c="close" let-d="dismiss">
                 <div class="modal-header">
                   <h3 class="modal-title" id="modal-basic-title">Student Attempts</h3>
                   <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <div class="learningDetailGridSeperator" *ngFor="let s of studentAttempts">
+                <div *ngIf="gettingStudentAttemps" class="contentToDisplay">
+                    <mat-progress-spinner color="primary" mode="indeterminate">
+                    </mat-progress-spinner>
+                </div>
+                <div class="modal-body" *ngIf="!gettingStudentAttemps">
+                  <div class="adminDetailGridSeperator" *ngFor="let s of studentAttempts; let i = index">
                     <div class="studentAttemptsGrid">
                         <span class="studentAttemptName">
                           {{s.student.name}}
                         </span>
-                        <div class="studentAttemptDownload">
+                        <div class="studentAttemptDownload"  (click)="downloadStudentAttatchemnts(s.id)">
                             <i class="fa fa-file" aria-hidden="true"></i>
                         </div>
                         <div class="studentAttemptGrade">
-                          <span>{{s.gradeN}}/{{s.gradeD}}</span>
+                          <input name="s.id" type="number" min="0" max="100" style="background: #F3F3F3; width: 35%;" [placeholder]="s.gradeN" [(ngModel)]="studentGradeN">
+                          <span> / {{s.gradeD}}</span>
+                        </div>
+                        <div class="studentAttemptGradeButton">
+                          <button mat-button (click)="submitGrade(s,i)">Submit Grade</button>
                         </div>
                     </div>
                   </div>
@@ -128,24 +136,23 @@
           <!-- ///////////// MODAL ////////////// -->
           <ng-template #content let-modal let-c="close" let-d="dismiss">
               <div class="modal-header">
-                <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
+                <h3 class="modal-title" id="modal-basic-title">Student Attempts</h3>
                 <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
-                  <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
-                      <p class="learningDetailName">
-                          {{att.fileNm}}</p>
-                        <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-                        <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
-                    <!-- <div *ngFor="let a of attList">
-                    <p *ngIf="att.attachmentId === a.id">
-                      {{att.fileNm}}
-                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
-                    </p>
-                  </div> -->
+                <div class="learningDetailGridSeperator" *ngFor="let s of studentAttempts">
+                  <div class="studentAttemptsGrid">
+                      <span class="studentAttemptName">
+                        {{s.student.name}}
+                      </span>
+                      <div class="studentAttemptDownload"  (click)="downloadStudentAttatchemnts(s.id)">
+                          <i class="fa fa-file" aria-hidden="true"></i>
+                      </div>
+                      <div class="studentAttemptGrade">
+                        <span>{{s.gradeN}}/{{s.gradeD}}</span>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -220,7 +227,11 @@
                   <div class="studentUpload">
                     <input type="file" #file  (change)="onFileChange($event,a)">
                     <!-- <input type="file" #file> -->
-                    <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
+                    <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                      <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+                      </mat-progress-spinner>
+                      <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
+                    </div>
                   </div>
                 </div>
                 </div>
@@ -258,23 +269,26 @@
             </div>
 
             <div class="toggleDetailsCheckbox">
-            </div>
-            </div>
-            <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
-                <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
-                  <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
-                    <p>{{a.fileNm}}</p>
-                    <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+              </div>
+              </div>
+              <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+                  <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
+                    <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
+                      <p>{{a.fileNm}}</p>
+                      <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+                    </div>
+                    <div class="studentUpload">
+                      <input type="file" #file  (change)="onFileChange($event,a)">
+                      <!-- <input type="file" #file> -->
+                      <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                        <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+                        </mat-progress-spinner>
+                        <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="studentUpload">
-                    <input type="file" #file  (change)="onFileChange($event,a)">
-                    <!-- <input type="file" #file> -->
-
-                      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
                   </div>
-                </div>
-                </div>
-                <hr>
+                  <hr>
             </div>
           </div>
           </div>

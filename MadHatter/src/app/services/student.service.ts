@@ -26,9 +26,22 @@ export class StudentService {
     return this.http.put(environment.apiUrl + 'subAtt/' + topicAtt, SubAtt);
   }
 
+  gradeStudent(submission, id): Observable<any> {
+    console.log(submission);
+    return this.http.put(environment.apiUrl + 'submittedAtt/' + id, submission);
+  }
+
   getStudentAttempts(id): Observable<any> {
     console.log(id);
     return this.http.get(environment.apiUrl + 'SubmittedAtt/' + id);
+  }
+
+  DownloadStudentAtt(attachmentId: number) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/octet-stream');
+    headers.set('Accept', 'text/plain');
+    return this.http.get(environment.apiUrl + 'SubmittedAtt/downloadDoc/' + attachmentId,
+    { headers: headers, responseType: 'blob', observe: 'response' });
   }
 
   // updateTopicAtt(SubAtt: SubmittedAtt , topicAtt: any): Observable<any> {

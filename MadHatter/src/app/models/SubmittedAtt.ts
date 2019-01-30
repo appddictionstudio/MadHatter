@@ -6,4 +6,6 @@ export class SubmittedAtt {
   fileSz: any;
   description: any;
   student: any;
+  gradeN: any;
+  gradeD: any;
 }

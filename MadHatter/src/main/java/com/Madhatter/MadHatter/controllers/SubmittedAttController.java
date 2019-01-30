@@ -72,6 +72,23 @@ public class SubmittedAttController {
 		return ResponseEntity.created(location).build();
 	}
 	
+	//-----Update 
+	
+			@RequestMapping(value = "submittedAtt/{id}", method = RequestMethod.PUT)
+			public ResponseEntity<Object> updateSubmittedAtt(@RequestBody SubmittedAtt submittedAtt, @PathVariable long id){
+//				
+				submittedAtt.setTopicatt(submittedAtt.getTopicatt());
+				submittedAtt.setId(submittedAtt.getId());
+				
+				TopicAtt tAtt = new TopicAtt();
+				tAtt.setId(id);
+				
+				submittedAtt.setTopicatt(tAtt);
+
+				repo.save(submittedAtt);
+				return ResponseEntity.status(HttpStatus.OK).build();
+			}
+	
 	
 //	//----Upload--------
 	
@@ -110,9 +127,8 @@ public class SubmittedAttController {
 		@RequestMapping(value = "/SubmittedAtt/{id}", method = RequestMethod.GET)
 		ResponseEntity<List<SubmittedAtt>> getAttByTopicId(@PathVariable long id) {
 
-			
 			List<SubmittedAtt> attach = repo.findByAttId(id);
-			System.out.println(id);
+			
 			
 			return ResponseEntity.ok(attach);
 		}		
@@ -162,7 +178,9 @@ public class SubmittedAttController {
 		@RequestMapping(value = "subAtt/{topicAttId}", method = RequestMethod.PUT)
 		public ResponseEntity<Object> subAtt(@RequestBody SubmittedAtt subAtt, @PathVariable Long topicAttId){
 	
-			subAtt.setId(topicAttId);
+			subAtt.setId(subAtt.getId());
+			subAtt.setGradeD((long) 100);
+			subAtt.setGradeN((long) 0);
 //			User creator = userRepo.findById((long) subAtt.getStudent().getId());
 			
 //			subAtt.setStudent(creator);
@@ -170,7 +188,8 @@ public class SubmittedAttController {
 			
 			
 			TopicAtt tAtt = new TopicAtt();
-			tAtt.setId(subAtt.getAttachmentId());
+//			System.out.println(subAtt.getTopicatt().getId());
+			tAtt.setId(topicAttId);
 			
 			subAtt.setTopicatt(tAtt);
 			

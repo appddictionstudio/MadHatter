@@ -9,6 +9,7 @@ import { StudentService } from '../services/student.service';
 import { Attachments } from '../models/Attachments';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
+import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopicAtt } from '../models/TopicAtt';
 import { SubmittedAtt } from '../models/SubmittedAtt';
@@ -20,12 +21,12 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
   providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
-  result: SubmittedAtt;
 
   constructor(
     private api: ModuleService,
     private apiU: UserService,
     private apiT: TopicsService,
+    private snotifyService: SnotifyService,
     private modalService: NgbModal,
     private apiS: StudentService,
   ) { }
@@ -36,11 +37,16 @@ export class AdminComponent implements OnInit, OnChanges {
   hide = false;
   module: any;
   mod: any;
+  attId: any;
   topics: Topic[] = [];
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
   modules: Module[] = [];
   mods: Module[] = [];
+  result: SubmittedAtt;
+  fileUploading: boolean;
+  gettingStudentAttemps: boolean;
+  studentGradeN: any[];
   isLoading = true;
   teacherRole: number;
   studentRole: number;
@@ -87,9 +93,19 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getStudentAttempts(id) {
+    this.gettingStudentAttemps = true;
+    this.attId = id;
     this.apiS.getStudentAttempts(id).subscribe(data => {
       this.studentAttempts = data as any[];
       console.log(this.studentAttempts);
+      this.gettingStudentAttemps = false;
+    });
+  }
+
+  submitGrade(s, i) {
+    s.gradeN = this.studentGradeN[i];
+    this.apiS.gradeStudent(s, this.attId).subscribe(data => {
+      console.log('grade submitted');
     });
   }
 
@@ -194,6 +210,7 @@ getTopicAttById(topicAttId) {
   }
 
   onFileChange(event, topicAtt) {
+    this.fileUploading = topicAtt.id;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -203,7 +220,9 @@ getTopicAttById(topicAttId) {
         formData.append('file', file);
         this.apiS.uploadStudentAttachment(formData).subscribe(
           results => {
+            this.fileUploading = null;
             this.result = results as SubmittedAtt;
+            console.log(this.result);
             this.documents.push(this.result);
             topicAtt.subAtt.push(this.result);
           }
@@ -212,12 +231,20 @@ getTopicAttById(topicAttId) {
     }
   }
   updateSubmittedAtt(topicAtt, index) {
+    this.fileUploading = topicAtt;
     // topicAtt.topic = {id: topicId };
-    this.result.attachmentId = topicAtt;
+    this.result.topicAtt = topicAtt;
     this.result.student = this.currentUser;
     // this.topicCenter.attachments = this.documents;
     // tslint:disable-next-line:radix
-    this.apiS.updateTopicAtt(this.result, this.result.id).subscribe(data => {
+    this.apiS.updateTopicAtt(this.result, topicAtt).subscribe(data => {
+      this.fileUploading = null;
+      this.snotifyService.success(this.result.fileNm + ' was uploaded for grading', {
+        timeout: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
       this.topicAtt[index] = data;
       this.subAtt.topicAtt = topicAtt;
     });
@@ -240,6 +267,14 @@ getTopicAttById(topicAttId) {
        this.saveToFileSystem(response);
      });
  }
+
+ downloadStudentAttatchemnts(attachmentId) {
+  this.apiS.DownloadStudentAtt(attachmentId).subscribe(response => {
+      console.log(response);
+     this.saveToFileSystem(response);
+   });
+}
+
  private saveToFileSystem(response) {
   console.log('saving file');
    const contentDispositionHeader: string = response.headers.get(
