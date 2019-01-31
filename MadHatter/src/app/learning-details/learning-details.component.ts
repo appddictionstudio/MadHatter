@@ -21,6 +21,7 @@ import { SnotifyService, SnotifyPosition } from 'ng-snotify';
   providers: [NgbModalConfig, NgbModal]
 })
 export class LearningDetailsComponent implements OnInit, OnChanges {
+  currentmod: any;
 
   constructor(
     public dialog: MatDialog,
@@ -185,7 +186,7 @@ onFileChange(event, topic) {
   }
 
 }
-onFileChange2(event, mod) {
+onFileChange2(event, mod,index) {
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
@@ -196,8 +197,8 @@ onFileChange2(event, mod) {
       this.api.uploadModAttachment(formData).subscribe(
         result => {
           this.documents.push(result);
-          mod.modAttachments.push(result);
-          mod.mod = {id: mod.id};
+         mod.modAttachments.push(result);
+
         }
       );
       console.log(mod);
@@ -228,9 +229,12 @@ onFileChange2(event, mod) {
     this.ngOnInit();
   }
 
-  updateModule(mod) {
+  updateModule(mod, modId, index) {
     this.api.updateMod(mod).subscribe(data => {
+      // mod.resources[modId] = {mod: mod.id};
+
   });
+  console.log(mod);
 }
 
 

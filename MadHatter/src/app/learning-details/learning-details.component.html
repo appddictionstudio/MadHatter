@@ -4,7 +4,7 @@
     </mat-progress-spinner>
   </div>
   <div *ngIf="!isLoading">
-  <div class= "headerLearningContent" *ngFor="let m of modules">
+  <div class= "headerLearningContent" *ngFor="let m of modules; let i = index">
     <h1>{{m.title}}</h1>
     <div class="headerProgress" style="width:25em">
       <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
@@ -12,10 +12,10 @@
       </div>
   </div>
   <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
-  <!-- <div class="modfileSave">
-    <input type="file" #file  (change)="onFileChange2($event,m)">
-    <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateModule(m)" >Add Module Content</button>
-  </div> -->
+  <div *ngIf="getUserRoleInstructor()" class="modfileSave">
+    <input type="file" #file  (change)="onFileChange2($event,m, i)">
+    <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateModule(m,m.id,i)" >Add Module Content</button>
+    </div>
   <div class="toggleDetailsButton">
     <!-- <button mat-button *ngIf="!userRole()" (click)=toggleContent()>Disable Content for Students</button> -->
   </div>
