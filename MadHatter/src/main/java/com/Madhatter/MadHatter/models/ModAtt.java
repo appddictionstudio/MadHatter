@@ -29,7 +29,8 @@ public class ModAtt implements Serializable {
 	private long attachmentId;
 	
 	@ManyToOne
-	@JoinColumn(name="MOD_ID", referencedColumnName="ID", nullable=false)
+	@JoinColumn(name="MOD_ID", referencedColumnName="ID")
+	@JsonIgnore
 	private Modules mod;
 	 
 	@Column(name="FILE_NM")

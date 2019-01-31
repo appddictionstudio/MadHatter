@@ -6,4 +6,5 @@ export class Module {
     topicId: any;
     bootcamp: string;
     modAttachments: any[];
+    resources: any[];
 }

@@ -35,10 +35,10 @@ public class Modules {
 	private List<Topic> topic;
 	
 	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
-	@JoinColumn(name = "modAtt_id")
+	@JoinColumn(name = "MOD_ID")
 	private List<ModAtt> modAttachments;
 
-	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(cascade=CascadeType.MERGE)
 	@JoinColumn(name = "mod_to_resource_id")
 	private List<Resources> resources;
 	
