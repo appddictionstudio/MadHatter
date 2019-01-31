@@ -57,7 +57,7 @@
                   <span>{{a.fileNm}}</span>
                   <i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                 </div>
-                <div class="TeacherView">
+                <div class="TeacherView" *ngIf="a.description === exercise">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
                 </div>
               </div>
@@ -129,7 +129,7 @@
                   <span>{{a.fileNm}}</span>
                   <i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                 </div>
-                <div class="TeacherView">
+                <div class="TeacherView" *ngIf="a.description === exercise">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
                 </div>
               </div>
@@ -234,7 +234,7 @@
                     <p>{{a.fileNm}}</p>
                     <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                   </div>
-                      <div class="studentUpload">
+                      <div class="studentUpload" *ngIf="a.description === exercise">
                         <div>
                         <input type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->
@@ -294,7 +294,7 @@
                       <p>{{a.fileNm}}</p>
                       <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                     </div>
-                        <div class="studentUpload">
+                        <div class="studentUpload" *ngIf="a.description === exercise">
                           <div>
                           <input type="file" #file  (change)="onFileChange($event,a)">
                           <!-- <input type="file" #file> -->

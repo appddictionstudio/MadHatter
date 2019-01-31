@@ -28,7 +28,7 @@ public class Modules {
 	private String bootcamp;
 	
 	@Column
-    private boolean hidden;
+    private long progress;
 	
 	@OneToMany(mappedBy="mod", cascade=CascadeType.ALL)
 	@JsonIgnore
@@ -44,11 +44,11 @@ public class Modules {
 	
     public Modules() {}
 
-    public Modules(String title, boolean hidden, String description, String iconLink, String bootcamp) {
+    public Modules(String title, long progress, String description, String iconLink, String bootcamp) {
     	this.title = title;
     	this.description = description;
     	this.iconLink = iconLink;
-    	this.hidden = hidden;
+    	this.progress = progress;
     	this.bootcamp = bootcamp;
     }
     
@@ -72,12 +72,12 @@ public class Modules {
 		return title;
 	}
 	
-	public boolean isHidden() {
-		return hidden;
+	public long getProgress() {
+		return progress;
 	}
 
-	public void setHidden(boolean hidden) {
-		this.hidden = hidden;
+	public void setProgress(long progress) {
+		this.progress = progress;
 	}
 
 	public void setTitle(String title) {

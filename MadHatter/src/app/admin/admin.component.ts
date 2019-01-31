@@ -36,6 +36,7 @@ export class AdminComponent implements OnInit, OnChanges {
   modId: any;
   hide = false;
   module: any;
+  exercise = 'exercise';
   mod: any;
   attId: any;
   topics: any;
@@ -106,6 +107,12 @@ export class AdminComponent implements OnInit, OnChanges {
 
   submitGrade(s) {
     this.apiS.gradeStudent(s, this.attId).subscribe(data => {
+      this.snotifyService.success('Student grade updated', {
+        timeout: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
       console.log('grade submitted');
     });
   }
