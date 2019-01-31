@@ -27,7 +27,6 @@ public class SubmittedAtt implements Serializable {
 	private long attachmentId;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="TOPIC_ATT_ID", referencedColumnName="ID")
 	private TopicAtt topicatt;
 	 

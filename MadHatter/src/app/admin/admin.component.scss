@@ -172,7 +172,6 @@ hr {
 .studentAttemptDownload {
     grid-row: 1;
     grid-column: 2;
-    cursor: pointer;
 }
 
 .studentAttemptGrade {
@@ -195,4 +194,17 @@ hr {
 .studentAttemptGradeButton {
     grid-row: 1;
     grid-column: 4;
+}
+
+.StudentTopicScore {
+    grid-column: 4;
+    grid-row: 1;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.getStudentAttemptsForAtt {
+    grid-row: 1;
+    grid-column: 3 / 5;
 }

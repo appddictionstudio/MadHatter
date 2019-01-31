@@ -57,6 +57,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTreeModule} from '@angular/material/tree';
 
 library.add(fas, far, fab);
 
@@ -96,6 +97,7 @@ library.add(fas, far, fab);
     MatCheckboxModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatTreeModule,
     MatMenuModule,
     MatToolbarModule,
     MatPaginatorModule,

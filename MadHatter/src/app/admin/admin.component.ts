@@ -38,15 +38,16 @@ export class AdminComponent implements OnInit, OnChanges {
   module: any;
   mod: any;
   attId: any;
-  topics: Topic[] = [];
+  topics: any;
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
   modules: Module[] = [];
   mods: Module[] = [];
   result: SubmittedAtt;
   fileUploading: boolean;
+  allStudentAttempts: any;
+  studentHasAttempt: boolean;
   gettingStudentAttemps: boolean;
-  studentGradeN: any[];
   isLoading = true;
   teacherRole: number;
   studentRole: number;
@@ -56,7 +57,8 @@ export class AdminComponent implements OnInit, OnChanges {
   attList2: Attachments[] = [];
   topicAtt: TopicAtt[] = [];
   subAtt: SubmittedAtt = new SubmittedAtt();
-  studentAttempts: any[];
+  studentAttempts = [null];
+  evaluatedAttempts = [null];
 
   ngOnInit() {
     this.getUserRole();
@@ -102,10 +104,18 @@ export class AdminComponent implements OnInit, OnChanges {
     });
   }
 
-  submitGrade(s, i) {
-    s.gradeN = this.studentGradeN[i];
+  submitGrade(s) {
     this.apiS.gradeStudent(s, this.attId).subscribe(data => {
       console.log('grade submitted');
+    });
+  }
+
+  getStudentAttemptsByLesson() {
+    console.log(this.currentUser.id);
+    this.apiS.getStudentAttemptsByLesson(this.currentUser.id).subscribe(data => {
+      this.allStudentAttempts = data as any[];
+      console.log(this.allStudentAttempts);
+      this.isLoading = false;
     });
   }
 
@@ -205,29 +215,39 @@ getTopicAttById(topicAttId) {
     this.api.getTopicsByAll().subscribe(res => {
       this.topics = res as any[];
       console.log(this.topics);
-      this.isLoading = false;
+      this.getStudentAttemptsByLesson();
+      // this.isLoading = false;
     });
   }
 
   onFileChange(event, topicAtt) {
-    this.fileUploading = topicAtt.id;
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const formData = new FormData();
-        formData.append('file', file);
-        this.apiS.uploadStudentAttachment(formData).subscribe(
-          results => {
-            this.fileUploading = null;
-            this.result = results as SubmittedAtt;
-            console.log(this.result);
-            this.documents.push(this.result);
-            topicAtt.subAtt.push(this.result);
-          }
-        );
-      };
+    if (this.studentAttempts[topicAtt.id]) {
+      this.snotifyService.error('Only one attempt per student', {
+        timeout: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+    } else {
+      this.fileUploading = topicAtt.id;
+      const reader = new FileReader();
+      if (event.target.files && event.target.files.length > 0) {
+        const file = event.target.files[0];
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          const formData = new FormData();
+          formData.append('file', file);
+          this.apiS.uploadStudentAttachment(formData).subscribe(
+            results => {
+              this.fileUploading = null;
+              this.result = results as SubmittedAtt;
+              console.log(this.result);
+              this.documents.push(this.result);
+              topicAtt.subAtt.push(this.result);
+            }
+          );
+        };
+      }
     }
   }
   updateSubmittedAtt(topicAtt, index) {
@@ -295,11 +315,49 @@ getTopicAttById(topicAttId) {
   });
 }
 
-deleteTopicAtt(id, index) {
-this.apiT.deleteTopicAtt(id).subscribe(() => {
-this.topicAtt.splice(index);
-});
+  deleteTopicAtt(id, index) {
+    this.apiT.deleteTopicAtt(id).subscribe(() => {
+    this.topicAtt.splice(index);
+    });
+  }
 
-}
+  tryingsomething() {
+    this.topics.attachments.attempts = this.studentAttempts;
+  }
 
+  calcGrade(n, d, a) {
+    if (n > 0) {
+      const grade = n / d * 100;
+      this.studentAttempts[a] = true;
+      return grade;
+    } else {
+      this.studentAttempts[a] = true;
+      return 'Not Graded';
+    }
+  }
+
+  studentHasNoAttempt(user, att) {
+    console.log(user + ' ------ ' + att);
+    if (!this.evaluatedAttempts[att]) {
+      if (user === att) {
+        this.studentAttempts[att] = true;
+        this.evaluatedAttempts[att] = true;
+      } else {
+        this.studentAttempts[att] = false;
+        this.evaluatedAttempts[att] = true;
+      }
+    } else {
+    }
+    return true;
+    // for (let i = 0; i < this.studentAttempts.length; i++) {
+    //   if (this.allStudentAttempts[i].topicatt.id === att) {
+    //     if (!this.evaluatedAttempts[att]) {
+    //       this.studentAttempts[att] = true;
+    //       this.evaluatedAttempts[att] = true;
+    //     } else {
+    //     }
+    //   }
+    // }
+    // return this.studentAttempts[att];
+  }
 }

@@ -42,6 +42,7 @@ public class TopicAtt implements Serializable {
 	private String description;
 
 	@OneToMany(cascade=CascadeType.MERGE)
+	@JsonIgnore
 	@JoinColumn(name = "TOPIC_ATT_ID")
 	private List<SubmittedAtt> subAttachments;
 

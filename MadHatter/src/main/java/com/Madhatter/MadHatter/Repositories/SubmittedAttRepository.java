@@ -22,5 +22,8 @@ public interface SubmittedAttRepository extends JpaRepository<SubmittedAtt, Long
 	@Query("Select t from SubmittedAtt t where t.topicatt.id = ?1")
 	List<SubmittedAtt> findByAttId(Long id);
 	
+	@Query("Select t from SubmittedAtt t where t.student.id = ?1")
+	List<SubmittedAtt> findByStudentId(Long id);
+	
 
 }

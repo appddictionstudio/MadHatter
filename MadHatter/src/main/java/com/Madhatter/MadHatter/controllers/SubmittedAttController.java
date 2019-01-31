@@ -122,6 +122,16 @@ public class SubmittedAttController {
 		};
 		
 		
+	// --------------- Load by student---------------------------------------
+		// -----------------------------------------------------------
+		@RequestMapping(value = "/studentSubmittedAtt/{id}", method = RequestMethod.GET)
+		ResponseEntity<List<SubmittedAtt>> getStudentSubmitted(@PathVariable long id) {
+
+			List<SubmittedAtt> studentlst = repo.findByStudentId(id);
+			return ResponseEntity.ok(studentlst);
+		};
+	
+		
 	// -------------------------Get all by Id----------------------------------------------\\
 	
 		@RequestMapping(value = "/SubmittedAtt/{id}", method = RequestMethod.GET)
