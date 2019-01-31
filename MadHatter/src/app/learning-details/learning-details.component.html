@@ -27,11 +27,13 @@
     <div class="subheaderlc">
       <h3>{{t.topicTitle}}</h3>
     </div>
-    <div id="detailProgress" class="progress">
+    <!-- <div id="detailProgress" class="progress">
       <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
         <span>0%</span>
       </div>
-    </div>
+    </div> -->
+
+  <!-- //////////////////////////MODAL//////////////////////////////// -->
 <ng-template #content let-modal let-c="close" let-d="dismiss">
 <div class="modal-header">
   <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
@@ -44,6 +46,7 @@
   <div class="learningDetailGrid" (click)="downloadAttatchemnts(att.id)">
       <p class="learningDetailName">
           {{att.fileNm}}</p>
+      <p class="learningDetailAttType">{{getLearningDetailAttType(att.description)}}</p>
         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
         <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true"></i>
     <!-- <div *ngFor="let a of attList">
@@ -61,7 +64,7 @@
     </div>
     <div *ngIf="getUserRoleInstructor()" class="fileSave">
       <input type="file" #file  (change)="onFileChange($event,t)">
-      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateTopic(t, m.id)" >Add Exercise</button>
+      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateTopic(t, m.id)" >Add Content</button>
     </div>
     </div>
   </div>

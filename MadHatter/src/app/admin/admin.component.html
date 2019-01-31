@@ -34,6 +34,16 @@
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
         <div class="time"><h3></h3></div>
+        <div class="adminSetProgress">
+        <mat-form-field>
+          <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
+            <mat-option value="1">Not Started</mat-option>
+            <mat-option value="2">In Progress</mat-option>
+            <mat-option value="3">Complete</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
+        </div>
         </div>
         <!-- <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
           <h3></h3>
@@ -110,6 +120,16 @@
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
         <div class="time"><h3></h3></div>
+        <div class="adminSetProgress">
+        <mat-form-field>
+          <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
+            <mat-option value="1">Not Started</mat-option>
+            <mat-option value="2">In Progress</mat-option>
+            <mat-option value="3">Complete</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
+        </div>
         </div>
         <div>
         <hr>

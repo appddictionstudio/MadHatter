@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit, OnChanges {
   module: any;
   exercise = 'exercise';
   mod: any;
+  updateModuleProgress = 1;
   attId: any;
   topics: any;
   topicHide: Topic = new Topic();
@@ -341,6 +342,19 @@ getTopicAttById(topicAttId) {
       this.studentAttempts[a] = true;
       return 'Not Graded';
     }
+  }
+
+  updateModuleProgressChange(m) {
+    m.progress = this.updateModuleProgress;
+    const mod = m;
+    this.api.updateMod(mod).subscribe(res => {
+      this.snotifyService.success('Module Status updated', {
+        timeout: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+    });
   }
 
   studentHasNoAttempt(user, att) {

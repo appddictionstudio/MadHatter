@@ -7,4 +7,5 @@ export class Module {
     bootcamp: string;
     modAttachments: any[];
     resources: any[];
+    progress: any;
 }

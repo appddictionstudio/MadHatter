@@ -26,16 +26,17 @@
             <div id="cardRow" class="row">
             <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
-                <div *ngIf="!m.hidden">
-              <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
+              <div *ngIf="m.progress === 1">
+                <mat-card class="cardGrid" *ngIf="m.bootcamp">
+                <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp"> -->
                 <h3>{{m.title}}</h3>
                 <p>{{m.description}}</p>
-                <div class="progress" style="width: 100%">
+                <!-- <div class="progress" style="width: 100%">
                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                       <span>0%</span>
                     </div>
 
-                </div>
+                </div> -->
               </mat-card>
               </div>
               </div>
@@ -51,16 +52,16 @@
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
-              <div *ngIf="m.hidden">
+            <div *ngIf="m.progress === 2">
             <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
-              <div class="progress" style="width: 100%">
+              <!-- <div class="progress" style="width: 100%">
                   <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                     <span>0%</span>
                   </div>
 
-              </div>
+              </div> -->
             </mat-card>
             </div>
             </div>
@@ -76,16 +77,18 @@
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
+            <div *ngIf="m.progress === 3">
             <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
-              <div class="progress" style="width: 100%">
+              <!-- <div class="progress" style="width: 100%">
                   <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                     <span>0%</span>
                   </div>
 
-              </div>
+              </div> -->
             </mat-card>
+            </div>
             </div>
             </div>
             </div>
@@ -116,15 +119,18 @@
           <div id="cardRow" class="row">
             <div id="cardCol" class="col-4">
           <div *ngFor="let m of module">
-          <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
+          <div *ngIf="m.progress === 1">
+          <mat-card class="cardGrid" *ngIf="!m.bootcamp">
+          <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp"> -->
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
-            <div class="progress" style="width: 100%">
+            <!-- <div class="progress" style="width: 100%">
                 <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                   <span>0%</span>
                 </div>
-            </div>
+            </div> -->
           </mat-card>
+          </div>
           </div>
           </div>
           </div>
@@ -138,15 +144,17 @@
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
+            <div *ngIf="m.progress === 2">
             <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
-              <div class="progress" style="width: 100%">
+              <!-- <div class="progress" style="width: 100%">
                   <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                     <span>0%</span>
                   </div>
-              </div>
+              </div> -->
             </mat-card>
+            </div>
             </div>
             </div>
             </div>
@@ -160,15 +168,17 @@
           <div id="cardRow" class="row">
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
+            <div *ngIf="m.progress === 3">
             <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
-              <div class="progress" style="width: 100%">
+              <!-- <div class="progress" style="width: 100%">
                   <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0*100}">
                     <span>0%</span>
                   </div>
-              </div>
+              </div> -->
             </mat-card>
+            </div>
             </div>
             </div>
             </div>

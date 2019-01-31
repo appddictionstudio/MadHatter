@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnChanges {
       this.auth.destroyToken();
     } else {
       console.log(this.auth.getToken());
-      this.router.navigateByUrl('/grades');
+      this.router.navigateByUrl('/home');
     }
   }
 

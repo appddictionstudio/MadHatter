@@ -139,6 +139,13 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.hide = true;
     }
   }
+  getLearningDetailAttType(desc) {
+    if (desc === 'exercise') {
+      return 'Exercise';
+    } else {
+      return 'Downloadable Content';
+    }
+  }
   ifResources() {
     if (this.resources.length > 0 ) {
       return true;

@@ -126,6 +126,18 @@ hr {
     margin: 7% auto 0 auto;
 }
 
+.adminSetProgress {
+    grid-row: 1;
+    grid-column: 4;
+    display: inline-flex;
+    margin-top: 10%;
+}
+
+.adminSetProgress button {
+    height: 2.5em;
+    margin-top: 3%;
+}
+
 .excerciseSubheader {
     margin-bottom: 2%;
 }
@@ -208,4 +220,8 @@ hr {
 .getStudentAttemptsForAtt {
     grid-row: 1;
     grid-column: 3 / 5;
+}
+
+.mat-form-field-wrapper {
+    width: 85%;
 }
