@@ -48,6 +48,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   currentUser: any;
   modId: any;
   module: any;
+  updateExerciseStatus = '';
   isLoading = true;
   documents: any[] = [];
   t: any[] = [];
@@ -193,7 +194,7 @@ onFileChange(event, topic) {
   }
 
 }
-onFileChange2(event, mod,index) {
+onFileChange2(event, mod, index) {
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
@@ -272,14 +273,27 @@ onFileChange2(event, mod,index) {
  }
 
  getUserRoleInstructor() {
-  if (this.currentUser) {
-    if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-      return true;
-    } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-      return true;
-  } else {
-    return false;
+    if (this.currentUser) {
+      if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+        return true;
+    } else {
+      return false;
+    }
   }
-}
- }
+  }
+
+  updateExerciseStatusChange(t) {
+    t.attachments.description = this.updateExerciseStatus;
+    this.apiT.updateTopic(t).subscribe(data => {
+      this.snotifyService.success('Status Updated', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
+    });
+  }
 }

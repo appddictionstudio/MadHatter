@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit, OnChanges {
   modId: any;
   hide = false;
   module: any;
-  exercise = 'exercise';
+  exercise = 'Exercise';
   mod: any;
   updateModuleProgress = 1;
   attId: any;
