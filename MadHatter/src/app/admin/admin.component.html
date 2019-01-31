@@ -234,9 +234,7 @@
                     <p>{{a.fileNm}}</p>
                     <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                   </div>
-                  <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
-                    <div>
-                      <div class="studentUpload" *ngIf="!studentAttempts[a.id]">
+                      <div class="studentUpload">
                         <div>
                         <input type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->
@@ -247,11 +245,11 @@
                         </div>
                         </div>
                       </div>
+                      <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
                       <div *ngIf="u.topicatt.id === a.id">
                         <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}</p>
                       </div>
                     </div>
-                  </div>
                 </div>
                 </div>
                 <hr>
@@ -290,21 +288,28 @@
             <div class="toggleDetailsCheckbox">
               </div>
               </div>
-              <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+              <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                   <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                     <div class="studentDetialUpload" (click)="downloadAttatchemnts(a.id)">
                       <p>{{a.fileNm}}</p>
                       <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                     </div>
-                    <div class="studentUpload">
-                      <input type="file" #file  (change)="onFileChange($event,a)">
-                      <!-- <input type="file" #file> -->
-                      <div style="display: inline-flex; margin-top: 10px; width: 100%;">
-                        <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
-                        </mat-progress-spinner>
-                        <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
+                        <div class="studentUpload">
+                          <div>
+                          <input type="file" #file  (change)="onFileChange($event,a)">
+                          <!-- <input type="file" #file> -->
+                          <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                            <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+                            </mat-progress-spinner>
+                            <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
+                        <div *ngIf="u.topicatt.id === a.id">
+                          <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}</p>
+                        </div>
                       </div>
-                    </div>
                   </div>
                   </div>
                   <hr>
