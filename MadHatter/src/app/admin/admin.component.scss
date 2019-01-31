@@ -54,7 +54,7 @@ display: grid;
   grid-template-columns: .5fr .5fr .2fr .3fr;
   grid-template-rows: 1fr;
   width: 75%;
-  margin: 10px auto 0% auto; 
+  margin: 10px auto 0% auto;
 }
 
 .studentDetialUpload {
@@ -131,6 +131,15 @@ hr {
     grid-column: 4;
     display: inline-flex;
     margin-top: 10%;
+}
+
+.teacherContent {
+ margin: auto;
+}
+
+.teacherContent button {
+  grid-row: 1;
+  grid-column: 4;
 }
 
 .adminSetProgress button {
@@ -224,4 +233,11 @@ hr {
 
 .mat-form-field-wrapper {
     width: 85%;
+}
+
+.modfileNm{
+  display: grid;
+    grid-template-columns: .5fr .5fr;
+    grid-template-rows: 1fr;
+
 }

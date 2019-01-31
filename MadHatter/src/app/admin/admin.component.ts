@@ -308,6 +308,12 @@ getTopicAttById(topicAttId) {
        this.saveToFileSystem(response);
      });
  }
+ downloadModuleAttachment(attachmentId) {
+   this.api.DownloadMod(attachmentId).subscribe(response => {
+    console.log(response);
+   this.saveToFileSystem(response);
+ });
+ }
 
  downloadStudentAttatchemnts(attachmentId) {
   this.apiS.DownloadStudentAtt(attachmentId).subscribe(response => {
@@ -335,7 +341,13 @@ getTopicAttById(topicAttId) {
     this.closeResult = `Dismissed`;
   });
 }
-
+open2(content) {
+ this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+   this.closeResult = `Closed with: ${result}`;
+ }, (reason) => {
+   this.closeResult = `Dismissed`;
+ });
+}
   deleteTopicAtt(id, index) {
     this.apiT.deleteTopicAtt(id).subscribe(() => {
     this.topicAtt.splice(index);

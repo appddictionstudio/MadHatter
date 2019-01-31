@@ -33,7 +33,9 @@
       <div *ngIf="m.bootcamp">
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
-        <div class="time"><h3></h3></div>
+          <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
+                <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
+              </div>
         <div class="adminSetProgress">
         <mat-form-field>
           <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
@@ -45,6 +47,23 @@
         <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
         </div>
         </div>
+        <ng-template id="modal-teacher" #content let-modal let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modal-teacher">Instructor Guide and Module Content</h3>
+              <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body" >
+              <div *ngFor="let z of m.modAttachments">
+                <div class="modfileNm" (click)="downloadModuleAttachment(z.id)">
+                <p>{{z.fileNm}}</p>
+                <i class="fa fa-download" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         <!-- <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
           <h3></h3>
           <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
@@ -119,8 +138,10 @@
       <div *ngIf="!m.bootcamp">
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
-        <div class="time"><h3></h3></div>
         <div class="adminSetProgress">
+            <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
+                <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
+              </div>
         <mat-form-field>
           <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
             <mat-option value="1">Not Started</mat-option>
@@ -131,6 +152,23 @@
         <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
         </div>
         </div>
+        <ng-template id="modal-teacher" #content let-modal let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modal-teacher">Instructor Guide and Module Content</h3>
+              <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body" >
+              <div *ngFor="let z of m.modAttachments">
+                <div class="modfileNm" (click)="downloadModuleAttachment(z.id)">
+                <p>{{z.fileNm}}</p>
+                <i class="fa fa-download" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         <div>
         <hr>
         <div class="showTopics" *ngFor="let t of topics" >
