@@ -21,6 +21,7 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
   providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
+  UIorASD: number;
 
   constructor(
     private api: ModuleService,
@@ -93,6 +94,18 @@ export class AdminComponent implements OnInit, OnChanges {
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
+      if (this.currentUser === 'ROLE_STUDENT_ASD') {
+        this.UIorASD = 1;
+      }
+      if (this.currentUser === 'ROLE_TEACHER_ASD') {
+        this.UIorASD = 1;
+      }
+      if (this.currentUser === 'ROLE_TEACHER_UI') {
+        this.UIorASD = 2;
+      }
+      if (this.currentUser === 'ROLE_TEACHER_UI') {
+        this.UIorASD = 2;
+      }
     });
   }
 

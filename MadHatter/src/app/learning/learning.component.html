@@ -1,5 +1,6 @@
 <mat-tab-group class="mainGroupHeader" mat-align-tabs="center" [color]="959595">
-  <mat-tab class="groupHeader" label="Advanced Software Developer">
+  <mat-tab class="groupHeader" label="Advanced Software Developer" *ngIf="studentorteacherrole('ASD')">
+  <div>
     <div class="tabImageText">
         <div class="tabImageTextGrid">
         <img src="../../assets/Rectangle 9.png">
@@ -27,13 +28,13 @@
             <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
               <div *ngIf="m.progress === 1">
-                <mat-card class="cardGrid" *ngIf="m.bootcamp">
+                <mat-card class="cardGrid" *ngIf="m.bootcamp" (click)="routeForInstructors(m.id)">
                 <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp"> -->
                 <h3>{{m.title}}</h3>
                 <p>{{m.description}}</p>
                 <div class="progress" style="width: 100%">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': m.progress-1*50}">
-                      <span>0%</span>
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                      <span>{{(m.progress-1)*50}}%</span>
                     </div>
                 </div>
               </mat-card>
@@ -56,8 +57,8 @@
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
-                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': m.progress-1*50}">
-                    <span>0%</span>
+                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                      <span>{{(m.progress-1)*50}}%</span>
                   </div>
               </div>
             </mat-card>
@@ -80,8 +81,8 @@
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
-                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': m.progress-1*50}">
-                    <span>0%</span>
+                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                      <span>{{(m.progress-1)*50}}%</span>
                   </div>
               </div>
             </mat-card>
@@ -91,8 +92,10 @@
             </div>
       </mat-tab>
     </mat-tab-group>
+  </div>
   </mat-tab>
-  <mat-tab class="groupHeader" label="UI/UX">
+  <mat-tab class="groupHeader" label="UI/UX" *ngIf="studentorteacherrole('UI')">
+  <div>
     <div class="tabImageText">
       <div class="tabImageTextGrid">
       <img src="../../assets/Rectangle 9.png">
@@ -117,13 +120,13 @@
             <div id="cardCol" class="col-4">
           <div *ngFor="let m of module">
           <div *ngIf="m.progress === 1">
-          <mat-card class="cardGrid" *ngIf="!m.bootcamp">
+          <mat-card class="cardGrid" *ngIf="!m.bootcamp" (click)="routeForInstructors(m.id)">
           <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp"> -->
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
             <div class="progress" style="width: 100%">
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0}">
-                  <span>0%</span>
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                  <span>{{(m.progress-1)*50}}%</span>
                 </div>
             </div>
           </mat-card>
@@ -146,8 +149,8 @@
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
-                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 50}">
-                    <span>0%</span>
+                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                    <span>{{(m.progress-1)*50}}%</span>
                   </div>
               </div>
             </mat-card>
@@ -170,8 +173,8 @@
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
-                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 100}">
-                    <span>0%</span>
+                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                    <span>{{(m.progress-1)*50}}%</span>
                   </div>
               </div>
             </mat-card>
@@ -181,5 +184,7 @@
             </div>
       </mat-tab>
     </mat-tab-group>
+    <!-- <button>Change Course</button> -->
+  </div>
   </mat-tab>
 </mat-tab-group>
