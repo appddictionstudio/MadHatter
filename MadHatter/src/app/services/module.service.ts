@@ -61,4 +61,13 @@ export class ModuleService {
     return this.http.put(environment.apiUrl + 'api/modules/update/' + mod.id, mod);
   }
 
-}
+  DownloadMod(modattid) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/octet-stream');
+    headers.set('Accept', 'text/plain');
+    return this.http.get(environment.apiUrl + 'ModAtt/downloadDoc/' + modattid,
+    { headers: headers, responseType: 'blob', observe: 'response' });
+  }
+
+  }
+
