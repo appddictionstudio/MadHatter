@@ -257,9 +257,9 @@ topic: any;
 
 
   isClicked(val: any) {
-    console.log(val);
+    // console.log(val);
     this.selectedValue = val;
-    console.log(this.selectedPeopleAndGroupArray.push(this.selectedValue));
+    // console.log(this.selectedPeopleAndGroupArray.push(this.selectedValue));
     return this.selectedPeopleAndGroupArray.length;
   }
 
@@ -267,7 +267,7 @@ topic: any;
     this.showgroupAndPeoplePosts = true;
     this.selectedValue = val;
     this.groupAndPeoplePosts.push(this.selectedValue);
-    console.log(this.groupAndPeoplePosts);
+    // console.log(this.groupAndPeoplePosts);
     return this.groupAndPeoplePosts;
   }
 
@@ -319,7 +319,7 @@ topic: any;
   }
 
   hotTopicClickEvent() {
-    console.log('clickededededed');
+    // console.log('clickededededed');
     this.hotTopicClick = !this.hotTopicClick;
   }
 
@@ -385,7 +385,7 @@ topic: any;
   this.isloading = true;
     this.api.getAllBulletinPost().subscribe(data => {
       this.posts = data as any[];
-      console.log(this.posts);
+      // console.log(this.posts);
       this.isloading = false;
     });
   }
@@ -394,11 +394,11 @@ topic: any;
     this.currentPage = event.pageIndex;
     // this.loadHotTopicPosts(this.currentPage);
 
-    console.log(this.currentPage);
+    // console.log(this.currentPage);
   }
 
   searchBulletinPosts(searchText) {
-    console.log('found');
+    // console.log('found');
     this.searchApi.searchBulletinPost(searchText).subscribe(data => {
       this.posts = data as any[];
     });
@@ -467,12 +467,12 @@ topic: any;
 
   downloadAttatchemnts(attachmentId) {
     this.api.downloadBBAtt(attachmentId).subscribe(response => {
-        console.log(response);
+        // console.log(response);
        this.saveToFileSystem(response);
      });
   }
   private saveToFileSystem(response) {
-    console.log('saving file');
+    // console.log('saving file');
     const contentDispositionHeader: string = response.headers.get(
       'Content-Disposition'
     );

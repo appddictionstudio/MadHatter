@@ -36,7 +36,7 @@ closeResult: string;
 
   // THIS IS THE POP UP MODAL FOR THE POST IDENTIFIED IN THE ACTIVITES CLICK //
   openModalCentered(content, activities) {
-    console.log(activities);
+    // console.log(activities);
     this.activity = activities;
     this.modalService.open(content, { centered: true });
   }

@@ -78,7 +78,6 @@ export class AdminComponent implements OnInit, OnChanges {
   getModuleforLearning() {
     this.api.getModule().subscribe(res => {
       this.modules = res as any[];
-      console.log(this.modules);
 
       // this.isLoading = false;
     });
@@ -114,7 +113,7 @@ export class AdminComponent implements OnInit, OnChanges {
     this.attId = id;
     this.apiS.getStudentAttempts(id).subscribe(data => {
       this.studentAttempts = data as any[];
-      console.log(this.studentAttempts);
+      // console.log(this.studentAttempts);
       this.gettingStudentAttemps = false;
     });
   }
@@ -127,15 +126,15 @@ export class AdminComponent implements OnInit, OnChanges {
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
-      console.log('grade submitted');
+      // console.log('grade submitted');
     });
   }
 
   getStudentAttemptsByLesson() {
-    console.log(this.currentUser.id);
+    // console.log(this.currentUser.id);
     this.apiS.getStudentAttemptsByLesson(this.currentUser.id).subscribe(data => {
       this.allStudentAttempts = data as any[];
-      console.log(this.allStudentAttempts);
+      // console.log(this.allStudentAttempts);
       this.isLoading = false;
     });
   }
@@ -235,7 +234,7 @@ getTopicAttById(topicAttId) {
   getAllTopics() {
     this.api.getTopicsByAll().subscribe(res => {
       this.topics = res as any[];
-      console.log(this.topics);
+      // console.log(this.topics);
       this.getStudentAttemptsByLesson();
       // this.isLoading = false;
     });
@@ -262,7 +261,7 @@ getTopicAttById(topicAttId) {
             results => {
               this.fileUploading = null;
               this.result = results as SubmittedAtt;
-              console.log(this.result);
+              // console.log(this.result);
               this.documents.push(this.result);
               topicAtt.subAtt.push(this.result);
             }
@@ -289,7 +288,7 @@ getTopicAttById(topicAttId) {
       this.topicAtt[index] = data;
       this.subAtt.topicAtt = topicAtt;
     });
-    console.log(topicAtt + 'this is whats sending');
+    // console.log(topicAtt + 'this is whats sending');
   }
 
   ishidden(hidden) {
@@ -304,26 +303,26 @@ getTopicAttById(topicAttId) {
 
   downloadAttatchemnts(attachmentId) {
     this.apiT.DownloadAtt(attachmentId).subscribe(response => {
-        console.log(response);
+        // console.log(response);
        this.saveToFileSystem(response);
      });
  }
  downloadModuleAttachment(attachmentId) {
    this.api.DownloadMod(attachmentId).subscribe(response => {
-    console.log(response);
+    // console.log(response);
    this.saveToFileSystem(response);
  });
  }
 
  downloadStudentAttatchemnts(attachmentId) {
   this.apiS.DownloadStudentAtt(attachmentId).subscribe(response => {
-      console.log(response);
+      // console.log(response);
      this.saveToFileSystem(response);
    });
 }
 
  private saveToFileSystem(response) {
-  console.log('saving file');
+  // console.log('saving file');
    const contentDispositionHeader: string = response.headers.get(
      'Content-Disposition'
    );
@@ -383,7 +382,7 @@ open2(content) {
   }
 
   studentHasNoAttempt(user, att) {
-    console.log(user + ' ------ ' + att);
+    // console.log(user + ' ------ ' + att);
     if (!this.evaluatedAttempts[att]) {
       if (user === att) {
         this.studentAttempts[att] = true;

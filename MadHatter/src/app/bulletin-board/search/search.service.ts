@@ -10,7 +10,7 @@ export class SearchService {
   constructor(private http: HttpClient) {}
 
   searchBulletinPost(search: any) {
-    console.log(search);
+    // console.log(search);
     return this.http.get(environment.apiUrl + 'SearchBltBrdPost/' + search);
   }
     searchBulletinTopic(topic: any) {

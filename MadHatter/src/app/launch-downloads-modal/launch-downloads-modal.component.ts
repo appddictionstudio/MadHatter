@@ -42,7 +42,7 @@ export class LaunchDownloadsModalComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.data);
-    console.log(this.attachments);
+    // console.log(this.attachments);
     // this.route.paramMap.subscribe(params => {
     //   this.tId = params.get('id');
     // });
@@ -53,7 +53,7 @@ export class LaunchDownloadsModalComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log(event);
+    // console.log(event);
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];

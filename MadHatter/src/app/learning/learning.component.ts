@@ -39,15 +39,15 @@ export class LearningComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getModuleforLearning();
     this.getUserRole();
+    this.getModuleforLearning();
   }
 
   getModuleforLearning() {
     this.isLoading = true;
     this.api.getModule().subscribe(data => {
       this.module = data as any[];
-      console.log(this.module);
+      // console.log(this.module);
       this.isLoading = false;
     });
   }
