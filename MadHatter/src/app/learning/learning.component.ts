@@ -63,7 +63,8 @@ export class LearningComponent implements OnInit {
   }
 
   studentorteacherrole(role) {
-  if (role === 'ASD') {
+  if (role = 'ASD' ) {
+    if (this.currentUser) {
     if (this.currentUser.role === 'ROLE_ADMIN') {
       return true;
     }if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
@@ -72,7 +73,12 @@ export class LearningComponent implements OnInit {
       return true;
     }
   }
-  if (role === 'UI') {
+}
+  }
+  studentorteacherroleUI(role) {
+
+  if (role = 'UI') {
+    if (this.currentUser) {
     if (this.currentUser.role === 'ROLE_ADMIN') {
       return true;
     }if (this.currentUser.role === 'ROLE_STUDENT_UI') {
@@ -81,6 +87,7 @@ export class LearningComponent implements OnInit {
       return true;
     }
   }
+}
  }
 
  routeForInstructors(id) {
