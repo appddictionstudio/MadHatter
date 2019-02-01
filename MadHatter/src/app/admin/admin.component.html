@@ -177,7 +177,7 @@
             <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
               <h3>{{t.topicTitle}}</h3>
             </div>
-          <div class="toggleDetailsCheckbox">
+         <div class="toggleDetailsCheckbox">
               <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
             </div>
             </div>
@@ -311,7 +311,7 @@
                         </div>
                       </div>
                       <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
-                      <div *ngIf="u.topicatt.id === a.id">
+                      <div *ngIf="u?.topicatt?.id === a.id">
                         <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}</p>
                       </div>
                     </div>
@@ -379,7 +379,7 @@
                           </div>
                         </div>
                         <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
-                        <div *ngIf="u.topicatt.id === a.id">
+                        <div *ngIf="u?.topicatt?.id === a.id">
                           <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}</p>
                         </div>
                       </div>

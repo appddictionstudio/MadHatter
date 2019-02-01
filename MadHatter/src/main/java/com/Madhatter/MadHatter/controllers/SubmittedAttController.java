@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ValidationException;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
@@ -128,6 +129,10 @@ public class SubmittedAttController {
 		ResponseEntity<List<SubmittedAtt>> getStudentSubmitted(@PathVariable long id) {
 
 			List<SubmittedAtt> studentlst = repo.findByStudentId(id);
+			
+			for(SubmittedAtt stud : studentlst) {
+				Hibernate.initialize(stud.getTopicatt());
+			}
 			return ResponseEntity.ok(studentlst);
 		};
 	

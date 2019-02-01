@@ -309,13 +309,14 @@ getTopicAttById(topicAttId) {
   }
 
   downloadAttatchemnts(attachmentId) {
+    // console.log(attachmentId);
     if (attachmentId.description === 'Quiz') {
       return true;
     } else {
-    this.apiT.DownloadAtt(attachmentId.id).subscribe(response => {
-        // console.log(response);
-       this.saveToFileSystem(response);
-     });
+      this.apiT.DownloadAtt(attachmentId.id).subscribe(response => {
+          // console.log(response);
+        this.saveToFileSystem(response);
+      });
     }
  }
  downloadModuleAttachment(attachmentId) {
