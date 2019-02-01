@@ -21,7 +21,6 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
   providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
-  UIorASD: number;
 
   constructor(
     private api: ModuleService,
@@ -60,6 +59,11 @@ export class AdminComponent implements OnInit, OnChanges {
   attList2: Attachments[] = [];
   topicAtt: TopicAtt[] = [];
   subAtt: SubmittedAtt = new SubmittedAtt();
+  UIorASD: number;
+  numerator: number;
+  modGrade = [0];
+  modCount = [0];
+  modGradeTotal = [0];
   studentAttempts = [null];
   evaluatedAttempts = [null];
 
@@ -134,7 +138,7 @@ export class AdminComponent implements OnInit, OnChanges {
     // console.log(this.currentUser.id);
     this.apiS.getStudentAttemptsByLesson(this.currentUser.id).subscribe(data => {
       this.allStudentAttempts = data as any[];
-      // console.log(this.allStudentAttempts);
+      console.log(this.allStudentAttempts);
       this.isLoading = false;
     });
   }
@@ -242,7 +246,7 @@ getTopicAttById(topicAttId) {
 
   onFileChange(event, topicAtt) {
     if (this.studentAttempts[topicAtt.id]) {
-      this.snotifyService.error('Only one attempt per student', {
+      this.snotifyService.error('Only one attempt per exercise', {
         timeout: 3000,
         closeOnClick: true,
         pauseOnHover: true,
@@ -357,9 +361,14 @@ open2(content) {
     this.topics.attachments.attempts = this.studentAttempts;
   }
 
-  calcGrade(n, d, a) {
+  calcGrade(n, d, a, m) {
     if (n > 0) {
       const grade = n / d * 100;
+      // this.modGradeTotal[m] = this.modGradeTotal[m] + grade;
+      // this.modCount[m] = this.modCount[m] + 1;
+      // this.modGrade[m] = this.modGradeTotal[m] / this.modCount[m];
+      // console.log(this.modGrade[m]);
+      // this.getModGrade(m);
       this.studentAttempts[a] = true;
       return grade;
     } else {
@@ -379,6 +388,18 @@ open2(content) {
         position: SnotifyPosition.centerBottom,
       });
     });
+  }
+
+  notStartedModule(m) {
+    if (m === 1) {
+      return true;
+    }
+    if (m === 2) {
+      return false;
+    }
+    if (m === 3) {
+      return false;
+    }
   }
 
   studentHasNoAttempt(user, att) {
@@ -404,5 +425,18 @@ open2(content) {
     //   }
     // }
     // return this.studentAttempts[att];
+  }
+
+  getModGrade(m) {
+    if (this.modGrade[m] === null) {
+      return 'blank';
+    } if (this.modGrade[m] > 0) {
+      this.numerator = this.modGrade[m];
+      // console.log(this.numerator);
+      return this.modGrade[m];
+    } else {
+      // console.log(this.numerator);
+      return 'blank else';
+    }
   }
 }

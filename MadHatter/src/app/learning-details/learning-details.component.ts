@@ -21,7 +21,6 @@ import { SnotifyService, SnotifyPosition } from 'ng-snotify';
   providers: [NgbModalConfig, NgbModal]
 })
 export class LearningDetailsComponent implements OnInit, OnChanges {
-  currentmod: any;
 
   constructor(
     public dialog: MatDialog,
@@ -43,9 +42,14 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   allTopic: Topic[] = [];
   // hide: string;
   modules: Module[] = [];
-  resources: Resources[] = [];
+  resources: any;
   hide = false;
   currentUser: any;
+  buttonAddResource = false;
+  currentmod: any;
+  resourceLinkInput = '';
+  fileUploading: any;
+  modfileUploading = false;
   modId: any;
   module: any;
   updateExerciseStatus = '';
@@ -59,6 +63,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 
 
   ngOnInit() {
+    this.fileUploading = null;
     this.route.paramMap.subscribe(params => {
       this.modId = params.get('id');
     });
@@ -177,6 +182,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 
 
 onFileChange(event, topic) {
+  this.fileUploading = topic.id;
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
@@ -186,6 +192,7 @@ onFileChange(event, topic) {
       formData.append('file', file);
       this.apiT.uploadTopicAttachment(formData).subscribe(
         result => {
+          this.fileUploading = null;
           this.documents.push(result);
           topic.attachments.push(result);
         }
@@ -195,6 +202,7 @@ onFileChange(event, topic) {
 
 }
 onFileChange2(event, mod, index) {
+  this.modfileUploading = true;
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
@@ -206,7 +214,7 @@ onFileChange2(event, mod, index) {
         result => {
           this.documents.push(result);
          mod.modAttachments.push(result);
-
+         this.modfileUploading = false;
         }
       );
       // console.log(mod);
@@ -224,6 +232,7 @@ onFileChange2(event, mod, index) {
     // this.topicCenter.attachments = this.documents;
     // tslint:disable-next-line:radix
     topicId.mod = {id: modId};
+    console.log(topicId);
     this.apiT.updateTopic(topicId).subscribe(data => {
       this.snotifyService.success('Excercise Added', {
         timeout: 2000,
@@ -287,6 +296,41 @@ onFileChange2(event, mod, index) {
       return false;
     }
   }
+  }
+
+  getUserRoleStudent() {
+    if (this.currentUser) {
+      if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+        return true;
+      } if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+        return true;
+    } else {
+      return false;
+    }
+  }
+  }
+
+  addResources(mod) {
+    // this.resources.links = this.resourceLinkInput;
+    console.log(this.buttonAddResource);
+    this.api.setResources(mod.id, this.resourceLinkInput).subscribe(res => {
+      this.snotifyService.success('Resource Added', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
+      this.resourceLinkInput = '';
+    });
+  }
+
+  resourceLinkInputcheck() {
+    if (this.resourceLinkInput.startsWith('http')) {
+      this.buttonAddResource = true;
+    } else {
+      this.buttonAddResource = false;
+    }
   }
 
   updateExerciseStatusChange(t) {

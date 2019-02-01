@@ -6,8 +6,8 @@
     <form class="searchForm" style="margin:auto">
       <p class="fullNameTitle">Member Full Name:</p>
       <mat-form-field appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
-      <p class="stateTitle">State:</p>
-      <mat-form-field appearance="outline" class="state"><input matInput type="text" placeholder=" eg. Alabama"></mat-form-field>
+      <!-- <p class="stateTitle">State:</p>
+      <mat-form-field appearance="outline" class="state"><input matInput type="text" placeholder=" eg. Alabama"></mat-form-field> -->
       <button  mat-button (click)="searchByName(search.value)">Search</button>
     </form>
   </div>

@@ -271,12 +271,14 @@
                 </div>
             </div>
           </div>
-          <div class="adminScore"><h3 style="font-weight: bold"> Score</h3></div>
+          <!-- <div class="adminScore"><input *ngIf="getModGrade(m.id)" disabled="true" type="text" style="height: 1.5em; width: 35%;" [placeholder]="modGrade[m]"></div> -->
+          <div class="adminScore"></div>
           </div>
           <hr id="titleRule">
           <div class="showTopics" *ngFor="let t of topics">
           <div *ngIf="t.mod.id === m.id">
           <div *ngIf="!t.hidden">
+          <div *ngIf="!notStartedModule(m.progress)">
           <div class="adminSubheader">
             <div class="subheaderadmin">
                 <h3>{{t.topicTitle}}</h3>
@@ -293,7 +295,7 @@
                     <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                   </div>
                       <div class="studentUpload" *ngIf="a.description === exercise">
-                        <div>
+                        <div *ngIf="m.progress === 2">
                         <input type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->
                         <div style="display: inline-flex; margin-top: 10px; width: 100%;">
@@ -305,13 +307,14 @@
                       </div>
                       <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
                       <div *ngIf="u.topicatt.id === a.id">
-                        <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}</p>
+                        <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}</p>
                       </div>
                     </div>
                 </div>
                 </div>
                 <hr>
             </div>
+          </div>
           </div>
           </div>
         </div>
@@ -337,6 +340,7 @@
           <div class="showTopics" *ngFor="let t of topics">
           <div *ngIf="t.mod.id === m.id">
           <div *ngIf="!t.hidden">
+          <div *ngIf="!notStartedModule(m.progress)">
           <div class="adminSubheader">
             <div class="subheaderadmin">
                 <h3>{{t.topicTitle}}</h3>
@@ -353,7 +357,7 @@
                       <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                     </div>
                         <div class="studentUpload" *ngIf="a.description === exercise">
-                          <div>
+                          <div *ngIf="m.progress === 2">
                           <input type="file" #file  (change)="onFileChange($event,a)">
                           <!-- <input type="file" #file> -->
                           <div style="display: inline-flex; margin-top: 10px; width: 100%;">
@@ -372,6 +376,7 @@
                   </div>
                   <hr>
             </div>
+          </div>
           </div>
           </div>
     </div>

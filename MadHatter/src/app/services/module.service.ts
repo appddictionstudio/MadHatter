@@ -45,6 +45,10 @@ export class ModuleService {
     return this.http.get(environment.apiUrl + 'resources/getResourceByModId/' + id);
   }
 
+  setResources(id: number, resource: any) {
+    return this.http.post(environment.apiUrl + 'resources/postResourceByModId/' + id, resource);
+  }
+
   // toggleHidden(topic): Observable<any> {
   //   console.log('this api is going ot start');
   //   return this.http.get(environment.apiUrl + 'hide/' + topic.id, topic);
