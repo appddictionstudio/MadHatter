@@ -141,7 +141,7 @@ export class AdminComponent implements OnInit, OnChanges {
     // console.log(this.currentUser.id);
     this.apiS.getStudentAttemptsByLesson(this.currentUser.id).subscribe(data => {
       this.allStudentAttempts = data as any[];
-      console.log(this.allStudentAttempts);
+      // console.log(this.allStudentAttempts);
       this.isLoading = false;
     });
   }
@@ -309,7 +309,7 @@ getTopicAttById(topicAttId) {
   }
 
   downloadAttatchemnts(attachmentId) {
-    if (attachmentId.description === this.quiz) {
+    if (attachmentId.description === 'Quiz') {
       return true;
     } else {
     this.apiT.DownloadAtt(attachmentId.id).subscribe(response => {

@@ -235,7 +235,7 @@ this.posts = data;
     this.showgroupAndPeoplePosts = true;
     this.selectedValue = val;
     this.groupAndPeoplePosts.push(this.selectedValue);
-    console.log(this.groupAndPeoplePosts);
+    // console.log(this.groupAndPeoplePosts);
     return this.groupAndPeoplePosts;
   }
 
