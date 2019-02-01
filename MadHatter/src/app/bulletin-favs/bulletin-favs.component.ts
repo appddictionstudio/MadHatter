@@ -18,7 +18,7 @@ export class BulletinFavsComponent implements OnInit {
 
 
     this.bulletinService.deleteFavorite(nu).subscribe(() => {
-      console.log('DELETED');
+      // console.log('DELETED');
       this.bulletinService.getAllFavorites().subscribe(data => {
         this.allFavorites = data;
         this.updateFav.emit(null);

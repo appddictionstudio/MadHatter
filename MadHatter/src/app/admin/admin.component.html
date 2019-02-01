@@ -266,8 +266,8 @@
             <h2>{{m.title}}</h2>
             <div>
               <div class="headerProgress" style="width:25em">
-                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                  <span>0%</span>
+                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                  <span>{{(m.progress-1)*50}}%</span>
                 </div>
             </div>
           </div>
@@ -326,8 +326,8 @@
             <h2>{{m.title}}</h2>
             <div>
               <div class="headerProgress" style="width:25em">
-                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': 0*100}">
-                  <span>0%</span>
+                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                  <span>{{(m.progress-1)*50}}%</span>
                 </div>
             </div>
           </div>

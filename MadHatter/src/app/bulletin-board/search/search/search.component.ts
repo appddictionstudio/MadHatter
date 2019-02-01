@@ -48,8 +48,8 @@ export class SearchComponent implements OnInit {
 
     this.bulletinService.getAllBulletinPost().subscribe(data => {
       this.posts = data as any[];
-      console.log('here ar posts');
-      console.log(this.posts);
+      // console.log('here ar posts');
+      // console.log(this.posts);
     });
 
   }

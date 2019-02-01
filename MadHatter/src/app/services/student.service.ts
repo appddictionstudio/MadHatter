@@ -22,17 +22,17 @@ export class StudentService {
   }
 
   updateTopicAtt(SubAtt: SubmittedAtt , topicAtt: any): Observable<any> {
-    console.log(topicAtt);
+    // console.log(topicAtt);
     return this.http.put(environment.apiUrl + 'subAtt/' + topicAtt, SubAtt);
   }
 
   gradeStudent(submission, id): Observable<any> {
-    console.log(submission);
+    // console.log(submission);
     return this.http.put(environment.apiUrl + 'submittedAtt/' + id, submission);
   }
 
   getStudentAttempts(id): Observable<any> {
-    console.log(id);
+    // console.log(id);
     return this.http.get(environment.apiUrl + 'SubmittedAtt/' + id);
   }
 

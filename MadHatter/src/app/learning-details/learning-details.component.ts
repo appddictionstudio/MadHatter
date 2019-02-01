@@ -62,7 +62,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       this.modId = params.get('id');
     });
-    console.log(this.modId);
+    // console.log(this.modId);
     this.getModuleforLearning();
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
@@ -88,7 +88,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.module = res as any[];
       this.modules = [this.module];
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
-      console.log(this.resources);
+      // console.log(this.resources);
       this.getTopicsByModId(this.module.id);
       // this.topics = JSON.parse(JSON.stringify(this.module.topic));
     });
@@ -109,7 +109,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       });
        dialogRef.afterClosed().subscribe(result => {
        });
-       console.log(t);
+      //  console.log(t);
     }
 
     open(content) {
@@ -164,7 +164,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getTopicsByModId(modId) {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
-      console.log(this.topics);
+      // console.log(this.topics);
       this.isLoading = false;
     });
   }
@@ -209,7 +209,7 @@ onFileChange2(event, mod, index) {
 
         }
       );
-      console.log(mod);
+      // console.log(mod);
     };
   }
 }
@@ -233,22 +233,27 @@ onFileChange2(event, mod, index) {
         position: SnotifyPosition.centerBottom
       });
     });
-    console.log(topicId);
+    // console.log(topicId);
     this.ngOnInit();
   }
 
   updateModule(mod, modId, index) {
     this.api.updateMod(mod).subscribe(data => {
-      // mod.resources[modId] = {mod: mod.id};
-
+      this.snotifyService.success('File Uploaded', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
   });
-  console.log(mod);
+  // console.log(mod);
 }
 
 
   downloadAttatchemnts(attachmentId) {
     this.apiT.DownloadAtt(attachmentId).subscribe(response => {
-        console.log(response);
+        // console.log(response);
        this.saveToFileSystem(response);
      });
  }
@@ -262,7 +267,7 @@ onFileChange2(event, mod, index) {
  }
 
  private saveToFileSystem(response) {
-  console.log('saving file');
+  // console.log('saving file');
    const contentDispositionHeader: string = response.headers.get(
      'Content-Disposition'
    );

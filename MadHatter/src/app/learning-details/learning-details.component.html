@@ -11,7 +11,7 @@
           <span>{{(m.progress-1)*50}}%</span>
         </div>
   </div>
-  <div class="time"><h3> 2 hr(s) and 30 mins</h3></div>
+  <div class="time"><h3></h3></div>
   <div *ngIf="getUserRoleInstructor()" class="modfileSave">
     <input type="file" #file  (change)="onFileChange2($event,m, i)">
     <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="updateModule(m,m.id,i)" >Add Instructor Content</button>

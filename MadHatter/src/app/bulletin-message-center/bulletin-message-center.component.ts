@@ -130,7 +130,7 @@ export class BulletinMessageCenterComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log(event);
+    // console.log(event);
     // this.fileUploading = true;
     // const files = event.target.files;
     // if (files && files.lenght > 0) {
@@ -224,10 +224,10 @@ this.posts = data;
   }
 
   isClicked(val: any) {
-    console.log(val);
+    // console.log(val);
     this.selectedValue = val;
     // console.log(this.test);
-    console.log(this.selectedPeopleAndGroupArray.push(this.selectedValue));
+    // console.log(this.selectedPeopleAndGroupArray.push(this.selectedValue));
     return this.selectedPeopleAndGroupArray.length;
   }
 
