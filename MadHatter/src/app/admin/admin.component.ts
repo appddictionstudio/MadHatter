@@ -9,6 +9,7 @@ import { StudentService } from '../services/student.service';
 import { Attachments } from '../models/Attachments';
 import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
+import { Router, RouterModule } from '@angular/router';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopicAtt } from '../models/TopicAtt';
@@ -26,6 +27,7 @@ export class AdminComponent implements OnInit, OnChanges {
     private api: ModuleService,
     private apiU: UserService,
     private apiT: TopicsService,
+    private router: Router,
     private snotifyService: SnotifyService,
     private modalService: NgbModal,
     private apiS: StudentService,
@@ -37,6 +39,7 @@ export class AdminComponent implements OnInit, OnChanges {
   hide = false;
   module: any;
   exercise = 'Exercise';
+  quiz = 'Quiz';
   mod: any;
   updateModuleProgress = 1;
   attId: any;
@@ -306,10 +309,14 @@ getTopicAttById(topicAttId) {
   }
 
   downloadAttatchemnts(attachmentId) {
-    this.apiT.DownloadAtt(attachmentId).subscribe(response => {
+    if (attachmentId.description === this.quiz) {
+      return true;
+    } else {
+    this.apiT.DownloadAtt(attachmentId.id).subscribe(response => {
         // console.log(response);
        this.saveToFileSystem(response);
      });
+    }
  }
  downloadModuleAttachment(attachmentId) {
    this.api.DownloadMod(attachmentId).subscribe(response => {
@@ -425,6 +432,10 @@ open2(content) {
     //   }
     // }
     // return this.studentAttempts[att];
+  }
+
+  routeQuiz(path) {
+    this.router.navigateByUrl('/' + path + '/story.html');
   }
 
   getModGrade(m) {

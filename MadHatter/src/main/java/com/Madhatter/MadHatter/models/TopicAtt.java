@@ -40,6 +40,9 @@ public class TopicAtt implements Serializable {
 		
 	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="QUIZ")
+	private String quiz;
 
 	@OneToMany(cascade=CascadeType.MERGE)
 	@JsonIgnore
@@ -101,5 +104,13 @@ public class TopicAtt implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getQuiz() {
+		return quiz;
+	}
+
+	public void setQuiz(String quiz) {
+		this.quiz = quiz;
 	}
 }

@@ -63,6 +63,12 @@ display: grid;
     cursor: pointer;
 }
 
+.studentDetialUpload a {
+    color: black;
+    text-decoration: unset;
+    display: block;
+}
+
 .studentUpload {
     grid-row: 1;
     grid-column: 3;
