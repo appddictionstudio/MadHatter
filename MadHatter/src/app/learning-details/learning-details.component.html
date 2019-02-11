@@ -48,8 +48,9 @@
 <div class="modal-body">
   <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
   <div class="learningDetailGrid">
-      <p class="learningDetailName" (click)="downloadAttatchemnts(att.id)">
-          {{att.fileNm}}</p>
+      <p class="learningDetailName" *ngIf="att.description === 'Content' || att.description === 'Exercise'" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
+      <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
+      style="display: block; margin-block-start: 2em; margin-block-end: 2em; color: black; margin-inline-start: 0px; margin-inline-end: 0px;" *ngIf="att.description === 'Quiz'">{{att.fileNm}}</a>
       <div class="learningDetailSetProgress" *ngIf="getUserRoleInstructor()">
           <mat-form-field>
             <mat-select placeholder="Set content status" [(value)]="att.description">
@@ -59,9 +60,10 @@
             </mat-select>
           </mat-form-field>
           <button mat-button (click)="updateExerciseStatusChange(t)">Update Status</button>
-          </div>
+      </div>
         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-        <i  id="learningDetailDownload"class="fa fa-download" aria-hidden="true" (click)="downloadAttatchemnts(att.id)"></i>
+        <i  id="learningDetailDownload"class="fa fa-download" *ngIf="att.description === 'Content' || att.description === 'Exercise'"
+        aria-hidden="true" (click)="downloadAttatchemnts(att.id)"></i>
     <!-- <div *ngFor="let a of attList">
     <p *ngIf="att.attachmentId === a.id">
       {{att.fileNm}}
