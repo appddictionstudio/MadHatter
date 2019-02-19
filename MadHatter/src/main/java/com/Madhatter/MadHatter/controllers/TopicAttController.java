@@ -148,7 +148,7 @@ public class TopicAttController {
 //-----Update 
 		
 		@RequestMapping(value = "/topicAttUpdate", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @RequestBody Topic topic){
+		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt){
 //			if(topicAtt.getSubAttachments() != null) {
 //				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
 //					attachment.setTopicatt(topicAtt);
@@ -156,7 +156,6 @@ public class TopicAttController {
 //			}
 			
 			topicAtt.setId(topicAtt.getId());
-			topicAtt.setTopic(topic);
 			SubmittedAtt subAtt = new SubmittedAtt();
 			System.out.println(topicAtt.getTopic());
 			subAtt.setTopicatt(topicAtt);

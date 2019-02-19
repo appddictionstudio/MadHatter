@@ -233,7 +233,7 @@ export class AdminComponent implements OnInit, OnChanges {
     this.apiT.getTopicsById(Tid).subscribe(data => {
       this.topicQuiz = data as any;
       console.log(data);
-      att.topic = this.topicQuiz.id;
+      att.topic = this.topicQuiz;
       });
     if (att.quiz === 'Y') {
       att.quiz = 'N';
