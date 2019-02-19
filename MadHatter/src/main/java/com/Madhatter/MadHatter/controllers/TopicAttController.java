@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Madhatter.MadHatter.Repositories.TopicAttRepository;
+import com.Madhatter.MadHatter.Repositories.TopicRepository;
 import com.Madhatter.MadHatter.models.Attachment;
 import com.Madhatter.MadHatter.models.SubmittedAtt;
 import com.Madhatter.MadHatter.models.Topic;
@@ -47,6 +48,9 @@ import com.Madhatter.MadHatter.services.AttachmentService;
 public class TopicAttController {
 	@Autowired
     private TopicAttRepository repo;
+	
+	@Autowired
+    private TopicRepository tRepo;
 	
 	@Autowired
 	private AttachmentService attService;
@@ -143,16 +147,18 @@ public class TopicAttController {
 		
 //-----Update 
 		
-		@RequestMapping(value = "topicAtt/{id}", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable long id){
+		@RequestMapping(value = "/topicAttUpdate", method = RequestMethod.PUT)
+		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @RequestBody Topic topic){
 //			if(topicAtt.getSubAttachments() != null) {
 //				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
 //					attachment.setTopicatt(topicAtt);
 //				}
 //			}
 			
-			topicAtt.setId(id);
+			topicAtt.setId(topicAtt.getId());
+			topicAtt.setTopic(topic);
 			SubmittedAtt subAtt = new SubmittedAtt();
+			System.out.println(topicAtt.getTopic());
 			subAtt.setTopicatt(topicAtt);
 
 			repo.save(topicAtt);

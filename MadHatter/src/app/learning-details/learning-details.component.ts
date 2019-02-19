@@ -169,9 +169,19 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getTopicsByModId(modId) {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
+      console.log(data);
       // console.log(this.topics);
       this.isLoading = false;
     });
+  }
+
+  hiddenQuiz(quiz) {
+    if (quiz === 'Y') {
+      return false;
+    } if (quiz === 'N') {
+      return true;
+    }
+    return false;
   }
 
   getAtt() {

@@ -44,6 +44,16 @@ public class TopicController {
 	  	    List<Topic> postList = repo.getAllTopics();
 	  	    return ResponseEntity.ok(postList);
 	  	    }
+	  	 
+	  	 
+	  	 //----------------Find by Id----------------
+	  	 
+	  	 @RequestMapping(value = "/FindById/{id}", method = RequestMethod.GET)
+		  	ResponseEntity<Optional<Topic>> getTopicById(@PathVariable long id) {
+		  		Optional<Topic> topics = repo.findById(id);
+		  		System.out.println("done getting topic");
+				return ResponseEntity.ok(topics);
+			};
 
 	  	//-----------------LoadTopicByModId------------------------------------------------------
 

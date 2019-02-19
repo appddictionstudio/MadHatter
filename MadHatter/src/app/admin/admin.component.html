@@ -89,6 +89,9 @@
                 <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
                 </div>
+                <div class="hideShowQuizzes" *ngIf="a.quiz">
+                  <mat-slide-toggle [checked]="a.quiz === 'Y'" (change)=toggleQuizContent(a,t.id)></mat-slide-toggle>
+                </div>
               </div>
             </div>
             <hr *ngIf="t.mod.id === m.id">

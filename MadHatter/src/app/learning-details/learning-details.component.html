@@ -50,7 +50,8 @@
   <div class="learningDetailGrid">
       <p class="learningDetailName" *ngIf="att.description === 'Content' || att.description === 'Exercise'" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
       <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
-      style="display: block; margin-block-start: 2em; margin-block-end: 2em; color: black; margin-inline-start: 0px; margin-inline-end: 0px;" *ngIf="att.description === 'Quiz'">{{att.fileNm}}</a>
+      style="display: block; margin-block-start: 2em; margin-block-end: 2em; color: black; margin-inline-start: 0px; margin-inline-end: 0px;" 
+      *ngIf="att.description === 'Quiz' && hiddenQuiz(att.quiz)">{{att.fileNm}}</a>
       <div class="learningDetailSetProgress" *ngIf="getUserRoleInstructor()">
           <mat-form-field>
             <mat-select placeholder="Set content status" [(value)]="att.description">

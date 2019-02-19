@@ -36,17 +36,25 @@ export class TopicsService {
     return this.http.get(environment.apiUrl + 'topics/all');
   }
 
+  getTopicsById(id): Observable<any> {
+    return this.http.get(environment.apiUrl + 'topics/FindById/' + id);
+  }
+
   getTopicsByModId(modId): Observable<any> {
     return this.http.get(environment.apiUrl + 'topics/getByModId/' + modId);
   }
 
   updateTopic(topic: any) {
     // console.log(topic);
-    return this.http.put(environment.apiUrl + 'topics/' + topic.id, topic);
+    return this.http.put(environment.apiUrl + 'topics' + topic.id, topic);
   }
 
   getTopicAtt(): Observable<any> {
     return this.http.get(environment.apiUrl + 'TopicAtt');
+  }
+
+  updateTopicAtt(a): Observable<any> {
+    return this.http.put(environment.apiUrl + 'topicAttUpdate', a);
   }
 
   DownloadAtt(attachmentId: number) {

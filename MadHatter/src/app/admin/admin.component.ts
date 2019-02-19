@@ -22,6 +22,7 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
   providers: [NgbModalConfig, NgbModal]
 })
 export class AdminComponent implements OnInit, OnChanges {
+  topicQuiz: any;
 
   constructor(
     private api: ModuleService,
@@ -225,6 +226,23 @@ export class AdminComponent implements OnInit, OnChanges {
       this.apiT.updateTopic(topic).subscribe(data => {
       });
       this.hide = true;
+    }
+  }
+
+  toggleQuizContent(att, Tid) {
+    this.apiT.getTopicsById(Tid).subscribe(data => {
+      this.topicQuiz = data as any;
+      console.log(data);
+      att.topic = this.topicQuiz.id;
+      });
+    if (att.quiz === 'Y') {
+      att.quiz = 'N';
+      this.apiT.updateTopicAtt(att).subscribe(data => {
+      });
+    } else {
+      att.quiz = 'Y';
+      this.apiT.updateTopicAtt(att).subscribe(data => {
+      });
     }
   }
 
