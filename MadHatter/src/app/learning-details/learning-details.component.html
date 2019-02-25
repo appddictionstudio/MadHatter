@@ -49,9 +49,10 @@
   <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
   <div class="learningDetailGrid" *ngIf="att.quiz !== 'N'">
       <p class="learningDetailName" *ngIf="att.description !== 'Quiz'" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
-      <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
-      style="display: block; color: black;" 
-      *ngIf="att.description === 'Quiz'">{{att.fileNm}}</a>
+      <p class="learningDetailName" *ngIf="att.description === 'Quiz'">
+        <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
+        style="display: block; color: black;" 
+        >{{att.fileNm}}</a></p>
       <div class="learningDetailSetProgress" *ngIf="getUserRoleInstructor()">
           <mat-form-field>
             <mat-select placeholder="Set content status" [(value)]="att.description">
