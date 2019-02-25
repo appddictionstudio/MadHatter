@@ -31,6 +31,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.Madhatter.MadHatter.Repositories.TopicAttRepository;
 import com.Madhatter.MadHatter.Repositories.TopicRepository;
 import com.Madhatter.MadHatter.models.Attachment;
+import com.Madhatter.MadHatter.models.ModAtt;
 import com.Madhatter.MadHatter.models.SubmittedAtt;
 import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
@@ -147,19 +148,18 @@ public class TopicAttController {
 		
 //-----Update 
 		
-		@RequestMapping(value = "/topicAttUpdate", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt){
-//			if(topicAtt.getSubAttachments() != null) {
-//				for(SubmittedAtt attachment: topicAtt.getSubAttachments()) {
-//					attachment.setTopicatt(topicAtt);
+		@RequestMapping(value = "/topicAttUpdate/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<Object> updateTopicAtt(@RequestBody TopicAtt topicAtt, @PathVariable Long id){
+
+//			if(topicAtt.getTopic() != null) {
+//				for(TopicAtt topicAtt: topicAtt.getTopic()) {
+//					attachment.setMod(mod);
 //				}
 //			}
+//			
+			Topic top = tRepo.getById(id);
 			
-			topicAtt.setId(topicAtt.getId());
-			SubmittedAtt subAtt = new SubmittedAtt();
-			System.out.println(topicAtt.getTopic());
-			subAtt.setTopicatt(topicAtt);
-
+			topicAtt.setTopic(top);
 			repo.save(topicAtt);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}

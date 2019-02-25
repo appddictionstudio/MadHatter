@@ -53,8 +53,8 @@ export class TopicsService {
     return this.http.get(environment.apiUrl + 'TopicAtt');
   }
 
-  updateTopicAtt(a): Observable<any> {
-    return this.http.put(environment.apiUrl + 'topicAttUpdate', a);
+  updateTopicAtt(a, tid): Observable<any> {
+    return this.http.put(environment.apiUrl + 'topicAttUpdate/' + tid, a);
   }
 
   DownloadAtt(attachmentId: number) {
