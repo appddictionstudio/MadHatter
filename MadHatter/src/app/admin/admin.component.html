@@ -301,7 +301,7 @@
                       <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                     </div> -->
                     <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
-                      <p *ngIf="a.description === 'Content' || a.description === 'Exercise'">{{a.fileNm}}</p>
+                      <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                       <i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i>
                     </div>
@@ -364,7 +364,7 @@
               <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                   <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id && a.quiz !== 'N'">
                   <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
-                      <p *ngIf="a.description === 'Content' || a.description === 'Exercise'">{{a.fileNm}}</p>
+                      <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                       <i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i>
                     </div>
