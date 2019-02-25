@@ -345,6 +345,15 @@ onFileChange2(event, mod, index) {
 
   updateExerciseStatusChange(t) {
     t.attachments.description = this.updateExerciseStatus;
+    if (this.updateExerciseStatus === 'Quiz') {
+      t.attachments.quiz = 'Y';
+    } if (this.updateExerciseStatus === 'Test') {
+      t.attachments.quiz = 'Y';
+    } if (this.updateExerciseStatus === 'Exercise') {
+      t.attachments.quiz = null;
+    } if (this.updateExerciseStatus === 'Content') {
+      t.attachments.quiz = null;
+    }
     this.apiT.updateTopic(t).subscribe(data => {
       this.snotifyService.success('Status Updated', {
         timeout: 2000,
