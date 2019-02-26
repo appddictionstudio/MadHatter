@@ -50,5 +50,12 @@ public class UserController {
 		User postList = repo.findByUsernameContainingIgnoreCase(searchString);
 		return ResponseEntity.ok(postList);
 	}
+  	
+  	@RequestMapping(value = "/SearchEmail/{searchString}", method = RequestMethod.GET)
+	ResponseEntity<User> searchEmail(@PathVariable("searchString") String searchString) {
+
+		User postList = repo.findByEmailContainingIgnoreCase(searchString);
+		return ResponseEntity.ok(postList);
+	}
 
 }

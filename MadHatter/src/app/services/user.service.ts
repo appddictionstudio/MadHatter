@@ -27,6 +27,14 @@ export class UserService {
     return this.http.get(environment.apiUrl + 'api/users/SearchUsername/' + search);
   }
 
+  searchForEmail(search) {
+    return this.http.get(environment.apiUrl + 'api/users/SearchEmail/' + search);
+  }
+
+  signUpUser(obj) {
+    return this.http.get(environment.apiUrl + 'api/users/signup', obj);
+  }
+
   searchByName(search: any) {
     return this.http.get(environment.apiUrl + 'api/users/SearchUser/' + search);
   }

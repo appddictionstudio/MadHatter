@@ -194,7 +194,6 @@ this.posts = data;
   confirmAddPost() {
     this.snotifyService.confirm('Are you sure you want to add post?', {
       timeout: 5000,
-      showProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       position: SnotifyPosition.centerCenter,

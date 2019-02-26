@@ -248,7 +248,6 @@ onFileChange2(event, mod) {
     this.apiT.updateTopic(topicId).subscribe(data => {
       this.snotifyService.success('Excercise Added', {
         timeout: 2000,
-        showProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
@@ -262,7 +261,6 @@ onFileChange2(event, mod) {
     this.api.updateMod(mod).subscribe(data => {
       this.snotifyService.success('File Uploaded', {
         timeout: 2000,
-        showProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
@@ -283,7 +281,6 @@ downloadAttatchemnts(attachmentId) {
   this.apiT.deleteTopicAtt(attachmentId).subscribe(response => {
     this.snotifyService.success('File removed', {
       timeout: 2000,
-      showProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       position: SnotifyPosition.centerBottom
@@ -343,7 +340,6 @@ downloadAttatchemnts(attachmentId) {
     this.api.setResources(mod.id, this.resourceLinkInput).subscribe(res => {
       this.snotifyService.success('Resource Added', {
         timeout: 2000,
-        showProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
@@ -374,7 +370,6 @@ downloadAttatchemnts(attachmentId) {
     this.apiT.updateTopic(t).subscribe(data => {
       this.snotifyService.success('Status Updated', {
         timeout: 2000,
-        showProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +18,8 @@ export class UsersComponent implements OnInit {
   i = 0;
 
   constructor(
-    private apiU: UserService
+    private apiU: UserService,
+    private snotifyService: SnotifyService,
     ) { }
 
   ngOnInit() {
@@ -30,6 +32,8 @@ export class UsersComponent implements OnInit {
     this.username = this.nm[0].charAt(0) + this.nm[1];
     this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
     console.log(this.obj);
+    this.apiU.searchForEmail(this.email).subscribe(data => {
+    });
     this.assignuser();
   }
 
@@ -42,6 +46,14 @@ export class UsersComponent implements OnInit {
         console.log(this.username);
         this.authenticate();
       }
+      this.apiU.signUpUser(this.obj).subscribe(res => {
+        this.snotifyService.success('Student Added', {
+          timeout: 2000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: SnotifyPosition.centerBottom
+        });
+      });
       this.i = 0;
       console.log(this.obj);
     });
