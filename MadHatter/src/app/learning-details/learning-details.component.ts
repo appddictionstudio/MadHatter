@@ -270,11 +270,24 @@ onFileChange2(event, mod, index) {
 }
 
 
-  downloadAttatchemnts(attachmentId) {
-    this.apiT.DownloadAtt(attachmentId).subscribe(response => {
-        // console.log(response);
-       this.saveToFileSystem(response);
-     });
+downloadAttatchemnts(attachmentId) {
+  this.apiT.DownloadAtt(attachmentId).subscribe(response => {
+    // console.log(response);
+    this.saveToFileSystem(response);
+  });
+ }
+
+ removeAttachment(attachmentId) {
+  this.apiT.deleteTopicAtt(attachmentId).subscribe(response => {
+    this.snotifyService.success('File removed', {
+      timeout: 2000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      position: SnotifyPosition.centerBottom
+    });
+    this.getTopicsByModId(this.module.id);
+  });
  }
 
  ishidden(hidden) {
