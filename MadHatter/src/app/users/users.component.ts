@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   username: string;
   obj: any;
   nm: any[];
+  class: any;
   i = 0;
 
   constructor(
@@ -24,9 +25,10 @@ export class UsersComponent implements OnInit {
 
   authenticate() {
     const stringToSplit = this.name;
+    this.password = 'M@ddH@tt3r';
     this.nm = stringToSplit.split(' ');
     this.username = this.nm[0].charAt(0) + this.nm[1];
-    this.obj = {email: this.email, password: this.password, name: this.name, username: this.username};
+    this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
     console.log(this.obj);
     this.assignuser();
   }

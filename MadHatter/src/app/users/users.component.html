@@ -1,15 +1,19 @@
-<div>
-  <h1>Register a user</h1>
-  <hr>
-  <form>
-    <mat-form-field appearance="outline"><input matInput placeholder="Email"  type="text" name="email" [(ngModel)]="email">
-    </mat-form-field><br>
-    <mat-form-field appearance="outline"><input matInput placeholder="Full Name"  type="text" name="username" [(ngModel)]="name">
-    </mat-form-field><br>
-    <mat-form-field appearance="outline"><input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password">
-    </mat-form-field><br>
-    <button mat-button (click)="authenticate()" type="submit" style="margin-bottom: 2%;">
-      Log in
-    </button>
+<div class="registerUserClass">
+  <div class="registerUserHeader">
+    <h1 style="text-align: center">Register a user</h1>
+    <hr>
+  </div>
+  <form class="formGridLayoutRegister">
+    <mat-form-field appearance="outline" id="inputEmailRegister"><input matInput placeholder="Email"  type="text" name="email" [(ngModel)]="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" id="inputNameRegister"><input matInput placeholder="Full Name"  type="text" name="name" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Select class" [(value)]="class">
+          <mat-option value="ROLE_STUDENT_UI">UI/UX</mat-option>
+          <mat-option value="ROLE_STUDENT_ASD">Advance Software Development</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-button (click)="authenticate()" type="submit" style="width: 6%; height: 35px; margin-left: 86%;">Register User</button>
   </form><br>
 </div>
