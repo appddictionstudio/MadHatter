@@ -33,8 +33,13 @@ export class UsersComponent implements OnInit {
     this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
     console.log(this.obj);
     this.apiU.searchForEmail(this.email).subscribe(data => {
+      if (data) {
+        console.log('email already exists');
+        console.log(data);
+      } else {
+        this.assignuser();
+      }
     });
-    this.assignuser();
   }
 
   assignuser() {
