@@ -26,20 +26,36 @@ export class UsersComponent implements OnInit {
   }
 
   authenticate() {
-    const stringToSplit = this.name;
-    this.password = 'M@ddH@tt3r';
-    this.nm = stringToSplit.split(' ');
-    this.username = this.nm[0].charAt(0) + this.nm[1];
-    this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
-    console.log(this.obj);
-    this.apiU.searchForEmail(this.email).subscribe(data => {
-      if (data) {
-        console.log('email already exists');
-        console.log(data);
-      } else {
-        this.assignuser();
-      }
-    });
+    if (!this.email || !this.name || !this.class) {
+      this.snotifyService.error('Please fill out all fields', {
+        timeout: 2000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
+    } else {
+      const stringToSplit = this.name;
+      this.password = 'M@ddH@tt3r';
+      this.nm = stringToSplit.split(' ');
+      this.username = this.nm[0].charAt(0) + this.nm[1];
+      this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
+      console.log(this.obj);
+      this.apiU.searchForEmail(this.email).subscribe(data => {
+        const user = data as any;
+        if (data) {
+          console.log('email already exists');
+          console.log(data);
+          this.snotifyService.error('Email is taken, by ' + user.name, {
+            timeout: 2000,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: SnotifyPosition.centerBottom
+          });
+        } else {
+          this.assignuser();
+        }
+      });
+    }
   }
 
   assignuser() {

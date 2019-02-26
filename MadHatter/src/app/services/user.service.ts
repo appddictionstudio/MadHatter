@@ -32,7 +32,7 @@ export class UserService {
   }
 
   signUpUser(obj) {
-    return this.http.get(environment.apiUrl + 'api/users/signup', obj);
+    return this.http.post(environment.apiUrl + 'api/auth/signup', obj);
   }
 
   searchByName(search: any) {

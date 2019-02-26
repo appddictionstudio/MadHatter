@@ -10,8 +10,11 @@
     </mat-form-field>
     <mat-form-field>
         <mat-select placeholder="Select class" [(value)]="class">
-          <mat-option value="ROLE_STUDENT_UI">UI/UX</mat-option>
-          <mat-option value="ROLE_STUDENT_ASD">Advance Software Development</mat-option>
+            <mat-option value="ROLE_STUDENT_UI">UI/UX Student</mat-option>
+            <mat-option value="ROLE_STUDENT_ASD">Advance Software Development Student</mat-option>
+            <mat-option value="ROLE_TEACHER_UI">UI/UX Instructor</mat-option>
+            <mat-option value="ROLE_TEACHER_ASD">Advance Software Development Instructor</mat-option>
+            <mat-option value="ROLE_ADMIN">Admin</mat-option>
         </mat-select>
       </mat-form-field>
     <button mat-button (click)="authenticate()" type="submit" style="width: 6%; height: 35px; margin-left: 86%;">Register User</button>
