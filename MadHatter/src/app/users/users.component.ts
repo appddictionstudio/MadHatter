@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   nm: any[];
   class: any;
   i = 0;
+  currentUser: any;
 
   constructor(
     private apiU: UserService,
@@ -23,6 +24,17 @@ export class UsersComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.apiU.getUser().subscribe(data => {
+      this.currentUser = data;
+    });
+  }
+
+  getUserRoleAdmin() {
+    if (this.currentUser.role === 'ROLE_ADMIN') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   authenticate() {
@@ -76,6 +88,9 @@ export class UsersComponent implements OnInit {
         });
       });
       this.i = 0;
+      this.email = null;
+      this.name = null;
+      this.username = null;
       console.log(this.obj);
     });
   }

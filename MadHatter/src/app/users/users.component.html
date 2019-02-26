@@ -1,4 +1,7 @@
-<div class="registerUserClass">
+<div *ngIf="!getUserRoleAdmin()">
+Nosey little thing
+</div>
+<div *ngIf="getUserRoleAdmin()" class="registerUserClass">
   <div class="registerUserHeader">
     <h1 style="text-align: center; margin-top: 1%;">Register a user</h1>
     <hr>
