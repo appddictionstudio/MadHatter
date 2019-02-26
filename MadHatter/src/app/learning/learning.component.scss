@@ -79,7 +79,7 @@
     border: 1px solid black;
     width: 15%;
     margin: 2% auto 0% auto;
-    height: 15em;
+    height: 17em;
 }
 
 .mat-tab-label:focus {
@@ -202,4 +202,8 @@
 .contentToDisplay {
     margin-left: 48%;
     margin-top: 2%;
+}
+
+#cardInProgress {
+    cursor: pointer;
 }

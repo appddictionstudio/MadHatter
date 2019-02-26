@@ -12,9 +12,9 @@ import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-d
 import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  // { path: '', component: LoginComponent },
     // { path: '', children: [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: `learning`, component: LearningComponent },
     { path: `learning/learningdetail/:id`, component: LearningDetailsComponent },
     { path: `videos`, component: VideosComponent },

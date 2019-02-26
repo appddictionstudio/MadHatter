@@ -65,7 +65,7 @@
           <button mat-button (click)="updateExerciseStatusChange(t)">Update Status</button>
       </div>
         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-        <i  id="learningDetailTrash"class="fa fa-trash" aria-hidden="true" (click)="removeAttachment(att.id)"></i>
+        <i *ngIf="getUserRoleInstructor()" id="learningDetailTrash"class="fa fa-trash" aria-hidden="true" (click)="removeAttachment(att.id)"></i>
     <!-- <div *ngFor="let a of attList">
     <p *ngIf="att.attachmentId === a.id">
       {{att.fileNm}}

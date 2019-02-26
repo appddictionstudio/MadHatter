@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.auth.getCurrentUser();
     this.isAuth = this.auth.isAuthenticated();
+    console.log(this.isAuth);
     if (!this.isAuth) {
       this.auth.destroyToken();
     } else {
