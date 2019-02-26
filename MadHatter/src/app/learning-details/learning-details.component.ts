@@ -117,7 +117,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       //  console.log(t);
     }
 
-    open(content) {
+    open(content, t, m) {
       this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {
@@ -191,7 +191,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   }
 
 
-onFileChange(event, topic) {
+onFileChange(event, topic, m) {
+  console.log(topic + ' ' + m);
   this.fileUploading = topic.id;
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
@@ -205,13 +206,13 @@ onFileChange(event, topic) {
           this.fileUploading = null;
           this.documents.push(result);
           topic.attachments.push(result);
+          this.updateTopic(topic, m);
         }
       );
     };
   }
-
 }
-onFileChange2(event, mod, index) {
+onFileChange2(event, mod) {
   this.modfileUploading = true;
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
@@ -225,6 +226,7 @@ onFileChange2(event, mod, index) {
           this.documents.push(result);
          mod.modAttachments.push(result);
          this.modfileUploading = false;
+         this.updateModule(mod);
         }
       );
       // console.log(mod);
@@ -256,7 +258,7 @@ onFileChange2(event, mod, index) {
     this.ngOnInit();
   }
 
-  updateModule(mod, modId, index) {
+  updateModule(mod) {
     this.api.updateMod(mod).subscribe(data => {
       this.snotifyService.success('File Uploaded', {
         timeout: 2000,
@@ -315,6 +317,8 @@ downloadAttatchemnts(attachmentId) {
         return true;
       } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
         return true;
+    } if (this.currentUser.role === 'ROLE_ADMIN') {
+      return true;
     } else {
       return false;
     }

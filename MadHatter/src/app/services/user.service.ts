@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get(environment.apiUrl + 'api/users');
   }
 
+  searchForUsername(search) {
+    return this.http.get(environment.apiUrl + 'api/users/SearchUsername/' + search);
+  }
+
   searchByName(search: any) {
     return this.http.get(environment.apiUrl + 'api/users/SearchUser/' + search);
   }

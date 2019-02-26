@@ -26,6 +26,7 @@
             <a href="#/memberdirectory">Member Directory</a>
             <a *ngIf="getUserRoleInstructor()" href="#/grades">teaching</a>
             <a *ngIf="getUserRoleStudent()" href="#/grades">grades</a>
+            <a *ngIf="getUserRoleAdmin()" href="#/users">Users</a>
         </div>
       </div>
 

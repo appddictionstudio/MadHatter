@@ -61,6 +61,8 @@ h1 {
   grid-template-rows: 1fr;
   width: 100%;
   margin: 10px auto 0 auto;
+  border-bottom: 1px solid;
+  padding: 1% 0px;
 }
 
 .toggleDetailsButton {
@@ -207,4 +209,13 @@ button.close {
 
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
     z-index: 9999 !important;
+}
+
+.fileSave {
+    margin: auto;
+    height: 1em;
+}
+
+.modfileSave {
+    margin: auto;
 }

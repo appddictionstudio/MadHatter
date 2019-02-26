@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { LaunchDownloadsModalComponent } from './launch-downloads-modal/launch-downloads-modal.component';
 import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'grades', component: AdminComponent },
     { path: 'learning/learningdetail/:id/#/launch/:id', component: LaunchDownloadsModalComponent },
     { path: 'communities', component: BulletinBoardComponent },
+    { path: 'users', component: UsersComponent },
     // ]}
 ];
 
