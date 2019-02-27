@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   @Input() isAuth: boolean;
 
   currentUser: any;
+  isApiDone = false;
 
   constructor(
     private auth: AuthService,
@@ -27,10 +28,12 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
       console.log(this.currentUser);
+      if (!this.currentUser) {
+        this.auth.destroyToken();
+        location.reload();
+      }
+      this.isApiDone = true;
     });
-    if (!this.currentUser) {
-      this.auth.destroyToken();
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
