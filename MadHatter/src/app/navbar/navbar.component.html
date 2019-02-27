@@ -1,12 +1,11 @@
 <div>
     <div id="header">
         <img src="../../assets/artboard_1.png">
-    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #333333"></i>{{currentUser ? currentUser.name : ''}}
+    <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #333333"></i>{{getCurrentUser(content)}}
       <button mat-icon-button [matMenuTriggerFor]="menu">
       <i class="fa fa-caret-down"></i></button>
       <mat-menu #menu="matMenu">
         <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="destroyToken()">Logout</button>
-        <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="open(content)">Change Password<span style="color: rgba(0,0,0,0);">extthe</span></button>
       </mat-menu>
       </div>
     </div>
@@ -35,7 +34,18 @@
     </div>
 </div>
 <ng-template #content let-modal let-c="close" let-d="dismiss">
-  <div class="changepasswordheader">
-    this is a modal
+  <div class="changepasswordheader" style="height: 28em;">
+    <h1 style="text-align: center; margin-top: 1em">Password reset</h1>
+    <div style="margin-top: 3em;">
+      <form>
+        <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange1">
+          <input matInput placeholder="Type new password"  type="password" name="name" [(ngModel)]="PasswordInputChange1">
+        </mat-form-field><br>
+        <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange2">
+          <input matInput placeholder="Confirm new password"  type="password" name="name" [(ngModel)]="PasswordInputChange2">
+        </mat-form-field><br>
+        <button mat-button (click)="updateUserPassword()" style="margin-left: 7em;" type="submit">Update</button>
+      </form>
+    </div>
   </div>
 </ng-template>
