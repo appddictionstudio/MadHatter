@@ -26,8 +26,11 @@ export class NavbarComponent implements OnInit, OnChanges {
     // this.appcomp.intercept(this.auth.isAuthenticated(), null);
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
-      // console.log(this.currentUser);
-  });
+      console.log(this.currentUser);
+    });
+    if (!this.currentUser) {
+      this.auth.destroyToken();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
