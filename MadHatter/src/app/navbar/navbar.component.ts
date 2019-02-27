@@ -33,6 +33,10 @@ export class NavbarComponent implements OnInit, OnChanges {
         location.reload();
       }
       this.isApiDone = true;
+    },
+    error => {
+      this.auth.destroyToken();
+      location.reload();
     });
   }
 
