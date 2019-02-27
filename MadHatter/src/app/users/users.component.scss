@@ -1,7 +1,13 @@
 .formGridLayoutRegister {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr .4fr 1fr;
+    grid-template-columns: 33% 33% 33%;
+    width: 80%;
+    margin: auto;
+}
+
+.formGridLayoutRegister .mat-form-field {
+    width: 95%;
 }
 
 .registerUserHeader {
@@ -11,19 +17,76 @@
 #inputEmailRegister {
     grid-row: 1;
     grid-column: 1;
-    margin-left: auto;
 }
 
 #inputNameRegister {
     grid-row: 1;
     grid-column: 2;
+    margin: auto;
 }
 
-#inputNameRegister .mat-form-field-wrapper {
-    margin-right: 0px;
+#inputClassRegister {
+    grid-row: 1;
+    grid-column: 3;
+    margin-left: auto;
+}
+
+#inputNameRegister .mat-form-field-wrapper, #inputClassRegister .mat-form-field-wrapper, #inputEmailRegister .mat-form-field-wrapper, #SearchUsersRegister .mat-form-field-wrapper {
+    width: 100%;
 }
 
 .formGridLayoutRegister button {
     grid-row: 2;
     grid-column: 1 / 4;
+    width: fit-content;
+    height: 35px;
+    margin-left: auto;
+}
+
+.detail-user-parent {
+    width: 95%;
+    margin: 3% auto 1% auto;
+}
+
+.detail-user {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.detail-user-Name {
+    grid-row: 1;
+    grid-column: 1;
+    margin-left: auto;
+}
+
+.detail-user-Name-input {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.detail-user-Email {
+    grid-row: 1;
+    grid-column: 3;
+    margin-left: auto;
+}
+
+.detail-user-Email-input {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.detail-user-Role {
+    grid-row: 1;
+    grid-column: 5;
+    margin-left: auto;
+}
+
+.detail-user-Role-input {
+    grid-row: 1;
+    grid-column: 6;
+}
+
+.detail-user-selectionButtons button {
+    margin-left: 92%;
 }

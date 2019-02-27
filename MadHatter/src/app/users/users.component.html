@@ -1,17 +1,16 @@
-<div *ngIf="!getUserRoleAdmin()">
+<div *ngIf="isApiDone && !getUserRoleAdmin()">
 Nosey little thing
 </div>
-<div *ngIf="getUserRoleAdmin()" class="registerUserClass">
+<div *ngIf="isApiDone && getUserRoleAdmin()" class="registerUserClass">
   <div class="registerUserHeader">
-    <h1 style="text-align: center; margin-top: 1%;">Register a user</h1>
-    <hr>
+    <h1 style="margin-top: 1%; margin-left: 10%">Register a user</h1>
   </div>
   <form class="formGridLayoutRegister">
     <mat-form-field appearance="outline" id="inputEmailRegister"><input matInput placeholder="Email"  type="text" name="email" [(ngModel)]="email">
     </mat-form-field>
     <mat-form-field appearance="outline" id="inputNameRegister"><input matInput placeholder="Full Name"  type="text" name="name" [(ngModel)]="name">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline" id="inputClassRegister">
         <mat-select placeholder="Select class" [(value)]="class">
             <mat-option value="ROLE_STUDENT_UI">UI/UX Student</mat-option>
             <mat-option value="ROLE_STUDENT_ASD">Advance Software Development Student</mat-option>
@@ -20,14 +19,73 @@ Nosey little thing
             <mat-option value="ROLE_ADMIN">Admin</mat-option>
         </mat-select>
       </mat-form-field>
-    <button mat-button (click)="authenticate()" type="submit" style="width: 6%; height: 35px; margin-left: 86%;">Register User</button>
+    <button mat-button (click)="authenticate()" type="submit">Register User</button>
   </form><br>
-  <table>
+  <!-- <table>
     <tbody>
       <tr *ngFor="let member of members">
         <td><i class="fa fa-user" style="color: #005b7f; padding-bottom: 10px"></i></td>
         <td style="padding-left: 10px">{{member.name}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+  <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="SearchUsersRegister"><input matInput placeholder="Search by name"  type="text" name="name" [(ngModel)]="search">
+  </mat-form-field>
+  <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
+  <mat-table #table [dataSource]="members" matSort style="width:80%; margin:auto; margin-bottom: 3%; border: 1px solid #ccc;">
+  
+      <ng-container matColumnDef="Role">
+          <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+          <mat-cell *matCellDef="let members"> {{userRoleShort(members.roles[0].name)}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let members"> {{members.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let members"> {{members.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Username">
+          <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+          <mat-cell *matCellDef="let members"> {{members.username}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row clsas="mat-header-row" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" (click)="proccessRow(row)" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"
+      matRipple class="element-row"></mat-row>
+
+  </mat-table>
+
+  <ng-template #tpl let-row>
+    <div class="detail-user-parent" [@detailExpand]> 
+      <div class="detail-user">
+          <p id="detail-user-Name">Name: </p>
+          <mat-form-field appearance="outline" id="detail-user-Name-input">
+            <input matInput placeholder="Full Name"  type="text" name="name" [(ngModel)]="row.name">
+          </mat-form-field>
+          <p id="detail-user-Email">Email: </p>
+          <mat-form-field appearance="outline" id="detail-user-Email-input">
+              <input matInput placeholder="Email"  type="text" name="email" [(ngModel)]="row.email">
+            </mat-form-field>
+          <p id="detail-user-Role">Role: </p>
+          <mat-form-field appearance="outline" id="detail-user-Role-input">
+            <mat-select placeholder="Select class" [(ngModel)]="row.roles[0].name">
+                <mat-option value="ROLE_STUDENT_UI">UI/UX Student</mat-option>
+                <mat-option value="ROLE_STUDENT_ASD">Advance Software Development Student</mat-option>
+                <mat-option value="ROLE_TEACHER_UI">UI/UX Instructor</mat-option>
+                <mat-option value="ROLE_TEACHER_ASD">Advance Software Development Instructor</mat-option>
+                <mat-option value="ROLE_ADMIN">Admin</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="detail-user-selectionButtons">
+        <button mat-button type="button" (click)="updateUser(row)">Save</button>
+      </div>
+    </div>
+    <hr style="width: 100%;">
+  </ng-template>
 </div>

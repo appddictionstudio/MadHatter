@@ -24,9 +24,20 @@ public class User {
 
     @Column
     private String password;
+
+    @Column
+    private String passReset;
    
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    public String getPassReset() {
+		return passReset;
+	}
+
+	public void setPassReset(String passReset) {
+		this.passReset = passReset;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

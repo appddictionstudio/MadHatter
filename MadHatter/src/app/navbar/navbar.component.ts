@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/cor
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
+import {NgbModalConfig, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     private auth: AuthService,
     private router: Router,
     private appcomp: AppComponent,
+    private modalService: NgbModal,
     private userService: UserService
   ) { }
 
@@ -37,6 +39,14 @@ export class NavbarComponent implements OnInit, OnChanges {
     error => {
       this.auth.destroyToken();
       location.reload();
+    });
+  }
+
+  open(content, t, m) {
+    this.modalService.open(content, {ariaLabelledBy: 'ngbd-modal-confirm'}).result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 

@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get(environment.apiUrl + 'api/users');
   }
 
+  updateUser(user): Observable<any> {
+    return this.http.put(environment.apiUrl + 'api/auth/updateUser', user);
+  }
+
   searchForUsername(search) {
     return this.http.get(environment.apiUrl + 'api/users/SearchUsername/' + search);
   }

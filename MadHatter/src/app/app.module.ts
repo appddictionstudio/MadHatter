@@ -31,6 +31,7 @@ import { RequestInterceptor } from './services/http_interceptor';
 import {
   MatButtonModule,
   MatMenuModule,
+  MatTableModule,
   MatCheckboxModule,
   MatToolbarModule,
   MatIconModule,
@@ -59,6 +60,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTreeModule} from '@angular/material/tree';
 import { UsersComponent } from './users/users.component';
+import { CdkDetailRowDirective } from './users/cdk-detail-row.directive';
+// import { ChangePassComponent } from './change-pass/change-pass.component';
 
 library.add(fas, far, fab);
 
@@ -70,6 +73,7 @@ library.add(fas, far, fab);
     LearningComponent,
     NavbarComponent,
     VideosComponent,
+    CdkDetailRowDirective,
     MemberDirectoryComponent,
     SignupComponent,
     SearchByNamePipe,
@@ -82,6 +86,7 @@ library.add(fas, far, fab);
     SearchComponent,
     ActivityComponent,
     UsersComponent,
+    // ChangePassComponent,
     // NgbdModalBasic
   ],
   imports: [
@@ -99,6 +104,7 @@ library.add(fas, far, fab);
     MatCheckboxModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatTableModule,
     MatTreeModule,
     MatMenuModule,
     MatToolbarModule,

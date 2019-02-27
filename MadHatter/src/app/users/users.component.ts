@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { CdkDetailRowDirective } from './cdk-detail-row.directive';
+import { DataSource } from '@angular/cdk/collections';
+import { SelectionModel } from '@angular/cdk/collections';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 
 @Component({
@@ -7,7 +10,7 @@ import { SnotifyService, SnotifyPosition } from 'ng-snotify';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnChanges {
   email: string;
   name: string;
   password: string;
@@ -17,6 +20,12 @@ export class UsersComponent implements OnInit {
   class: any;
   i = 0;
   currentUser: any;
+  isLoading: boolean;
+  selectedMember = [null];
+  members: any[];
+  isApiDone = false;
+  displayedColumns = ['Role', 'Name', 'Email', 'Username'];
+  search: any;
 
   constructor(
     private apiU: UserService,
@@ -26,6 +35,49 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
+      this.isApiDone = true;
+    });
+    this.loadUsers();
+  }
+
+  userRoleShort(roleName) {
+    if (roleName === 'ROLE_ADMIN') {
+      return 'Admin';
+    } if (roleName === 'ROLE_TEACHER_UI') {
+      return 'UI/UX Teacher';
+    } if (roleName === 'ROLE_TEACHER_ASD') {
+      return 'ASD Teacher';
+    } if (roleName === 'ROLE_STUDENT_UI') {
+      return 'UI/UX Student';
+    } if (roleName === 'ROLE_STUDENT_ASD') {
+      return 'ASD Student';
+    }
+  }
+
+  setRoleId(roleName) {
+    if (roleName === 'ROLE_ADMIN') {
+      return 1;
+    } if (roleName === 'ROLE_TEACHER_UI') {
+      return 4;
+    } if (roleName === 'ROLE_TEACHER_ASD') {
+      return 2;
+    } if (roleName === 'ROLE_STUDENT_UI') {
+      return 5;
+    } if (roleName === 'ROLE_STUDENT_ASD') {
+      return 3;
+    }
+  }
+
+  updateUser(r) {
+    r.roles[0].id = this.setRoleId(r.roles[0].name);
+    console.log(r);
+    this.apiU.updateUser(r).subscribe(data => {
+      this.snotifyService.success('User Updated', {
+        timeout: 2000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom
+      });
     });
   }
 
@@ -93,6 +145,27 @@ export class UsersComponent implements OnInit {
       this.username = null;
       console.log(this.obj);
     });
+  }
+  ngOnChanges() {
+    this.isLoading = true;
+    this.loadUsers();
+    console.log(this.search);
+  }
+  loadUsers() {
+    if (this.search) {
+      this.apiU.searchByName(this.search).subscribe( res => {
+        this.members = res as any[];
+        this.isLoading = false;
+      });
+    } else {
+      this.apiU.getAllUsers().subscribe(data => {
+        this.members = data as any[];
+        this.isLoading = false;
+      });
+    }
+  }
+
+  proccessRow(r) {
   }
 
 }

@@ -6,6 +6,7 @@
       <i class="fa fa-caret-down"></i></button>
       <mat-menu #menu="matMenu">
         <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="destroyToken()">Logout</button>
+        <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="open(content)">Change Password<span style="color: rgba(0,0,0,0);">extthe</span></button>
       </mat-menu>
       </div>
     </div>
@@ -33,3 +34,8 @@
 
     </div>
 </div>
+<ng-template #content let-modal let-c="close" let-d="dismiss">
+  <div class="changepasswordheader">
+    this is a modal
+  </div>
+</ng-template>

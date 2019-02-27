@@ -77,7 +77,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
+    this.getAllTopics();
   }
 
   userRole() {
