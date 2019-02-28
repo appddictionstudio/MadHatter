@@ -316,7 +316,7 @@
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                       <i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i>
                     </div>
-                      <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz'">
+                      <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'">
                         <div *ngIf="m.progress === 2">
                         <input type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->
