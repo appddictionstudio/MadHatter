@@ -30,6 +30,8 @@ export class LearningComponent implements OnInit {
   isLoading = true;
   currentUser: any;
   UIorASD: number;
+  userCalcOnce = [null];
+  userStyling = [null];
 
   constructor(
     private fb: FormBuilder,
@@ -99,11 +101,20 @@ export class LearningComponent implements OnInit {
     this.router.navigateByUrl('/learning/learningdetail/' + id);
   }
  }
-  // select(m: Module) {
-  //   this.api.getModById(m.id).subscribe(
-  //     data => {
-  //       this.mod = data;
-  //       console.log(m.id);
-  // });
-  // }
+
+ getUserRoleOnce(modId) {
+    console.log('getting results');
+  if (!this.userCalcOnce[modId]) {
+    if (this.currentUser.role === 'ROLE_TEACHER_ASD' || this.currentUser.role === 'ROLE_TEACHER_UI'
+      || this.currentUser.role === 'ROLE_ADMIN') {
+        this.userStyling[modId] = 'pointer';
+        return this.userStyling[modId];
+    } else {
+      this.userStyling[modId] = 'inherit';
+      return this.userStyling[modId];
+    }
+  } else {
+    return this.userStyling[modId];
+  }
+ }
 }

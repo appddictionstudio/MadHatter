@@ -183,12 +183,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     return false;
   }
 
-  getAtt() {
-    this.apiT.getAttachments().subscribe(data => {
-      this.attList = data as any[];
-    });
-  }
-
 
 onFileChange(event, topic, m) {
   this.fileUploading = topic.id;
@@ -275,17 +269,30 @@ downloadAttatchemnts(attachmentId) {
   });
  }
 
- removeAttachment(attachmentId) {
-  this.apiT.deleteTopicAtt(attachmentId).subscribe(response => {
+ removeAttachment(attachment) {
+  this.apiT.deleteTopicAtt(attachment.id).subscribe(response => {
+    attachment.id = null;
     this.snotifyService.success('File removed', {
       timeout: 2000,
       closeOnClick: true,
       pauseOnHover: true,
       position: SnotifyPosition.centerBottom
     });
-    this.getTopicsByModId(this.module.id);
   });
  }
+
+  checkIfHidden(att) {
+    console.log(att.description);
+    if (!this.getUserRoleStudent()) {
+      if (att.id) {
+        return true;
+      }
+    } if (att.quiz !== 'N') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
  ishidden(hidden) {
   if (hidden === 'true') {
@@ -307,7 +314,7 @@ downloadAttatchemnts(attachmentId) {
  }
 
  attachemntIsQuiz(desc) {
-  if (desc === 'Quiz' || desc === 'Test') {
+  if (desc === 'Quiz') {
     return true;
   } else {
     return false;

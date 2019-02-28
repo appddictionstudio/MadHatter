@@ -28,7 +28,7 @@
             <div id="cardCol" class="col-4">
               <div *ngFor="let m of module">
               <div *ngIf="m.progress === 1">
-                <mat-card class="cardGrid" *ngIf="m.bootcamp" (click)="routeForInstructors(m.id)">
+                <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="m.bootcamp" (click)="routeForInstructors(m.id)">
                 <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp"> -->
                 <h3>{{m.title}}</h3>
                 <p>{{m.description}}</p>
@@ -53,7 +53,7 @@
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
             <div *ngIf="m.progress === 2">
-            <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="m.bootcamp">
+            <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
@@ -77,7 +77,7 @@
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
             <div *ngIf="m.progress === 3">
-            <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
+            <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
@@ -120,7 +120,7 @@
             <div id="cardCol" class="col-4">
           <div *ngFor="let m of module">
           <div *ngIf="m.progress === 1">
-          <mat-card class="cardGrid" *ngIf="!m.bootcamp" (click)="routeForInstructors(m.id)">
+          <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="!m.bootcamp" (click)="routeForInstructors(m.id)">
           <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp"> -->
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
@@ -145,7 +145,7 @@
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
             <div *ngIf="m.progress === 2">
-            <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="!m.bootcamp">
+            <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="!m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
@@ -169,7 +169,7 @@
               <div id="cardCol" class="col-4">
             <div *ngFor="let m of module">
             <div *ngIf="m.progress === 3">
-            <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
+            <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp">
               <h3>{{m.title}}</h3>
               <p>{{m.description}}</p>
               <div class="progress" style="width: 100%">
