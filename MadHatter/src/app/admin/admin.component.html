@@ -76,11 +76,12 @@
             <!-- <hr *ngIf="t.mod.id === m.id"> -->
             <div class="adminSubheader" *ngIf="t.mod.id === m.id">
               <div data-toggle="modal" data-target="#modal-basic-title" class="subheaderadmin">
+              <mat-slide-toggle [checked]="!t.hidden" style="padding-right: 20px" (change)=toggleContent(t,m.id)></mat-slide-toggle>
                 <h3>{{t.topicTitle}}</h3>
               </div>
-            <div class="toggleDetailsCheckbox">
+            <!-- <div class="toggleDetailsCheckbox">
               <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
-            </div>
+            </div> -->
             </div>
             <div class="excerciseSubheader" *ngFor="let a of t.attachments">
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
@@ -184,13 +185,11 @@
         <div class="showTopics" *ngFor="let t of topics" >
           <!-- <hr *ngIf="t.mod.id === m.id"> -->
           <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-            <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
-              <h3>{{t.topicTitle}}</h3>
-            </div>
-         <div class="toggleDetailsCheckbox">
-              <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
-            </div>
-            </div>
+              <div data-toggle="modal" data-target="#modal-basic-title" class="subheaderadmin">
+                <mat-slide-toggle [checked]="!t.hidden" style="padding-right: 20px" (change)=toggleContent(t,m.id)></mat-slide-toggle>
+                  <h3>{{t.topicTitle}}</h3>
+                </div>
+              </div>
             <div class="excerciseSubheader" *ngFor="let a of t.attachments">
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                 <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">

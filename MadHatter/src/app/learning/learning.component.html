@@ -29,7 +29,6 @@
               <div *ngFor="let m of module">
               <div *ngIf="m.progress === 1">
                 <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="m.bootcamp" (click)="routeForInstructors(m.id)">
-                <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp"> -->
                 <h3>{{m.title}}</h3>
                 <p>{{m.description}}</p>
                 <div class="progress" style="width: 100%">
@@ -121,7 +120,6 @@
           <div *ngFor="let m of module">
           <div *ngIf="m.progress === 1">
           <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="!m.bootcamp" (click)="routeForInstructors(m.id)">
-          <!-- <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="!m.bootcamp"> -->
             <h3>{{m.title}}</h3>
             <p>{{m.description}}</p>
             <div class="progress" style="width: 100%">
@@ -184,7 +182,6 @@
             </div>
       </mat-tab>
     </mat-tab-group>
-    <!-- <button>Change Course</button> -->
   </div>
   </mat-tab>
 </mat-tab-group>

@@ -3,9 +3,9 @@
     <mat-progress-spinner color="primary" mode="indeterminate">
     </mat-progress-spinner>
   </div>
-  <div *ngIf="!isLoading">
+  <div *ngIf="!isLoading"><i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
   <div class= "headerLearningContent" *ngFor="let m of modules">
-    <h1><i [routerLink]="['/learning']" class="fas fa-arrow-left" style="cursor: pointer; padding-right: 20px;"></i>{{m.title}}</h1>
+    <h1>{{m.title}}</h1>
   <div *ngIf="getUserRoleInstructor()" class="modfileSave">
     <input type="file" #file  (change)="onFileChange2($event,m)">
     <div style="display: inline-flex; margin-top: 10px; width: 100%;">
