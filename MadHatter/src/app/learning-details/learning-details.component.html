@@ -47,9 +47,9 @@
 </div>
 <div class="modal-body">
   <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
-  <div class="learningDetailGrid" *ngIf="att.quiz !== 'N'">
-      <p class="learningDetailName" *ngIf="att.description !== 'Quiz'" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
-      <p class="learningDetailName" *ngIf="att.description === 'Quiz'">
+  <div class="learningDetailGrid" *ngIf="att.quiz !== 'N' || !getUserRoleStudent()">
+      <p class="learningDetailName" *ngIf="!attachemntIsQuiz(att.description)" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
+      <p class="learningDetailName" *ngIf="attachemntIsQuiz(att.description)">
         <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
         style="display: block; color: black;" 
         >{{att.fileNm}}</a></p>
@@ -62,7 +62,7 @@
               <mat-option value="Test">Test</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-button (click)="updateExerciseStatusChange(t)">Update Status</button>
+          <button mat-button (click)="updateExerciseStatusChange(t, att)">Update Status</button>
       </div>
         <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
         <i *ngIf="getUserRoleInstructor()" id="learningDetailTrash"class="fa fa-trash" aria-hidden="true" (click)="removeAttachment(att.id)"></i>

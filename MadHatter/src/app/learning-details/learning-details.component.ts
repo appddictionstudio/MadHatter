@@ -192,7 +192,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
 
 
 onFileChange(event, topic, m) {
-  console.log(topic + ' ' + m);
   this.fileUploading = topic.id;
   const reader = new FileReader();
   if (event.target.files && event.target.files.length > 0) {
@@ -308,6 +307,14 @@ downloadAttatchemnts(attachmentId) {
    saveAs(blob, filename);
  }
 
+ attachemntIsQuiz(desc) {
+  if (desc === 'Quiz' || desc === 'Test') {
+    return true;
+  } else {
+    return false;
+  }
+ }
+
  getUserRoleInstructor() {
     if (this.currentUser) {
       if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
@@ -356,23 +363,25 @@ downloadAttatchemnts(attachmentId) {
     }
   }
 
-  updateExerciseStatusChange(t) {
-    t.attachments.description = this.updateExerciseStatus;
+  updateExerciseStatusChange(t, a) {
+    this.updateExerciseStatus = a.description;
     if (this.updateExerciseStatus === 'Quiz') {
-      t.attachments.quiz = 'Y';
+      a.quiz = 'N';
     } if (this.updateExerciseStatus === 'Test') {
-      t.attachments.quiz = 'Y';
+      a.quiz = 'N';
     } if (this.updateExerciseStatus === 'Exercise') {
-      t.attachments.quiz = null;
+      a.quiz = null;
     } if (this.updateExerciseStatus === 'Content') {
-      t.attachments.quiz = null;
+      a.quiz = null;
     }
     this.apiT.updateTopic(t).subscribe(data => {
-      this.snotifyService.success('Status Updated', {
-        timeout: 2000,
-        closeOnClick: true,
-        pauseOnHover: true,
-        position: SnotifyPosition.centerBottom
+      this.apiT.updateTopicAtt(a, t.id).subscribe(res => {
+        this.snotifyService.success('Status Updated', {
+          timeout: 2000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: SnotifyPosition.centerBottom
+        });
       });
     });
   }
