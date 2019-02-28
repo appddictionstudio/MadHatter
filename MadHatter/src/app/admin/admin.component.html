@@ -151,11 +151,12 @@
             <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
           </div>
           <div class="adminSetProgress">
+            <!-- <p>Current status is {{getStartingProgress(m)}}</p> -->
             <mat-form-field>
               <mat-select [placeholder]="displayModuleProgress(m.id, m.progress)" [(ngModel)]="updateModuleProgress[m.id]">
-                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
-                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
-                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
+                <mat-option value="Not Started" (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
+                <mat-option value="In Progress" (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
+                <mat-option value="Completed" (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
               </mat-select>
             </mat-form-field>
         <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>

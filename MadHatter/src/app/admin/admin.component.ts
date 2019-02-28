@@ -73,6 +73,8 @@ export class AdminComponent implements OnInit, OnChanges {
   modGradeTotal = [0];
   studentAttempts = [null];
   evaluatedAttempts = [null];
+  hasGottenStartingProgress = [null];
+  startProgress = [null];
 
   ngOnInit() {
     this.getUserRole();
@@ -410,19 +412,39 @@ open2(content) {
     if (!this.hasModalBeenChecked[id]) {
       if (progress === 1) {
         this.hasModalBeenChecked[id] = true;
+        this.startProgress[id] = 'Not Started';
         this.updateModuleProgress[id] = 'Not Started';
       } if (progress === 2) {
         this.hasModalBeenChecked[id] = true;
+        this.startProgress[id] = 'In Progress';
         this.updateModuleProgress[id] = 'In Progress';
       } if (progress === 3) {
         this.hasModalBeenChecked[id] = true;
+        this.startProgress[id] = 'Completed';
         this.updateModuleProgress[id] = 'Completed';
       }
     } else {
-      return this.updateModuleProgress[id];
+      return 'Current status is '  + this.startProgress[id];
     }
     console.log(id + ' is ' + this.updateModuleProgress[id]);
   }
+
+  // getStartingProgress(mod) {
+  //   if (this.hasGottenStartingProgress) {
+  //     return this.startProgress[mod.id];
+  //   } else {
+  //     if (mod.progress === 1) {
+  //     this.startProgress[mod.id] = 'Not Started';
+  //     this.hasGottenStartingProgress[mod.id] = true;
+  //   } if (mod.progress === 2) {
+  //     this.startProgress[mod.id] = 'In Progress';
+  //     this.hasGottenStartingProgress[mod.id] = true;
+  //   } if (mod.progress === 3) {
+  //     this.startProgress[mod.id] = 'Completed';
+  //     this.hasGottenStartingProgress[mod.id] = true;
+  //   }
+  //   }
+  // }
 
   updateModuleProgressPlaceholder(id, progress) {
     if (progress === 1) {
@@ -443,15 +465,14 @@ open2(content) {
       m.progress = 3;
     }
     const mod = m;
-    console.log(mod);
-    // this.api.updateMod(mod).subscribe(res => {
-    //   this.snotifyService.success('Module Status updated', {
-    //     timeout: 3000,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     position: SnotifyPosition.centerBottom,
-    //   });
-    // });
+    this.api.updateMod(mod).subscribe(res => {
+      this.snotifyService.success('Module Status updated', {
+        timeout: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+    });
   }
 
   notStartedModule(m) {
