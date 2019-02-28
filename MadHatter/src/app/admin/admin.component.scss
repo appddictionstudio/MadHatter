@@ -20,7 +20,6 @@
     text-align: center;
     font-weight: bold;
     margin-top: 2%;
-    margin-bottom: -3%;
 }
 
 .classSeperation {
@@ -245,5 +244,15 @@ hr {
   display: grid;
     grid-template-columns: .5fr .5fr;
     grid-template-rows: 1fr;
+}
 
+.mainGradesTabular .mat-tab-header {
+    background: unset;
+    color: black;
+    text-align: center;
+    border-bottom: 2px solid black;
+    width: fit-content;
+    margin: auto;
+    font-size: 1.5em;
+    font-weight: 100;
 }

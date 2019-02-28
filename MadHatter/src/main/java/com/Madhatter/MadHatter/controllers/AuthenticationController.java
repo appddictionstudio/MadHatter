@@ -100,11 +100,6 @@ public class AuthenticationController {
         
         @PutMapping("/updateUser/password")
         public ResponseEntity<?> updateUserPassword(@RequestBody User user) {
-        	System.out.println(user.getId());
-        	System.out.println(user.getUsername());
-        	System.out.println(user.getEmail());
-        	System.out.println(user.getPassword());
-        	System.out.println(user.getName());
         	user.setPassword(passwordEncoder.encode(user.getPassword()));
         	userRepository.save(user);
 			return null;

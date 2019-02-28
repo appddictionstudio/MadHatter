@@ -18,7 +18,7 @@ export class ModuleService {
   }
 
   getModuleByBootcamp(bootcamp): Observable<any>  {
-    return this.http.get(environment.apiUrl + 'api/modules/bootcamp', bootcamp);
+    return this.http.get(environment.apiUrl + 'api/modules/bootcamp/' + bootcamp);
   }
 
   getModuleById(id): Observable<any>  {

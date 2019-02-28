@@ -23,6 +23,8 @@ import { SubmittedAtt } from '../models/SubmittedAtt';
 })
 export class AdminComponent implements OnInit, OnChanges {
   topicQuiz: any;
+  modulesASD: any[];
+  modulesUI: any[];
 
   constructor(
     private api: ModuleService,
@@ -84,10 +86,14 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getModuleforLearning() {
-    this.api.getModule().subscribe(res => {
-      this.modules = res as any[];
-
-      // this.isLoading = false;
+    // this.api.getModule().subscribe(res => {
+    //   this.modules = res as any[];
+    // });
+    this.api.getModuleByBootcamp('SD').subscribe(res => {
+      this.modulesASD = res as any[];
+    });
+    this.api.getModuleByBootcamp('UI').subscribe(res => {
+      this.modulesUI = res as any[];
     });
   }
   // getTopicsByModId(modId) {
@@ -144,6 +150,7 @@ export class AdminComponent implements OnInit, OnChanges {
       this.allStudentAttempts = data as any[];
       // console.log(this.allStudentAttempts);
       this.isLoading = false;
+      console.log('we are done loading');
     });
   }
 

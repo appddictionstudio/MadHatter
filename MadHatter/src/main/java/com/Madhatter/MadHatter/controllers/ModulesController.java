@@ -52,11 +52,24 @@ public class ModulesController {
     
  // --------------- Load Post By Id
  		// -----------------------------------------------------------
- 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
- 		ResponseEntity<Optional<Modules>> getModById(@PathVariable long id) {
-		Optional<Modules> post = repo.findById(id);
-		return ResponseEntity.ok(post);
- 	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+		ResponseEntity<Optional<Modules>> getModById(@PathVariable long id) {
+	Optional<Modules> post = repo.findById(id);
+	return ResponseEntity.ok(post);
+	}
+    
+    // -------------------------------GET MOD BY TYPE----------------
+    @RequestMapping(value = "/bootcamp/{name}", method = RequestMethod.GET)
+		ResponseEntity<List<Modules>> getModByBootcamp(@PathVariable String name) {
+    		if (name.equals("UI")) {
+    			System.out.println("we got ui");
+    			List<Modules> post = repo.findByNotBootcamp();
+    			return ResponseEntity.ok(post);
+    		} else {
+    			List<Modules> post = repo.findByBootcamp(name);
+    			return ResponseEntity.ok(post);
+    		}
+	}
  	
  	//-------------------------------------put by id------------------------------------------------\\
  	

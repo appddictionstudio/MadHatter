@@ -29,13 +29,15 @@
 <div id="adminInstructor" *ngIf="getUserRoleInstructor()">
   <div *ngIf="teachingRole('ASD')" class="classSeperation">
     <h1 id="headerTitle">Advanced Software Developer</h1>
-    <div class="learningContent" *ngFor="let m of modules">
+    <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
+    <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.id - 6}}">
+    <div class="learningContent">
       <div *ngIf="m.bootcamp">
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
           <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
-                <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
-              </div>
+            <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
+          </div>
         <div class="adminSetProgress">
         <mat-form-field>
           <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
@@ -134,17 +136,21 @@
       </div>
       </div>
   </div>
+  </mat-tab>
+  </mat-tab-group>
 </div>
 <div *ngIf="teachingRole('UI')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
-    <div class="learningContent" *ngFor="let m of modules">
+    <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
+    <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.id}}">
+    <div class="learningContent">
       <div *ngIf="!m.bootcamp">
         <div class= "headerAdminContent">
           <h1>{{m.title}}</h1>
-        <div class="adminSetProgress">
-            <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
-                <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
-              </div>
+          <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
+            <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
+          </div>
+          <div class="adminSetProgress">
         <mat-form-field>
           <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
             <mat-option value="1">Not Started</mat-option>
@@ -238,6 +244,8 @@
       </div>
       </div>
   </div>
+</mat-tab>
+</mat-tab-group>
 </div>
 </div>
 <!--
@@ -266,7 +274,9 @@
 <div id="adminStudent" *ngIf="getUserRoleStudent()">
     <div *ngIf="studentsRole('ASD')" class="classSeperation">
       <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
-      <div class="learningContent" *ngFor="let m of modules">
+      <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
+      <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.id - 6}}">
+      <div class="learningContent">
         <div *ngIf="m.bootcamp">
           <div class= "headerAdminContent">
             <h2>{{m.title}}</h2>
@@ -330,11 +340,15 @@
           </div>
         </div>
         </div>
+    </mat-tab>
+    </mat-tab-group>
     </div>
   </div>
   <div *ngIf="studentsRole('UI')" class="classSeperation">
       <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
-      <div class="learningContent" *ngFor="let m of modules">
+      <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
+      <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.id}}">
+      <div class="learningContent">
         <div *ngIf="!m.bootcamp">
           <div class= "headerAdminContent">
             <h2>{{m.title}}</h2>
@@ -398,5 +412,7 @@
           </div>
     </div>
   </div>
+</mat-tab>
+</mat-tab-group>
 </div>
 </div>

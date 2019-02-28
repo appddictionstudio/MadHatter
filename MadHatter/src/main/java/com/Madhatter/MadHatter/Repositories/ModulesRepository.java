@@ -18,4 +18,9 @@ public interface ModulesRepository extends JpaRepository<Modules, Long> {
 	public List<Modules> getAllModules();
 	
 	Optional<Modules> findById(Long id);
+	
+	List<Modules> findByBootcamp(String name);
+	
+	@Query("SELECT b FROM Modules b WHERE b.bootcamp IS NULL")
+	List<Modules> findByNotBootcamp();
 }
