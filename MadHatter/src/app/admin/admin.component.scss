@@ -50,10 +50,10 @@ h3 {
 
 .attachemntGridAdmin {
     display: grid;
-  grid-template-columns: .5fr .5fr .5fr .3fr;
-  grid-template-rows: 1fr;
-  width: 75%;
-  margin: 10px auto 0% auto;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 1fr;
+    width: 75%;
+    margin: 10px auto 0% auto;
 }
 
 .studentDetialUpload {
@@ -182,7 +182,7 @@ hr {
 .TeacherView {
     grid-column: 3;
     grid-row: 1;
-    margin-left: 10%;
+    margin: auto 0px;
 }
 
 .TeacherDownload {
