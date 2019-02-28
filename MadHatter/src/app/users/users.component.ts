@@ -26,6 +26,7 @@ export class UsersComponent implements OnInit, OnChanges {
   isApiDone = false;
   displayedColumns = ['Role', 'Name', 'Email', 'Username'];
   search: any;
+  resetpassword: boolean;
 
   constructor(
     private apiU: UserService,
@@ -70,6 +71,9 @@ export class UsersComponent implements OnInit, OnChanges {
 
   updateUser(r) {
     r.roles[0].id = this.setRoleId(r.roles[0].name);
+    if (this.resetpassword === true) {
+      r.passReset = 'Y';
+    }
     console.log(r);
     this.apiU.updateUser(r).subscribe(data => {
       this.snotifyService.success('User Updated', {
@@ -79,6 +83,12 @@ export class UsersComponent implements OnInit, OnChanges {
         position: SnotifyPosition.centerBottom
       });
     });
+    if (this.resetpassword === true) {
+      r.password = 'M@ddH@tt3r';
+      this.apiU.updateUserPass(r).subscribe(res => {
+
+      });
+    }
   }
 
   getUserRoleAdmin() {
@@ -163,9 +173,6 @@ export class UsersComponent implements OnInit, OnChanges {
         this.isLoading = false;
       });
     }
-  }
-
-  proccessRow(r) {
   }
 
 }

@@ -135,12 +135,14 @@ export class NavbarComponent implements OnInit, OnChanges {
         this.close();
         this.snotifyService.success('Password updated', {
           position: SnotifyPosition.centerBottom,
+          showProgressBar: false,
           timeout: 1000,
         });
       });
     } else {
       this.snotifyService.error('Two fields should match', {
         position: SnotifyPosition.centerBottom,
+        showProgressBar: false,
         timeout: 1000,
       });
     }
