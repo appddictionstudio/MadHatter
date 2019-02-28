@@ -40,13 +40,13 @@
           </div>
         <div class="adminSetProgress">
         <mat-form-field>
-          <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
-            <mat-option value="1">Not Started</mat-option>
-            <mat-option value="2">In Progress</mat-option>
-            <mat-option value="3">Complete</mat-option>
+          <mat-select [placeholder]="displayModuleProgress(m.id, m.progress)" [(ngModel)]="updateModuleProgress[m.id]">
+            <mat-option (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
+            <mat-option (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
+            <mat-option (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
+        <button mat-button (click)="updateModuleProgressChange(m)">Change Status</button>
         </div>
         </div>
         <ng-template id="modal-teacher" #content let-modal let-c="close" let-d="dismiss">
@@ -151,13 +151,13 @@
             <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
           </div>
           <div class="adminSetProgress">
-        <mat-form-field>
-          <mat-select placeholder="Set module status" [(value)]="updateModuleProgress">
-            <mat-option value="1">Not Started</mat-option>
-            <mat-option value="2">In Progress</mat-option>
-            <mat-option value="3">Complete</mat-option>
-          </mat-select>
-        </mat-form-field>
+            <mat-form-field>
+              <mat-select [placeholder]="displayModuleProgress(m.id, m.progress)" [(ngModel)]="updateModuleProgress[m.id]">
+                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
+                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
+                <mat-option (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
+              </mat-select>
+            </mat-form-field>
         <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
         </div>
         </div>
