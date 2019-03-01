@@ -87,7 +87,7 @@
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                 <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
                   <span>{{a.fileNm}}</span>
-                  <i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+                  <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
                 </div>
                 <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
@@ -194,7 +194,7 @@
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                 <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
                   <span>{{a.fileNm}}</span>
-                  <i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i>
+                  <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
                 </div>
                 <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
@@ -313,7 +313,7 @@
                     <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
-                      <i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i>
+                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'">
                         <div *ngIf="m.progress === 2">
@@ -380,7 +380,7 @@
                   <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
-                      <i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i>
+                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz'">
                           <div *ngIf="m.progress === 2">
