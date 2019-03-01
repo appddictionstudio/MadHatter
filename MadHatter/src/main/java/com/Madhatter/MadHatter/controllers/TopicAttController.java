@@ -84,6 +84,7 @@ public class TopicAttController {
        	 TopicAtt topicAtt = new TopicAtt();
 
        	topicAtt.setAttachmentId(att.getId());
+       	topicAtt.setDescription("Content");
        	topicAtt.setFileNm(file.getOriginalFilename());
        	topicAtt.setFileSz(new Long(att.getAttachment().length));
        	

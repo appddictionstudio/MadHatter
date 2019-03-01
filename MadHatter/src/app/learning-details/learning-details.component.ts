@@ -221,20 +221,17 @@ onFileChange2(event, mod) {
          this.updateModule(mod);
         }
       );
-      // console.log(mod);
     };
   }
 }
 
   SaveTopic() {
-  this.apiT.saveTopic(this.topicCenter).subscribe(data => {
-    this.ngOnInit();
-  });
+    this.apiT.saveTopic(this.topicCenter).subscribe(data => {
+      this.ngOnInit();
+    });
   }
 
   updateTopic(topicId, modId) {
-    // this.topicCenter.attachments = this.documents;
-    // tslint:disable-next-line:radix
     topicId.mod = {id: modId};
     console.log(topicId);
     this.apiT.updateTopic(topicId).subscribe(data => {
@@ -245,7 +242,6 @@ onFileChange2(event, mod) {
         position: SnotifyPosition.centerBottom
       });
     });
-    // console.log(topicId);
     this.ngOnInit();
   }
 
@@ -258,13 +254,11 @@ onFileChange2(event, mod) {
         position: SnotifyPosition.centerBottom
       });
   });
-  // console.log(mod);
 }
 
 
 downloadAttatchemnts(attachmentId) {
   this.apiT.DownloadAtt(attachmentId).subscribe(response => {
-    // console.log(response);
     this.saveToFileSystem(response);
   });
  }
@@ -282,10 +276,11 @@ downloadAttatchemnts(attachmentId) {
  }
 
   checkIfHidden(att) {
-    console.log(att.description);
     if (!this.getUserRoleStudent()) {
       if (att.id) {
         return true;
+      } else {
+        return false;
       }
     } if (att.quiz !== 'N') {
       return true;
@@ -303,7 +298,6 @@ downloadAttatchemnts(attachmentId) {
  }
 
  private saveToFileSystem(response) {
-  // console.log('saving file');
    const contentDispositionHeader: string = response.headers.get(
      'Content-Disposition'
    );
