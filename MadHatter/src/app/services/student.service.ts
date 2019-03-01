@@ -40,6 +40,10 @@ export class StudentService {
     return this.http.get(environment.apiUrl + 'studentSubmittedAtt/' + id);
   }
 
+  checkStudentAttemptsByLesson(id, aid): Observable<any> {
+    return this.http.get(environment.apiUrl + 'checkStudentSubmittedAtt?studentId=' + id + '&attId=' + aid);
+  }
+
   DownloadStudentAtt(attachmentId: number) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/octet-stream');

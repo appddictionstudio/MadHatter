@@ -118,7 +118,7 @@
                           <span> / {{s.gradeD}}</span>
                         </div>
                         <div class="studentAttemptGradeButton">
-                          <button mat-button (keyup.enter)="submitGrade(s)" (click)="submitGrade(s)">Submit Grade</button>
+                          <button mat-button (click)="submitGrade(s)">Submit Grade</button>
                         </div>
                     </div>
                   </div>
@@ -311,7 +311,8 @@
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                     </div>
-                      <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'">
+                      <div class="studentUpload" *ngIf="studentHasAttemptOnRecord(a)">
+                      <!-- <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'"> -->
                         <div style="display: inline-flex" *ngIf="m.progress === 2">
                         <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->

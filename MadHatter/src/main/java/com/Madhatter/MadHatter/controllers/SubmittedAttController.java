@@ -220,6 +220,14 @@ public class SubmittedAttController {
 
 		}
 		
+		//----------------GET ATT BY STUDENT ID----------\\
+		@RequestMapping(value = "checkStudentSubmittedAtt", method = RequestMethod.GET)
+		public ResponseEntity<SubmittedAtt> getStudentAttemptById(@RequestParam("studentId") long sid, @RequestParam("attId") long aid){
+			SubmittedAtt sub = repo.findByUserIdAndAttachmentId(sid, aid);
+			
+			return ResponseEntity.ok(sub);
+		}
+		
 
 		
 }

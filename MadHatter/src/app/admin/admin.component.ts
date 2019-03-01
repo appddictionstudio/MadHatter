@@ -75,6 +75,8 @@ export class AdminComponent implements OnInit, OnChanges {
   evaluatedAttempts = [null];
   hasGottenStartingProgress = [null];
   startProgress = [null];
+  userAttCheck = [null];
+  showSubmitButton = [null];
 
   ngOnInit() {
     this.getUserRole();
@@ -215,6 +217,28 @@ export class AdminComponent implements OnInit, OnChanges {
       return true;
     } if (this.currentUser.role === 'ROLE_ADMIN') {
       return true;
+    }
+  }
+
+  studentHasAttemptOnRecord(att) {
+    if (att.description === 'Exercise' || att.description === 'Quiz' || att.description === 'Test') {
+      if (!this.userAttCheck[att.id]) {
+        console.log(att.id);
+        console.log(this.currentUser.id);
+        this.userAttCheck[att.id] = true;
+        this.apiS.checkStudentAttemptsByLesson(this.currentUser.id, att.id).subscribe(data => {
+          console.log(data);
+          if (data) {
+            this.showSubmitButton[att.id] = false;
+            return false;
+          } else {
+            this.showSubmitButton[att.id] = true;
+            return true;
+          }
+        });
+      } else {
+        return this.showSubmitButton[att.id];
+      }
     }
   }
 

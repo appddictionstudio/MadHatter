@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit, OnChanges {
       this.auth.setToken(result['accessToken']);
       const auth = this.auth.isAuthenticated();
       this.auth.redirectToRequestedView();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/');
       this.appcomp.userLoggedIn(auth);
       this.isLoggedIn = true;
     },
