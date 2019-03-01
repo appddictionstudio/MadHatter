@@ -302,20 +302,14 @@
             </div>
             <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                 <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id && a.quiz !== 'N'">
-                    <!-- <div *ngIf="a.description === quiz" class="studentDetialUpload">
-                      <a href="assets/quizzes/{{a.fileNm}}/story.html">{{a.fileNm}}</a>
-                      <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
-                    </div> -->
                     <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
                       <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                     </div>
                       <div class="studentUpload" *ngIf="studentHasAttemptOnRecord(a)">
-                      <!-- <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'"> -->
                         <div style="display: inline-flex" *ngIf="m.progress === 2">
                         <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
-                        <!-- <input type="file" #file> -->
                         <div style="width: 100%;">
                           <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
                           </mat-progress-spinner>
@@ -379,9 +373,9 @@
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                     </div>
-                      <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz'">
-                          <div *ngIf="m.progress === 2">
-                          <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
+                      <div class="studentUpload" *ngIf="studentHasAttemptOnRecord(a)">
+                        <div style="display: inline-flex" *ngIf="m.progress === 2">
+                        <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
                           <!-- <input type="file" #file> -->
                           <div style="width: 100%;">
                             <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
