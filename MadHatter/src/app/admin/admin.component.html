@@ -34,7 +34,7 @@
     <div class="learningContent">
       <div *ngIf="m.bootcamp">
         <div class= "headerAdminContent">
-          <h1>{{m.title}}</h1>
+          <h2>{{m.title}}</h2>
           <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
             <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
           </div>
@@ -141,7 +141,7 @@
     <div class="learningContent">
       <div *ngIf="!m.bootcamp">
         <div class= "headerAdminContent">
-          <h1>{{m.title}}</h1>
+          <h2>{{m.title}}</h2>
           <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
             <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
           </div>
@@ -275,7 +275,7 @@
       <div class="learningContent">
         <div *ngIf="m.bootcamp">
           <div class= "headerAdminContent">
-            <h1>{{m.title}}</h1>
+            <h2>{{m.title}}</h2>
             <div class="ProgressBarGridPos">
               <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
                 <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -342,7 +342,7 @@
       <div class="learningContent">
         <div *ngIf="!m.bootcamp">
           <div class= "headerAdminContent">
-            <h1>{{m.title}}</h1>
+            <h2>{{m.title}}</h2>
             <div class="ProgressBarGridPos">
               <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
                 <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
