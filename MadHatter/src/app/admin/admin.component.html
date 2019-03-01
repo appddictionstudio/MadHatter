@@ -283,8 +283,8 @@
       <div class="learningContent">
         <div *ngIf="m.bootcamp">
           <div class= "headerAdminContent">
-            <h2>{{m.title}}</h2>
-            <div>
+            <h1>{{m.title}}</h1>
+            <div class="ProgressBarGridPos">
               <div class="headerProgress" style="width:25em">
                 <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
                   <span>{{(m.progress-1)*50}}%</span>
@@ -320,10 +320,10 @@
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'">
-                        <div *ngIf="m.progress === 2">
-                        <input type="file" #file  (change)="onFileChange($event,a)">
+                        <div style="display: inline-flex" *ngIf="m.progress === 2">
+                        <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
                         <!-- <input type="file" #file> -->
-                        <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                        <div style="width: 100%;">
                           <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
                           </mat-progress-spinner>
                           <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>
@@ -355,8 +355,8 @@
       <div class="learningContent">
         <div *ngIf="!m.bootcamp">
           <div class= "headerAdminContent">
-            <h2>{{m.title}}</h2>
-            <div>
+            <h1>{{m.title}}</h1>
+            <div class="ProgressBarGridPos">
               <div class="headerProgress" style="width:25em">
                 <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
                   <span>{{(m.progress-1)*50}}%</span>
@@ -388,9 +388,9 @@
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz'">
                           <div *ngIf="m.progress === 2">
-                          <input type="file" #file  (change)="onFileChange($event,a)">
+                          <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
                           <!-- <input type="file" #file> -->
-                          <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                          <div style="width: 100%;">
                             <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
                             </mat-progress-spinner>
                             <button style="margin-left: 6%;" [disabled]="!fileUploading === a.id" mat-button (click)="updateSubmittedAtt(a.id,i)">Submit Assignment</button>

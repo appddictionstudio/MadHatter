@@ -1,5 +1,5 @@
 <div *ngIf="isApiDone && !getUserRoleAdmin()">
-Nosey little thing
+{{redirecttheuser()}}
 </div>
 <div *ngIf="isApiDone && getUserRoleAdmin()" class="registerUserClass">
   <div class="registerUserHeader">

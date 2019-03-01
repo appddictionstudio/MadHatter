@@ -5,6 +5,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { SelectionModel } from '@angular/cdk/collections';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { PageEvent, MatDialog } from '@angular/material';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -33,6 +34,7 @@ export class UsersComponent implements OnInit, OnChanges {
 
   constructor(
     private apiU: UserService,
+    private router: Router,
     private snotifyService: SnotifyService,
     ) { }
 
@@ -136,6 +138,10 @@ export class UsersComponent implements OnInit, OnChanges {
         }
       });
     }
+  }
+
+  redirecttheuser() {
+    this.router.navigateByUrl('/');
   }
 
   assignuser() {
