@@ -4,6 +4,7 @@ import { CdkDetailRowDirective } from './cdk-detail-row.directive';
 import { DataSource } from '@angular/cdk/collections';
 import { SelectionModel } from '@angular/cdk/collections';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
+import { PageEvent, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-users',
@@ -27,6 +28,8 @@ export class UsersComponent implements OnInit, OnChanges {
   displayedColumns = ['Role', 'Name', 'Email', 'Username'];
   search: any;
   resetpassword: boolean;
+  currentPage = 0;
+  pageSize = 10;
 
   constructor(
     private apiU: UserService,
@@ -161,15 +164,23 @@ export class UsersComponent implements OnInit, OnChanges {
     this.loadUsers();
     console.log(this.search);
   }
+
+  pageEventHandler(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadUsers();
+  }
+
   loadUsers() {
     if (this.search) {
-      this.apiU.searchByName(this.search).subscribe( res => {
-        this.members = res as any[];
+      console.log(this.search);
+      this.apiU.searchByNamePage(this.search, this.currentPage, this.pageSize).subscribe( res => {
+        this.members = res['content'];
         this.isLoading = false;
       });
     } else {
-      this.apiU.getAllUsers().subscribe(data => {
-        this.members = data as any[];
+      this.apiU.getAllUsersPage(this.currentPage, this.pageSize).subscribe(data => {
+        this.members = data['content'];
         this.isLoading = false;
       });
     }

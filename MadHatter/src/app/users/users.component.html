@@ -32,7 +32,7 @@ Nosey little thing
   <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="SearchUsersRegister"><input matInput placeholder="Search by name"  type="text" name="name" [(ngModel)]="search">
   </mat-form-field>
   <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
-  <mat-table #table [dataSource]="members" matSort style="width:80%; margin:auto; margin-bottom: 3%; border: 1px solid #ccc;">
+  <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
   
       <ng-container matColumnDef="Role">
           <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
@@ -89,4 +89,11 @@ Nosey little thing
     </div>
     <hr style="width: 100%;">
   </ng-template>
+  <mat-toolbar style="margin: 0% auto; width: 80%; background: #ffffff;">
+      <mat-toolbar-row>
+        <mat-paginator style="background: inherit; margin-left: auto;" showFirstLastButtons="false" [pageSizeOptions]="[10, 15, 20]"
+          [pageSize]="pageSize" [length]="100" (page)="pageEventHandler($event)">
+        </mat-paginator>
+      </mat-toolbar-row>
+    </mat-toolbar>
 </div>

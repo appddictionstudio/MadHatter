@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get(environment.apiUrl + 'api/users');
   }
 
+  getAllUsersPage(page, pageSize): Observable<any> {
+    return this.http.get(environment.apiUrl + 'api/users/allPage?page=' + page + '&size=' + pageSize);
+  }
+
   updateUser(user): Observable<any> {
     return this.http.put(environment.apiUrl + 'api/auth/updateUser', user);
   }
@@ -43,8 +47,12 @@ export class UserService {
     return this.http.post(environment.apiUrl + 'api/auth/signup', obj);
   }
 
-  searchByName(search: any) {
+  searchByName(search) {
     return this.http.get(environment.apiUrl + 'api/users/SearchUser/' + search);
+  }
+
+  searchByNamePage(search, page, pageSize) {
+    return this.http.get(environment.apiUrl + 'api/users/SearchUserPage?name=' + search + '&page=' + page + '&size=' + pageSize);
   }
 
   // getUser(): Observable<Users> {
