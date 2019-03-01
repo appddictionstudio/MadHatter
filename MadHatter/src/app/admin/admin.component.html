@@ -66,22 +66,14 @@
               </div>
             </div>
           </ng-template>
-        <!-- <div data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)" class="subheaderadmin">
-          <h3></h3>
-          <i class="fas fa-external-link-alt" id="externalLinkAdmin"></i>
-        </div> -->
         <div>
         <hr id="titleRule">
         <div class="showTopics" *ngFor="let t of topics" >
-            <!-- <hr *ngIf="t.mod.id === m.id"> -->
             <div class="adminSubheader" *ngIf="t.mod.id === m.id">
               <div data-toggle="modal" data-target="#modal-basic-title" class="subheaderadmin">
               <mat-slide-toggle [checked]="!t.hidden" style="padding-right: 20px" (change)=toggleContent(t,m.id)></mat-slide-toggle>
                 <h3>{{t.topicTitle}}</h3>
               </div>
-            <!-- <div class="toggleDetailsCheckbox">
-              <mat-slide-toggle [checked]="!t.hidden" (change)=toggleContent(t,m.id)></mat-slide-toggle>
-            </div> -->
             </div>
             <div class="excerciseSubheader" *ngFor="let a of t.attachments">
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
@@ -126,7 +118,7 @@
                           <span> / {{s.gradeD}}</span>
                         </div>
                         <div class="studentAttemptGradeButton">
-                          <button mat-button (click)="submitGrade(s)">Submit Grade</button>
+                          <button mat-button (keyup.enter)="submitGrade(s)" (click)="submitGrade(s)">Submit Grade</button>
                         </div>
                     </div>
                   </div>
@@ -285,9 +277,9 @@
           <div class= "headerAdminContent">
             <h1>{{m.title}}</h1>
             <div class="ProgressBarGridPos">
-              <div class="headerProgress" style="width:25em">
-                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
-                  <span>{{(m.progress-1)*50}}%</span>
+              <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
+                <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                    <span style="line-height:1.5em;">{{(m.progress-1)*50}}%</span>
                 </div>
             </div>
           </div>
@@ -357,9 +349,9 @@
           <div class= "headerAdminContent">
             <h1>{{m.title}}</h1>
             <div class="ProgressBarGridPos">
-              <div class="headerProgress" style="width:25em">
-                <div class="headerProgress-bar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
-                  <span>{{(m.progress-1)*50}}%</span>
+              <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
+                <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
+                  <span style="line-height:1.5em;">{{(m.progress-1)*50}}%</span>
                 </div>
             </div>
           </div>
