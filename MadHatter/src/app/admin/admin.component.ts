@@ -140,6 +140,7 @@ export class AdminComponent implements OnInit, OnChanges {
       this.snotifyService.success('Student grade updated', {
         timeout: 3000,
         closeOnClick: true,
+        showProgressBar: false,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
@@ -275,6 +276,7 @@ getTopicAttById(topicAttId) {
       this.snotifyService.error('Only one attempt per exercise', {
         timeout: 3000,
         closeOnClick: true,
+        showProgressBar: false,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
@@ -312,6 +314,7 @@ getTopicAttById(topicAttId) {
       this.snotifyService.success(this.result.fileNm + ' was uploaded for grading', {
         timeout: 3000,
         closeOnClick: true,
+        showProgressBar: false,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
@@ -469,6 +472,7 @@ open2(content) {
       this.snotifyService.success('Module Status updated', {
         timeout: 3000,
         closeOnClick: true,
+        showProgressBar: false,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });

@@ -30,7 +30,6 @@ export class VideosComponent implements OnInit {
   getVideoLinks() {
     this.api.getVideos().subscribe(result => {
       this.video = result as any[];
-      // console.log(this.video);
     });
   }
 }

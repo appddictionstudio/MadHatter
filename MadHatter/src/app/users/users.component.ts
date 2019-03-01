@@ -81,6 +81,7 @@ export class UsersComponent implements OnInit, OnChanges {
     this.apiU.updateUser(r).subscribe(data => {
       this.snotifyService.success('User Updated', {
         timeout: 2000,
+        showProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
@@ -107,6 +108,7 @@ export class UsersComponent implements OnInit, OnChanges {
       this.snotifyService.error('Please fill out all fields', {
         timeout: 2000,
         closeOnClick: true,
+        showProgressBar: false,
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
       });
@@ -125,6 +127,7 @@ export class UsersComponent implements OnInit, OnChanges {
           this.snotifyService.error('Email is taken, by ' + user.name, {
             timeout: 2000,
             closeOnClick: true,
+            showProgressBar: false,
             pauseOnHover: true,
             position: SnotifyPosition.centerBottom
           });
@@ -148,6 +151,7 @@ export class UsersComponent implements OnInit, OnChanges {
         this.snotifyService.success('Student Added', {
           timeout: 2000,
           closeOnClick: true,
+          showProgressBar: false,
           pauseOnHover: true,
           position: SnotifyPosition.centerBottom
         });

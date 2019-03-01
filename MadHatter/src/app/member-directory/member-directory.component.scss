@@ -20,30 +20,22 @@ h1 {
     text-align: left;
 }
 .memberscontainer table {
-  font-size: 25px;
-  padding-left: 68px;
+    font-size: 25px;
+    padding-left: 68px;
 }
+
 .memberscontainer tr {
-  padding-left: 19px;
-   padding-bottom: 10px;
+    padding-left: 19px;
+    padding-bottom: 10px;   
+}
+
+.memberscontainer {
+    margin-left: 10%;
 }
 
 .members {
     width: 50%;
     margin: 0% auto;
-}
-
-.selectCerts {
-  margin:auto;
-
-}
-.selectCerts  table {
-  border:2px solid rgb(65, 144, 209);
-  width: 40%;
-  height: 70%;
-align-content: center;
-border-radius: 3px
-
 }
 
 .searchForm {
