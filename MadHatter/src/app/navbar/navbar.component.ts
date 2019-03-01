@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     // this.appcomp.intercept(this.auth.isAuthenticated(), null);
     this.userService.getUser().subscribe(data => {
       this.currentUser = data;
-      console.log(this.currentUser);
+      // console.log(this.currentUser);
       if (!this.currentUser) {
         this.auth.destroyToken();
         location.reload();
@@ -130,7 +130,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     if (this.PasswordInputChange2 === this.PasswordInputChange1) {
       this.fullUser.password = this.PasswordInputChange1;
       this.fullUser.passReset = 'N';
-      console.log(this.fullUser);
+      // console.log(this.fullUser);
       this.userService.updateUserPass(this.fullUser).subscribe(data => {
         this.close();
         this.snotifyService.success('Password updated', {

@@ -156,7 +156,7 @@ export class AdminComponent implements OnInit, OnChanges {
       this.allStudentAttempts = data as any[];
       // console.log(this.allStudentAttempts);
       this.isLoading = false;
-      console.log('we are done loading');
+      // console.log('we are done loading');
     });
   }
 
@@ -223,11 +223,11 @@ export class AdminComponent implements OnInit, OnChanges {
   studentHasAttemptOnRecord(att) {
     if (att.description === 'Exercise' || att.description === 'Quiz' || att.description === 'Test') {
       if (!this.userAttCheck[att.id]) {
-        console.log(att.id);
-        console.log(this.currentUser.id);
+        // console.log(att.id);
+        // console.log(this.currentUser.id);
         this.userAttCheck[att.id] = true;
         this.apiS.checkStudentAttemptsByLesson(this.currentUser.id, att.id).subscribe(data => {
-          console.log(data);
+          // console.log(data);
           if (data) {
             this.showSubmitButton[att.id] = false;
             return false;
@@ -453,7 +453,7 @@ open2(content) {
     } else {
       return 'Current status is '  + this.startProgress[id];
     }
-    console.log(id + ' is ' + this.updateModuleProgress[id]);
+    // console.log(id + ' is ' + this.updateModuleProgress[id]);
   }
 
   // getStartingProgress(mod) {

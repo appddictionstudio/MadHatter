@@ -201,7 +201,7 @@ this.posts = data;
         { text: 'Yes', action: () =>
           this.createBulletinPost(),
          bold: false },
-        { text: 'No', action: () => console.log('Clicked: No') },
+        { text: 'No', action: () => console.log('') },
       ]
     });
   }

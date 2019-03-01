@@ -103,7 +103,7 @@ export class LearningComponent implements OnInit {
  }
 
  getUserRoleOnce(modId) {
-    console.log('getting results');
+    // console.log('getting results');
   if (!this.userCalcOnce[modId]) {
     if (this.currentUser.role === 'ROLE_TEACHER_ASD' || this.currentUser.role === 'ROLE_TEACHER_UI'
       || this.currentUser.role === 'ROLE_ADMIN') {

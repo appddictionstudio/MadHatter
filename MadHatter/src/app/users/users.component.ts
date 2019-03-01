@@ -79,7 +79,7 @@ export class UsersComponent implements OnInit, OnChanges {
     if (this.resetpassword === true) {
       r.passReset = 'Y';
     }
-    console.log(r);
+    // console.log(r);
     this.apiU.updateUser(r).subscribe(data => {
       this.snotifyService.success('User Updated', {
         timeout: 2000,
@@ -120,12 +120,12 @@ export class UsersComponent implements OnInit, OnChanges {
       this.nm = stringToSplit.split(' ');
       this.username = this.nm[0].charAt(0) + this.nm[1];
       this.obj = {email: this.email, password: this.password, name: this.name, username: this.username, roleName: this.class};
-      console.log(this.obj);
+      // console.log(this.obj);
       this.apiU.searchForEmail(this.email).subscribe(data => {
         const user = data as any;
         if (data) {
-          console.log('email already exists');
-          console.log(data);
+          // console.log('email already exists');
+          // console.log(data);
           this.snotifyService.error('Email is taken, by ' + user.name, {
             timeout: 2000,
             closeOnClick: true,
@@ -147,10 +147,10 @@ export class UsersComponent implements OnInit, OnChanges {
   assignuser() {
     this.apiU.searchForUsername(this.username).subscribe(data => {
       if (data) {
-        console.log('username already exists');
+        // console.log('username already exists');
         this.i = this.i + 1;
         this.username = this.username + this.i;
-        console.log(this.username);
+        // console.log(this.username);
         this.authenticate();
       }
       this.apiU.signUpUser(this.obj).subscribe(res => {
@@ -166,13 +166,13 @@ export class UsersComponent implements OnInit, OnChanges {
       this.email = null;
       this.name = null;
       this.username = null;
-      console.log(this.obj);
+      // console.log(this.obj);
     });
   }
   ngOnChanges() {
     this.isLoading = true;
     this.loadUsers();
-    console.log(this.search);
+    // console.log(this.search);
   }
 
   pageEventHandler(event: PageEvent) {
@@ -183,7 +183,7 @@ export class UsersComponent implements OnInit, OnChanges {
 
   loadUsers() {
     if (this.search) {
-      console.log(this.search);
+      // console.log(this.search);
       this.apiU.searchByNamePage(this.search, this.currentPage, this.pageSize).subscribe( res => {
         this.members = res['content'];
         this.isLoading = false;

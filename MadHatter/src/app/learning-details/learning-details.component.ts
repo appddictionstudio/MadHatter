@@ -227,7 +227,7 @@ onFileChange2(event, mod) {
 
   updateTopic(topicId, modId) {
     topicId.mod = {id: modId};
-    console.log(topicId);
+    // console.log(topicId);
     this.apiT.updateTopic(topicId).subscribe(data => {
       this.snotifyService.success('Excercise Added', {
         timeout: 2000,
@@ -340,7 +340,7 @@ downloadAttatchemnts(attachmentId) {
 
   addResources(mod) {
     // this.resources.links = this.resourceLinkInput;
-    console.log(this.buttonAddResource);
+    // console.log(this.buttonAddResource);
     this.api.setResources(mod.id, this.resourceLinkInput).subscribe(res => {
       this.snotifyService.success('Resource Added', {
         timeout: 2000,
