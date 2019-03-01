@@ -175,6 +175,8 @@ hr {
     grid-row: 1;
     grid-column: 4;
     margin-right: 20%;
+    margin-top: auto;
+    font-size: 26px;
 }
 
 #adminDownloadItem {
@@ -197,8 +199,7 @@ hr {
 
 .downloadIconGrades {
     margin: unset;
-    margin-left: auto;
-    margin-right: 15%;
+    margin-right: 5%;
 }
 
 .TeacherView button {
@@ -220,6 +221,7 @@ hr {
 
 .studentAttemptDownload {
     grid-row: 1;
+    display: flex;
     grid-column: 2;
 }
 
@@ -248,7 +250,7 @@ hr {
 .StudentTopicScore {
     grid-column: 4;
     grid-row: 1;
-    font-size: 26px;
+    font-size: 16px;
     font-weight: bold;
     text-align: right;
 }

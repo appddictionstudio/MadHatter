@@ -86,8 +86,8 @@
             <div class="excerciseSubheader" *ngFor="let a of t.attachments">
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                 <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
-                  <span>{{a.fileNm}}</span>
                   <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
+                  <span>{{a.fileNm}}</span>
                 </div>
                 <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
@@ -117,7 +117,9 @@
                           {{s.student.name}}
                         </span>
                         <div class="studentAttemptDownload">
-                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer;" class="fa fa-file" aria-hidden="true"></i>
+                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: absolute; font-size: 150%;" class="fa fa-file" aria-hidden="true"></i>
+                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: fixed; color: white; padding: .5%; padding-top: 1%; font-size: 50%;" 
+                            class="fa fa-download" aria-hidden="true"></i>
                         </div>
                         <div class="studentAttemptGrade">
                           <input type="number" min="0" max="100" style="background: #F3F3F3; width: 35%;" [placeholder]="s.gradeN" [(ngModel)]="s.gradeN">
@@ -193,8 +195,8 @@
             <div class="excerciseSubheader" *ngFor="let a of t.attachments">
               <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
                 <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
-                  <span>{{a.fileNm}}</span>
                   <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
+                  <span>{{a.fileNm}}</span>
                 </div>
                 <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
                   <button mat-button (click)="open(content, a.id)">View Assignments</button>
@@ -224,7 +226,9 @@
                           {{s.student.name}}
                         </span>
                         <div class="studentAttemptDownload">
-                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer;" class="fa fa-file" aria-hidden="true"></i>
+                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: absolute; font-size: 150%;" class="fa fa-file" aria-hidden="true"></i>
+                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: fixed; color: white; padding: .5%; padding-top: 1%; font-size: 50%;" 
+                            class="fa fa-download" aria-hidden="true"></i>
                         </div>
                         <div class="studentAttemptGrade">
                           <input type="number" min="0" max="100" style="background: #F3F3F3; width: 35%;" [placeholder]="s.gradeN" [(ngModel)]="s.gradeN">
@@ -311,9 +315,9 @@
                       <i id="learningDetailDownloadItem"class="fa fa-download" aria-hidden="true"></i>
                     </div> -->
                     <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
+                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
-                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz' || a.description === 'Test'">
                         <div *ngIf="m.progress === 2">
@@ -328,7 +332,7 @@
                       </div>
                       <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
                       <div *ngIf="u?.topicatt?.id === a.id">
-                        <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}</p>
+                        <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}% correct</p>
                       </div>
                     </div>
                 </div>
@@ -378,9 +382,9 @@
               <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                   <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id && a.quiz !== 'N'">
                   <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
+                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                       <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                       <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
-                      <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                     </div>
                       <div class="studentUpload" *ngIf="a.description === 'Exercise' || a.description === 'Quiz'">
                           <div *ngIf="m.progress === 2">
@@ -400,7 +404,7 @@
                         </div>
                         <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
                         <div *ngIf="u?.topicatt?.id === a.id">
-                          <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}</p>
+                          <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id)}}% correct</p>
                         </div>
                       </div>
                   </div>
