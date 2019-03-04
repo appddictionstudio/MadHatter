@@ -11,6 +11,16 @@
     transform: translateY(-20%);
 }
 
+#videoLink {
+    width: 76%;
+    margin: auto;
+    font-size: 26px;
+    color: black;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    min-height: 2.5em;
+}
+
 #videoContent {
     margin-top: 3%;
     background: white;
@@ -39,6 +49,6 @@
 #video {
     margin-bottom: 4em;
 }
-#video p {
-    text-align: center;
+#videoLink a {
+    color: black;
 }
