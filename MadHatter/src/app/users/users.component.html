@@ -71,7 +71,7 @@
       <div class="detail-user-selectionButtons">
         <button mat-button type="button" (click)="updateUser(row)">Save</button>
       </div>
-      <mat-checkbox [(ngModel)]="resetpassword">Reset Password</mat-checkbox>
+      <mat-checkbox [(ngModel)]="resetpassword[row.id]">Reset Password</mat-checkbox>
     </div>
     <hr style="width: 100%;">
   </ng-template>

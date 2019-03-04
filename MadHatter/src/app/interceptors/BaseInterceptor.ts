@@ -7,6 +7,9 @@ import { tap } from 'rxjs/operators';
 import { SnotifyService, SnotifyPosition } from 'ng-snotify';
 import { environment } from 'src/environments/environment';
 import { AppComponent } from 'src/app/app.component';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { strict } from 'assert';
+import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @Injectable()
 export class BaseInterceptor implements HttpInterceptor {
@@ -31,8 +34,8 @@ export class BaseInterceptor implements HttpInterceptor {
       authReq = req.clone({headers: req.headers
         .set('Cache-control', 'no-cache')
         .set('Pragma', 'no-cache')
-        .set('Authorization', 'Bearer ' + this.auth.getToken())})
-;    }
+        .set('Authorization', 'Bearer ' + this.auth.getToken())});
+      }
 
     // Pass on the cloned request instead of the original request.
     return next.handle(authReq).pipe(
@@ -40,13 +43,21 @@ export class BaseInterceptor implements HttpInterceptor {
         event => event instanceof HttpResponse ? 'succeeded' : '',
         error => {
           if (error instanceof HttpErrorResponse) {
-            // this.snotifyService.error(error.status + ' - ' + error.statusText, 'Error', {
-            //   timeout: 4000,
-            //   showProgressBar: false,
-            //   closeOnClick: true,
-            //   pauseOnHover: true,
-            //   position: SnotifyPosition.rightBottom
-            // });
+            if (error.url.includes('signin')) {
+              console.log(error);
+              return false;
+            } if (error.status === 401 && !error.url.includes('api/auth/signin')) {
+              this.auth.destroyToken();
+              location.reload();
+            } else {
+              this.snotifyService.error(error.status + ' - ' + error.statusText, 'Error', {
+                timeout: 4000,
+                showProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                position: SnotifyPosition.rightBottom
+              });
+            }
           }
         })
     );

@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit, OnChanges {
   isApiDone = false;
   displayedColumns = ['Role', 'Name', 'Email', 'Username'];
   search: any;
-  resetpassword: boolean;
+  resetpassword = [null];
   currentPage = 0;
   pageSize = 10;
 
@@ -76,7 +76,7 @@ export class UsersComponent implements OnInit, OnChanges {
 
   updateUser(r) {
     r.roles[0].id = this.setRoleId(r.roles[0].name);
-    if (this.resetpassword === true) {
+    if (this.resetpassword[r.id] === true) {
       r.passReset = 'Y';
     }
     // console.log(r);
@@ -89,7 +89,7 @@ export class UsersComponent implements OnInit, OnChanges {
         position: SnotifyPosition.centerBottom
       });
     });
-    if (this.resetpassword === true) {
+    if (this.resetpassword[r.id] === true) {
       r.password = 'M@ddH@tt3r';
       this.apiU.updateUserPass(r).subscribe(res => {
 

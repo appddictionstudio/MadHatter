@@ -59,12 +59,6 @@ export class LoginComponent implements OnInit, OnChanges {
     );
   }
 
-  // getColor() {
-  //   if (this.failedLogin) {
-  //     return 'rgba(200,0,0,.05)';
-  //   }
-  // }
-
   getToken() {
     const token = this.auth.getToken();
   }
