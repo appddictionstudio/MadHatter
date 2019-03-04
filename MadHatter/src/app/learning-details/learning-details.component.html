@@ -4,104 +4,89 @@
     </mat-progress-spinner>
   </div>
   <div *ngIf="!isLoading"><i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
-  <div class= "headerLearningContent" *ngFor="let m of modules">
-    <h1>{{m.title}}</h1>
-  <div *ngIf="getUserRoleInstructor()" class="modfileSave">
-    <input type="file" #file  (change)="onFileChange2($event,m)">
-    <div style="display: inline-flex; margin-top: 10px; width: 100%;">
-      <mat-progress-spinner *ngIf="modfileUploading" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
-      </mat-progress-spinner>
-    </div>
-    </div>
-  <div class="learningDetailSeperator">
-  <div *ngIf="!hide">
-  <hr>
-  <div class="showTopics" *ngFor="let t of topics; let i = index" >
-  <div class="subheader" *ngIf="!t.hidden">
-    <div class="subheaderlc">
-      <h3>{{t.topicTitle}}</h3>
-    </div>
-    <!-- <div id="detailProgress" class="progress">
-      <div class="progress-barDetails" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': .0001*100}">
-        <span>0%</span>
+    <div class= "headerLearningContent" *ngFor="let m of modules">
+      <h1>{{m.title}}</h1>
+      <div *ngIf="getUserRoleInstructor()" class="modfileSave">
+        <input type="file" #file  (change)="onFileChange2($event,m)">
+        <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+          <mat-progress-spinner *ngIf="modfileUploading" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+          </mat-progress-spinner>
+        </div>
       </div>
-    </div> -->
-
-  <!-- //////////////////////////MODAL//////////////////////////////// -->
-<ng-template #content let-modal let-c="close" let-d="dismiss">
-<div class="modal-header">
-  <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
-  <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
-  <div class="learningDetailGrid" *ngIf="checkIfHidden(att)">
-      <p class="learningDetailName" *ngIf="!attachemntIsQuiz(att.description)" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
-      <p class="learningDetailName" *ngIf="attachemntIsQuiz(att.description)">
-        <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
-        style="display: block; color: black;" 
-        >{{att.fileNm}}</a></p>
-      <div class="learningDetailSetProgress" *ngIf="getUserRoleInstructor()">
-          <mat-form-field>
-            <mat-select placeholder="Set content status" [(value)]="att.description">
-              <mat-option value="Exercise">Exercise</mat-option>
-              <mat-option value="Content">Downloadable</mat-option>
-              <mat-option value="Quiz">Quiz</mat-option>
-              <mat-option value="Test">Test</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="updateExerciseStatusChange(t, att)">Update Status</button>
+      <div class="learningDetailSeperator">
+        <div *ngIf="!hide">
+          <hr>
+          <div class="showTopics" *ngFor="let t of topics; let i = index" >
+            <div class="subheader" *ngIf="!t.hidden">
+              <div class="subheaderlc">
+                <h3>{{t.topicTitle}}</h3>
+              </div>
+              <!-- //////////////////////////MODAL//////////////////////////////// -->
+              <ng-template #content let-modal let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="modal-basic-title">Download Content</h3>
+                  <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="learningDetailGridSeperator" *ngFor="let att of t.attachments">
+                    <div class="learningDetailGrid" *ngIf="checkIfHidden(att)">
+                      <p class="learningDetailName" *ngIf="!attachemntIsQuiz(att.description)" (click)="downloadAttatchemnts(att.id)">{{att.fileNm}}</p>
+                      <p class="learningDetailName" *ngIf="attachemntIsQuiz(att.description)">
+                        <a class="learningDetailName" href="assets/quizzes/{{att.fileNm}}/story.html" target="_blank"
+                        style="display: block; color: black;">{{att.fileNm}}</a>
+                      </p>
+                      <div class="learningDetailSetProgress" *ngIf="getUserRoleInstructor()">
+                        <mat-form-field>
+                          <mat-select placeholder="Set content status" [(value)]="att.description">
+                            <mat-option value="Exercise">Exercise</mat-option>
+                            <mat-option value="Content">Downloadable</mat-option>
+                            <mat-option value="Quiz">Quiz</mat-option>
+                            <mat-option value="Test">Test</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <button mat-button (click)="updateExerciseStatusChange(t, att)">Update Status</button>
+                      </div>
+                      <i *ngIf="getUserRoleInstructor()" id="learningDetailTrash"class="fa fa-trash" aria-hidden="true" (click)="removeAttachment(att)"></i>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              <div class= "launchbutton">
+                <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Lesson Content </button>
+              </div>
+              <div *ngIf="getUserRoleInstructor()" class="fileSave">
+                <input type="file" #file  (change)="onFileChange($event,t,m.id)">
+                <div style="display: inline-flex; margin-top: 10px; width: 100%;">
+                  <mat-progress-spinner *ngIf="fileUploading === t.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+                  </mat-progress-spinner>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="getUserRoleInstructor()">
+          <div class="resourceHeader">
+            <h1 style="margin-top: 25px;">Resources</h1>
+            <hr>
+            <input type="text" style="height: 1.5em; width: 35%;" (keyup)="resourceLinkInputcheck()" [(ngModel)]="resourceLinkInput">
+            <button mat-button style="margin-left: 25px;" placeholder="Add resource link" [disabled]="!buttonAddResource" (click)="addResources(m)">Add Resources</button>
+            <div class="resourceLinks" *ngFor="let r of resources">
+              <a href="{{r.links}}">{{r.links}}</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="getUserRoleStudent()">
+          <div class="resourceHeader" *ngIf="ifResources()">
+            <h1>Resources</h1>
+            <hr>
+            <div class="resourceLinks" *ngFor="let r of resources">
+              <a href="{{r.links}}">{{r.links}}</a>
+            </div>
+          </div>
+        </div>
       </div>
-        <!-- <button style="margin-left: 25%; margin-top: 10px;" mat-button ">Download</button> -->
-        <i *ngIf="getUserRoleInstructor()" id="learningDetailTrash"class="fa fa-trash" aria-hidden="true" (click)="removeAttachment(att)"></i>
-    <!-- <div *ngFor="let a of attList">
-    <p *ngIf="att.attachmentId === a.id">
-      {{att.fileNm}}
-      <button style="margin-left: 25%; margin-top: 10px;" mat-button (click)="downloadAttatchemnts(a.id)">Download</button>
-    </p>
-  </div> -->
-  </div>
-</div>
-</div>
-</ng-template>
-    <div class= "launchbutton">
-      <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Lesson Content </button>
-    </div>
-    <div *ngIf="getUserRoleInstructor()" class="fileSave">
-      <input type="file" #file  (change)="onFileChange($event,t,m.id)">
-      <div style="display: inline-flex; margin-top: 10px; width: 100%;">
-        <mat-progress-spinner *ngIf="fileUploading === t.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
-        </mat-progress-spinner>
-        <!-- <button style="margin-left: 25%; margin-top: 10px;" [disabled]="!fileUploading === t.id" mat-button (click)="updateTopic(t, m.id)" >Add Content</button> -->
-      </div>
-    </div>
     </div>
   </div>
-</div>
-<div *ngIf="getUserRoleInstructor()">
-    <div class="resourceHeader">
-      <h1 style="margin-top: 25px;">Resources</h1>
-    <hr>
-    <input type="text" style="height: 1.5em; width: 35%;" (keyup)="resourceLinkInputcheck()" [(ngModel)]="resourceLinkInput">
-    <button mat-button style="margin-left: 25px;" placeholder="Add resource link" [disabled]="!buttonAddResource" (click)="addResources(m)">Add Resources</button>
-    <div class="resourceLinks" *ngFor="let r of resources">
-      <a href="{{r.links}}">{{r.links}}</a>
-    </div>
-  </div>
-</div>
-<div *ngIf="getUserRoleStudent()">
-  <div class="resourceHeader" *ngIf="ifResources()">
-    <h1>Resources</h1>
-
-  <hr>
-  <div class="resourceLinks" *ngFor="let r of resources">
-    <a href="{{r.links}}">{{r.links}}</a>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>

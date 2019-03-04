@@ -1,49 +1,41 @@
 <div>
-    <div id="header">
-        <img src="../../assets/artboard_1.png">
+  <div id="header">
+    <img src="../../assets/artboard_1.png">
     <div id="username"><i class="fa fa-user" style= "padding-right: 10px; color: #333333"></i>{{getCurrentUser(content)}}
       <button mat-icon-button [matMenuTriggerFor]="menu">
-      <i class="fa fa-caret-down"></i></button>
+        <i class="fa fa-caret-down"></i>
+      </button>
       <mat-menu #menu="matMenu">
         <button style="width: 85%; padding-right: unset;" mat-menu-item (click) ="destroyToken()">Logout</button>
       </mat-menu>
+    </div>
+  </div>
+  <div id="menu">
+    <div class="navLinks" *ngIf="isApiDone">
+      <div class="navLinkCenter" style="margin: auto;">
+        <a href="#/">Home</a>
+        <a href="#/learning">Modules</a>
+        <a href="#/communities">Forum</a>
+        <a href="#/videos">Videos</a>
+        <a href="#/memberdirectory">Member Directory</a>
+        <a *ngIf="getUserRoleInstructor()" href="#/grades">teaching</a>
+        <a *ngIf="getUserRoleStudent()" href="#/grades">grades</a>
+        <a *ngIf="getUserRoleAdmin()" href="#/users">Users</a>
       </div>
     </div>
-    <div id="menu">
-      <!-- <form class="example" style="margin:1em;height:1em">
-        <div class="searchBar">
-        <input type="text" placeholder="Search" name="search2" style="background-color:white;border: white">
-        <button type="submit" style="display: block; background-color:white;border: white"><i class="fa fa-search"
-          style="background-color:white; border-radius: 3px;border: white;right: 20px"></i></button>
-        </div>
-      </form> -->
-      <div class="navLinks" *ngIf="isApiDone">
-        <div class="navLinkCenter" style="margin: auto;">
-            <a href="#/">Home</a>
-            <a href="#/learning">Modules</a>
-            <a href="#/communities">Forum</a>
-            <!-- <a href="#/home">Enablement</a> -->
-            <a href="#/videos">Videos</a>
-            <a href="#/memberdirectory">Member Directory</a>
-            <a *ngIf="getUserRoleInstructor()" href="#/grades">teaching</a>
-            <a *ngIf="getUserRoleStudent()" href="#/grades">grades</a>
-            <a *ngIf="getUserRoleAdmin()" href="#/users">Users</a>
-        </div>
-      </div>
-
-    </div>
+  </div>
 </div>
 <ng-template #content let-modal let-c="close" let-d="dismiss">
   <div class="changepasswordheader" style="height: 28em;">
     <h1 style="text-align: center; margin-top: 1em">Password reset</h1>
     <div style="margin-top: 3em;">
       <form>
-        <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange1">
-          <input matInput placeholder="Type new password"  type="password" name="name" [(ngModel)]="PasswordInputChange1">
-        </mat-form-field><br>
-        <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange2">
-          <input matInput placeholder="Confirm new password"  type="password" name="name" [(ngModel)]="PasswordInputChange2">
-        </mat-form-field><br>
+      <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange1">
+        <input matInput placeholder="Type new password"  type="password" name="name" [(ngModel)]="PasswordInputChange1">
+      </mat-form-field><br>
+      <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="PasswordInputChange2">
+        <input matInput placeholder="Confirm new password"  type="password" name="name" [(ngModel)]="PasswordInputChange2">
+      </mat-form-field><br>
         <button mat-button (click)="updateUserPassword()" style="margin-left: 7em;" type="submit">Update</button>
       </form>
     </div>

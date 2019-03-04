@@ -19,13 +19,6 @@ export class BaseInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // Set the cache control headers needed to prevent IE from caching the
-    // // response from get API calls
-    // let headers = new HttpHeaders({
-    //   'Cache-control': 'no-cache',
-    //   'Pragma': 'no-cache'
-    // });
-
     let authReq;
 
     if (!this.auth.isAuthenticated()) {
@@ -33,13 +26,11 @@ export class BaseInterceptor implements HttpInterceptor {
         .set('Cache-control', 'no-cache')
         .set('Pragma', 'no-cache')
         .set('Content-Type', 'application/json')
-        // .set('Authorization', environment.client)
       });
     } else {
       authReq = req.clone({headers: req.headers
         .set('Cache-control', 'no-cache')
         .set('Pragma', 'no-cache')
-        // .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', 'Bearer ' + this.auth.getToken())})
 ;    }
 

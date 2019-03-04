@@ -1,19 +1,20 @@
 <div class="gridBody">
   <div class="login">
     <img src="../../assets/Asset 1.png"><br>
-    <form><mat-form-field appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail">
-    <!-- <mat-form-field [ngStyle]="{'background':getColor()}" appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail"> -->
-    </mat-form-field><br>
-    <mat-form-field appearance="outline"><input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password">
-    </mat-form-field><br>
-    <button mat-button (click)="authenticate()" type="submit" style="margin-bottom: 2%;">
-      Log in
-    </button></form><br>
-    <p><a>Forgot your Password?</a></p>
-    <p>New Member? <a (click)="getToken()" class ="signUpLogin">Sign Up</a></p>
+    <form>
+      <mat-form-field appearance="outline"><input matInput placeholder="Email / Username"  type="text" name="username" [(ngModel)]="usernameOrEmail">
+      </mat-form-field><br>
+      <mat-form-field appearance="outline"><input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password">
+      </mat-form-field><br>
+      <button mat-button (click)="authenticate()" type="submit" style="margin-bottom: 2%;">
+        Log in
+      </button>
+    </form>
+    <br>
+    <!-- <p><a>Forgot your Password?</a></p>
+    <p>New Member? <a (click)="getToken()" class ="signUpLogin">Sign Up</a></p> -->
   </div>
   <p class="bottomText">Brought to you by: Kessel Run, the 309th SMXG, and the Joint Strike Fighter Program</p>
-  <p></p>
   <div class="graphicLogin">
     <img src="../../assets/bandwidth-crop.jpg">
   </div>

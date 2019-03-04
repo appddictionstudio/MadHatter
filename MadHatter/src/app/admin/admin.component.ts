@@ -83,7 +83,6 @@ export class AdminComponent implements OnInit, OnChanges {
     this.getModuleforLearning();
     this.getAllTopics();
     this.getAttachments();
-    // this.getStudentAttempts();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -91,9 +90,6 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getModuleforLearning() {
-    // this.api.getModule().subscribe(res => {
-    //   this.modules = res as any[];
-    // });
     this.api.getModuleByBootcamp('SD').subscribe(res => {
       this.modulesASD = res as any[];
     });
@@ -101,13 +97,6 @@ export class AdminComponent implements OnInit, OnChanges {
       this.modulesUI = res as any[];
     });
   }
-  // getTopicsByModId(modId) {
-  //   this.apiT.getTopicsByModId(modId).subscribe(data => {
-  //     this.attList2 =  data as any[];
-  //     console.log(this.topics);
-  //     this.isLoading = false;
-  //   });
-  // }
 
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
@@ -132,7 +121,6 @@ export class AdminComponent implements OnInit, OnChanges {
     this.attId = id;
     this.apiS.getStudentAttempts(id).subscribe(data => {
       this.studentAttempts = data as any[];
-      // console.log(this.studentAttempts);
       this.gettingStudentAttemps = false;
     });
   }
@@ -146,17 +134,13 @@ export class AdminComponent implements OnInit, OnChanges {
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
-      // console.log('grade submitted');
     });
   }
 
   getStudentAttemptsByLesson() {
-    // console.log(this.currentUser.id);
     this.apiS.getStudentAttemptsByLesson(this.currentUser.id).subscribe(data => {
       this.allStudentAttempts = data as any[];
-      // console.log(this.allStudentAttempts);
       this.isLoading = false;
-      // console.log('we are done loading');
     });
   }
 
@@ -223,11 +207,8 @@ export class AdminComponent implements OnInit, OnChanges {
   studentHasAttemptOnRecord(att) {
     if (att.description === 'Exercise' || att.description === 'Quiz' || att.description === 'Test') {
       if (!this.userAttCheck[att.id]) {
-        // console.log(att.id);
-        // console.log(this.currentUser.id);
         this.userAttCheck[att.id] = true;
         this.apiS.checkStudentAttemptsByLesson(this.currentUser.id, att.id).subscribe(data => {
-          // console.log(data);
           if (data) {
             this.showSubmitButton[att.id] = false;
             return false;
@@ -289,9 +270,7 @@ getTopicAttById(topicAttId) {
   getAllTopics() {
     this.api.getTopicsByAll().subscribe(res => {
       this.topics = res as any[];
-      // console.log(this.topics);
       this.getStudentAttemptsByLesson();
-      // this.isLoading = false;
     });
   }
 
@@ -315,9 +294,8 @@ getTopicAttById(topicAttId) {
           formData.append('file', file);
           this.apiS.uploadStudentAttachment(formData).subscribe(
             results => {
-              this.fileUploading = null;
+              // this.fileUploading = null;
               this.result = results as SubmittedAtt;
-              // console.log(this.result);
               this.documents.push(this.result);
               topicAtt.subAtt.push(this.result);
             }
@@ -328,11 +306,8 @@ getTopicAttById(topicAttId) {
   }
   updateSubmittedAtt(topicAtt, index) {
     this.fileUploading = topicAtt;
-    // topicAtt.topic = {id: topicId };
     this.result.topicAtt = topicAtt;
     this.result.student = this.currentUser;
-    // this.topicCenter.attachments = this.documents;
-    // tslint:disable-next-line:radix
     this.apiS.updateTopicAtt(this.result, topicAtt).subscribe(data => {
       this.fileUploading = null;
       this.snotifyService.success(this.result.fileNm + ' was uploaded for grading', {
@@ -345,7 +320,6 @@ getTopicAttById(topicAttId) {
       this.topicAtt[index] = data;
       this.subAtt.topicAtt = topicAtt;
     });
-    // console.log(topicAtt + 'this is whats sending');
   }
 
   ishidden(hidden) {
@@ -359,32 +333,27 @@ getTopicAttById(topicAttId) {
   }
 
   downloadAttatchemnts(attachmentId) {
-    // console.log(attachmentId);
     if (attachmentId.description === 'Quiz') {
       return true;
     } else {
       this.apiT.DownloadAtt(attachmentId.id).subscribe(response => {
-          // console.log(response);
         this.saveToFileSystem(response);
       });
     }
  }
  downloadModuleAttachment(attachmentId) {
    this.api.DownloadMod(attachmentId).subscribe(response => {
-    // console.log(response);
    this.saveToFileSystem(response);
  });
  }
 
  downloadStudentAttatchemnts(attachmentId) {
   this.apiS.DownloadStudentAtt(attachmentId).subscribe(response => {
-      // console.log(response);
      this.saveToFileSystem(response);
    });
 }
 
  private saveToFileSystem(response) {
-  // console.log('saving file');
    const contentDispositionHeader: string = response.headers.get(
      'Content-Disposition'
    );
@@ -422,11 +391,6 @@ open2(content) {
   calcGrade(n, d, a, m) {
     if (n > 0) {
       const grade = n / d * 100;
-      // this.modGradeTotal[m] = this.modGradeTotal[m] + grade;
-      // this.modCount[m] = this.modCount[m] + 1;
-      // this.modGrade[m] = this.modGradeTotal[m] / this.modCount[m];
-      // console.log(this.modGrade[m]);
-      // this.getModGrade(m);
       this.studentAttempts[a] = true;
       return grade;
     } else {
@@ -453,25 +417,7 @@ open2(content) {
     } else {
       return 'Current status is '  + this.startProgress[id];
     }
-    // console.log(id + ' is ' + this.updateModuleProgress[id]);
   }
-
-  // getStartingProgress(mod) {
-  //   if (this.hasGottenStartingProgress) {
-  //     return this.startProgress[mod.id];
-  //   } else {
-  //     if (mod.progress === 1) {
-  //     this.startProgress[mod.id] = 'Not Started';
-  //     this.hasGottenStartingProgress[mod.id] = true;
-  //   } if (mod.progress === 2) {
-  //     this.startProgress[mod.id] = 'In Progress';
-  //     this.hasGottenStartingProgress[mod.id] = true;
-  //   } if (mod.progress === 3) {
-  //     this.startProgress[mod.id] = 'Completed';
-  //     this.hasGottenStartingProgress[mod.id] = true;
-  //   }
-  //   }
-  // }
 
   updateModuleProgressPlaceholder(id, progress) {
     if (progress === 1) {
@@ -516,7 +462,6 @@ open2(content) {
   }
 
   studentHasNoAttempt(user, att) {
-    // console.log(user + ' ------ ' + att);
     if (!this.evaluatedAttempts[att]) {
       if (user === att) {
         this.studentAttempts[att] = true;
@@ -528,16 +473,6 @@ open2(content) {
     } else {
     }
     return true;
-    // for (let i = 0; i < this.studentAttempts.length; i++) {
-    //   if (this.allStudentAttempts[i].topicatt.id === att) {
-    //     if (!this.evaluatedAttempts[att]) {
-    //       this.studentAttempts[att] = true;
-    //       this.evaluatedAttempts[att] = true;
-    //     } else {
-    //     }
-    //   }
-    // }
-    // return this.studentAttempts[att];
   }
 
   routeQuiz(path) {
@@ -549,10 +484,8 @@ open2(content) {
       return 'blank';
     } if (this.modGrade[m] > 0) {
       this.numerator = this.modGrade[m];
-      // console.log(this.numerator);
       return this.modGrade[m];
     } else {
-      // console.log(this.numerator);
       return 'blank else';
     }
   }

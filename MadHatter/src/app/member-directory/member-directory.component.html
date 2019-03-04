@@ -1,74 +1,27 @@
 <div class="memberDirectory">
   <div class="members">
-  <div class="memberSearch">
-    <br>
-    <h1>Member Directory</h1>
-    <form class="searchForm" style="margin:auto">
-      <p class="fullNameTitle">Member Full Name:</p>
-      <mat-form-field appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
-      <!-- <p class="stateTitle">State:</p>
-      <mat-form-field appearance="outline" class="state"><input matInput type="text" placeholder=" eg. Alabama"></mat-form-field> -->
-      <button  mat-button (click)="searchByName(search.value)">Search</button>
-    </form>
+    <div class="memberSearch">
+      <br>
+      <h1>Member Directory</h1>
+      <form class="searchForm" style="margin:auto">
+        <p class="fullNameTitle">Member Full Name:</p>
+        <mat-form-field appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
+        <button  mat-button (click)="searchByName(search.value)">Search</button>
+      </form>
+    </div>
   </div>
-  <br>
-  <br>
-  <br>
-    <!-- <div class="memberResults">
-      <div>
-        <form class="selectCerts">
-          <table>
-            <tbody>
-              <tr>
-                <td>Level 1 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 2 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 3 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-              <tr>
-                <td>Level 4 Certification</td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
-    </div> -->
-</div>
-<div class = "memberscontainer">
+  <div class = "memberscontainer">
     <div *ngIf="isLoading" class="contentToDisplay">
-        <mat-progress-spinner color="primary" mode="indeterminate">
-        </mat-progress-spinner>
-      </div>
-  <table>
-    <tbody>
-      <tr *ngFor="let member of members">
-        <td><i class="fa fa-user" style="color: #005b7f; padding-bottom: 10px"></i></td>
-        <td style="padding-left: 10px">{{member.name}}</td>
-      </tr>
-    </tbody>
-  </table>
+      <mat-progress-spinner color="primary" mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+    <table>
+      <tbody>
+        <tr *ngFor="let member of members">
+          <td><i class="fa fa-user" style="color: #005b7f; padding-bottom: 10px"></i></td>
+          <td style="padding-left: 25px">{{member.name}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
 </div>
-
