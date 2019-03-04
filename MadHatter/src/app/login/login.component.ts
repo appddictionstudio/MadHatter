@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit, OnChanges {
   password: string;
   obj: any;
   isLoggedIn: boolean;
-  failedLogin: any;
 
   constructor(
     private auth: AuthService,
@@ -51,10 +50,8 @@ export class LoginComponent implements OnInit, OnChanges {
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
       });
-      this.failedLogin = true;
     },
     () => {
-      this.failedLogin = true;
     }
     );
   }

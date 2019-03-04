@@ -15,13 +15,29 @@
       <mat-progress-spinner color="primary" mode="indeterminate">
       </mat-progress-spinner>
     </div>
-    <table>
-      <tbody>
-        <tr *ngFor="let member of members">
-          <td><i class="fa fa-user" style="color: #005b7f; padding-bottom: 10px"></i></td>
-          <td style="padding-left: 25px">{{member.name}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
+      <ng-container matColumnDef="Role">
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell *matCellDef="let members"> {{userRoleShort(members.roles[0].name)}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let members"> {{members.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let members"> {{members.email}} </mat-cell>
+      </ng-container>
+      <mat-header-row clsas="mat-header-row" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" (click)="proccessRow(row)" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"
+      matRipple class="element-row"></mat-row>
+    </mat-table>
+    <mat-toolbar style="margin: 0% auto; width: 80%;">
+      <mat-toolbar-row>
+      <mat-paginator style="background: inherit; margin-left: auto;" showFirstLastButtons="false" [pageSizeOptions]="[10, 15, 20]"
+        [pageSize]="pageSize" [length]="100" (page)="pageEventHandler($event)">
+      </mat-paginator>
+      </mat-toolbar-row>
+    </mat-toolbar>
   </div>
 </div>
