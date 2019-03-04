@@ -98,7 +98,8 @@ ul#hot-topics li {
 .bulletin-board-container {
     background: #3A3E52;
     color: #FFF;
-    width: 96%;
+    width: 100%;
+    overflow-x: hidden;
     height: 100vh;
     margin: 0;
 }
@@ -414,7 +415,7 @@ input[type=search]:focus {
 }
 
 #bbTextArea {
-    width: 98%;
+    width: 93%;
     margin-left: 2%;
     padding: 10px;
     border-radius: 10px;
@@ -458,7 +459,7 @@ input[type=search]:focus {
 }
 
 #messagesContainerBB {
-    width: 102.5%;
+    width: 95%;
 }
 
 .bbAttDownload {
