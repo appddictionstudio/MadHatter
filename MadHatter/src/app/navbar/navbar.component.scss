@@ -97,7 +97,7 @@
   background-color: #2ba2d2;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #menu {
@@ -109,7 +109,7 @@
   border-top: solid 1px  #005b7f;
   background: #005b7f;
   font-family: sans-serif;
-
+  z-index: 99 !important;
 }
 
 #menu a {
@@ -173,4 +173,15 @@
   padding-top: unset !important;
   padding-bottom: unset !important;
   height: 2em !important;
+}
+
+.btn-outline-primary, .btn-outline-primary:hover {
+  border: 0px;
+  color: #333333;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle {
+  color: #333333;
 }
