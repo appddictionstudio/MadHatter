@@ -27,20 +27,20 @@
   <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
   <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
     <ng-container matColumnDef="Role">
-    <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-    <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{userRoleShort(members.roles[0].name)}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{userRoleShort(members.roles[0].name)}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="Name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell id="matCellHoverElem" *matCellDef="let members" style="text-transform:capitalize"> {{members.name.toLowerCase()}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell id="matCellHoverElem" *matCellDef="let members" style="text-transform:capitalize"> {{members.name.toLowerCase()}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="Email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-    <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{members.email.toLowerCase()}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{members.email.toLowerCase()}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="Username">
-    <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-    <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{members.username.toLowerCase()}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{members.username.toLowerCase()}} </mat-cell>
     </ng-container>
     <mat-header-row clsas="mat-header-row" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" (click)="proccessRow(row)" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"

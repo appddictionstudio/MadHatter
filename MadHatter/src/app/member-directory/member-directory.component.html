@@ -32,9 +32,9 @@
       <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" (click)="proccessRow(row)" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"
       matRipple class="element-row"></mat-row>
     </mat-table>
-    <mat-toolbar style="margin: 0% auto; width: 80%;">
+    <mat-toolbar style="margin: 0% auto; width: 80%; background: #FFFFFF;">
       <mat-toolbar-row>
-      <mat-paginator style="background: inherit; margin-left: auto;" showFirstLastButtons="false" [pageSizeOptions]="[10, 15, 20]"
+      <mat-paginator style="margin-left: auto;" showFirstLastButtons="false" [pageSizeOptions]="[10, 15, 20]"
         [pageSize]="pageSize" [length]="100" (page)="pageEventHandler($event)">
       </mat-paginator>
       </mat-toolbar-row>
