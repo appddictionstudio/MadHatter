@@ -1,6 +1,6 @@
 .formGridLayoutRegister {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr .5fr;
     grid-template-columns: 33% 33% 33%;
     width: 80%;
     margin: auto;
@@ -55,7 +55,7 @@
 .detail-user {
     display: grid;
     grid-template-columns: 5.5% 26.5% 5.5% 26.5% 5.5% 26.5% 6%;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr .25fr;
 }
 
 .detail-user-Name {
@@ -91,6 +91,14 @@
     grid-column: 6;
 }
 
-.detail-user-selectionButtons button {
-    margin-left: 92%;
+.detail-user-selectionButtons {
+    grid-column: 6;
+    grid-row: 2;
+    margin-left: auto;
+    margin-right: 12%;
+}
+
+#detail-user-password-reset {
+    grid-column: 2;
+    grid-row: 2;
 }

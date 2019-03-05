@@ -20,11 +20,13 @@
       </mat-select>
     </mat-form-field>
     <button mat-button (click)="authenticate()" type="submit">Register User</button>
-  </form><br>
-  <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="SearchUsersRegister">
-    <input matInput placeholder="Search by name"  type="text" name="name" [(ngModel)]="search">
-  </mat-form-field>
-  <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
+  </form><hr style="width: 95%;"><br>
+  <form>
+    <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="SearchUsersRegister">
+      <input matInput placeholder="Search by name"  type="text" name="name" [(ngModel)]="search">
+    </mat-form-field>
+    <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
+  </form>
   <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
     <ng-container matColumnDef="Role">
       <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
@@ -67,11 +69,11 @@
             <mat-option value="ROLE_ADMIN">Admin</mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-checkbox id="detail-user-password-reset" [(ngModel)]="resetpassword[row.id]">Reset Password</mat-checkbox>
+        <div class="detail-user-selectionButtons">
+          <button mat-button type="button" (click)="updateUser(row)">Save</button>
+        </div>
       </div>
-      <div class="detail-user-selectionButtons">
-        <button mat-button type="button" (click)="updateUser(row)">Save</button>
-      </div>
-      <mat-checkbox [(ngModel)]="resetpassword[row.id]">Reset Password</mat-checkbox>
     </div>
     <hr style="width: 100%;">
   </ng-template>
