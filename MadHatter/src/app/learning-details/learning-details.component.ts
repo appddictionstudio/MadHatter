@@ -175,7 +175,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
       this.topicsEdit = data as any[];
-      console.log(this.topics);
       // console.log(this.topics);
       this.isLoading = false;
     });
@@ -338,18 +337,13 @@ onFileChange2(event, mod) {
  }
 
  getUserRoleInstructor() {
-    if (this.currentUser) {
-      if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-        return true;
-      } if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-        return true;
-    } if (this.currentUser.role === 'ROLE_ADMIN') {
-      return true;
-    } else {
-      return false;
-    }
+  if (this.currentUser.role === 'ROLE_ADMIN' || this.currentUser.role === 'ROLE_TEACHER_ASD' ||
+  this.currentUser.role === 'ROLE_TEACHER_UI') {
+    return true;
+  } else {
+    return false;
   }
-  }
+}
 
   getUserRoleStudent() {
     if (this.currentUser) {
@@ -375,6 +369,7 @@ onFileChange2(event, mod) {
         position: SnotifyPosition.centerBottom
       });
       this.resourceLinkInput = '';
+      this.ngOnInit();
     });
   }
 
@@ -384,6 +379,17 @@ onFileChange2(event, mod) {
     } else {
       this.buttonAddResource = false;
     }
+  }
+
+  removeResourceLink(resource) {
+    this.api.removeResources(resource.id).subscribe(res => {
+      this.snotifyService.success('Resource removed', {
+        position: SnotifyPosition.centerBottom,
+        closeOnClick: true,
+        timeout: 2000,
+      });
+      this.ngOnInit();
+    });
   }
 
   updateExerciseStatusChange(t, a) {
