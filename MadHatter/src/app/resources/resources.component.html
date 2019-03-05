@@ -3,6 +3,7 @@
   <div *ngIf="checkForResources(m)">
     <h2>Module {{m.modNm}}: {{m.title}}</h2>
     <div class="resourceLinksPage" *ngFor="let r of m.resources">
+      <i *ngIf="getUserRoleInstructor()" id="resourcesTrash" class="fa fa-trash" aria-hidden="true" (click)="removeResourceLink(r)"></i>
       <a href="{{r.links}}">{{r.links}}</a>
     </div>
   </div>

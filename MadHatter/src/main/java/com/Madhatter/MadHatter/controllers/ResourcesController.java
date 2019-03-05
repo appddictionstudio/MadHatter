@@ -35,6 +35,12 @@ public class ResourcesController {
 		List<Modules> resources = repo.findByAll();
 		return ResponseEntity.ok(resources);
   	}
+	
+	@RequestMapping(value = "/removeResource/{id}", method = RequestMethod.DELETE)
+  	ResponseEntity<String> deleteById(@PathVariable long id) {
+		repo.deleteById(id);
+		return ResponseEntity.ok("");
+  	}
   	
   	@RequestMapping(value = "/postResourceByModId/{id}", method = RequestMethod.POST)
   	public ResponseEntity<Object> postResourceByModId(@PathVariable long id, @RequestBody String link) {

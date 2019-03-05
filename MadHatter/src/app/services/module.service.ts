@@ -45,6 +45,10 @@ export class ModuleService {
     return this.http.get(environment.apiUrl + 'resources/getResourceByModId/' + id);
   }
 
+  removeResources(id: number) {
+    return this.http.delete(environment.apiUrl + 'resources/removeResource/' + id);
+  }
+
   getAllResources() {
     return this.http.get(environment.apiUrl + 'resources/getAllResource');
   }
