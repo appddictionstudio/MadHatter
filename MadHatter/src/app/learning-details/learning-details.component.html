@@ -21,10 +21,11 @@
         </div>
       </div>
       <div *ngIf="learningDetailEdit" id="headerEditForm">
-        <h1>Module number</h1>
+        <span style="padding-right: 20px">Module number</span>
         <mat-form-field style="width: 5%;" appearance="outline"><input matInput [placeholder]="m.modNm" type="text" name="Title" [(ngModel)]="m.modNm">
         </mat-form-field><br>
-        <mat-form-field style="width: 100%;" appearance="outline"><input matInput [placeholder]="m.title" type="text" name="Title" [(ngModel)]="m.title">
+        <span style="padding-right: 20px">Module name</span>
+        <mat-form-field style="width: 90%;" appearance="outline"><input matInput [placeholder]="m.title" type="text" name="Title" [(ngModel)]="m.title">
         </mat-form-field>
       </div>
       <div class="learningDetailSeperator">

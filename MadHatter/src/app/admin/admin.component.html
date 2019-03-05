@@ -137,7 +137,7 @@
               <div class= "headerAdminContent">
                 <div class="headerAdminContentTitle">
                   <h2>Module {{m.modNm}}: {{m.title}}</h2>
-                  <span style="padding-top: 12px; padding-left: 25px;" [routerLink]="['/learning/learningdetail/', m.id]"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
+                  <span style="padding-top: 12px; padding-left: 25px; cursor: pointer;" [routerLink]="['/learning/learningdetail/', m.id]"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
                 </div>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
                   <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
