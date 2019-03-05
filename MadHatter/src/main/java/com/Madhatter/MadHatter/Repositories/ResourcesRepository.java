@@ -18,5 +18,8 @@ public interface ResourcesRepository extends JpaRepository<Resources, Long> {
 	Optional<Modules> findByResourceId(Long Id);
 	
 	List<Resources> findById(Integer Id);
+	
+	@Query("SELECT r.mod FROM Resources r")
+	List<Modules> findByAll();
 }
 

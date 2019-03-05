@@ -1,0 +1,9 @@
+<h1 style="text-align: left; margin: 1% 0% 1% 1%; font-size: 45px;">Resources</h1>
+<div class="resourceModules" *ngFor="let m of modules">
+  <div *ngIf="checkForResources(m)">
+    <h2>Module {{m.modNm}}: {{m.title}}</h2>
+    <div class="resourceLinksPage" *ngFor="let r of m.resources">
+      <a href="{{r.links}}">{{r.links}}</a>
+    </div>
+  </div>
+</div>

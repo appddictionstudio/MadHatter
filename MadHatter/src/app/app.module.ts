@@ -61,6 +61,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTreeModule} from '@angular/material/tree';
 import { UsersComponent } from './users/users.component';
 import { CdkDetailRowDirective } from './users/cdk-detail-row.directive';
+import { ResourcesComponent } from './resources/resources.component';
 // import { ChangePassComponent } from './change-pass/change-pass.component';
 
 library.add(fas, far, fab);
@@ -86,6 +87,7 @@ library.add(fas, far, fab);
     SearchComponent,
     ActivityComponent,
     UsersComponent,
+    ResourcesComponent,
     // ChangePassComponent,
     // NgbdModalBasic
   ],

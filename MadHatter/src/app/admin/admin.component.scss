@@ -136,9 +136,10 @@ hr {
     margin: 2% auto 0 auto;
 }
 
-.headerAdminContent h2 {
+.headerAdminContentTitle {
     grid-column: 1 / 5;
     grid-row: 1;
+    display: inline-flex;
 }
 
 .adminSetProgress {

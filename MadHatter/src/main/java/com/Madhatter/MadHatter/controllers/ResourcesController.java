@@ -1,5 +1,6 @@
 package com.Madhatter.MadHatter.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,15 @@ public class ResourcesController {
 	@Autowired
     private ResourcesRepository repo;
 
-  	@RequestMapping(value = "/getResourceByModId/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getResourceByModId/{id}", method = RequestMethod.GET)
   	ResponseEntity<Optional<Modules>> getResourceByModId(@PathVariable long id) {
 		Optional<Modules> resources = repo.findByResourceId(id);
+		return ResponseEntity.ok(resources);
+  	}
+	
+	@RequestMapping(value = "/getAllResource", method = RequestMethod.GET)
+  	ResponseEntity<List<Modules>> getAll() {
+		List<Modules> resources = repo.findByAll();
 		return ResponseEntity.ok(resources);
   	}
   	

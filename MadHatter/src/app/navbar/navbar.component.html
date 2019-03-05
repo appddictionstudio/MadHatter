@@ -3,7 +3,7 @@
     <img src="../../assets/artboard_1.png">
     <div id="username" ngbDropdown class="d-inline-block">
       <i class="fa fa-user" style= "padding-right: 0px; color: #333333"></i>
-      <button ngbDropdownToggle class="btn btn-outline-primary" id="navListMenu">{{getCurrentUser(content)}}</button>
+      <button *ngIf="isApiDone" ngbDropdownToggle class="btn btn-outline-primary" id="navListMenu">{{getCurrentUser(content)}}</button>
         <div style="z-index: 100; overflow-x: hidden;" ngbDropdownMenu class="dropdown-menu" aria-labelledby="navListMenu">
           <button style="font-family: inherit" class="dropdown-item" (click)="destroyToken()">Logout</button>
         </div>

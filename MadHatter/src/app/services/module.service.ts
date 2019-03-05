@@ -45,6 +45,10 @@ export class ModuleService {
     return this.http.get(environment.apiUrl + 'resources/getResourceByModId/' + id);
   }
 
+  getAllResources() {
+    return this.http.get(environment.apiUrl + 'resources/getAllResource');
+  }
+
   setResources(id: number, resource: any) {
     return this.http.post(environment.apiUrl + 'resources/postResourceByModId/' + id, resource);
   }

@@ -45,7 +45,7 @@
       <mat-cell id="matCellHoverElem" *matCellDef="let members"> {{members.username.toLowerCase()}} </mat-cell>
     </ng-container>
     <mat-header-row clsas="mat-header-row" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" (click)="proccessRow(row)" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"
+    <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"
     matRipple class="element-row"></mat-row>
   </mat-table>
   <ng-template #tpl let-row>

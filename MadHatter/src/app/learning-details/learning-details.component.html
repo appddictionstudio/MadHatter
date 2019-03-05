@@ -20,6 +20,7 @@
         </mat-form-field>
       </div>
       <div *ngIf="getUserRoleInstructor()" class="modfileSave">
+        <p style="margin-bottom: 5px;">Upload Instructor Content</p>
         <input type="file" #file  (change)="onFileChange2($event,m)">
         <div style="display: inline-flex; margin-top: 10px; width: 100%;">
           <mat-progress-spinner *ngIf="modfileUploading" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
