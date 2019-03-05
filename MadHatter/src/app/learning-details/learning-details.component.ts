@@ -52,6 +52,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   modfileUploading = false;
   modId: any;
   module: any;
+  learningDetailEdit = false;
   updateExerciseStatus = '';
   isLoading = true;
   documents: any[] = [];
@@ -60,6 +61,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   topicslist: Topic[] = [];
   closeResult: string;
   attList: Attachments[] = [];
+  modalTitle: any;
+  topicsEdit: any;
 
 
   ngOnInit() {
@@ -85,6 +88,14 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       return true;
     } else {
       return false;
+    }
+  }
+
+  editToggle() {
+    if (!this.learningDetailEdit) {
+      this.learningDetailEdit = true;
+    } else {
+      this.learningDetailEdit = false;
     }
   }
 
@@ -163,6 +174,8 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   getTopicsByModId(modId) {
     this.apiT.getTopicsByModId(modId).subscribe(data => {
       this.topics =  data as any[];
+      this.topicsEdit = data as any[];
+      console.log(this.topics);
       // console.log(this.topics);
       this.isLoading = false;
     });
@@ -249,15 +262,27 @@ onFileChange2(event, mod) {
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom
       });
-  });
-}
+    });
+  }
+
+  saveEdits() {
+    // console.log(this.modules[0]);
+    this.api.updateMod(this.modules[0]).subscribe(data => {});
+    let i;
+    // console.log(this.topics);
+    for (i = 0; i < this.topics.length; i++) {
+      // console.log(this.topics[i]);
+      this.apiT.updateTopic(this.topics[i]).subscribe(data => {});
+    }
+    this.editToggle();
+  }
 
 
-downloadAttatchemnts(attachmentId) {
-  this.apiT.DownloadAtt(attachmentId).subscribe(response => {
-    this.saveToFileSystem(response);
-  });
- }
+  downloadAttatchemnts(attachmentId) {
+    this.apiT.DownloadAtt(attachmentId).subscribe(response => {
+      this.saveToFileSystem(response);
+    });
+  }
 
  removeAttachment(attachment) {
   this.apiT.deleteTopicAtt(attachment.id).subscribe(response => {

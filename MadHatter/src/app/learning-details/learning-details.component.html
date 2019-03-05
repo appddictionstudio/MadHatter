@@ -4,8 +4,21 @@
     </mat-progress-spinner>
   </div>
   <div *ngIf="!isLoading"><i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
+    <div *ngIf="getUserRoleInstructor()" style="margin: 1% 0% -2% 13%; font-size: 20px;">
+      <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
+      <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save</span></span>
+    </div>
+    <!-- <button *ngIf="!learningDetailEdit" (click)="editToggle()">Edit</button>
+    <button *ngIf="learningDetailEdit" (click)="saveEdits()">Save</button> -->
     <div class= "headerLearningContent" *ngFor="let m of modules">
-      <h1>{{m.title}}</h1>
+      <h1 *ngIf="!learningDetailEdit">Module {{m.modNm}}: {{m.title}}</h1>
+      <div *ngIf="learningDetailEdit" id="headerEditForm">
+        <h1>Module number</h1>
+        <mat-form-field style="width: 5%;" appearance="outline"><input matInput [placeholder]="m.modNm" type="text" name="Title" [(ngModel)]="m.modNm">
+        </mat-form-field><br>
+        <mat-form-field style="width: 100%;" appearance="outline"><input matInput [placeholder]="m.title" type="text" name="Title" [(ngModel)]="m.title">
+        </mat-form-field>
+      </div>
       <div *ngIf="getUserRoleInstructor()" class="modfileSave">
         <input type="file" #file  (change)="onFileChange2($event,m)">
         <div style="display: inline-flex; margin-top: 10px; width: 100%;">
@@ -19,7 +32,9 @@
           <div class="showTopics" *ngFor="let t of topics; let i = index" >
             <div class="subheader" *ngIf="!t.hidden">
               <div class="subheaderlc">
-                <h3>{{t.topicTitle}}</h3>
+                <h3 *ngIf="!learningDetailEdit">{{t.topicTitle}}</h3>
+                <mat-form-field id="topicEditForm" *ngIf="learningDetailEdit" appearance="outline"><input matInput [placeholder]="t.topicTitle" type="text" name="Title" [(ngModel)]="t.topicTitle">
+                </mat-form-field>
               </div>
               <!-- //////////////////////////MODAL//////////////////////////////// -->
               <ng-template #content let-modal let-c="close" let-d="dismiss">
@@ -53,6 +68,7 @@
                   </div>
                 </div>
               </ng-template>
+              <!-- //////////////////////////END MODAL//////////////////////////////// -->
               <div class= "launchbutton">
                 <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Lesson Content </button>
               </div>

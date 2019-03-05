@@ -61,7 +61,7 @@ public class ModulesController {
     // -------------------------------GET MOD BY TYPE----------------
     @RequestMapping(value = "/bootcamp/{name}", method = RequestMethod.GET)
 		ResponseEntity<List<Modules>> getModByBootcamp(@PathVariable String name) {
-			List<Modules> post = repo.findByBootcamp(name);
+			List<Modules> post = repo.findByBootcampOrderByModNm(name);
 			return ResponseEntity.ok(post);
 	}
  	
