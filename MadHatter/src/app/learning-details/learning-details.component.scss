@@ -7,9 +7,9 @@
 }
 
 .headerLearningContent {
-    display: grid;
-    grid-template-columns: .5fr .5fr .2fr .3fr;
-    grid-template-rows: 1fr;
+    // display: grid;
+    // grid-template-columns: .5fr .5fr .2fr .3fr;
+    // grid-template-rows: 1fr 1fr;
     width: 75%;
     margin: 45px auto 0 auto;
 }
@@ -53,12 +53,6 @@
   text-align: left;
   margin: auto 0%;
 }
-
-.modfileSave {
-  grid-column: 4;
-  grid-row: 1
-}
-
 
 hr {
     width: 100%;
