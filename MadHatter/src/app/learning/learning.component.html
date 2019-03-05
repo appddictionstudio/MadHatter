@@ -29,7 +29,7 @@
               <div *ngFor="let m of module">
                 <div *ngIf="m.progress === 1">
                   <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="m.bootcamp === 'SD'" (click)="routeForInstructors(m.id)">
-                    <h3>{{m.title}}</h3>
+                    <h3>Module {{m.modNm}}: {{m.title}}</h3>
                     <p>{{m.description}}</p>
                     <div class="progress" style="width: 100%">
                       <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -53,7 +53,7 @@
               <div *ngFor="let m of module">
                 <div *ngIf="m.progress === 2">
                   <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="m.bootcamp === 'SD'">
-                    <h3>{{m.title}}</h3>
+                    <h3>Module {{m.modNm}}: {{m.title}}</h3>
                     <p>{{m.description}}</p>
                     <div class="progress" style="width: 100%">
                       <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -77,7 +77,7 @@
               <div *ngFor="let m of module">
                 <div *ngIf="m.progress === 3">
                   <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp === 'SD'">
-                    <h3>{{m.title}}</h3>
+                    <h3>Module {{m.modNm}}: {{m.title}}</h3>
                     <p>{{m.description}}</p>
                     <div class="progress" style="width: 100%">
                       <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -120,7 +120,7 @@
               <div *ngFor="let m of module">
               <div *ngIf="m.progress === 1">
                 <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" class="cardGrid" *ngIf="m.bootcamp === 'UI'" (click)="routeForInstructors(m.id)">
-                  <h3>{{m.title}}</h3>
+                  <h3>Module {{m.modNm}}: {{m.title}}</h3>
                   <p>{{m.description}}</p>
                   <div class="progress" style="width: 100%">
                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -144,7 +144,7 @@
               <div *ngFor="let m of module">
                 <div *ngIf="m.progress === 2">
                   <mat-card [routerLink]="['learningdetail/', m.id]" class="cardGrid" id="cardInProgress" *ngIf="m.bootcamp === 'UI'">
-                    <h3>{{m.title}}</h3>
+                    <h3>Module {{m.modNm}}: {{m.title}}</h3>
                     <p>{{m.description}}</p>
                     <div class="progress" style="width: 100%">
                       <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -168,7 +168,7 @@
             <div *ngFor="let m of module">
               <div *ngIf="m.progress === 3">
                 <mat-card [ngStyle]="{'cursor': getUserRoleOnce(m.id)}" [routerLink]="['learningdetail/', m.id]" class="cardGrid" *ngIf="m.bootcamp === 'UI'">
-                  <h3>{{m.title}}</h3>
+                  <h3>Module {{m.modNm}}: {{m.title}}</h3>
                   <p>{{m.description}}</p>
                   <div class="progress" style="width: 100%">
                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">

@@ -27,11 +27,11 @@
     <div *ngIf="teachingRole('ASD')" class="classSeperation">
       <h1 id="headerTitle">Advanced Software Developer</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{i + 1}}">
+        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
             <div *ngIf="m.bootcamp === 'SD'">
               <div class= "headerAdminContent">
-                <h2>{{m.title}}</h2>
+                <h2>Module {{m.modNm}}: {{m.title}}</h2>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
                   <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
                 </div>
@@ -128,11 +128,11 @@
     <div *ngIf="teachingRole('UI')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{i + 1}}">
+        <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
             <div *ngIf="m.bootcamp === 'UI'">
               <div class= "headerAdminContent">
-                <h2>{{m.title}}</h2>
+                <h2>Module {{m.modNm}}: {{m.title}}</h2>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
                   <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
                 </div>
@@ -251,11 +251,11 @@
     <div *ngIf="studentsRole('ASD')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.id - 6}}">
+        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
             <div *ngIf="m.bootcamp === 'SD'">
               <div class= "headerAdminContent">
-                <h2>{{m.title}}</h2>
+                <h2>Module {{m.modNm}}: {{m.title}}</h2>
                 <div class="ProgressBarGridPos">
                   <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
                     <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">
@@ -316,11 +316,11 @@
   <div *ngIf="studentsRole('UI')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
     <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-      <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.id}}">
+      <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.modNm}}">
         <div class="learningContent">
           <div *ngIf="m.bootcamp === 'UI'">
             <div class= "headerAdminContent">
-              <h2>{{m.title}}</h2>
+              <h2>Module {{m.modNm}}: {{m.title}}</h2>
               <div class="ProgressBarGridPos">
                 <div class="headerProgress" style="width:24em; height: 1.5em; margin-left: 0px;">
                   <div class="headerProgress-bar" style="height: 1.5em" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': (m.progress-1)*50}">

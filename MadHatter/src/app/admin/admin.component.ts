@@ -92,9 +92,11 @@ export class AdminComponent implements OnInit, OnChanges {
   getModuleforLearning() {
     this.api.getModuleByBootcamp('SD').subscribe(res => {
       this.modulesASD = res as any[];
+    console.log(this.modulesASD);
     });
     this.api.getModuleByBootcamp('UI').subscribe(res => {
       this.modulesUI = res as any[];
+    console.log(this.modulesUI);
     });
   }
 
