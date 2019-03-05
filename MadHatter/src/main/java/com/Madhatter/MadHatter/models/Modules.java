@@ -22,7 +22,7 @@ public class Modules {
     private String description;
 
 	@Column
-    private String iconLink;
+    private Long modNm;
     
 	@Column
 	private String bootcamp;
@@ -47,11 +47,19 @@ public class Modules {
     public Modules(String title, long progress, String description, String iconLink, String bootcamp) {
     	this.title = title;
     	this.description = description;
-    	this.iconLink = iconLink;
+    	this.modNm = modNm;
     	this.progress = progress;
     	this.bootcamp = bootcamp;
     }
     
+	public Long getModNm() {
+		return modNm;
+	}
+
+	public void setModNm(Long modNm) {
+		this.modNm = modNm;
+	}
+
 	public List<ModAtt> getModAttachments() {
 		return modAttachments;
 	}
@@ -92,13 +100,13 @@ public class Modules {
 		this.description = description;
 	}
 
-	public String getIconLink() {
-		return iconLink;
-	}
-
-	public void setIconLink(String iconLink) {
-		this.iconLink = iconLink;
-	}
+//	public String getIconLink() {
+//		return iconLink;
+//	}
+//
+//	public void setIconLink(String iconLink) {
+//		this.iconLink = iconLink;
+//	}
 
 	public String getBootcamp() {
 		return bootcamp;
