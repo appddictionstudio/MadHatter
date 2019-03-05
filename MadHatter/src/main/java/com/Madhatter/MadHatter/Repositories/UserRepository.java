@@ -32,7 +32,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Boolean existsByEmail(String email);
     
-    @Query("select u from User u")
+    @Query("SELECT u FROM User u")
     public List<User> getAllUsers();
 
 	public List<User> findByNameContainingIgnoreCase(String searchString);
@@ -40,13 +40,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	public Page<User> findByNameContainingIgnoreCaseOrderByName(String searchString, Pageable pageable);
 	
-
+	@Query("SELECT u FROM User u ORDER BY u.id desc")
 	public Page<User> findAll(Pageable pageable);
 	
-	@Query("SELECT u from User u WHERE u.username LIKE ?1")
+	@Query("SELECT u FROM User u WHERE u.username LIKE ?1")
 	public User findByUsernameContainingIgnoreCase(String searchString);
 	
-	@Query("SELECT u from User u WHERE u.email LIKE ?1")
+	@Query("SELECT u FROM User u WHERE u.email LIKE ?1")
 	public User findByEmailContainingIgnoreCase(String searchString);
 
 }

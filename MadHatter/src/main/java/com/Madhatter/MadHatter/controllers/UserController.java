@@ -70,7 +70,6 @@ public class UserController {
   	
   	@RequestMapping(value = "/allPage", method = RequestMethod.GET)
 	ResponseEntity<Page<User>> searchAllUserPage(@RequestParam int page, @RequestParam int size) {
-  		System.out.println(page + " " + size);
 
 		Page<User> postList = repo.findAll(PageRequest.of(page, size));
 		return ResponseEntity.ok(postList);
