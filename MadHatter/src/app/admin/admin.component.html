@@ -29,7 +29,7 @@
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
         <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{i + 1}}">
           <div class="learningContent">
-            <div *ngIf="m.bootcamp">
+            <div *ngIf="m.bootcamp === 'SD'">
               <div class= "headerAdminContent">
                 <h2>{{m.title}}</h2>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
@@ -130,7 +130,7 @@
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
         <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{i + 1}}">
           <div class="learningContent">
-            <div *ngIf="!m.bootcamp">
+            <div *ngIf="m.bootcamp === 'UI'">
               <div class= "headerAdminContent">
                 <h2>{{m.title}}</h2>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
@@ -253,7 +253,7 @@
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
         <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.id - 6}}">
           <div class="learningContent">
-            <div *ngIf="m.bootcamp">
+            <div *ngIf="m.bootcamp === 'SD'">
               <div class= "headerAdminContent">
                 <h2>{{m.title}}</h2>
                 <div class="ProgressBarGridPos">
@@ -318,7 +318,7 @@
     <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
       <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.id}}">
         <div class="learningContent">
-          <div *ngIf="!m.bootcamp">
+          <div *ngIf="m.bootcamp === 'UI'">
             <div class= "headerAdminContent">
               <h2>{{m.title}}</h2>
               <div class="ProgressBarGridPos">

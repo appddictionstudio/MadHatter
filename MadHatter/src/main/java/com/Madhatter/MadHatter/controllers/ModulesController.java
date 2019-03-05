@@ -61,14 +61,8 @@ public class ModulesController {
     // -------------------------------GET MOD BY TYPE----------------
     @RequestMapping(value = "/bootcamp/{name}", method = RequestMethod.GET)
 		ResponseEntity<List<Modules>> getModByBootcamp(@PathVariable String name) {
-    		if (name.equals("UI")) {
-    			System.out.println("we got ui");
-    			List<Modules> post = repo.findByNotBootcamp();
-    			return ResponseEntity.ok(post);
-    		} else {
-    			List<Modules> post = repo.findByBootcamp(name);
-    			return ResponseEntity.ok(post);
-    		}
+			List<Modules> post = repo.findByBootcamp(name);
+			return ResponseEntity.ok(post);
 	}
  	
  	//-------------------------------------put by id------------------------------------------------\\
