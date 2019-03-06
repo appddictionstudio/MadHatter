@@ -510,16 +510,16 @@ open2(content) {
   }
 
   removeTeacherContent(a, i, location, attId) {
-      this.snotifyService.info('Are you sure you want to remove this file?', {
-        timeout: 10000,
-        closeOnClick: true,
-        buttons: [
-          {text: 'Yes', action: () => this.deleteTeacherContent(a, i, location, attId), bold: true },
-          {text: 'No', action: null },
-        ],
-        showProgressBar: true,
-        pauseOnHover: true,
-        position: SnotifyPosition.centerBottom,
-      });
+    this.snotifyService.warning('Are you sure you want to remove this file?', {
+      timeout: 100000,
+      closeOnClick: true,
+      buttons: [
+        {text: 'Yes', action: () => this.deleteTeacherContent(a, i, location, attId), bold: true },
+        {text: 'No', action: null },
+      ],
+      showProgressBar: false,
+      pauseOnHover: false,
+      position: SnotifyPosition.centerBottom,
+    });
   }
 }

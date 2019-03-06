@@ -44,6 +44,20 @@ export class ResourcesComponent implements OnInit {
   }
 
   removeResourceLink(resource) {
+    this.snotifyService.warning('Are you sure you want to remove this link?', {
+      timeout: 100000,
+      closeOnClick: true,
+      buttons: [
+        {text: 'Yes', action: () => this.deleteResourceLink(resource), bold: true },
+        {text: 'No', action: null },
+      ],
+      showProgressBar: false,
+      pauseOnHover: true,
+      position: SnotifyPosition.centerBottom,
+    });
+  }
+
+  deleteResourceLink(resource) {
     this.api.removeResources(resource.id).subscribe(res => {
       this.snotifyService.success('Resource removed', {
         position: SnotifyPosition.centerBottom,
