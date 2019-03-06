@@ -234,6 +234,33 @@ onFileChange2(event, mod) {
     });
   }
 
+  removeTeacherContent(a, attId) {
+    this.snotifyService.warning('Are you sure you want to remove this file?', {
+      timeout: 100000,
+      closeOnClick: true,
+      buttons: [
+        {text: 'Yes', action: () => this.deleteTeacherContent(a, attId), bold: true },
+        {text: 'No', action: null },
+      ],
+      showProgressBar: false,
+      pauseOnHover: false,
+      position: SnotifyPosition.centerBottom,
+    });
+  }
+
+  deleteTeacherContent(a, attId) {
+    this.api.removeModAttachment(attId).subscribe(data => {
+      this.snotifyService.success('File removed', {
+        timeout: 2000,
+        closeOnClick: true,
+        showProgressBar: false,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+      this.modules[0].modAttachments.splice(a, 1);
+    });
+  }
+
   updateTopic(topic, modId) {
     let Mod;
     this.api.getModuleById(modId).subscribe( results => {Mod = results; });
@@ -383,23 +410,23 @@ onFileChange2(event, mod) {
     }
   }
 
-  deleteResourceLink(resource) {
-    this.api.removeResources(resource.id).subscribe(res => {
+  deleteResourceLink(resource, i) {
+    this.api.removeResources(resource).subscribe(res => {
       this.snotifyService.success('Resource removed', {
         position: SnotifyPosition.centerBottom,
         closeOnClick: true,
         timeout: 2000,
       });
-      this.ngOnInit();
+      this.resources[i].modAttachments.splice(i, 1);
     });
   }
 
-  removeResourceLink(resource) {
+  removeResourceLink(resource, i) {
     this.snotifyService.warning('Are you sure you want to remove this link?', {
       timeout: 100000,
       closeOnClick: true,
       buttons: [
-        {text: 'Yes', action: () => this.deleteResourceLink(resource), bold: true },
+        {text: 'Yes', action: () => this.deleteResourceLink(resource, i), bold: true },
         {text: 'No', action: null },
       ],
       showProgressBar: false,

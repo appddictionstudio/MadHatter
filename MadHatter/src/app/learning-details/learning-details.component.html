@@ -100,7 +100,7 @@
                   <i style="padding-right: 20px;" class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
                   <span>{{z.fileNm}}</span>
                   <div style="margin-left: auto; margin-right: 5%;">
-                    <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'UI',z.id)"></i>
+                    <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(i,z.id)"></i>
                   </div>
                 </div>
               </div>
@@ -113,8 +113,8 @@
             <hr>
             <input type="text" style="height: 1.5em; width: 35%;" (keyup)="resourceLinkInputcheck()" [(ngModel)]="resourceLinkInput">
             <button mat-button style="margin-left: 25px;" placeholder="Add resource link" [disabled]="!buttonAddResource" (click)="addResources(m)">Add Resources</button>
-            <div class="resourceLinks" *ngFor="let r of resources">
-              <i id="resourcesTrash" class="fa fa-trash" aria-hidden="true" (click)="removeResourceLink(r)"></i>
+            <div class="resourceLinks" *ngFor="let r of resources; let i = index">
+              <i id="resourcesTrash" class="fa fa-trash" aria-hidden="true" (click)="removeResourceLink(r.id,i)"></i>
               <a href="{{r.links}}">{{r.links}}</a>
             </div>
           </div>
