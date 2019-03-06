@@ -19,7 +19,7 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 	@Query("select t from Topic t")
 	public List<Topic> getAllTopics();
 	
-	@Query("Select t from Topic t where t.mod.id = ?1")
+	@Query("Select t from Topic t where t.mod.id = ?1 ORDER BY t.topicOrder ASC")
 	List<Topic> findByModId(Long Id);
 	
 	List<Topic> findById(Integer Id);

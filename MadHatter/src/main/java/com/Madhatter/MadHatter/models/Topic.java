@@ -26,7 +26,7 @@ public class Topic {
     private String topicTitle;
 
 	@Column
-    private String topicOrder;
+    private long topicOrder;
 
 	@Column
     private boolean hidden;
@@ -38,13 +38,13 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic( String topicOrder, boolean hidden, String topicTitle) {
+    public Topic( long topicOrder, boolean hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
     	this.topicOrder = topicOrder;
     	this.hidden = hidden;
     }
 
-    public Topic(String topicOrder, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
+    public Topic(long topicOrder, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     
     	this.topicOrder = topicOrder;
@@ -77,11 +77,11 @@ public class Topic {
 		this.topicTitle = topicTitle;
 	}
 
-	public String getTopicOrder() {
+	public long getTopicOrder() {
 		return topicOrder;
 	}
 
-	public void setTopicOrder(String topicOrder) {
+	public void setTopicOrder(long topicOrder) {
 		this.topicOrder = topicOrder;
 	}
 
