@@ -70,7 +70,8 @@
                                 </div>
                             </mat-card-content>
                             <mat-card-actions>
-                                <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'">Comment</i>
+                                <i (click)="commentSection(pos.id)" [ngClass]="showComments === pos.id ? 'blue' : 'grey'" id="comment"  style="padding-right: 10px; margin-left:30px; transition: 200ms" class="hover fa fa-comment" *ngIf="pos.lockYn != 'Y'"></i>
+                                <span>Comment</span>
                                 <div class="row" *ngIf="showComments === pos.id" class="comment-section">
                                     <div class="row" style="margin-top: 1%;">
                                         <div id="bbPostCommentIcon" (click)="createPostComment(pos.id, i)">

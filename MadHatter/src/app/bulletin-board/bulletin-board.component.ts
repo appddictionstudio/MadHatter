@@ -362,7 +362,7 @@ topic: any;
     // const x = this.currentUser.id;
     this.bulletinComment.id = JSON.parse(this.currentUser.id);
     if (this.bulletinComment.text === '') {
-      this.snotifyService.error('Please write a comment', {
+      this.snotifyService.info('Please write a comment', {
         timeout: 2000,
         showProgressBar: false,
         closeOnClick: true,
