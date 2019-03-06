@@ -477,6 +477,10 @@ open2(content) {
     return true;
   }
 
+  editDetailsPage() {
+    this.api.setModuleToEdit();
+  }
+
   routeQuiz(path) {
     this.router.navigateByUrl('/' + path + '/story.html');
   }

@@ -8,10 +8,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ModuleService {
+  editModule = false;
 
   constructor(
     private http: HttpClient,
   ) { }
+
+  setModuleToEdit() {
+    this.editModule = true;
+  }
+
+  checkForEdit() {
+    if (this.editModule) {
+      this.editModule = false;
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   getModule(): Observable<any>  {
     return this.http.get(environment.apiUrl + 'api/modules');

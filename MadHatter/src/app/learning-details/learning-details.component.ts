@@ -75,6 +75,9 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
     });
+    if (this.api.checkForEdit()) {
+      this.learningDetailEdit = true;
+    }
     // this.getAllTopics();
     // this.getAtt();
   }

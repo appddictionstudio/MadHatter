@@ -7,8 +7,8 @@
     <div style="display: inline-flex; width: 100%; margin-left: auto;">
       <i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
       <div *ngIf="getUserRoleInstructor()" style="margin: auto 20% 0% auto; font-size: 20px;">
-        <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
-        <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save</span></span>
+        <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit Module Structure</span></span>
+        <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save Changes</span></span>
       </div>
     </div>
     <div class= "headerLearningContent" *ngFor="let m of modules">
@@ -75,10 +75,11 @@
               <div class= "launchbutton">
                 <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Lesson Content </button>
               </div>
-              <div *ngIf="getUserRoleInstructor()" class="fileSave">
-                <input type="file" #file  (change)="onFileChange($event,t,m.id)">
-                <div style="display: inline-flex; margin-top: 10px; width: 100%;">
-                  <mat-progress-spinner *ngIf="fileUploading === t.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+              <div style="display: inline-flex;" *ngIf="getUserRoleInstructor()" class="fileSave">
+                <span style="padding-right:25px; color: #505050">Upload Lesson Content</span>
+                <input style="width: 230px;" type="file" #file  (change)="onFileChange($event,t,m.id)">
+                <div *ngIf="fileUploading === t.id" style="display: inline-flex; margin-top: 10px; width: 100%;">
+                  <mat-progress-spinner class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
                   </mat-progress-spinner>
                 </div>
               </div>
@@ -87,7 +88,7 @@
         </div>
         <div *ngIf="m.modAttachments.length > 0">
           <div *ngIf="getUserRoleInstructor()" class="modfileSave">
-            <h1>Module {{m.modNm}}: Instructor Content</h1>
+            <h1 style="margin-bottom: 24px; color: #505050;">Module {{m.modNm}}: Instructor Content</h1>
             <span style="padding-right: 25px;">Upload Instructor Content</span>
             <input type="file" #file  (change)="onFileChange2($event,m)">
             <div style="display: inline-flex; margin-top: 10px; width: 100%; border-top: 1px solid black;">
@@ -97,8 +98,8 @@
             <div *ngFor="let z of m.modAttachments; let i = index">
               <div class="instructorAttachmentDetails">
                 <div class="instructorAttachmentDetailsInner">
-                  <i style="padding-right: 20px;" class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
-                  <span>{{z.fileNm}}</span>
+                  <i style="padding-right: 20px; cursor: pointer;" class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
+                  <span style="cursor: pointer; text-decoration: underline" (click)="downloadModuleAttachment(z.id)">{{z.fileNm}}</span>
                   <div style="margin-left: auto; margin-right: 5%;">
                     <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(i,z.id)"></i>
                   </div>
@@ -109,9 +110,9 @@
         </div>
         <div *ngIf="getUserRoleInstructor()">
           <div class="resourceHeader">
-            <h1 style="margin-top: 25px;">Resources</h1>
+            <h1 style="margin-top: 25px;">Module {{m.modNm}} Resources</h1>
             <hr>
-            <input type="text" style="height: 1.5em; width: 35%;" (keyup)="resourceLinkInputcheck()" [(ngModel)]="resourceLinkInput">
+            <input type="text" style="height: 1.5em; width: 35%;" placeholder="Enter URL" (keyup)="resourceLinkInputcheck()" [(ngModel)]="resourceLinkInput">
             <button mat-button style="margin-left: 25px;" placeholder="Add resource link" [disabled]="!buttonAddResource" (click)="addResources(m)">Add Resources</button>
             <div class="resourceLinks" *ngFor="let r of resources; let i = index">
               <i id="resourcesTrash" class="fa fa-trash" aria-hidden="true" (click)="removeResourceLink(r.id,i)"></i>
@@ -121,7 +122,7 @@
         </div>
         <div *ngIf="getUserRoleStudent()">
           <div class="resourceHeader" *ngIf="ifResources()">
-            <h1>Resources</h1>
+            <h1>Module {{m.modNm}} Resources</h1>
             <hr>
             <div class="resourceLinks" *ngFor="let r of resources">
               <a href="{{r.links}}">{{r.links}}</a>
