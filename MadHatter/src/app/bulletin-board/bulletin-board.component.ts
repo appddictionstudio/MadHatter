@@ -13,6 +13,7 @@ import { RefCodeService } from '../services/ref-code.service';
 import { saveAs } from 'file-saver';
 import { RefCode } from '../models/RefCode';
 import { MatChipInputEvent, PageEvent } from '@angular/material';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 // import * as $ from 'jquery';
 import { Tag } from '../models/Tag';
@@ -109,7 +110,14 @@ topic: any;
   showMessagesSection = false;
   tagsOpen = false;
   user: any;
-
+  htmlContent = '';
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    translate: 'no',
+  };
 
   hotTopicClick = false;
   likeClick: any[];
@@ -201,7 +209,6 @@ topic: any;
     config.pauseOnHover = true;
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
-
   }
 
   ngOnInit() {

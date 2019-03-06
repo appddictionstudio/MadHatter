@@ -62,6 +62,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { UsersComponent } from './users/users.component';
 import { CdkDetailRowDirective } from './users/cdk-detail-row.directive';
 import { ResourcesComponent } from './resources/resources.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 // import { ChangePassComponent } from './change-pass/change-pass.component';
 
 library.add(fas, far, fab);
@@ -101,6 +102,7 @@ library.add(fas, far, fab);
     FormsModule,
     ReactiveFormsModule ,
     MatCardModule,
+    AngularEditorModule,
     HttpClientModule,
     YoutubePlayerModule,
     MatCheckboxModule,

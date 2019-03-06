@@ -98,10 +98,10 @@ ul#hot-topics li {
 .bulletin-board-container {
     background: #3A3E52;
     color: #FFF;
-    width: 100%;
-    overflow-x: hidden;
+    width: 57%;
     height: 100vh;
-    margin: 0;
+    margin: auto;
+    padding: 0px;
 }
 
 .mat-button-toggle-button {
@@ -422,9 +422,10 @@ input[type=search]:focus {
 }
 
 #bbPostButton {
-    margin-left: 15px;
+    margin-left: auto;
     line-height: 30px !important;
     margin-right: 2%;
+
 }
 
 #bbPostButton:disabled {
@@ -433,7 +434,7 @@ input[type=search]:focus {
 
 .bbcardcomment{
     margin: unset;
-    width: 95%;
+    width: 92%;
     border: 1px solid #CCC;
     margin-left: 2%;
     border-radius: 10px;
@@ -454,7 +455,8 @@ input[type=search]:focus {
 }
 
 #paperclipandbutton {
-    margin-left: 10%;
+    padding-left: 4%;
+    padding-top: 2%;
     display: flex;
 }
 
