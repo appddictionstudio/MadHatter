@@ -23,9 +23,9 @@
   </form><hr style="width: 95%;"><br>
   <form>
     <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;" id="SearchUsersRegister">
-      <input matInput placeholder="Search by name"  type="text" name="name" [(ngModel)]="search">
+      <input matInput placeholder="Search by name" (keyup.enter)="loadUsers()" type="text" name="name" [(ngModel)]="search">
     </mat-form-field>
-    <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button>
+    <!-- <button mat-button (click)="loadUsers()" style="margin-left: 15px;" type="submit">Search User</button> -->
   </form>
   <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
     <ng-container matColumnDef="Role">

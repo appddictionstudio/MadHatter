@@ -5,8 +5,8 @@
       <h1>Member Directory</h1>
       <form class="searchForm" style="margin:auto">
         <p class="fullNameTitle">Member Full Name:</p>
-        <mat-form-field appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
-        <button  mat-button (click)="searchByName(search.value)">Search</button>
+        <mat-form-field #search (keyup.enter)="searchByName(search.value)" appearance="outline" class="fullName"><input matInput #search type="search" placeholder="eg. John Doe"></mat-form-field>
+        <!-- <button  mat-button (click)="searchByName(search.value)">Search</button> -->
       </form>
     </div>
   </div>
@@ -15,7 +15,7 @@
       <mat-progress-spinner color="primary" mode="indeterminate">
       </mat-progress-spinner>
     </div>
-    <mat-table #table [dataSource]="members" matSort style="width:80%; margin: auto auto 0% auto; border: 1px solid #ccc;">
+    <mat-table #table [dataSource]="members" matSort style="width:60%; margin: auto auto 0% auto; border: 1px solid #ccc;">
       <ng-container matColumnDef="Role">
       <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
       <mat-cell *matCellDef="let members"> {{userRoleShort(members.roles[0].name)}} </mat-cell>
