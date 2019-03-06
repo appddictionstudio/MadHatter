@@ -492,7 +492,7 @@ open2(content) {
     }
   }
 
-  removeTeacherContent(a, i, location, attId) {
+  deleteTeacherContent(a, i, location, attId) {
     this.api.removeModAttachment(attId).subscribe(data => {
       this.snotifyService.success('File removed', {
         timeout: 2000,
@@ -507,5 +507,19 @@ open2(content) {
         this.modulesUI[i].modAttachments.splice(a, 1);
       }
     });
+  }
+
+  removeTeacherContent(a, i, location, attId) {
+      this.snotifyService.info('Are you sure you want to remove this file?', {
+        timeout: 10000,
+        closeOnClick: true,
+        buttons: [
+          {text: 'Yes', action: () => this.deleteTeacherContent(a, i, location, attId), bold: true },
+          {text: 'No', action: null },
+        ],
+        showProgressBar: true,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
   }
 }
