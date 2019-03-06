@@ -26,7 +26,7 @@ public class Topic {
     private String topicTitle;
 
 	@Column
-    private String Quizzes;
+    private String topicOrder;
 
 	@Column
     private boolean hidden;
@@ -38,16 +38,16 @@ public class Topic {
 
     public Topic() {}
 
-    public Topic( String Quizzes, boolean hidden, String topicTitle) {
+    public Topic( String topicOrder, boolean hidden, String topicTitle) {
     	this.topicTitle = topicTitle;
-    	this.Quizzes = Quizzes;
+    	this.topicOrder = topicOrder;
     	this.hidden = hidden;
     }
 
-    public Topic(String Quizzes, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
+    public Topic(String topicOrder, boolean hidden, String topicTitle, Modules mod, List<TopicAtt> attachments) {
     	this.topicTitle = topicTitle;
     
-    	this.Quizzes = Quizzes;
+    	this.topicOrder = topicOrder;
     	this.hidden = hidden;
     	this.mod = mod;
     	this.attachments = attachments;
@@ -77,12 +77,12 @@ public class Topic {
 		this.topicTitle = topicTitle;
 	}
 
-	public String getQuizzes() {
-		return Quizzes;
+	public String getTopicOrder() {
+		return topicOrder;
 	}
 
-	public void setQuizzes(String quizzes) {
-		Quizzes = quizzes;
+	public void setTopicOrder(String topicOrder) {
+		this.topicOrder = topicOrder;
 	}
 
 	public boolean isHidden() {
@@ -100,10 +100,4 @@ public class Topic {
 	public void setAttachments(List<TopicAtt> attachments) {
 		this.attachments = attachments;
 	}
-
-
-
-
-
-
 }
