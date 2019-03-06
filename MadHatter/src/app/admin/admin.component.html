@@ -57,10 +57,13 @@
                 </button>
               </div>
               <div class="modal-body" >
-                <div *ngFor="let z of m.modAttachments">
+                <div *ngFor="let z of m.modAttachments; let a = index">
                   <div class="modfileNm" (click)="downloadModuleAttachment(z.id)">
                     <p>{{z.fileNm}}</p>
-                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <div class="faIconsforTeacherContent">
+                      <i class="fa fa-download" aria-hidden="true"></i>
+                      <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'ASD',z.id)"></i>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -161,10 +164,13 @@
                   </button>
                 </div>
                 <div class="modal-body" >
-                  <div *ngFor="let z of m.modAttachments">
-                    <div class="modfileNm" (click)="downloadModuleAttachment(z.id)">
-                      <p>{{z.fileNm}}</p>
-                      <i class="fa fa-download" aria-hidden="true"></i>
+                  <div *ngFor="let z of m.modAttachments; let a = index">
+                    <div style="cursor: pointer;" class="modfileNm">
+                      <p (click)="downloadModuleAttachment(z.id)">{{z.fileNm}}</p>
+                      <div class="faIconsforTeacherContent">
+                        <i class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
+                        <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'UI',z.id)"></i>
+                      </div>
                     </div>
                   </div>
                 </div>

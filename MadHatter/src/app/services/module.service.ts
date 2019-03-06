@@ -66,7 +66,10 @@ export class ModuleService {
     headers.append('Content-Type', 'multipart/form-data');
     headers.set('Accept', 'application/json');
     return this.http.post(environment.apiUrl + 'uploadMDoc', form, { headers: headers });
+  }
 
+  removeModAttachment(id) {
+    return this.http.delete(environment.apiUrl + 'ModAtt/remove/' + id);
   }
 
   updateMod(mod: any) {

@@ -276,9 +276,18 @@ hr {
 }
 
 .modfileNm{
-  display: grid;
+    display: grid;
     grid-template-columns: .5fr .5fr;
     grid-template-rows: 1fr;
+}
+
+.faIconsforTeacherContent {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#resourcesTrashAdmin {
+    padding-left: 4em;
 }
 
 .mainGradesTabular .mat-tab-header {

@@ -97,5 +97,12 @@ private ModAttRepository repo;
 				    response.flushBuffer();
 //				    fis.close();
 				}
+				
+			//-------------------REMOVE-------------------------------
+			@RequestMapping(value = "/ModAtt/remove/{id}", method = RequestMethod.DELETE)
+			@ResponseBody
+			public void removeModAtt(@PathVariable Long id) {
+				repo.deleteById(id);
+			}
 		
 }

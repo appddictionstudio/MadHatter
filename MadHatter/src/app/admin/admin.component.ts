@@ -491,4 +491,21 @@ open2(content) {
       return 'blank else';
     }
   }
+
+  removeTeacherContent(a, i, location, attId) {
+    this.api.removeModAttachment(attId).subscribe(data => {
+      this.snotifyService.success('File removed', {
+        timeout: 2000,
+        closeOnClick: true,
+        showProgressBar: false,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+      if (location === 'ASD') {
+        this.modulesASD[i].modAttachments.splice(a, 1);
+      } if (location === 'UI') {
+        this.modulesUI[i].modAttachments.splice(a, 1);
+      }
+    });
+  }
 }
