@@ -39,6 +39,7 @@ public class Modules {
 	private List<ModAtt> modAttachments;
 
 	@OneToMany(cascade=CascadeType.MERGE)
+//	@JsonIgnore
 	@JoinColumn(name = "mod_to_resource_id")
 	private List<Resources> resources;
 	

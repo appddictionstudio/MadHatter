@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.Madhatter.MadHatter.Repositories.ModulesRepository;
+import com.Madhatter.MadHatter.Repositories.ResourcesRepository;
 import com.Madhatter.MadHatter.models.ModAtt;
 import com.Madhatter.MadHatter.models.Modules;
 import com.Madhatter.MadHatter.models.Resources;
@@ -24,9 +25,12 @@ import com.Madhatter.MadHatter.models.TopicAtt;
 @CrossOrigin
 @RequestMapping(value="/api/modules")
 public class ModulesController {
-	
+
 	@Autowired
 	private ModulesRepository repo;
+	
+	@Autowired
+	private ResourcesRepository Rrepo;
 	// ------------------- Create
 //	
 //    @PostMapping("/ModuleSet")
@@ -74,6 +78,10 @@ public class ModulesController {
 				attachment.setMod(mod);
 			}
 		}
+		
+		List<Resources> resource = Rrepo.findByModId(id);
+		
+		mod.setResources(resource);
 
 		mod.setId(id);
 

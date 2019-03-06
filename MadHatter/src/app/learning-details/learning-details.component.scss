@@ -34,8 +34,21 @@
 }
 
 #topicEditForm {
-    width: 95%;
+    width: 90%;
     grid-column: 1 / 3;
+}
+
+.learningDetailDayEdit {
+    display: inline-flex;
+    width: 100%;
+}
+
+.upAndDownArrow {
+    line-height: 3.5em;
+    padding-right: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 35% 35%;
 }
 
 #launchExercises .mat-button-wrapper {
@@ -231,7 +244,6 @@ button.close {
 
 .fileSave {
     margin: auto;
-    height: 1em;
 }
 
 .subheaderlc {

@@ -25,7 +25,7 @@ public class Resources {
     private String links;
 
     @ManyToOne
-	@JoinColumn(name="mod_to_resource_id", referencedColumnName="ID", nullable=false)
+	@JoinColumn(name="mod_to_resource_id", referencedColumnName="ID")
 	@JsonIgnore
 	private Modules mod;
     

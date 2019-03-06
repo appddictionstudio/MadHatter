@@ -7,4 +7,5 @@ export class Topic {
     mod_id: number;
     mod: any;
     attachments: any[];
+    topicOrder: any;
 }

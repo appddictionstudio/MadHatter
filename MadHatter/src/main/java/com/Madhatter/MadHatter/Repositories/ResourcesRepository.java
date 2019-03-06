@@ -19,6 +19,9 @@ public interface ResourcesRepository extends JpaRepository<Resources, Long> {
 	
 	List<Resources> findById(Integer Id);
 	
+	@Query("SELECT r FROM Resources r WHERE r.mod.id = ?1")
+	List<Resources> findByModId(Long id);
+	
 	@Query("SELECT r.mod FROM Resources r")
 	List<Modules> findByAll();
 }

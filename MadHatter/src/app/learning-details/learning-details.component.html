@@ -35,8 +35,14 @@
             <div class="subheader" *ngIf="!t.hidden">
               <div class="subheaderlc">
                 <h3 *ngIf="!learningDetailEdit">{{t.topicTitle}}</h3>
-                <mat-form-field id="topicEditForm" *ngIf="learningDetailEdit" appearance="outline"><input matInput [placeholder]="t.topicTitle" type="text" name="Title" [(ngModel)]="t.topicTitle">
-                </mat-form-field>
+                <div class="learningDetailDayEdit" *ngIf="learningDetailEdit">
+                  <div class="upAndDownArrow">
+                    <i class="fas fa-arrow-down" (click)="upArrowClick(i)" style="transform: rotate(180deg)"></i>
+                    <i class="fas fa-arrow-down" (click)="downArrowClick(i)" style="padding-top: 10px;"></i>
+                  </div>
+                  <mat-form-field id="topicEditForm" appearance="outline"><input matInput [placeholder]="t.topicTitle" type="text" name="Title" [(ngModel)]="t.topicTitle">
+                  </mat-form-field>
+                </div>
               </div>
               <!-- //////////////////////////MODAL//////////////////////////////// -->
               <ng-template #content let-modal let-c="close" let-d="dismiss">

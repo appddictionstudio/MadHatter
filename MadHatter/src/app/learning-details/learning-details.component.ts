@@ -103,6 +103,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
+      // console.log(this.modules);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       // console.log(this.resources);
       this.getTopicsByModId(this.module.id);
@@ -144,10 +145,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
         return  `with: ${reason}`;
       }
     }
-
-    // open(content) {
-    //   const modalRef = this.modalService.open(LaunchDownloadsModalComponent);
-    // }
 
     toggleContent() {
       if (this.hide) {
@@ -237,10 +234,14 @@ onFileChange2(event, mod) {
     });
   }
 
-  updateTopic(topicId, modId) {
-    topicId.mod = {id: modId};
+  updateTopic(topic, modId) {
+    let Mod;
+    this.api.getModuleById(modId).subscribe( results => {Mod = results; });
+    // topic.mod = {id: modId};
+    topic.mod = Mod;
+    console.log(topic);
     // console.log(topicId);
-    this.apiT.updateTopic(topicId).subscribe(data => {
+    this.apiT.updateTopic(topic).subscribe(data => {
       this.snotifyService.success('Excercise Added', {
         timeout: 2000,
         showProgressBar: false,
@@ -253,6 +254,7 @@ onFileChange2(event, mod) {
   }
 
   updateModule(mod) {
+    console.log(mod);
     this.api.updateMod(mod).subscribe(data => {
       this.snotifyService.success('File Uploaded', {
         timeout: 2000,
@@ -414,5 +416,19 @@ onFileChange2(event, mod) {
         });
       });
     });
+  }
+
+  upArrowClick(i) {
+    console.log(this.topics[i]);
+    console.log(this.topics[i - 1]);
+    this.topics[i].topicOrder = this.topics[i].topicOrder - 1;
+    this.topics[i - 1].topicOrder = this.topics[i - 1].topicOrder + 1;
+  }
+
+  downArrowClick(i) {
+    console.log(this.topics[i]);
+    console.log(this.topics[i + 1]);
+    this.topics[i].topicOrder = this.topics[i].topicOrder + 1;
+    this.topics[i + 1].topicOrder = this.topics[i + 1].topicOrder - 1;
   }
 }
