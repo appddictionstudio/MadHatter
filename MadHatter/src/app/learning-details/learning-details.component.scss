@@ -251,5 +251,24 @@ button.close {
 }
 
 .modfileSave {
-    margin: auto;
+    margin-top: 150px;
+    // margin-bottom: 150px;
+}
+
+.resourceHeader {
+    margin-top: 150px;
+}
+
+.instructorAttachmentDetails {
+    width: 100%;
+    border-bottom: 1px solid black;
+    height: 3em;
+    padding-top: 20px;
+}
+
+.instructorAttachmentDetailsInner {
+    height: 1em;
+    width: 100%;
+    margin: auto 3%;
+    display: inline-flex;
 }

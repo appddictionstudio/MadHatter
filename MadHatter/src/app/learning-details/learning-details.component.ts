@@ -103,7 +103,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
-      // console.log(this.modules);
+      console.log(this.modules);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       // console.log(this.resources);
       this.getTopicsByModId(this.module.id);

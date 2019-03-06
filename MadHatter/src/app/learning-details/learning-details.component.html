@@ -3,22 +3,17 @@
     <mat-progress-spinner color="primary" mode="indeterminate">
     </mat-progress-spinner>
   </div>
-  <div *ngIf="!isLoading"><i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
-    <div *ngIf="getUserRoleInstructor()" style="margin: 1% 0% -2% 13%; font-size: 20px;">
-      <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
-      <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save</span></span>
+  <div *ngIf="!isLoading">
+    <div style="display: inline-flex; width: 100%; margin-left: auto;">
+      <i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
+      <div *ngIf="getUserRoleInstructor()" style="margin: auto 20% 0% auto; font-size: 20px;">
+        <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
+        <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save</span></span>
+      </div>
     </div>
     <div class= "headerLearningContent" *ngFor="let m of modules">
       <div id="headerDontEditForm" *ngIf="!learningDetailEdit">
         <h1>Module {{m.modNm}}: {{m.title}}</h1>
-        <div *ngIf="getUserRoleInstructor()" class="modfileSave">
-          <p style="margin-bottom: 5px;">Upload Instructor Content</p>
-          <input type="file" #file  (change)="onFileChange2($event,m)">
-          <div style="display: inline-flex; margin-top: 10px; width: 100%;">
-            <mat-progress-spinner *ngIf="modfileUploading" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
-            </mat-progress-spinner>
-          </div>
-        </div>
       </div>
       <div *ngIf="learningDetailEdit" id="headerEditForm">
         <span style="padding-right: 20px">Module number</span>
@@ -85,6 +80,28 @@
                 <div style="display: inline-flex; margin-top: 10px; width: 100%;">
                   <mat-progress-spinner *ngIf="fileUploading === t.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
                   </mat-progress-spinner>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="m.modAttachments.length > 0">
+          <div *ngIf="getUserRoleInstructor()" class="modfileSave">
+            <h1>Module {{m.modNm}}: Instructor Content</h1>
+            <span style="padding-right: 25px;">Upload Instructor Content</span>
+            <input type="file" #file  (change)="onFileChange2($event,m)">
+            <div style="display: inline-flex; margin-top: 10px; width: 100%; border-top: 1px solid black;">
+              <mat-progress-spinner *ngIf="modfileUploading" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
+            <div *ngFor="let z of m.modAttachments; let i = index">
+              <div class="instructorAttachmentDetails">
+                <div class="instructorAttachmentDetailsInner">
+                  <i style="padding-right: 20px;" class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
+                  <span>{{z.fileNm}}</span>
+                  <div style="margin-left: auto; margin-right: 5%;">
+                    <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'UI',z.id)"></i>
+                  </div>
                 </div>
               </div>
             </div>
