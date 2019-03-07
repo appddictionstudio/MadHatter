@@ -164,12 +164,12 @@
 //
  -->
   <div id="adminStudent" *ngIf="getUserRoleStudent()">
-    <div *ngIf="studentsRole('ASD')" class="classSeperation">
+    <div class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">{{instructorCourseNm}}</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
         <mat-tab class="gradesTabular" *ngFor="let m of modules; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
-            <div *ngIf="m.bootcamp === 'SD'">
+            <div>
               <div class= "headerAdminContent">
                 <h2>Module {{m.modNm}}: {{m.title}}</h2>
                 <div class="ProgressBarGridPos">

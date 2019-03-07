@@ -106,7 +106,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.api.getModById(this.modId).subscribe(res => {
       this.module = res as any[];
       this.modules = [this.module];
-      console.log(this.modules);
       this.resources = JSON.parse(JSON.stringify(this.module.resources));
       // console.log(this.resources);
       this.getTopicsByModId(this.module.id);
@@ -270,8 +269,6 @@ onFileChange2(event, mod) {
       Mod = results;
       // topic.mod = {id: modId};
       topic.mod = Mod;
-      console.log(topic);
-      console.log(topic.mod);
       // console.log(topicId);
       this.apiT.updateTopic(topic).subscribe(data => {
         this.snotifyService.success('Excercise Added', {
@@ -287,7 +284,6 @@ onFileChange2(event, mod) {
   }
 
   updateModule(mod) {
-    console.log(mod);
     this.api.updateMod(mod).subscribe(data => {
       this.snotifyService.success('File Uploaded', {
         timeout: 2000,

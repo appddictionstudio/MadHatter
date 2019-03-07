@@ -115,7 +115,6 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   UserAdminTest(bootcamp) {
-    console.log(this.currentUser.role);
     if (this.currentUser.role === 'ROLE_ADMIN') {
       if (bootcamp === 'UI') {
         return 'UI / UX - ';
@@ -132,7 +131,6 @@ export class AdminComponent implements OnInit, OnChanges {
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
-      console.log(this.currentUser);
       this.teachingRole();
     });
   }
