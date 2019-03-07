@@ -3,7 +3,7 @@ export class Topic {
     topicTitle: string;
     files: string;
     Quizzes: string;
-    hidden: string;
+    hidden: boolean;
     mod_id: number;
     mod: any;
     attachments: any[];

@@ -52,6 +52,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   modfileUploading = false;
   modId: any;
   module: any;
+  tempTopic: any;
   learningDetailEdit = false;
   updateExerciseStatus = '';
   isLoading = true;
@@ -99,6 +100,14 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
       this.learningDetailEdit = true;
     } else {
       this.learningDetailEdit = false;
+    }
+  }
+
+  isCurrentlyEdit() {
+    if (this.learningDetailEdit) {
+      return '1 / 6';
+    } else {
+      return '1 / 3';
     }
   }
 
@@ -296,13 +305,17 @@ onFileChange2(event, mod) {
   }
 
   saveEdits() {
-    // console.log(this.modules[0]);
     this.api.updateMod(this.modules[0]).subscribe(data => {});
     let i;
-    // console.log(this.topics);
     for (i = 0; i < this.topics.length; i++) {
-      // console.log(this.topics[i]);
-      this.apiT.updateTopic(this.topics[i]).subscribe(data => {});
+      console.log(this.topics[i]);
+      this.apiT.getTopicsById(this.topics[i].id).subscribe(res => {
+        if (res) {
+          this.apiT.updateTopic(this.topics[i]).subscribe(data => {});
+        } else {
+          console.log('this is new!');
+        }
+      });
     }
     this.editToggle();
   }
@@ -461,17 +474,38 @@ onFileChange2(event, mod) {
     });
   }
 
+  addBlankTopic() {
+    const newTopic = new Topic;
+    newTopic.hidden = false;
+    newTopic.mod = this.modules[0];
+    newTopic.topicTitle = '';
+    newTopic.topicOrder = 1;
+    for (let i = 0; this.topics.length > i; i++) {
+      console.log(this.topics[i].topicOrder);
+      if (this.topics[i].topicOrder > newTopic.topicOrder) {
+        newTopic.topicOrder = this.topics[i].topicOrder + 1;
+      }
+    }
+    this.topics[this.topics.length] = newTopic;
+  }
+
   upArrowClick(i) {
-    console.log(this.topics[i]);
-    console.log(this.topics[i - 1]);
+    if (this.topics[i - 1]) {
+    this.tempTopic = this.topics[i];
     this.topics[i].topicOrder = this.topics[i].topicOrder - 1;
     this.topics[i - 1].topicOrder = this.topics[i - 1].topicOrder + 1;
+    this.topics[i] = this.topics[i - 1];
+    this.topics[i - 1] = this.tempTopic;
+    }
   }
 
   downArrowClick(i) {
-    console.log(this.topics[i]);
-    console.log(this.topics[i + 1]);
-    this.topics[i].topicOrder = this.topics[i].topicOrder + 1;
-    this.topics[i + 1].topicOrder = this.topics[i + 1].topicOrder - 1;
+    if (this.topics[i + 1]) {
+      this.tempTopic = this.topics[i];
+      this.topics[i].topicOrder = this.topics[i].topicOrder + 1;
+      this.topics[i + 1].topicOrder = this.topics[i + 1].topicOrder - 1;
+      this.topics[i] = this.topics[i + 1];
+      this.topics[i + 1] = this.tempTopic;
+    }
   }
 }

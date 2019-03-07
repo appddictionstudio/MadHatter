@@ -6,7 +6,7 @@
   <div *ngIf="!isLoading">
     <div style="display: inline-flex; width: 100%; margin-left: auto;">
       <i [routerLink]="['/learning']" id="backArrowLearningDetail" class="fas fa-arrow-left"></i>
-      <div *ngIf="getUserRoleInstructor()" style="margin: auto 20% 0% auto; font-size: 20px;">
+      <div *ngIf="getUserRoleInstructor()" style="margin: auto 20% 0% auto; font-size: 20px; cursor: pointer;">
         <span *ngIf="!learningDetailEdit" (click)="editToggle()"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit Module Structure</span></span>
         <span *ngIf="learningDetailEdit" (click)="saveEdits()"><i class="fas fa-check"></i><span style="padding-left: 10px;">Save Changes</span></span>
       </div>
@@ -26,9 +26,9 @@
       <div class="learningDetailSeperator">
         <div *ngIf="!hide">
           <hr style="border-top: 1px solid black;">
-          <div class="showTopics" *ngFor="let t of topics ; let i = index" >
+          <div class="showTopics" *ngFor="let t of topics; let i = index" >
             <div class="subheader" *ngIf="!t.hidden">
-              <div class="subheaderlc">
+              <div class="subheaderlc" [ngStyle]="{'grid-column': isCurrentlyEdit()}">
                 <h3 *ngIf="!learningDetailEdit">{{t.topicTitle}}</h3>
                 <div class="learningDetailDayEdit" *ngIf="learningDetailEdit">
                   <div class="upAndDownArrow">
@@ -72,10 +72,10 @@
                 </div>
               </ng-template>
               <!-- //////////////////////////END MODAL//////////////////////////////// -->
-              <div class= "launchbutton">
+              <div class= "launchbutton" *ngIf="!learningDetailEdit">
                 <button mat-button class="btn btn-lg btn-outline-primary" id="launchExercises" data-toggle="modal" data-target="#modal-basic-title" (click)="open(content)"> Lesson Content </button>
               </div>
-              <div style="display: inline-flex;" *ngIf="getUserRoleInstructor()" class="fileSave">
+              <div style="display: inline-flex;" *ngIf="getUserRoleInstructor() && !learningDetailEdit" class="fileSave">
                 <span style="padding-right:25px; color: #505050">Upload Lesson Content</span>
                 <input style="width: 230px;" type="file" #file  (change)="onFileChange($event,t,m.id)">
                 <div *ngIf="fileUploading === t.id" style="display: inline-flex; margin-top: 10px; width: 100%;">
@@ -84,6 +84,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div *ngIf="learningDetailEdit" class="addAditionalTopic">
+            <i style="cursor: pointer;" (click)="addBlankTopic()" class="fas fa-plus"></i>
           </div>
         </div>
         <div *ngIf="m.modAttachments.length > 0">
