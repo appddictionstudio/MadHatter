@@ -26,7 +26,7 @@
       <div class="learningDetailSeperator">
         <div *ngIf="!hide">
           <hr style="border-top: 1px solid black;">
-          <div class="showTopics" *ngFor="let t of topics; let i = index" >
+          <div class="showTopics" *ngFor="let t of topics ; let i = index" >
             <div class="subheader" *ngIf="!t.hidden">
               <div class="subheaderlc">
                 <h3 *ngIf="!learningDetailEdit">{{t.topicTitle}}</h3>

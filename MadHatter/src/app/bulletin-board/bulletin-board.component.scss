@@ -464,6 +464,10 @@ input[type=search]:focus {
     width: 103%;
 }
 
+::ng-deep i.fa.fa-image {
+    visibility: hidden;
+}
+
 .bbAttDownload {
     text-decoration: underline;
     font-weight: bold;

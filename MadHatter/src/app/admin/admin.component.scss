@@ -144,7 +144,7 @@ hr {
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 1fr;
     width: 80%;
-    margin: 2% auto 0 12%;
+    margin: 2% auto 0 auto;
 }
 
 .headerAdminContentTitle {
@@ -159,6 +159,10 @@ hr {
     display: inline-flex;
     grid-row: 1;
     grid-column: 4;
+}
+
+.adminSetProgress .mat-form-field .mat-form-field-wrapper {
+    width: 135%;
 }
 
 #editButtonAdmin {    
@@ -228,8 +232,7 @@ hr {
 }
 
 #titleRule {
-    width: 73%;
-    margin-left: 12%;
+    width: 80%;
 }
 
 .downloadIconGrades {
