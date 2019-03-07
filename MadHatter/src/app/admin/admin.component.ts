@@ -50,6 +50,7 @@ export class AdminComponent implements OnInit, OnChanges {
   topicHide: Topic = new Topic();
   allTopic: Topic[] = [];
   modules: Module[] = [];
+  modulesArray: any;
   mods: Module[] = [];
   result: SubmittedAtt;
   fileUploading: boolean;
@@ -62,12 +63,14 @@ export class AdminComponent implements OnInit, OnChanges {
   studentRole: number;
   documents: any[] = [];
   closeResult: string;
+  instructorCourseNm: any;
   attList: Attachments[] = [];
   attList2: Attachments[] = [];
   topicAtt: TopicAtt[] = [];
   subAtt: SubmittedAtt = new SubmittedAtt();
   UIorASD: number;
   numerator: number;
+  teacherModuleRoles: any;
   modGrade = [0];
   modCount = [0];
   modGradeTotal = [0];
@@ -80,9 +83,9 @@ export class AdminComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getUserRole();
-    this.getModuleforLearning();
-    this.getAllTopics();
-    this.getAttachments();
+    // this.getModuleforLearning();
+    // this.getAllTopics();
+    // this.getAttachments();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -90,31 +93,47 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getModuleforLearning() {
-    this.api.getModuleByBootcamp('SD').subscribe(res => {
-      this.modulesASD = res as any[];
-    console.log(this.modulesASD);
-    });
-    this.api.getModuleByBootcamp('UI').subscribe(res => {
-      this.modulesUI = res as any[];
-    console.log(this.modulesUI);
-    });
+    if (this.teacherModuleRoles.length > 1) {
+      this.api.getModule().subscribe(res => {
+        this.modules = res as any[];
+        this.getAllTopics();
+        this.getAttachments();
+      });
+    } else {
+      this.api.getModuleByBootcamp(this.teacherModuleRoles[0]).subscribe(res => {
+        this.modules = res as any[];
+        this.getAllTopics();
+        this.getAttachments();
+      });
+    }
+  }
+
+  firstOfAtt(tAttachments, aId) {
+    if (tAttachments[0].id === aId) {
+      return '0px';
+    }
+  }
+
+  UserAdminTest(bootcamp) {
+    console.log(this.currentUser.role);
+    if (this.currentUser.role === 'ROLE_ADMIN') {
+      if (bootcamp === 'UI') {
+        return 'UI / UX - ';
+      } if (bootcamp === 'SD') {
+        return 'Advanced Software Developer - ';
+      } else {
+        return '';
+      }
+    } else {
+      return '';
+    }
   }
 
   getUserRole() {
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
-      if (this.currentUser === 'ROLE_STUDENT_ASD') {
-        this.UIorASD = 1;
-      }
-      if (this.currentUser === 'ROLE_TEACHER_ASD') {
-        this.UIorASD = 1;
-      }
-      if (this.currentUser === 'ROLE_TEACHER_UI') {
-        this.UIorASD = 2;
-      }
-      if (this.currentUser === 'ROLE_TEACHER_UI') {
-        this.UIorASD = 2;
-      }
+      console.log(this.currentUser);
+      this.teachingRole();
     });
   }
 
@@ -147,34 +166,59 @@ export class AdminComponent implements OnInit, OnChanges {
   }
 
   getUserRoleStudent() {
-    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+    if (this.currentUser.role === 'ROLE_STUDENT_ASD' || this.currentUser.role === 'ROLE_STUDENT_UI') {
       return true;
-    } if (this.currentUser.role === 'ROLE_STUDENT_UI') {
-      return true;
+    } else {
+      return false;
     }
   }
 
-  teachingRole(role) {
-    if (role === 'ASD') {
-      if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-        return false;
-      } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-        this.teacherRole = 2;
-        return true;
-      } if (this.currentUser.role === 'ROLE_ADMIN') {
-        return true;
-      }
+  getUserRoleInstructor() {
+    if (this.currentUser.role === 'ROLE_ADMIN' || this.currentUser.role === 'ROLE_TEACHER_ASD' ||
+    this.currentUser.role === 'ROLE_TEACHER_UI') {
+      return true;
+    } else {
+      return false;
     }
-    if (role === 'UI') {
-      if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-        return true;
-      } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-        this.teacherRole = 2;
-        return false;
-      } if (this.currentUser.role === 'ROLE_ADMIN') {
-        return true;
-      }
+  }
+
+  teachingRole() {
+    if (this.currentUser.role === 'ROLE_ADMIN') {
+      this.teacherModuleRoles = ['UI', 'SD'];
+      this.instructorCourseNm = 'UI / UX & Advanced Software Developer';
+      this.getModuleforLearning();
+      return true;
+    } if (this.currentUser.role === 'ROLE_TEACHER_ASD' || this.currentUser.role === 'ROLE_STUDENT_ASD') {
+      this.teacherModuleRoles = ['SD'];
+      this.instructorCourseNm = 'Advanced Software Developer';
+      this.getModuleforLearning();
+      return true;
+    } if (this.currentUser.role === 'ROLE_TEACHER_UI' || this.currentUser.role === 'ROLE_STUDENT_UI') {
+      this.teacherModuleRoles = ['UI'];
+      this.instructorCourseNm = 'UI / UX';
+      this.getModuleforLearning();
+      return true;
     }
+    // if (role === 'ASD') {
+    //   if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+    //     return false;
+    //   } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+    //     this.teacherRole = 2;
+    //     return true;
+    //   } if (this.currentUser.role === 'ROLE_ADMIN') {
+    //     return true;
+    //   }
+    // }
+    // if (role === 'UI') {
+    //   if (this.currentUser.role === 'ROLE_TEACHER_UI') {
+    //     return true;
+    //   } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
+    //     this.teacherRole = 2;
+    //     return false;
+    //   } if (this.currentUser.role === 'ROLE_ADMIN') {
+    //     return true;
+    //   }
+    // }
   }
 
   studentsRole(role) {
@@ -191,18 +235,6 @@ export class AdminComponent implements OnInit, OnChanges {
       } if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
         return false;
       }
-    }
-  }
-
-  getUserRoleInstructor() {
-    if (this.currentUser.role === 'ROLE_TEACHER_UI') {
-      this.teacherRole = 1;
-      return true;
-    } if (this.currentUser.role === 'ROLE_TEACHER_ASD') {
-      this.teacherRole = 2;
-      return true;
-    } if (this.currentUser.role === 'ROLE_ADMIN') {
-      return true;
     }
   }
 
@@ -296,7 +328,7 @@ getTopicAttById(topicAttId) {
           formData.append('file', file);
           this.apiS.uploadStudentAttachment(formData).subscribe(
             results => {
-              // this.fileUploading = null;
+              this.fileUploading = null;
               this.result = results as SubmittedAtt;
               this.documents.push(this.result);
               topicAtt.subAtt.push(this.result);
@@ -496,7 +528,7 @@ open2(content) {
     }
   }
 
-  deleteTeacherContent(a, i, location, attId) {
+  deleteTeacherContent(i, a, attId) {
     this.api.removeModAttachment(attId).subscribe(data => {
       this.snotifyService.success('File removed', {
         timeout: 2000,
@@ -505,20 +537,43 @@ open2(content) {
         pauseOnHover: true,
         position: SnotifyPosition.centerBottom,
       });
-      if (location === 'ASD') {
-        this.modulesASD[i].modAttachments.splice(a, 1);
-      } if (location === 'UI') {
-        this.modulesUI[i].modAttachments.splice(a, 1);
-      }
+      this.modules[i].modAttachments.splice(a, 1);
     });
   }
 
-  removeTeacherContent(a, i, location, attId) {
+  removeTeacherContent(i, a, attId) {
     this.snotifyService.warning('Are you sure you want to remove this file?', {
       timeout: 100000,
       closeOnClick: true,
       buttons: [
-        {text: 'Yes', action: () => this.deleteTeacherContent(a, i, location, attId), bold: true },
+        {text: 'Yes', action: () => this.deleteTeacherContent(i, a, attId), bold: true },
+        {text: 'No', action: null },
+      ],
+      showProgressBar: false,
+      pauseOnHover: false,
+      position: SnotifyPosition.centerBottom,
+    });
+  }
+
+  deleteCourseContent(i, a, attId) {
+    this.apiT.deleteTopicAtt(attId).subscribe(data => {
+      this.snotifyService.success('File removed', {
+        timeout: 2000,
+        closeOnClick: true,
+        showProgressBar: false,
+        pauseOnHover: true,
+        position: SnotifyPosition.centerBottom,
+      });
+      this.topics[i].attachments.splice(a, 1);
+    });
+  }
+
+  removeCourseContent(i, a, attId) {
+    this.snotifyService.warning('Are you sure you want to remove this file?', {
+      timeout: 100000,
+      closeOnClick: true,
+      buttons: [
+        {text: 'Yes', action: () => this.deleteCourseContent(i, a, attId), bold: true },
         {text: 'No', action: null },
       ],
       showProgressBar: false,

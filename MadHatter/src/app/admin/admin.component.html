@@ -24,17 +24,20 @@
 </div>
 <div *ngIf="!isLoading">
   <div id="adminInstructor" *ngIf="getUserRoleInstructor()">
-    <div *ngIf="teachingRole('ASD')" class="classSeperation">
-      <h1 id="headerTitle">Advanced Software Developer</h1>
+    <div class="classSeperation">
+      <h1 id="headerTitle">{{instructorCourseNm}}</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.modNm}}">
+        <mat-tab class="gradesTabular" *ngFor="let m of modules; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
-            <div *ngIf="m.bootcamp === 'SD'">
+            <div>
+              <!-- <div *ngIf="currentUser.role === 'ROLE_ADMIN'">
+                <p>this user is admin</p>
+              </div> -->
+              <div id="editButtonAdmin" (click)="editDetailsPage()" [routerLink]="['/learning/learningdetail/', m.id]"><i class="far fa-edit"></i>
+                <span style="padding-left: 10px;">Edit Module Structure</span></div>
               <div class= "headerAdminContent">
                 <div class="headerAdminContentTitle">
-                  <h2>Module {{m.modNm}}: {{m.title}}</h2>
-                  <span style="padding-top: 12px; padding-left: 25px;" (click)="editDetailsPage()" [routerLink]="['/learning/learningdetail/', m.id]"><i class="far fa-edit"></i>
-                    <span style="padding-left: 10px;">Edit</span></span>
+                  <h2>{{UserAdminTest(m.bootcamp)}}Module {{m.modNm}}: {{m.title}}</h2>
                 </div>
                 <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
                   <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
@@ -50,6 +53,7 @@
                   <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
                 </div>
               </div>
+            <!-- ///////////// INSTRUCTOR CONTENT MODAL ////////////// -->
             <ng-template id="modal-teacher" #content let-modal let-c="close" let-d="dismiss">
               <div class="modal-header">
                 <h3 class="modal-title" id="modal-teacher">Instructor Guide and Module Content</h3>
@@ -63,23 +67,25 @@
                     <p (click)="downloadModuleAttachment(z.id)">{{z.fileNm}}</p>
                     <div class="faIconsforTeacherContent">
                       <i class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
-                      <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'UI',z.id)"></i>
+                      <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(i,a,z.id)"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </ng-template>
+            <!-- ///////////// INSTRUCTOR CONTENT MODAL ////////////// -->
               <div>
                 <hr id="titleRule">
-                <div class="showTopics" *ngFor="let t of topics" >
+                <div class="showTopics" *ngFor="let t of topics; let top=index" >
                   <div class="adminSubheader" *ngIf="t.mod.id === m.id">
                     <div data-toggle="modal" data-target="#modal-basic-title" class="subheaderadmin">
                       <mat-slide-toggle [checked]="!t.hidden" style="padding-right: 20px" (change)=toggleContent(t,m.id)></mat-slide-toggle>
                       <h3>{{t.topicTitle}}</h3>
                     </div>
                   </div>
-                  <div class="excerciseSubheader" *ngFor="let a of t.attachments">
+                  <div class="excerciseSubheader" *ngFor="let a of t.attachments; let att = index">
                     <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
+                      <div id="adminSubheaderUnderline" [ngStyle]="{'border-top': firstOfAtt(t.attachments, a.id)}"></div>
                       <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
                         <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
                         <span>{{a.fileNm}}</span>
@@ -90,10 +96,13 @@
                       <div class="hideShowQuizzes" *ngIf="a.quiz">
                         <mat-slide-toggle [checked]="a.quiz === 'Y'" (change)=toggleQuizContent(a,t.id)></mat-slide-toggle>
                       </div>
+                      <div id="resourcesTrashAdminTopic">
+                        <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;" (click)="removeCourseContent(top,att,a.id)"></i>
+                      </div>
                     </div>
                   </div>
                   <hr *ngIf="t.mod.id === m.id">
-                  <!-- ///////////// MODAL ////////////// -->
+                  <!-- ///////////// STUDENT ATTEMPTS MODAL ////////////// -->
                   <ng-template id="adminModalContent" #content let-modal let-c="close" let-d="dismiss">
                     <div class="modal-header">
                       <h3 class="modal-title" id="modal-basic-title">Student Attempts</h3>
@@ -125,113 +134,7 @@
                       </div>
                     </div>
                   </ng-template>
-                </div>
-              </div>
-            </div>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-    <div *ngIf="teachingRole('UI')" class="classSeperation">
-    <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
-      <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.modNm}}">
-          <div class="learningContent">
-            <div *ngIf="m.bootcamp === 'UI'">
-              <div class= "headerAdminContent">
-                <div class="headerAdminContentTitle">
-                  <h2>Module {{m.modNm}}: {{m.title}}</h2>
-                  <span style="padding-top: 12px; padding-left: 25px; cursor: pointer;" [routerLink]="['/learning/learningdetail/', m.id]"><i class="far fa-edit"></i><span style="padding-left: 10px;">Edit</span></span>
-                </div>
-                <div *ngIf="m.modAttachments.length > 0" class ="teacherContent">
-                  <button mat-button data-toggle="modal" data-target="#modal-teacher" (click)="open2(content)"> Launch Teacher Content</button>
-                </div>
-                <div class="adminSetProgress">
-                  <mat-form-field>
-                    <mat-select [placeholder]="displayModuleProgress(m.id, m.progress)" [(ngModel)]="updateModuleProgress[m.id]">
-                      <mat-option value="Not Started" (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
-                      <mat-option value="In Progress" (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
-                      <mat-option value="Completed" (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>
-                </div>
-              </div>
-              <ng-template id="modal-teacher" #content let-modal let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <h3 class="modal-title" id="modal-teacher">Instructor Guide and Module Content</h3>
-                  <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body" >
-                  <div *ngFor="let z of m.modAttachments; let a = index">
-                    <div style="cursor: pointer;" class="modfileNm">
-                      <p (click)="downloadModuleAttachment(z.id)">{{z.fileNm}}</p>
-                      <div class="faIconsforTeacherContent">
-                        <i class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(z.id)"></i>
-                        <i id="resourcesTrashAdmin" class="fa fa-trash" aria-hidden="true" (click)="removeTeacherContent(a,i,'UI',z.id)"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-              <div>
-                <hr>
-                <div class="showTopics" *ngFor="let t of topics" >
-                  <div class="adminSubheader" *ngIf="t.mod.id === m.id">
-                    <div data-toggle="modal" data-target="#modal-basic-title" class="subheaderadmin">
-                      <mat-slide-toggle [checked]="!t.hidden" style="padding-right: 20px" (change)=toggleContent(t,m.id)></mat-slide-toggle>
-                      <h3>{{t.topicTitle}}</h3>
-                    </div>
-                  </div>
-                  <div class="excerciseSubheader" *ngFor="let a of t.attachments">
-                    <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id">
-                      <div class="TeacherDownload" (click)="downloadAttatchemnts(a)">
-                        <p class="downloadIconGrades"><i id="adminDownloadItem"class="fa fa-download" aria-hidden="true"></i></p>
-                        <span>{{a.fileNm}}</span>
-                      </div>
-                      <div class="TeacherView" *ngIf="a.description === exercise || a.description === 'Quiz'">
-                        <button mat-button (click)="open(content, a.id)">View Assignments</button>
-                      </div>
-                      <div class="hideShowQuizzes" *ngIf="a.quiz">
-                        <mat-slide-toggle [checked]="a.quiz === 'Y'" (change)=toggleQuizContent(a,t.id)></mat-slide-toggle>
-                      </div>
-                    </div>
-                  </div>
-                  <hr *ngIf="t.mod.id === m.id">
-                  <!-- ///////////// MODAL ////////////// -->
-                  <ng-template id="adminModalContent" #content let-modal let-c="close" let-d="dismiss">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="modal-basic-title">Student Attempts</h3>
-                      <button mat-button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div *ngIf="gettingStudentAttemps" class="contentToDisplay">
-                      <mat-progress-spinner color="primary" mode="indeterminate">
-                      </mat-progress-spinner>
-                    </div>
-                    <div class="modal-body" *ngIf="!gettingStudentAttemps">
-                      <div class="adminDetailGridSeperator" *ngFor="let s of studentAttempts; let i = index">
-                        <div class="studentAttemptsGrid">
-                          <span class="studentAttemptName">{{s.student.name}}</span>
-                          <div class="studentAttemptDownload">
-                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: absolute; font-size: 150%;" class="fa fa-file" aria-hidden="true"></i>
-                            <i (click)="downloadStudentAttatchemnts(s.id)" style="cursor: pointer; position: fixed; color: white; padding: .5%; padding-top: 1%; font-size: 50%;" 
-                            class="fa fa-download" aria-hidden="true"></i>
-                          </div>
-                          <div class="studentAttemptGrade">
-                            <input type="number" min="0" max="100" style="background: #F3F3F3; width: 35%;" [placeholder]="s.gradeN" [(ngModel)]="s.gradeN">
-                            <span> / {{s.gradeD}}</span>
-                          </div>
-                          <div class="studentAttemptGradeButton">
-                            <button mat-button (click)="submitGrade(s)">Submit Grade</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </ng-template>
+                  <!-- ///////////// STUDENT ATTEMPTS MODAL ////////////// -->
                 </div>
               </div>
             </div>
@@ -262,9 +165,9 @@
  -->
   <div id="adminStudent" *ngIf="getUserRoleStudent()">
     <div *ngIf="studentsRole('ASD')" class="classSeperation">
-    <h1 id="headerTitle" *ngIf="!isLoading">Advanced Software Developer</h1>
+    <h1 id="headerTitle" *ngIf="!isLoading">{{instructorCourseNm}}</h1>
       <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
-        <mat-tab class="gradesTabular" *ngFor="let m of modulesASD; let i = index" label="Module {{m.modNm}}">
+        <mat-tab class="gradesTabular" *ngFor="let m of modules; let i = index" label="Module {{m.modNm}}">
           <div class="learningContent">
             <div *ngIf="m.bootcamp === 'SD'">
               <div class= "headerAdminContent">
@@ -291,13 +194,14 @@
                       </div>
                       <div class="excerciseSubheader" *ngFor="let a of t.attachments; let i = index">
                         <div class="attachemntGridAdmin" *ngIf="t.mod.id === m.id && a.quiz !== 'N'">
+                        <div id="adminSubheaderUnderline" [ngStyle]="{'border-top': firstOfAtt(t.attachments, a.id)}"></div>
                         <div class="studentDetialUpload" (click)="downloadAttatchemnts(a)">
                           <p class="downloadIconGrades"><i id="learningDetailDownloadItem" class="fa fa-download" aria-hidden="true"></i></p>
                           <p *ngIf="a.description !== 'Quiz'">{{a.fileNm}}</p>
                           <a href="assets/quizzes/{{a.fileNm}}/story.html" target="_blank" *ngIf="a.description === 'Quiz'">{{a.fileNm}}</a>
                         </div>
                         <div class="studentUpload" *ngIf="studentHasAttemptOnRecord(a)">
-                          <div style="display: inline-flex" *ngIf="m.progress === 2">
+                          <div style="display: inline-flex; margin-top: 1em;" *ngIf="m.progress === 2">
                             <input style="width: 15em; padding-top: 1.5%" type="file" #file  (change)="onFileChange($event,a)">
                             <div style="width: 50px;">
                               <mat-progress-spinner *ngIf="fileUploading === a.id" class="bbcontentToDisplay" [diameter]="20" color="primary" mode="indeterminate">
@@ -310,7 +214,7 @@
                         </div>
                         <div class="getStudentAttemptsForAtt" *ngFor="let u of allStudentAttempts">
                           <div *ngIf="u?.topicatt?.id === a.id">
-                            <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}% correct</p>
+                            <p class="StudentTopicScore">{{calcGrade(u.gradeN, u.gradeD, a.id, m.id)}}% Correct</p>
                           </div>
                         </div>
                         </div>
@@ -326,7 +230,7 @@
       </mat-tab-group>
     </div>
   </div>
-  <div *ngIf="studentsRole('UI')" class="classSeperation">
+  <!-- <div *ngIf="studentsRole('UI')" class="classSeperation">
     <h1 id="headerTitle" *ngIf="!isLoading">UI / UX</h1>
     <mat-tab-group class="mainGradesTabular" mat-align-tabs="center">
       <mat-tab class="gradesTabular" *ngFor="let m of modulesUI; let i = index" label="Module {{m.modNm}}">
@@ -389,5 +293,5 @@
         </div>
       </mat-tab>
     </mat-tab-group>
-  </div>
+  </div> -->
 </div>

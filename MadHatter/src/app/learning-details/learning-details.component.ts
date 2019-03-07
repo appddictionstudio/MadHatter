@@ -266,21 +266,24 @@ onFileChange2(event, mod) {
 
   updateTopic(topic, modId) {
     let Mod;
-    this.api.getModuleById(modId).subscribe( results => {Mod = results; });
-    // topic.mod = {id: modId};
-    topic.mod = Mod;
-    console.log(topic);
-    // console.log(topicId);
-    this.apiT.updateTopic(topic).subscribe(data => {
-      this.snotifyService.success('Excercise Added', {
-        timeout: 2000,
-        showProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        position: SnotifyPosition.centerBottom
+    this.api.getModuleById(modId).subscribe( results => {
+      Mod = results;
+      // topic.mod = {id: modId};
+      topic.mod = Mod;
+      console.log(topic);
+      console.log(topic.mod);
+      // console.log(topicId);
+      this.apiT.updateTopic(topic).subscribe(data => {
+        this.snotifyService.success('Excercise Added', {
+          timeout: 2000,
+          showProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: SnotifyPosition.centerBottom
+        });
       });
+      this.ngOnInit();
     });
-    this.ngOnInit();
   }
 
   updateModule(mod) {
