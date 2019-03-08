@@ -15,7 +15,7 @@ import java.util.List;
 public class Topic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TOPIC_SEQUENCE")
     private Long id;
 
     @ManyToOne

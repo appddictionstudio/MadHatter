@@ -58,7 +58,6 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   isLoading = true;
   documents: any[] = [];
   t: any[] = [];
-  topicCenter: Topic = new Topic();
   topicslist: Topic[] = [];
   closeResult: string;
   attList: Attachments[] = [];
@@ -239,8 +238,8 @@ onFileChange2(event, mod) {
   }
 }
 
-  SaveTopic() {
-    this.apiT.saveTopic(this.topicCenter).subscribe(data => {
+  SaveTopic(topic) {
+    this.apiT.saveTopic(topic).subscribe(data => {
       this.ngOnInit();
     });
   }
@@ -308,14 +307,13 @@ onFileChange2(event, mod) {
     this.api.updateMod(this.modules[0]).subscribe(data => {});
     let i;
     for (i = 0; i < this.topics.length; i++) {
-      console.log(this.topics[i]);
-      this.apiT.getTopicsById(this.topics[i].id).subscribe(res => {
-        if (res) {
-          this.apiT.updateTopic(this.topics[i]).subscribe(data => {});
-        } else {
-          console.log('this is new!');
-        }
-      });
+      if (this.topics[i].id) {
+        this.apiT.updateTopic(this.topics[i]).subscribe(data => {});
+      } else {
+        // console.log(this.topics[i]);
+        // console.log('this is new!');
+        // this.SaveTopic(this.topics[i]);
+      }
     }
     this.editToggle();
   }

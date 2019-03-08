@@ -37,14 +37,6 @@ import com.Madhatter.MadHatter.models.Topic;
 import com.Madhatter.MadHatter.models.TopicAtt;
 import com.Madhatter.MadHatter.services.AttachmentService;
 
-
-
-
-
-
-
-
-
 @RestController
 public class TopicAttController {
 	@Autowired

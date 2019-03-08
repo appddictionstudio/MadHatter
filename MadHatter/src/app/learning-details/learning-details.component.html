@@ -31,10 +31,10 @@
               <div class="subheaderlc" [ngStyle]="{'grid-column': isCurrentlyEdit()}">
                 <h3 *ngIf="!learningDetailEdit">{{t.topicTitle}}</h3>
                 <div class="learningDetailDayEdit" *ngIf="learningDetailEdit">
-                  <div class="upAndDownArrow">
+                  <!-- <div class="upAndDownArrow">
                     <i class="fas fa-arrow-down" (click)="upArrowClick(i)" style="transform: rotate(180deg)"></i>
                     <i class="fas fa-arrow-down" (click)="downArrowClick(i)" style="padding-top: 10px;"></i>
-                  </div>
+                  </div> -->
                   <mat-form-field id="topicEditForm" appearance="outline"><input matInput [placeholder]="t.topicTitle" type="text" name="Title" [(ngModel)]="t.topicTitle">
                   </mat-form-field>
                 </div>
@@ -85,9 +85,9 @@
               </div>
             </div>
           </div>
-          <div *ngIf="learningDetailEdit" class="addAditionalTopic">
+          <!-- <div *ngIf="learningDetailEdit" class="addAditionalTopic">
             <i style="cursor: pointer;" (click)="addBlankTopic()" class="fas fa-plus"></i>
-          </div>
+          </div> -->
         </div>
         <div *ngIf="m.modAttachments.length > 0">
           <div *ngIf="getUserRoleInstructor()" class="modfileSave">

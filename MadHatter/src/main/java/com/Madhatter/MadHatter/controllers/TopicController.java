@@ -91,10 +91,10 @@ public class TopicController {
 				throw new ValidationException("Record Already Exists");
 			}
 			
-			Modules mod = new Modules();
-			mod.setId((long) 1);
-			
-			topic.setMod(mod);
+//			Modules mod = new Modules();
+//			mod.setId((long) 1);
+//			
+//			topic.setMod(mod);
 			
 			if(topic.getAttachments() != null) {
 				for(TopicAtt attachment: topic.getAttachments()) {
