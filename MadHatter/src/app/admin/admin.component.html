@@ -45,9 +45,9 @@
                 <div class="adminSetProgress">
                   <mat-form-field>
                     <mat-select [placeholder]="displayModuleProgress(m.id, m.progress)" [(ngModel)]="updateModuleProgress[m.id]">
-                      <mat-option value="Not Started" (click)="updateModuleProgressPlaceholder(m.id, 1)">Not Started</mat-option>
-                      <mat-option value="In Progress" (click)="updateModuleProgressPlaceholder(m.id, 2)">In Progress</mat-option>
-                      <mat-option value="Completed" (click)="updateModuleProgressPlaceholder(m.id, 3)">Complete</mat-option>
+                      <mat-option value="Not Started" (click)="updateModuleProgressPlaceholder(m, 1)">Not Started</mat-option>
+                      <mat-option value="In Progress" (click)="updateModuleProgressPlaceholder(m, 2)">In Progress</mat-option>
+                      <mat-option value="Completed" (click)="updateModuleProgressPlaceholder(m, 3)">Complete</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <button mat-button (click)="updateModuleProgressChange(m)">Update Status</button>

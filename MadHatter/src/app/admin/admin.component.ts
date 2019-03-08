@@ -451,13 +451,16 @@ open2(content) {
     }
   }
 
-  updateModuleProgressPlaceholder(id, progress) {
+  updateModuleProgressPlaceholder(m, progress) {
     if (progress === 1) {
-      this.updateModuleProgress[id] = 'Not Started';
+      this.updateModuleProgress[m.id] = 'Not Started';
+      this.updateModuleProgressChange(m);
     } if (progress === 2) {
-      this.updateModuleProgress[id] = 'In Progress';
+      this.updateModuleProgress[m.id] = 'In Progress';
+      this.updateModuleProgressChange(m);
     } if (progress === 3) {
-      this.updateModuleProgress[id] = 'Completed';
+      this.updateModuleProgress[m.id] = 'Completed';
+      this.updateModuleProgressChange(m);
     }
   }
 
