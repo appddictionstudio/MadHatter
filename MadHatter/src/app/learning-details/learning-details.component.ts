@@ -509,6 +509,12 @@ onFileChange2(event, mod) {
     }
   }
 
+  downloadModuleAttachment(attachmentId) {
+    this.api.DownloadMod(attachmentId).subscribe(response => {
+      this.saveToFileSystem(response);
+    });
+  }
+
   getStudentMods() {
     if (this.currentUser.role === 'ROLE_STUDENT_UI') {
       this.api.returnStudentModsUI().subscribe(res => {
