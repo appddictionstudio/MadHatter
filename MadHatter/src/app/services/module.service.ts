@@ -90,6 +90,14 @@ export class ModuleService {
     return this.http.put(environment.apiUrl + 'api/modules/update/' + mod.id, mod);
   }
 
+  returnStudentModsUI() {
+    return this.http.get(environment.apiUrl + 'studentModsUI');
+  }
+
+  returnStudentModsASD() {
+    return this.http.get(environment.apiUrl + 'studentModsASD');
+  }
+
   DownloadMod(modattid) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/octet-stream');

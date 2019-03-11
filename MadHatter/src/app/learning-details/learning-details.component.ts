@@ -47,6 +47,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
   currentUser: any;
   buttonAddResource = false;
   currentmod: any;
+  studentMods: any;
   resourceLinkInput = '';
   fileUploading: any;
   modfileUploading = false;
@@ -74,6 +75,7 @@ export class LearningDetailsComponent implements OnInit, OnChanges {
     this.getModuleforLearning();
     this.apiU.getUser().subscribe(data => {
       this.currentUser = data;
+      this.getStudentMods();
     });
     if (this.api.checkForEdit()) {
       this.learningDetailEdit = true;
@@ -504,6 +506,21 @@ onFileChange2(event, mod) {
       this.topics[i + 1].topicOrder = this.topics[i + 1].topicOrder - 1;
       this.topics[i] = this.topics[i + 1];
       this.topics[i + 1] = this.tempTopic;
+    }
+  }
+
+  getStudentMods() {
+    if (this.currentUser.role === 'ROLE_STUDENT_UI') {
+      this.api.returnStudentModsUI().subscribe(res => {
+        this.studentMods = res as any;
+        console.log(this.studentMods);
+      });
+    }
+    if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
+      this.api.returnStudentModsASD().subscribe(res => {
+        this.studentMods = res as any;
+        console.log(this.studentMods);
+      });
     }
   }
 }

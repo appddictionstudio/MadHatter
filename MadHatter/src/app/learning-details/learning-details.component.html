@@ -111,7 +111,16 @@
             </div>
           </div>
         </div>
-        <div *ngIf="getUserRoleInstructor()">
+        <div *ngIf="getUserRoleStudent()">
+          <h1 style="margin-top: 150px; margin-bottom: 24px; color: #505050;">Course Content</h1>
+            <div class="instructorAttachmentDetails">
+              <div class="instructorAttachmentDetailsInner">
+                <i style="padding-right: 20px; cursor: pointer;" class="fa fa-download" aria-hidden="true" (click)="downloadModuleAttachment(studentMods.id)"></i>
+                <span style="cursor: pointer; text-decoration: underline" (click)="downloadModuleAttachment(z.id)">{{studentMods.fileNm}}</span>
+              </div>
+            </div>
+        </div>
+        <div *ngIf="getUserRoleInstructor()" class="modfileSave">
           <div class="resourceHeader">
             <h1 style="margin-top: 25px;">Module {{m.modNm}} Resources</h1>
             <hr>

@@ -104,5 +104,19 @@ private ModAttRepository repo;
 			public void removeModAtt(@PathVariable Long id) {
 				repo.deleteById(id);
 			}
+
+			@RequestMapping(value = "/studentModsUI", method = RequestMethod.GET)
+			@ResponseBody
+			ResponseEntity<Optional<ModAtt>> getStudentMods(){
+				Optional<ModAtt> modAtt = repo.findById((long) 2018);
+				return ResponseEntity.ok(modAtt);
+			}
+			
+			@RequestMapping(value = "/studentModsASD", method = RequestMethod.GET)
+			@ResponseBody
+			ResponseEntity<Optional<ModAtt>> getStudentModASD(){
+				Optional<ModAtt> modAtt = repo.findById((long) 2008);
+				return ResponseEntity.ok(modAtt);
+			}
 		
 }
