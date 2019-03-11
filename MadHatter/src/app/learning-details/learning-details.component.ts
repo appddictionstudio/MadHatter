@@ -513,13 +513,11 @@ onFileChange2(event, mod) {
     if (this.currentUser.role === 'ROLE_STUDENT_UI') {
       this.api.returnStudentModsUI().subscribe(res => {
         this.studentMods = res as any;
-        console.log(this.studentMods);
       });
     }
     if (this.currentUser.role === 'ROLE_STUDENT_ASD') {
       this.api.returnStudentModsASD().subscribe(res => {
         this.studentMods = res as any;
-        console.log(this.studentMods);
       });
     }
   }
