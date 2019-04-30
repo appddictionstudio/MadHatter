@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bwFrame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" default_layout="pxabnsnfns00000000101" textdirection="ltr" device="false" fontscale="100" kbshortcuts="false" skip_nav_enabled="true" chromeless="false" outputtype="undefined" theme="classic">
   <layouts>
-    <layout name="npnxnanbsnfns00000000101" font="Open Sans" controllayout="npnxnanbsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
-    <layout name="pxabnsnfns00000000101" font="Open Sans" controllayout="pxabnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
-    <layout name="npxnabnsnfns00000000101" font="Open Sans" controllayout="npxnabnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
-    <layout name="npnxnanbnsnfns00000000101" font="Open Sans" controllayout="npnxnanbnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
-    <layout name="pxabnsnfns00000000100" font="Open Sans" controllayout="pxabnsnfns00000000100" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
+    <layout name="npnxnanbsnfns00000000101" font="Arial" controllayout="npnxnanbsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
+    <layout name="pxabnsnfns00000000101" font="Arial" controllayout="pxabnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
+    <layout name="npxnabnsnfns00000000101" font="Arial" controllayout="npxnabnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
+    <layout name="npnxnanbnsnfns00000000101" font="Arial" controllayout="npnxnanbnsnfns00000000101" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
+    <layout name="pxabnsnfns00000000100" font="Arial" controllayout="pxabnsnfns00000000100" colorscheme="pxabnsnfns00000000101" string_table="pxabnsnfns00000000101" />
   </layouts>
   <control_options>
     <optiongroups>
@@ -69,7 +69,7 @@
           <option name="search" value="false" />
           <option name="closed_captions" value="false">
             <options>
-              <option name="font" value="Open Sans" />
+              <option name="font" value="Arial" />
             </options>
           </option>
         </options>
@@ -1162,7 +1162,7 @@
     </string_table>
   </string_tables>
   <fonts>
-    <font name="Open Sans">
+    <font name="Arial">
       <files>
         <file bold="true" italic="false" />
         <file bold="false" italic="false" />
@@ -1175,17 +1175,17 @@
       <links>
         <slidelink slideid="_player.66mfBvZRg8H" displaytext="Untitled Scene" expand="true" type="slide">
           <links>
-            <slidelink slideid="_player.66mfBvZRg8H.64HBcvTjWTY" displaytext="Untitled Slide" expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.6cfrPaJaT5n" displaytext="    Match each of the following Must Have UX Designer Skill to its corresponding definition." expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.5mCpZbqZblR" displaytext="    Drag and drop the five phases of Design Thinking into the correct order." expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.6fygXgurYus" displaytext="   Which of the following problem statements is NOT written in the correct format?" expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.6PDlv7dCQmL" displaytext="   Which of the following is the most thorough way to write a value statement? " expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.6PGzx5IzhDj" displaytext="Which of the following are NOT responsibilities of a UI/UX Designer?  " expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.5z3lPvG0EaU" displaytext="UX business requirements should focus on who will be using the product or service and be user-centered. " expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.5XcjGMLAhVv" displaytext="During brainstorming, there are some bad ideas and they should not be considered as potential solutions.  They should be noted as bad and dismissed immediately. " expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.5h0H39deWhT" displaytext="Fill in the blank:  Designing _________ and __________ are an essential part of the prototype phase." expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.65jaQEl6jAA" displaytext="The ideation phase is NOT about:" expand="false" type="slide" />
-            <slidelink slideid="_player.66mfBvZRg8H.5cjZ7gduC1G" displaytext="What are ways that you as a UI/UX Designer capture business requirements?  Select all that apply." expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6qk8CFKvFZa" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.5mCpZbqZblR" displaytext="   Drag and drop the five steps of the UX Research Process in the correct order from first to last." expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6qcm9vofGTG" displaytext="UX Research comes first in the UX design process because your design work needs to be objective and not based on your own experiences and assumptions. " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6fygXgurYus" displaytext="   Which of the following is NOT part of a well-defined persona? " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6Nw8YnDkItT" displaytext="InVision allows you to do which of the following?  Select all that apply. " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.5h2JMKkfoyU" displaytext="A persona can help you clarify all of the following questions EXCEPT:" expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6Jj4oBOrSES" displaytext="Human centered design is a philosophy that: " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.65jaQEl6jAA" displaytext="The Adobe XD interface includes of all of the following EXCEPT the: " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.60rUCeVApcY" displaytext="Drag and drop the following functionality to their corresponding Adobe Creative Cloud software. " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.66taMHap6a9" displaytext="Which of the following is a type of prototype? " expand="false" type="slide" />
+            <slidelink slideid="_player.66mfBvZRg8H.6VFx9uE1TVz" displaytext="Which of the following software programs are NOT used in prototyping?" expand="false" type="slide" />
           </links>
         </slidelink>
       </links>
