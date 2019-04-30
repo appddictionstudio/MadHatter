@@ -15,7 +15,7 @@
     "@angular/cdk": "github:angular/cdk-builds",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
-    "@angular/core": "~7.1.0",
+    "@angular/core": "^7.2.14",
     "@angular/forms": "~7.1.0",
     "@angular/http": "^7.2.0",
     "@angular/material": "github:angular/material2-builds",
@@ -49,6 +49,7 @@
     "ngx-youtube-player": "^6.0.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
+    "tar": "^4.4.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
