@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 import { BootcampModule } from '../models/Bootcamp';
 import { ActivatedRoute } from '@angular/router';
 import { MockNgModuleResolver } from '@angular/compiler/testing';
-import { detachEmbeddedView } from '@angular/core/src/view';
+// import { detachEmbeddedView } from '@angular/core/src/view';
 import { Router } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import { Topic } from '../models/Topic';
